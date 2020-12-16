@@ -1,0 +1,83 @@
+# Turn Rewrite Engine On
+#RewriteEngine on
+
+#Redirection code starts
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#Redirection code Ends
+
+# Rewrite for projects.php
+RewriteRule ^index$ home.php [NC,L]
+
+# Rewrite for about.php
+RewriteRule ^about$ about.php [NC,L]
+
+# Rewrite for recipes.php
+RewriteRule ^recipes$ recipes.php [NC,L]
+
+# Rewrite for experience.php
+RewriteRule ^experience$ experience.php [NC,L]
+
+# Rewrite for magazine.php
+RewriteRule ^magazine$ magazine.php [NC,L]
+
+# Rewrite for contact.php
+RewriteRule ^contact$ contact.php [NC,L]
+
+# Rewrite for contact.php
+RewriteRule ^admin$ login_user.php [NC,L]
+
+# Rewrite for callback-llc.php
+RewriteRule ^callback$ callback-llc.php [NC,L]
+
+# NC makes the rule non case sensitive
+# L makes this the last rule that this specific condition will match
+# $ in the regular expression makes the matching stop so that "customblah" will not work
+
+# Rewrite for shop.php?u=xxxxx
+RewriteRule ^shop/([0-9a-zA-Z_-]+)$ shop.php?category=$1 [NC,L]
+
+# Rewrite for product.php?u=xxxxx
+RewriteRule ^product/([0-9a-zA-Z_-]+)$ single-product.php?product=$1 [NC,L]
+
+# Rewrite for user.php?u=xxxxx
+RewriteRule ^single-recipe/([0-9a-zA-Z_-]+)$ single-recipe.php?recipe=$1 [NC,L]
+
+# Rewrite for user.php?u=xxxxx
+RewriteRule ^single-experience/([0-9a-zA-Z_-]+)$ single-experience.php?exper=$1 [NC,L]
+
+# Rewrite for user.php?u=xxxxx
+RewriteRule ^single-article/([0-9a-zA-Z_-]+)$ single-article.php?maga=$1 [NC,L]
+
+# Rewrite for article.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&pn=$2 [NC,L]
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_sub/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&sub_category=$2 [NC,L]
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_sub/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&sub_category=$2&pn=$3 [NC,L]
+
+# START THIS CODE FOR FILTER PRICE AND LATEST PRODUCT
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_filter/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&filter=$2 [NC,L]
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_filter/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&filter=$2&pn=$3 [NC,L]
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_filters/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&sub_category=$2&filter=$3 [NC,L]
+
+# Rewrite for sub category.php?id=1&title=Title-Goes-Here
+RewriteRule ^shop_filters/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)$ shop.php?category=$1&sub_category=$2&filter=$3&pn=$4 [NC,L]
+
+# END THIS CODE FOR FILTER PRICE AND LATEST PRODUCT
+
+# PAGE VIEW Rewrite for user.php?u=xxxxx
+RewriteRule ^page/([0-9a-zA-Z_-]+)$ pageview.php?page=$1 [NC,L]
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>

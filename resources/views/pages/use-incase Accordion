@@ -1,0 +1,25 @@
+    <!-- accordion -->
+              <!-- <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                      <a class=" collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <p class="mb-1 smallacc">Promotional Code?</p>
+                      </a>
+                    </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body panel-body2">
+                        <p>
+                        <div class="input-group">
+                            <input type="text" class="form-control  form-control-wine2u" placeholder="Coupon code" aria-label="Coupon code" aria-describedby="button-addon4">
+                            <div class="input-group-append" id="button-addon4">
+                              <button class="btn btn-dark  type="button">Apply </button>
+                            </div>
+                          </div>
+                        </p>
+                    </div>
+                  </div>
+                  </div>
+              </div> -->
+              <!-- accordion -->

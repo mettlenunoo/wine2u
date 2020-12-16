@@ -1,0 +1,439 @@
+/* --------------------------------------
+  Big Description
+  -------------------------------------- */
+.big-description {
+    padding-top: 40px;
+    padding-bottom: 0px;
+}
+
+.big-description h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.big-description .price {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.big-description ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.big-description ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.big-description .but1 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* --------------------------------------
+  Bag
+  -------------------------------------- */
+.bag .items-part {
+    border-bottom: 1px solid #e7e7e7;
+    background: linear-gradient(to bottom, #fff 0, #fff 42px, #e7e7e7 42px, #f8f8f8 43px);
+    background-color: #f8f8f8;
+}
+
+.bag .table>thead>tr>th {
+    border: none;
+    padding-bottom: 15px;
+    line-height: 32px;
+}
+
+.bag .table>tbody>tr {
+    background: #fff;
+    border-bottom: 10px solid #f8f8f8;
+}
+
+.bag .table>tbody>tr>td {
+    border-top: none;
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.bag .table>tbody>tr>td .cart-items {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.bag .table>tbody>tr>td .cart-items li img {
+    float: left;
+    margin-right: 10px;
+    max-height: 100px;
+}
+
+.bag .table>tbody>tr>td .cart-items li .item-descr {
+    display: table;
+    max-width: 150px;
+}
+
+.bag .table>tbody>tr>td .cart-items li .item-descr h5 {
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+
+.bag .table>tbody>tr>td .cart-items li .item-descr .small-text {
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.bag .table>tbody>tr>td .cart-items li .item-descr .small {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.bag .table>tbody>tr>td .cart-items li .item-descr .text-danger {
+    color: #FF0000; 
+}
+
+
+.bag .table>tbody>tr>td .wish {
+    border-top: 1px solid #e3e3e3;
+    padding-top: 10px;
+    width: 260px;
+}
+
+.bag .table>tbody>tr>td .wish a {
+    color: #333 !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    font-weight: 200;
+}
+
+.rem {
+    color: #333 !important;
+    text-decoration: underline !important;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.bag .table .price {
+    font-weight: 600;
+    line-height: 1em;
+}
+
+.bag .table .fa-plus, .bag .table .fa-minus {
+    cursor: pointer;
+}
+
+.table-responsive {
+    border: none !important;
+}
+
+/* --------------------------------------
+  Base Section
+  -------------------------------------- */
+.base-section {
+    padding-top: 40px;
+    background: #fff;
+    padding-bottom: 60px;
+}
+
+.base-section hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.base-section h3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 200;
+    font-size: 30px;
+}
+
+.base-section .price {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.base-section ul {
+    padding-left: 0px;
+    list-style: none;
+}
+
+.base-section ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.base-section .but1 {
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+}
+
+.base-section input {
+    padding: 20px;
+    height: 50px;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid #e3e3e3;
+}
+
+.but1 {
+	background: #000;
+	color: #fff;
+	padding: 15px 40px;
+	border: none;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.quant {
+	width: 40px;
+	height: 40px;
+	border: 1px solid #333;
+	border-radius: 50%;
+	text-align: center;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.modal-button {
+	padding: 15px 20px;
+    	height: 50px;
+    	color: #333;
+    	font-size: 14px;
+    	border: 1px solid #e3e3e3;
+    	background: transparent;
+}    	
+
+#myModal .modal-dialog {
+    margin-top: 20vh;
+}
+
+#myModal .modal-content {
+    border-radius: 0px;
+    border: none;
+}
+
+#myModal .modal-body {
+    padding: 20px 40px;
+}
+
+#myModal .modal-body i {
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+    top: 10px;
+}
+
+#myModal .modal-body h2 {
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+#myModal .modal-body .form-control {
+    border-radius: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 40px;
+    margin-bottom:5px;
+}
+
+#myModal .modal-body .text-danger {
+    color: red;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+#myModal .modal-body .btn {
+    padding: 10px 40px;
+    border: none;
+    border-radius: 0px;
+}
+
+@media(min-width: 768px) {
+    .pull-right-md {
+        float: right;
+    }
+}
+
+@media (max-width : 767px) {
+
+    .big-description ul li {
+        display: block;
+        margin-right: 0px;
+    }
+
+    .big-description ul .but1 {
+        width: 100%;
+    }
+
+    .sm-title {
+        margin-top: 0px;
+        margin-bottom: 20px;
+        font-weight: 200;
+        font-size: 22px !important;
+    }
+
+    .item-sm {
+        font-size: 14px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .flex-sm {
+        display: flex;
+    }
+
+    .list-items {
+        background: #f0f0f0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .list-items ul {
+        padding-left: 0px;
+        list-style: none;
+    }
+
+    .list-items ul li {
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 20px;
+    }
+
+    .list-items ul li img {
+        float: left;
+        margin-right: 10px;
+        max-height: 90px;
+    }
+
+    .list-items ul li .list-items-descr {
+        display: table;
+    }
+
+    .list-items ul li .list-items-descr h5 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        width: 75%;
+        font-size: 16px;
+    }
+
+    .list-items ul li .list-items-descr a {
+        color: #333 !important;
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+
+    .list-items ul li .list-items-descr .material-icons {
+        font-size: 16px;
+    }
+
+    .list-items ul li .list-items-descr .item-price {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .list-items ul li .list-items-descr .item-qty {
+        margin-bottom: 5px;
+    }
+
+    .list-items .text-danger {
+        color: red;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .list-items .wish-but {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #333;
+    }
+
+    .coupon {
+        font-size: 12px;
+        border: 1px solid #545454;
+        padding: 15px;
+        background: transparent;
+        color: #545454;
+        font-weight: 600;
+        text-align: left;
+        width: 100%;
+        border-radius: 0px;
+        height: 50px;
+    }
+
+    .list-items .form-control {
+        border-radius: 0px;
+        padding: 15px;
+        height: 50px;
+    }
+
+    .list-items .coup-send {
+        background: #333;
+        color: #fff;
+        border-collapse: 1px solid #333;
+        font-weight: 200;
+        height: 50px;
+        font-size: 12px;
+        border-radius: 0px;
+    }
+
+    .base-section h3 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    .base-section .summary {
+        padding-left: 0px;
+        list-style: none;
+    }
+
+    .base-section .summary li {
+        margin-bottom: 5px;
+        display: block !important;
+    }
+
+    .base-section .summary li p {
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 0px;
+        color: #545454;
+    }
+
+    .base-section .summary .divider {
+        border-top: 1px solid #545454;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .base-section .summary li:nth-child(4) p {
+        font-size:  20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

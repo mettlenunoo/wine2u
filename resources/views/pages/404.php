@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Wine2u | 404</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+   
+
+   <!-- include navigation -->
+   <?php require_once("includes/nav-links.php");?>
+   <?php require_once("includes/navigation.php");?>
+  <!-- include navigation -->
+
+
+
+
+
+
+<section class="errorpage centerit">
+  <div class="container  ">
+    <div class="row">
+       <div class="col-12 col-md-7 mx-auto text-center ">
+         <img src="img/404image.svg" class="img-fluid" alt="">
+         <h5>Ooops!.... something went wrong</h5>
+          
+       </div>
+    </div>
+  </div>
+
+  <img src="img/Wine2U404.svg" class="lefteffect404"  alt="">
+</section>
+
+
+
+
+<!-- footer includes -->
+ <?php require_once("includes/footer-links.php");?>
+ <!-- footer includes -->
+
+  </body>
+</html>
