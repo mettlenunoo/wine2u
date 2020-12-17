@@ -168,6 +168,7 @@
                   <div class="col-12">
                     <div id="ourbestsellers" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
+                           @php $counter = 1; @endphp
                            @foreach ($bestSales as $key => $product)
                                  @if( $counter == 1 )
                                  <div class="carousel-item @if($key == 0) active @endif">
@@ -196,63 +197,10 @@
                                             GhS {{ $product->base_price}}
                                              </p>
                                              </div>
-                                             <img src="/page_assets/img/addp.svg" alt="">
+                                             {{-- <img src="/page_assets/img/addp.svg" alt=""> --}}
                                           </div>
                                        </div>
-                                       {{-- 
-                                          <div class="col-6  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                                             <div class="productmain">
-                                                <a href="#"> <img src="/page_assets/img/wine2.svg" class="productthumb" alt=""></a>
-                                                <a href="#" class="font-weight-bold mt-2">EARRINGS</a>
-                                                <div class="mt-2">
-                                                <a href="">
-                                                <h1 class="productthumb-titile">
-                                                18K Gold Plated Angel Hoops
-                                                </h1>
-                                                </a>
-                                                <p class="productthumb-price">
-                                                -$1699.00
-                                                </p>
-                                                </div>
-                                                <img src="/page_assets/img/addp.svg" alt="">
-                                             </div>
-                                          </div>
-
-                                          <div class="col-6  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                                             <div class="productmain">
-                                                <a href="#"> <img src="/page_assets/img/wine1.svg" class="productthumb" alt=""></a>
-                                                <a href="#" class="font-weight-bold mt-2">EARRINGS</a>
-                                                <div class="mt-2">
-                                                <a href="">
-                                                <h1 class="productthumb-titile">
-                                                18K Gold Plated Angel Hoops
-                                                </h1>
-                                                </a>
-                                                <p class="productthumb-price">
-                                                -$1699.00
-                                                </p>
-                                                </div>
-                                                <img src="/page_assets/img/addp.svg" alt="">
-                                             </div>
-                                          </div>
-
-                                          <div class="col-6  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                                             <div class="productmain">
-                                                <a href="#"> <img src="/page_assets/img/wine2.svg" class="productthumb" alt=""></a>
-                                                <a href="#" class="font-weight-bold mt-2">EARRINGS</a>
-                                                <div class="mt-2">
-                                                <a href="">
-                                                <h1 class="productthumb-titile">
-                                                18K Gold Plated Angel Hoops
-                                                </h1>
-                                                </a>
-                                                <p class="productthumb-price">
-                                                -$1699.00
-                                                </p>
-                                                </div>
-                                                <img src="/page_assets/img/addp.svg" alt="">
-                                             </div>
-                                          </div> --}}
+                                     
 
                                          
                                  @if( $counter == 4 || $key == (count($bestSales) - 1))
@@ -326,6 +274,7 @@ viverra ipsum, ut in amet.</p>
          <div class="col-12">
             <div id="italy_finest" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
+                  @php $counter = 1; @endphp
                   @foreach ($topRatedProducts as $key => $product)
                   @if( $counter == 1 )
                   <div class="carousel-item @if($key == 0) active @endif">
@@ -335,7 +284,7 @@ viverra ipsum, ut in amet.</p>
                         <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
                            <div class="productmain">
                               <a href="/products/{{ $product->slug }}"> <img src="/product_images/{{ $product->img1 }}" class="w-100" alt=""></a>
-                              <a href="/products/{{ $product->slug }}"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
+                              {{-- <a href="/products/{{ $product->slug }}"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
                               <div class="d-flex bd-highlight ">
                                  {{-- <div class="mr-auto p-2 bd-highlight  product-small ">{{ ucwords($product->product_name) }}</div> --}}
                                  <div class="p-2 bd-highlight  ">
@@ -458,14 +407,11 @@ viverra ipsum, ut in amet.</p>
   </section>
 <!-- wine slide -->
 
-
-
-
 <section class="my-5 py-5">
    <div class="container-fluid container-w2u">
       <div class="row">
          <div class="col-6">
-            <h1 class="sign_title">Greate With Salads </h1>
+            <h1 class="sign_title">Champagne </h1>
          </div>
          <div class="col-6 text-right">
             <ul class="list-inline">
@@ -482,189 +428,53 @@ viverra ipsum, ut in amet.</p>
          <div class="col-12">
             <div id="GreateWithSalads" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <div class="row mt-5">
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                  @php $counter = 1; @endphp
+                  @foreach ($featuredCategory as $key => $product)
+                        @if( $counter == 1 )
+                        <div class="carousel-item @if($key == 0) active @endif">
+                           <div class="row  mt-5">
+                        @endif
+
+                              <div class="col-6  col-md-6 col-lg-3  px-lg-3 mb-5 ">
+                                 <div class="productmain">
+                                    <a href="/products/{{ $product->slug }}"> <img src="/product_images/{{ $product->img1 }}" class="productthumb" alt="{{ ucwords($product->product_name) }}"></a>
+                                    <a href="/products/{{ $product->slug }}" class="font-weight-bold mt-2">{{ ucwords($product->product_name) }}</a>
+                                    <div class="mt-2">
+                                       <div class="rating"> 
+                                          <input type="radio" name="rating-{{ $product->id }}" value="5" id="5m-{{ $product->id }}" @if($product->avgrating == 5) checked @endif >
+                                          <label for="5m-{{ $product->id }}">☆</label>
+                                          <input type="radio" name="rating-{{ $product->id }}" value="4" id="4m-{{ $product->id }}" @if($product->avgrating >= 4 && $product->avgrating < 5 ) checked @endif>
+                                          <label for="4m-{{ $product->id }}">☆</label>
+                                          <input type="radio" name="rating-{{ $product->id }}" value="3" id="3m-{{ $product->id }}" @if($product->avgrating >= 3 && $product->avgrating < 4 ) checked @endif>
+                                          <label for="3m-{{ $product->id }}">☆</label>
+                                          <input type="radio" name="rating-{{ $product->id }}" value="2" id="2m-{{ $product->id }}" @if($product->avgrating >= 2 && $product->avgrating < 3) checked @endif >
+                                          <label for="2m-{{ $product->id }}">☆</label>
+                                          <input type="radio" name="rating-{{ $product->id }}" value="1" id="1m-{{ $product->id }}" @if($product->avgrating > 0 && $product->avgrating < 2 ) checked @endif>
+                                          <label for="1m-{{ $product->id }}">☆</label>
+                                       </div>
+                                 
+                                    <p class="productthumb-price">
+                                   GhS {{ $product->base_price}}
+                                    </p>
                                     </div>
+                                    {{-- <img src="/page_assets/img/addp.svg" alt=""> --}}
                                  </div>
                               </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
+                            
+                        @if( $counter == 4 || $key == (count($bestSales) - 1))
+                        @php $counter = 0; @endphp
+                              <div class="col-12 text-center my-4">
+                                 <a href="/products" class="btn btn-wine3up px-4">Browse more wine</a>
+                              </div>
                               </div>
                            </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12 text-center my-4">
-                           <a href="#category.php" class="btn btn-wine3up px-4">Browse more wine</a>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="row mt-5">
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-                           <div class="productmain">
-                              <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-                              <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-                              <div class="d-flex bd-highlight ">
-                                 <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                                 <div class="p-2 bd-highlight  ">
-                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="d-flex bd-highlight">
-                                 <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                                    <a href="#">Rosé Impérial</a> 
-                                 </div>
-                                 <div class="pl-2 bd-highlight  font-weight-bold ">
-                                    <a href="#" class="product-price">$90.00</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="col-12 text-center my-4">
-                           <a href="#category.php" class="btn btn-wine3up px-4">Browse more wine</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+                        @endif
+         
+                        @php $counter++; @endphp
+            
+                  @endforeach
+             </div>
+               
             </div>
          </div>
       </div>
