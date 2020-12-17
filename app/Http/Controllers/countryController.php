@@ -246,7 +246,7 @@ class countryController extends Controller
       if($q_count > 0){
         
             foreach ($results as $key => $result) {
-            if($q_count > 1 && $key == 0){
+            if($q_count > 0  && $key == 0 &&  $old_slug != null ){
             $slug_name = $result['name'];
             }else{
              $slug_name = $result['name']."-".$count++;
