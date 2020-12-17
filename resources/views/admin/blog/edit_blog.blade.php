@@ -83,28 +83,32 @@
                                             <div class="col-sm-12">
                                                     <select  class="js-select2 form-control" id="example2-select2"  style="width: 100%;" data-placeholder="Choose many.."  multiple  name="category[]"  required="">
 
-                                                        {{-- @foreach($categories as $key => $parentCat) 
+                                                    @foreach($categories as $key => $parentCat) 
                                
                                                         <option  disabled > {{ $parentCat->title }} </option>
+
                                                         @foreach ($parentCat->subCategories as $key => $subCat) 
                          
-                                                        @php $wasFound = false; @endphp
+                                                            @php $wasFound = false; @endphp
+
                                                             @foreach ($blog->categories as $selPair)
                                                                 @if($selPair->id == $subCat->id )
                                                                     <option value="{{ $subCat->id }}" selected > <span aria-hidden="true">—</span>{{ $subCat->title }}</option>
                                                                     @php $wasFound = true @endphp
                                                                 @endif
                                                             @endforeach
+
                                                             @if($wasFound == false)
                                                                 <option value="{{ $subCat->id }}" > <span aria-hidden="true">—</span>{{ $subCat->title }}</option>
                                                             @endif
+                                                            
                                                         @endforeach
                          
-                                                     @endforeach
+                                                    @endforeach
                          
                          
                          
-                                                        @foreach($categories as $key => $parentCat) 
+                                                        {{-- @foreach($categories as $key => $parentCat) 
                                                              <option  disabled > {{ $parentCat->title }} </option>
                                                                  @foreach ($parentCat->subCategories as $key => $subCat) 
                                                                    
@@ -113,7 +117,7 @@
                                                                  @endforeach
                                                          @endforeach --}}
 
-                                                      @foreach ($parent as $item)
+                                                      {{-- @foreach ($parent as $item)
                                                        <option value="{{$item->id}}">{{$item->title}}</option>
 
                                                         @foreach ($categories as $row)
@@ -124,7 +128,7 @@
 
                                                          @endforeach
 
-                                                        @endforeach
+                                                        @endforeach --}}
                                                     </select>
                                             </div>
                                     </div>           
@@ -141,7 +145,24 @@
                     <div class="col-xs-12">
                     <input class="js-tags-input form-control" type="text" id="example-tags1" name="tag" value="{{ $blog->tag}}">
                     </div>
+             </div>
+
+               <div class="form-group">
+                <label class="col-xs-12" for="example-select">Blog Type</label>
+                  <div class="col-sm-12">
+                     <select class="form-control" id="example-select" name="type" size="1" required>
+                          <option @if($blog->type == "Text")  selected  @endif value="Text" >Text</option>
+                          <option @if($blog->type == "Video")  selected  @endif value="Video">Video</option>
+                      </select>
+                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-xs-12" for="example-tags1">Video Link</label>
+                      <div class="col-xs-12">
+                      <textarea class="form-control" name="video" cols="30" rows="5" placeholder="<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/zpOULjyy-n8?rel=0' allowfullscreen></iframe>" >{{ $blog->video }}</textarea>
+                      </div>
+                </div>
+
             <div class="form-group">
                  <label class="col-xs-12" for="example-select">Visibility</label>
                   <div class="col-sm-12">
