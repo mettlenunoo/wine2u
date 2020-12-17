@@ -122,7 +122,7 @@
 <body>
     <div class="wrapper">
         <div class="text-center">
-        <img src="{{ asset('/img/skingourmet_logo.png')}}" width="120px">
+        <img src="{{ asset('/page_assets/img/wine2ulogo.svg')}}" width="120px">
 
             {{-- <h2 style="margin-top: 0px;margin-bottom: 5px;border-bottom: 1px solid #e7e7e7;padding-bottom: 20px; font-size:16px">INVOICE # {{ $order->id}}</h2> --}}
         </div>
@@ -205,10 +205,10 @@
                 <td class="text-right">{{ Session::get('shopCurrency') }} {{ $order->shipping_amt }}</td>
             </tr>
 
-            <tr class="active">
+            {{-- <tr class="active">
                 <td colspan="4" class="font-w700 text-uppercase text-right">Total </td>
                 <td class="font-w700 text-right">{{ Session::get('shopCurrency') }} {{ $order->totalamount }}</td>
-            </tr>
+            </tr> --}}
 
             <tr>
                 <td colspan="4" class="font-w600 text-right">Discount</td>
