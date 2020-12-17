@@ -107,8 +107,20 @@ class publicController extends Controller
                     ->orderBy('publish', 'ASC')
                     ->take(8)
                     ->get();
+
+        $cat_id = Category::where('slug', '=', 'champagne')->pluck('id')->first();
+        $featuredCategory = Product::WHERE('visibility',  "Public")
+                            ->WHERE('featured',  "Home")
+                            ->WHERE('publish', '<=', $curDateTime)
+                            ->WHERE('country_id', '=', $this->shopId)
+                            ->whereHas('categories', function ($query) use ($cat_id) {
+                                $query->where('category_id', $cat_id);
+                            })
+                            ->orderBy('publish', 'ASC')
+                            ->take(8)
+                            ->get();
       // dd($bestSales);
-      return view('pages.index',compact('newArrivals','bestSales','topRatedProducts','featuredProducts'));
+      return view('pages.index',compact('newArrivals','bestSales','topRatedProducts','featuredProducts','featuredCategory'));
 
     }
 
@@ -395,7 +407,7 @@ class publicController extends Controller
         $items .= '<div class="col-12  col-md-4  px-md-4 mb-5 ">
           <div class="productmain">
             <a href="/products/'.$product->slug.'"> <img src="/product_images/'.$product->img1.'"  class="w-100" alt="'.ucwords($product->product_name).'" height="100%"></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
+           
               <div class="d-flex bd-highlight ">
                 <div class="mr-auto p-2 bd-highlight  product-small ">'.$product->review_summary->average_rating.'</div>
                 <div class="p-2 bd-highlight  ">
@@ -477,7 +489,7 @@ class publicController extends Controller
             ->limit(4)
             ->get();
 
-                //dd($review);
+           // dd($product);
                     
         return view('pages.single_product',compact('product','review','wishList','similarProducts'));
 
@@ -939,7 +951,7 @@ class publicController extends Controller
 
             } else {
 
-                $pn = 2;
+                $pn = 12;
             }
 
             if(isset($_GET['category'])){
@@ -984,10 +996,15 @@ class publicController extends Controller
         $blog = Blog::WHERE('slug', $slug)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->with('categories')->orWHERE('id',$slug)->firstOrFail();
         $relatatedBlog = Blog::WHERE('slug','!=', $slug)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->orderBy('created_at', 'DESC')->with('categories')->take(3)->get();
 
-        return view('pages.single-blog',compact('blog','relatatedBlog'));
-        // return response()->json(
-        //     ['blog' => $blog, 'relatatedblog' => $relatatedBlog ]
-        //     , 200);
+        if($blog->type == "Video" || $blog->video != "" ){
+
+            return view('pages.single-blog2',compact('blog','relatatedBlog'));
+            
+        }else{
+
+            return view('pages.single-blog',compact('blog','relatatedBlog'));
+
+        }
 
     }
 
@@ -1024,7 +1041,7 @@ class publicController extends Controller
 
                             $topRatedProducts = $topRatedProducts
                             ->orderBy('total','desc')
-                            ->take(5)
+                            ->take(4)
                             ->get();
 
         // Product::whereHas('country', function ($query) use ($country) {
@@ -1040,7 +1057,7 @@ class publicController extends Controller
       //  dd($topRatedProducts);
         // $relatatedBlog = Blog::WHERE('slug','!=', $slug)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->orderBy('created_at', 'DESC')->with('categories')->take(3)->get();
         //dd($country);
-        return view('pages.single-country',compact('country'));
+        return view('pages.single-country',compact('country','topRatedProducts'));
         // return response()->json(
         //     ['blog' => $blog, 'relatatedblog' => $relatatedBlog ]
         //     , 200);
@@ -1383,6 +1400,12 @@ class publicController extends Controller
 
                     $discount = session()->get('coupon')->discount;
                     $couponCode = session()->get('coupon')->code;
+
+                }
+
+                if(session()->has('rate')){
+
+                    $shipping = session()->get('rate');
 
                 }
 
