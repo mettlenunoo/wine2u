@@ -104,21 +104,29 @@
 
        <div class="block">        
          <div class="block-content">
-           <div class="form-horizontal">                      
+           <div class="form-horizontal"> 
+           
+                                   
              <div class="form-group">
                 <label class="col-xs-12" for="example-tags1">Tag</label>
                     <div class="col-xs-12">
                       <input class="js-tags-input form-control" type="text" id="example-tags1" name="tag" >
                     </div>
                 </div>
-                <div class="form-group">
+                   <div class="form-group">
                     <label class="col-xs-12" for="example-select">Blog Type</label>
                       <div class="col-sm-12">
                          <select class="form-control" id="example-select" name="type" size="1" required>
-                              <option value="private">private</option>
-                              <option value="public">public</option>
+                              <option value="Text">Text</option>
+                              <option value="Video">Video</option>
                           </select>
                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-xs-12" for="example-tags1">Video Link</label>
+                          <div class="col-xs-12">
+                            <textarea class="form-control" name="video" cols="30" rows="5" placeholder="<iframe class='embed-responsive-item' src='https://www.youtube.com/embed/zpOULjyy-n8?rel=0' allowfullscreen></iframe>" ></textarea>
+                          </div>
                     </div>
             <div class="form-group">
                  <label class="col-xs-12" for="example-select">Visibility</label>
