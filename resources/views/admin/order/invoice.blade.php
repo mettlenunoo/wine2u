@@ -70,7 +70,7 @@
                           
                             <div class=" row">
                                 <div class="col-6">
-                                <div class="h1 text-center push-30-t push-30 "><img src="{{ asset('images/black-logo.png')}}" width="120px" >
+                                <div class="h1 text-center push-30-t push-30 "><img src="/page_assets/img/wine2ulogo.svg" width="120px" >
                             </div>
                                 </div>
 
