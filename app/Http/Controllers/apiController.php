@@ -66,7 +66,7 @@ class apiController extends Controller
             $this->SearchPagination("pn");
         } else{
 
-            $pn = 2;
+            $pn = 12;
         }
 
 
@@ -1459,7 +1459,6 @@ class apiController extends Controller
             return  $res;
     
     }
-
 
     public function ads(): JsonResponse
     {
