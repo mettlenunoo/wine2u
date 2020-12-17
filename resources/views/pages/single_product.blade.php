@@ -22,10 +22,10 @@
          <div class="col-12 text-center">
             <h1 class="sign_title wine2upc"> {{ ucwords($product->product_name) }} </h1>
             <p class="wine2upc "> 
-               <span>2018</span> | 
+               {{-- <span>2018</span> | 
                <span>Red Wine</span>  |  
                <span>Cabernet Sauvignon</span> |
-               <span> Raspberry</span> 
+               <span> Raspberry</span>  --}}
             </p>
          </div>
       </div>
@@ -75,9 +75,9 @@
 
                <li class="list-inline-item">
                   @if($product->review_summary->total_rating > 1)
-                     ({{ $product->review_summary->total_rating }} ratings)
+                     ({{ $product->review_summary->total_user }} ratings)
                   @else 
-                     ({{ $product->review_summary->total_rating }} rating)
+                     ({{ $product->review_summary->total_user }} rating)
                   @endif
                </li>
             </ul>
@@ -131,7 +131,7 @@
             </div>
 
             <!-- award -->
-            <div class="row">
+            {{-- <div class="row">
                <div class="col-12 my-3">
                   <h5> Awards </h5>
                   <ul class="list-inline">
@@ -139,11 +139,11 @@
                      <li class="list-inline-item pill-wine2 mb-2"><img src="/page_assets/img/awardicon.svg" class="award-pushl" alt=""> 2nd Best Tasting Award</li>
                   </ul>
                </div>
-            </div>
+            </div> --}}
             <!-- award -->
             <!-- award -->
             <div class="row">
-               <div class="col-12 mb-3">
+               <div class="col-12 mb-3 mt-3">
                   <h5>Description </h5>
                   @php 
                      $tags = explode(",",$product->tag); 
@@ -161,7 +161,7 @@
                      <li class="list-inline-item pill-wine2 mb-2">Grape type</li>
                      <li class="list-inline-item pill-wine2 mb-2">Aroma</li> --}}
 
-                     <p class="mt-4"> {{ ucfirst($product->description) }} </p>
+                     <p class="mt-4"> {!! ucfirst($product->short_description) !!} </p>
                   </ul>
                </div>
             </div>
@@ -210,7 +210,7 @@
             </div>
          </div>
          <div class="col-12 col-md-6">
-            <div class="row my-5 relativetins">
+            {{-- <div class="row my-5 relativetins">
                <div class="col-12">
                   <h5>Taste Notes </h5>
                </div>
@@ -258,7 +258,7 @@
                      <li class="list-inline-item px-2"><img src="/page_assets/img/rightarrow.svg" alt="" href="#TasteNotescarouselExampleControls" data-slide="next"></li>
                   </ul>
                </div>
-            </div>
+            </div> --}}
             @php $num = 0 @endphp
             @if(count($product->pairing) > 0)
                <div class="row my-5 relativetins">
@@ -403,7 +403,7 @@
             <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
                <div class="productmain">
                   <a href="/products/{{ $similarProduct->slug }}"> <img src="/product_images/{{ $similarProduct->img1 }}" class="w-100" alt="{{ ucwords($similarProduct->product_name) }}"></a>
-                  <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
+                  {{-- <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
                   <div class="d-flex bd-highlight ">
                      <div class="mr-auto p-2 bd-highlight  product-small ">{{ $similarProduct->review_summary->average_rating }}</div>
                      <div class="p-2 bd-highlight  ">
@@ -435,69 +435,7 @@
             </div>
 
          @endforeach
-         {{-- <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-            <div class="productmain">
-               <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-               <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-               <div class="d-flex bd-highlight ">
-                  <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                  <div class="p-2 bd-highlight  ">
-                     <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                     </div>
-                  </div>
-               </div>
-               <div class="d-flex bd-highlight">
-                  <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                     <a href="#">Rosé Impérial</a> 
-                  </div>
-                  <div class="pl-2 bd-highlight  font-weight-bold ">
-                     <a href="#" class="product-price">$90.00</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-            <div class="productmain">
-               <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-               <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-               <div class="d-flex bd-highlight ">
-                  <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                  <div class="p-2 bd-highlight  ">
-                     <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                     </div>
-                  </div>
-               </div>
-               <div class="d-flex bd-highlight">
-                  <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                     <a href="#">Rosé Impérial</a> 
-                  </div>
-                  <div class="pl-2 bd-highlight  font-weight-bold ">
-                     <a href="#" class="product-price">$90.00</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
-            <div class="productmain">
-               <a href="#"> <img src="/page_assets/img/winepic.svg" class="w-100" alt=""></a>
-               <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-               <div class="d-flex bd-highlight ">
-                  <div class="mr-auto p-2 bd-highlight  product-small ">Moët &amp; Chandon <br>Paris</div>
-                  <div class="p-2 bd-highlight  ">
-                     <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                     </div>
-                  </div>
-               </div>
-               <div class="d-flex bd-highlight">
-                  <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                     <a href="#">Rosé Impérial</a> 
-                  </div>
-                  <div class="pl-2 bd-highlight  font-weight-bold ">
-                     <a href="#" class="product-price">$90.00</a>
-                  </div>
-               </div>
-            </div>
-         </div> --}}
+        
       </div>
    </div>
 </section>
