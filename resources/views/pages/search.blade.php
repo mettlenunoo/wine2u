@@ -46,7 +46,7 @@
     <div class="col-12  col-md-4  px-md-4 mb-5 ">
       <div class="productmain">
         <a href="/products/{{ $product->slug }}"> <img src="/product_images/{{ $product->img1 }}"  class="w-100" alt="{{ ucwords($product->product_name) }}" height="100%"></a>
-        <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
+        {{-- <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
           <div class="d-flex bd-highlight ">
             <div class="mr-auto p-2 bd-highlight  product-small "> {{ $product->review_summary->average_rating }} </div>
             <div class="p-2 bd-highlight  ">
