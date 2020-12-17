@@ -549,7 +549,7 @@
         <div class="col-sm-12">
            <select class="form-control" id="example-select" name="visibility" size="1" required>
                 <option value="private" @if($product->visibility == "private") selected @endif >private</option>
-                <option value="public">public</option>
+                <option value="public" @if($product->visibility == "public") selected @endif>public</option>
             </select>
          </div>
       </div>
