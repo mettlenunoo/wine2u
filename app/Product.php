@@ -142,7 +142,8 @@ class Product extends Model
             'three_stars' => $this->rating()->where('rating',3)->count('rating'),
             'four_stars'  => $this->rating()->where('rating',4)->count('rating'),
             'five_stars' => $this->rating()->where('rating',5)->count('rating'),
-            'total_rating' => round($this->rating()->sum('rating'),1)
+            'total_rating' => round($this->rating()->sum('rating'),1),
+            'total_user' =>  round($this->rating()->count(),1)
         ];
 
         return $myObj;
