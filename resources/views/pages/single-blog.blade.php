@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Wine2u | Single Blog Post 1 </title>
+    <title>Wine2u | {{ ucwords($blog->title) }} </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,7 +21,9 @@
        <div class="row">
          <div class="col-12 px-0">
            <div class="wine2u-konko">
-             <img src="/page_assets/img/singleblog1.jpg" class="vasimg"> 
+
+             <img src="/blog_images/{{ $blog->pic }}" class="vasimg"> 
+
              <div class="overlay-light-black"></div>
                <div class="row">
                  <div class="col-12 col-md-9 mx-auto">
@@ -84,40 +86,13 @@
             <p class="f_titile_p3">{{ strwords($rBlog->content, 150) }}</p>
               </a>
               <div class="">
-              <span class="pr-2"><img src="/page_assets/img/Ellipse17.svg" class="userside_blog" alt=""></span>
+              <span class="pr-2"><img src="/page_assets/img/wine2ulogo.svg" class="userside_blog" alt=""></span>
               <span class="pr-2">{{ ucwords($rBlog->author)}}</span>
               </div>
           </div>
 
          @endforeach
 
-         {{-- <div class="col-12 col-md-4 px-md-4 mb-5">
-           <a href="#">
-           <img src="/page_assets/img/blogthum2.jpg" class="bolg_img mb-2" alt="">
-           <p class="f_titile_p2 mb-0 py-3">Wine tasting events.</p>
-           <p class="f_titile_p3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </a>
-            <div class="">
-            <span class="pr-2"><a href=""><img src="/page_assets/img/Ellipse17.svg" class="userside_blog" alt=""></a></span>
-            <span class="pr-2"><a href="" class="f_titile_p3">Joan Appleseed</a></span>
-            </div>
-         </div>
-
-
-         <div class="col-12 col-md-4 px-md-4 mb-5">
-           <a href="#">
-           <img src="/page_assets/img/blogthum3.jpg" class="bolg_img mb-2" alt="">
-           <p class="f_titile_p2 mb-0 py-3">Wine tasting events.</p>
-           <p class="f_titile_p3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </a>
-            <div class="">
-            <span class="pr-2"><a href=""><img src="/page_assets/img/Ellipse17.svg" class="userside_blog" alt=""></a></span>
-            <span class="pr-2"><a href="" class="f_titile_p3">Joan Appleseed</a></span>
-            </div>
-         </div>
-
-         --}}
-         
 
 
        </div>
