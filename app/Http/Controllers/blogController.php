@@ -99,6 +99,7 @@ class blogController extends Controller
                 $blog->title = $request->input('title');
                 $blog->slug =  $slug;
                 $blog->type = $request->input('type');
+                $blog->video = $request->input('video');
                 $blog->content = $request->input('content');
                 $blog->pic = $image_name; 
                 $blog->tag = $request->input('tag');
@@ -147,13 +148,13 @@ class blogController extends Controller
         $shopId = Session::get('shopId');
         //
         $blog = Blog::find($id);
-        $parent = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
-        $categories = Blogcategory::WHERE('country_id','=',$shopId)->get();
+       // $parent = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
+        $categories = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
          //###################  PAGE NAME #########################
          $page = "edit_blog";
             //###################  ALL SHOPS #########################
         $allShops = shop::all();
-        return view('admin.blog.edit_blog',compact('categories','parent','blog','page','allShops'));
+        return view('admin.blog.edit_blog',compact('categories','blog','page','allShops'));
     }
 
     /**
@@ -168,13 +169,13 @@ class blogController extends Controller
         $shopId = Session::get('shopId');
         //
         $blog = Blog::with('categories')->find($id);
-        $parent = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
-        $categories = Blogcategory::WHERE('country_id','=',$shopId)->get();
+        // $parent = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
+        $categories = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$shopId)->get();
          //###################  PAGE NAME #########################
          $page = "edit_blog";
             //###################  ALL SHOPS #########################
          $allShops = shop::all();
-        return view('admin.blog.edit_blog',compact('categories','parent','blog','page','allShops'));
+        return view('admin.blog.edit_blog',compact('categories','blog','page','allShops'));
     }
 
     /**
@@ -220,6 +221,7 @@ class blogController extends Controller
                 
                 $blog->title = $request->input('title');
                 $blog->slug =  $slug;
+                $blog->video = $request->input('video');
                 $blog->content = $request->input('content');
                 $blog->tag = $request->input('tag');
                 $blog->visibility = $request->input('visibility');
@@ -290,19 +292,26 @@ class blogController extends Controller
         // To check whether  
       $q_count = count($results);
       $count=1;
+
       if($q_count > 0){
         
             foreach ($results as $key => $result) {
-            if($q_count > 1 && $key == 0){
-            $slug_name = $result['title'];
+
+            if($q_count > 0  && $key == 0 &&  $old_slug != null ){
+
+                $slug_name = $result['title'];
+
             }else{
-             $slug_name = $result['title']."-".$count++;
+
+                $slug_name = $result['title']."-".$count++;
             }
             // convert to slug
             $new_slug = str_slug($slug_name);
+
             if($new_slug == $old_slug){
                 break;
             }
+
             }
 
             return $new_slug;
