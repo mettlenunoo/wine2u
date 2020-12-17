@@ -74,7 +74,7 @@
                     <p class="f_titile_p3"> {{ strwords($blog->content, 150) }} </p>
                 </a>
                 <div class="">
-                    <span class="pr-2"><img src="/page_assets/img/Ellipse17.svg" class="userside_blog" alt=""></span>
+                    <span class="pr-2"><img src="/page_assets/img/wine2ulogo.svg" class="userside_blog" alt=""></span>
                     <span class="pr-2"> {{ ucwords($blog->author)}} </span>
                 </div>
             </div>
