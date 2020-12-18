@@ -37,4 +37,30 @@ class socialiteController extends Controller
         return redirect()->intended('/account');
 
     }
+
+
+    public function google_Callback(){
+
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function google_redirect(){
+
+      $user = Socialite::driver('google')->user();
+        $user = Customer::firstorCreate([
+
+            'email' => $user->email
+
+        ],[
+            'fname' => $user->name,
+            'password' => Hash::make(Str::random(24))
+
+        ]);
+
+       // Auth::login($user, true);
+
+        Auth::guard('customer')->login($user, true);
+        return redirect()->intended('/account');
+
+    }
 }
