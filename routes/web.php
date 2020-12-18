@@ -111,6 +111,9 @@ Route::post('/wishlist', 'publicController@wishList');
 Route::get('/sign-in/facebook/redirect', 'socialiteController@facebook_redirect');
 Route::get('/sign-in/facebook', 'socialiteController@facebook_Callback');
 
+Route::get('/sign-in/google/redirect', 'socialiteController@google_redirect');
+Route::get('/sign-in/google', 'socialiteController@google_Callback');
+
 //  User Account
 Route::get('/account', 'customerContoller@profile');
 Route::get('/account/logout', 'customerContoller@logout');
