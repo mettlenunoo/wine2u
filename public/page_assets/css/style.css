@@ -1,19 +1,28 @@
 @font-face {
     font-family: "Sopia Pro";
-    src: url("PlantinMTPro-Light.otf") format("opentype");
+    src: url("SofiaProRegular.eot") format("embedded-opentype"),
+        url("SofiaProRegular.ttf") format("truetype"),
+        url("SofiaProRegular.woff") format("woff"),
+        url("SofiaProRegular.woff2") format("woff2");
     font-weight: 400;
 }
 
 @font-face {
     font-family: "Sopia Pro";
-    src: url("PlantinMTPro-Semibold.otf") format("opentype");
-    font-weight: 500;
+    src: url("SofiaProMedium.eot") format("embedded-opentype"),
+        url("SofiaProMedium.ttf") format("truetype"),
+        url("SofiaProMedium.woff") format("woff"),
+        url("SofiaProMedium.woff2") format("woff2");
+    font-weight: 600;
 }
 
 @font-face {
     font-family: "Sopia Pro";
-    src: url("PlantinMTPro-Bold.otf") format("opentype");
-    font-weight: 600;
+    src: url("SofiaProBold.eot") format("embedded-opentype"),
+        url("SofiaProBold.ttf") format("truetype"),
+        url("SofiaProBold.woff") format("woff"),
+        url("SofiaProBold.woff2") format("woff2");
+    font-weight: 700;
 }
 
 html {
@@ -23,7 +32,7 @@ html {
 body {
     margin: 0;
     font-family: 'Sopia Pro', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.5;
     color: #333333;
