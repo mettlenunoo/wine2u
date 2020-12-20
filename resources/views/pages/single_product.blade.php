@@ -37,12 +37,14 @@
    <div class="container">
       <div class="row">
          <!-- left side -->
-         <div class="col-12 col-md-4 col-lg-4">
-            <img src="/product_images/{{$product->img1}}" class="w-100 img-fluiid" alt="{{ ucwords($product->product_name) }}">
+         <div class="col-12 col-md-5 col-lg-5 col-xl-4 mb-4">
+			<div class="product-img bord-rad-0">
+				<img src="/product_images/{{$product->img1}}" class="as-background" alt="{{ ucwords($product->product_name) }}">
+			</div>
          </div>
          <!-- left side -->
          <!-- right side -->
-         <div class="col-12 col-md-8 col-lg-8 pl-md-5">
+         <div class="col-12 col-md-7 col-lg-7 col-xl-8 pl-lg-5 mb-4">
             @foreach ($product->countryRegion as $region)
                <p class="mb-1"> <a href="/country/{{ $region->slug }}">{{ ucwords($region->name) }}</a>  <span>|</span> 
                   @foreach ($region->countryFrRegion as $country)
@@ -53,8 +55,8 @@
 
             {{-- @php  print_r($product->countryRegion)  @endphp --}}
             
-            <h1 class="font-weight-light">{{ ucwords($product->product_name) }}</h1>
-            <ul class="list-inline mt-4">
+            <h3 class="font-weight-light mt-2">{{ ucwords($product->product_name) }}</h3>
+            <ul class="list-inline single-prd mt-2">
                <li class="list-inline-item">{{ $product->review_summary->average_rating }}</li>
                <li class="list-inline-item">
                   <div class="rating">
@@ -82,7 +84,9 @@
                </li>
             </ul>
             {{-- <a href="#" class="btn btn-wine3up px-5"><img src="/page_assets/img/comparrow.svg" alt=""> Compare</a> --}}
-            <h1 class="wine2upc my-4" id="price_section" >GHS {{ number_format($product->base_price,2) }} </h1>
+            <h3 class="wine2upc my-4" id="price_section" >
+				GHS {{ number_format($product->base_price,2) }} 
+			</h3>
 
             <div class="row">
                <div class="col-6 col-md-4 col-lg-3">
@@ -100,7 +104,7 @@
                </div>
                <div class="col-6 col-md-4 col-lg-5">
                   
-                  <select class="form-control form-prod text-center"  onchange="getval(this);" >
+                  <select class="form-control form-prod text-center single-prd-sel"  onchange="getval(this);" >
                      @foreach ($product->variableProductAttributes as $att)
                         <option value="{{ $att->id }}"> {{ $att->attribute->title }} </option>
                      @endforeach
@@ -262,10 +266,10 @@
             @php $num = 0 @endphp
             @if(count($product->pairing) > 0)
                <div class="row my-5 relativetins">
-                  <div class="col-12">
+                  <div class="col-12 mb-4">
                      <h5>Parings </h5>
                   </div>
-                  <div class="col-12">
+                  <div class="col-10 mx-auto">
                      <div id="paringcarouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                            @foreach ($product->pairing as $key => $pair)
@@ -280,7 +284,7 @@
                                     <div class="col-4 text-center">
                                        <a href="/pairing/{{ $pair->blog_id }} ">
                                           <img src="/images/{{ $pair->image }}" alt="{{ ucwords($pair->title) }}" class="img-fluid">
-                                          <p class="mt-4"> {{ ucwords($pair->title) }} </p>
+                                          <p class="mt-4 mb-0"> {{ ucwords($pair->title) }} </p>
                                        </a>
                                     </div>
 
@@ -327,21 +331,24 @@
 </section>
 <!-- Characteristics and Taste Notes -->
 <!-- Reviews -->
-<section class="wine-2uprob2 ">
+<section class="wine-2uprob2 py-md-5 pb-5">
    <div class="container-fluid container-w2u">
       <div class="row">
          <div class="col-12 mb-5 d-flex ">
-            <div class="col-6">
-            <h5>Reviews </h5>
-            </div>
-            @if(auth('customer')->user())
-               <div class="col-6 text-right">
-                  <li class="list-inline-item pill-review mb-2 pointer" data-toggle="modal" data-target="#reviewModal"> Add Review</li>
-               </div>
-            @endif
-         
-          </div>
-          <div class="row view_review"> </div>
+			<div class="row">
+				<div class="col-6">
+					<h5>Reviews </h5>
+				</div>
+				@if(auth('customer')->user())
+				   <div class="col-6 text-right">
+					  <li class="list-inline-item pill-review mb-2 pointer" data-toggle="modal" data-target="#reviewModal"> Add Review</li>
+				   </div>
+				@endif
+			</div>
+		  </div>
+		  <div class="col-12">
+			  <div class="row view_review"></div>
+		  </div>
           <div class="col-12 text-center view_review_btn"></div>
        
          <!-- lead more -->
@@ -385,28 +392,30 @@
 <!-- Similar Products -->
 <section class="my-5 py-5">
    <div class="container-fluid container-w2u">
-      <div class="row">
+      <div class="row align-items-center">
          <div class="col-6">
-            <h1 class="sign_title">Similar Products </h1>
+            <h1 class="sign_title mb-0">Similar Products </h1>
          </div>
          <div class="col-6 text-right">
-            <ul class="list-inline">
+            <ul class="list-inline mb-0">
                <li class="list-inline-item px-2"><img src="/page_assets/img/leftarrow.svg" alt=""></li>
                <li class="list-inline-item px-2"><img src="/page_assets/img/rightarrow.svg" alt=""></li>
             </ul>
          </div>
       </div>
       <div class="row mt-5">
-         
          @foreach ($similarProducts as $similarProduct)
-
-            <div class="col-12  col-md-6 col-lg-3  px-lg-3 mb-5 ">
+            <div class="col-6  col-md-6 col-lg-3 mb-5 ">
                <div class="productmain">
-                  <a href="/products/{{ $similarProduct->slug }}"> <img src="/product_images/{{ $similarProduct->img1 }}" class="w-100" alt="{{ ucwords($similarProduct->product_name) }}"></a>
-                  {{-- <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
-                  <div class="d-flex bd-highlight ">
-                     <div class="mr-auto p-2 bd-highlight  product-small ">{{ $similarProduct->review_summary->average_rating }}</div>
-                     <div class="p-2 bd-highlight  ">
+				  <a href="/products/{{ $similarProduct->slug }}" class="product-img"> 
+					  <img src="/product_images/{{ $similarProduct->img1 }}" class="as-background" alt="{{ ucwords($similarProduct->product_name) }}">
+				  </a>
+				  {{-- <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
+                  <div class="bd-highlight px-2 pt-2">
+                     {{-- <div class="mr-auto p-2 bd-highlight  product-small ">{{ $similarProduct->review_summary->average_rating }}</div> --}}
+					 	<p class="mb-0 product-small prd-brand">
+							{{ ucwords($similarProduct->product_name) }}
+						</p>
                         <div class="rating">
                            <input type="radio" name="rating-{{ $similarProduct->id }}" value="5" id="5-{{ $similarProduct->id }}" @if($similarProduct->review_summary->average_rating == 5) checked @endif >
                            <label for="5-{{ $similarProduct->id }}">☆</label>
@@ -419,15 +428,15 @@
                            <input type="radio" name="rating-{{ $similarProduct->id }}" value="1" id="1-{{ $similarProduct->id }}" @if($similarProduct->review_summary->average_rating > 0  && $similarProduct->review_summary->average_rating < 2) checked @endif>
                            <label for="1-{{ $similarProduct->id }}">☆</label>
 
-                        {{-- <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> --}}
+                        	{{-- <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> --}}
                         </div>
-                     </div>
                   </div>
-                  <div class="d-flex bd-highlight">
-                     <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                        <a href="/products/{{ $similarProduct->slug }}">{{ ucwords($similarProduct->product_name) }}</a> 
+                  <div class="d-md-flex mb-2 align-items-end">
+                     <div class="mr-auto pl-2">
+					 	<p class="product-small mb-0">Paris</p>
+                        <a href="/products/{{ $similarProduct->slug }}" class="font-weight-bold">{{ ucwords($similarProduct->product_name) }}</a> 
                      </div>
-                     <div class="pl-2 bd-highlight  font-weight-bold ">
+                     <div class="pl-2 font-weight-bold ">
                         <a href="/products/{{ $similarProduct->slug }}" class="product-price">GHS {{ number_format($similarProduct->base_price,2) }}</a>
                      </div>
                   </div>

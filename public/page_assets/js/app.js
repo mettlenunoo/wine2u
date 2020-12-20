@@ -85,7 +85,8 @@ $(document).ready(function () {
       "<i class='fa fa-angle-right fa-2x'></i>",
     ],
     dots: true,
-    pagination: false,
+	pagination: false,
+	// autoHeight: true,
     animateOut: "fadeOutLeft",
     animateIn: "fadeInRight",
 
