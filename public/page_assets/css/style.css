@@ -1654,6 +1654,27 @@ input[type=checkbox] {
     height: 180px;
 }
 
+.filter-btn {
+    padding: 15px 20px;
+    background: transparent;
+    border: 1px solid #e7e7e7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+}
+
+.filter-btn .filter-btn-icon {
+    transition: 0.2s linear;
+}
+
+.filter-btn.open .filter-btn-icon {
+    transform: rotate(180deg);
+}
+
+@media(max-width: 768px) {}
+
 @media(max-width: 576px) {
     .exclusive {
         background-attachment: initial;
@@ -1665,6 +1686,18 @@ input[type=checkbox] {
 
     .productgreenline .list-inline-item:not(:last-child) {
         margin-right: 0px;
+    }
+
+    .productside {
+        max-height: 0px;
+        border: none;
+        overflow: hidden;
+        transition: 0.2s linear;
+    }
+
+    .productside.open {
+        max-height: 450px;
+        overflow-y: auto;
     }
 
     .footer-grid {

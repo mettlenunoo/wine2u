@@ -1,5 +1,11 @@
-<div class="col-12 col-md-12 col-lg-3 ">
-    <div class="card  productside">
+<div class="col-12 col-md-5 col-lg-3 mb-4">
+	<div class="filter-ctrl d-flex d-md-none">
+		<button class="filter-btn" id="toggle-filter">
+			Filters
+			<i class="fa fa-angle-down ml-3 filter-btn-icon"></i>
+		</button>
+	</div>
+    <div class="card productside" id="filter-wrapper">
       <div class="card-body">
           
       <div class="mb-3">
@@ -46,7 +52,6 @@
          {{-- @php print_r($menu->wines) @endphp --}}
          <hr>
       </div>
-
 
       <!--  -->
       <div>
@@ -223,7 +228,6 @@
          {{-- <hr> --}}
       </div>
       <!--  -->
-
 
       </div>
     </div>

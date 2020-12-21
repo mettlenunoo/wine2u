@@ -404,7 +404,7 @@ class publicController extends Controller
 
         foreach ($products as $product){
 
-        $items .= '<div class="col-6 col-md-4 mb-4 ">
+        $items .= '<div class="col-6 col-md-6 mb-4 col-lg-4">
           <div class="productmain">
 			<a href="/products/'.$product->slug.'" class="product-img"> 
 				<img src="/product_images/'.$product->img1.'"  class="as-background" alt="'.ucwords($product->product_name).'" height="100%">
