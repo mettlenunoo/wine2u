@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/user/update', 'apiController@userUpdate'); // USER REGISTRATION
     Route::post('/image-upload', 'apiController@image_upload');
     Route::post('/user/referralcode', 'apiController@addEditReferralCode'); // USER REGISTRATION
-    Route::post('/checkout/user', 'apiController@checkout_store'); //Checkout
+    //Route::post('/checkout/user', 'apiController@checkout_store'); //Checkout
     Route::get('/logout', 'apiController@logout');
 
     
