@@ -1095,6 +1095,7 @@ class apiController extends Controller
     public function store_shipping_address(Request $request){
 
         $validator = Validator::make($request->all(), [ 
+            'user_id' => 'required',
             'fname' => 'required',
             'sname' => 'required',
             'address' => 'required',
@@ -1117,7 +1118,8 @@ class apiController extends Controller
         $shipping->ship_zip = $request->input('zipcode');
         $shipping->ship_digital_address = $request->input('digitaladdress');
         $shipping->country = $this->shopId;
-        $shipping->customer_id = auth()->user()->id;
+        $shipping->customer_id = $request->input('user_id');
+       // $shipping->customer_id = auth()->user()->id;
         $shipping->save();
 
         return response()->json(['message' => 'Success'] , 202);
@@ -1127,6 +1129,7 @@ class apiController extends Controller
     public function update_shipping_address(Request $request,$id){
 
         $validator = Validator::make($request->all(), [ 
+            'user_id' => 'required',
             'fname' => 'required',
             'sname' => 'required',
             'address' => 'required',
@@ -1149,7 +1152,7 @@ class apiController extends Controller
         $shipping->ship_zip = $request->input('zipcode');
         $shipping->ship_digital_address = $request->input('digitaladdress');
         $shipping->country = $this->shopId;
-        $shipping->customer_id = auth()->user()->id;
+        $shipping->customer_id = $request->input('user_id');
         $shipping->save();
 
         return response()->json(['message' => 'Success'] , 202);
