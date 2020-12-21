@@ -4,9 +4,6 @@
     <link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.theme.default.css">
 
-
-    <!-- custom -->
-    <link rel="stylesheet" href="/page_assets/css/style.css" >
     <!-- custom -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -17,6 +14,9 @@
     <!-- font-awesome fonts used  https://fontawesome.com/v4.7.0/ -->
     <link href="/page_assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
     <!-- font-awesome fonts used  https://fontawesome.com/v4.7.0/ -->
+
+	<!-- custom -->
+    <link rel="stylesheet" href="/page_assets/css/style.css" >
 
   </head>
   <body>

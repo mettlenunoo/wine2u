@@ -1492,12 +1492,12 @@ input[type=checkbox] {
 
 /*-------------------*/
 .font-libre {
-    font-family: 'Libre Franklin', sans-serif !important;
+    font-family: 'Libre Baskerville', serif !important;
     font-weight: 400;
 }
 
 .fw-bold {
-    font-weight: 600 !important;
+    font-weight: 700 !important;
 }
 
 .exclusive {
@@ -1586,6 +1586,72 @@ input[type=checkbox] {
 .single-prd-sel {
     border: 1px solid grey;
     border-radius: 0px;
+}
+
+.overlay-light-grad {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(44, 65, 55, 0) 32.29%, #2B4036 100%);
+}
+
+.p-relative {
+    position: relative;
+}
+
+.video-card {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    height: 320px;
+    padding: 40px 20px;
+    color: white;
+    align-items: flex-end;
+    transition: 0.3s ease;
+}
+
+.video-play {
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 100%;
+    font-size: 21px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+.video-card:hover .video-play {
+    background: #c39153;
+    color: white;
+}
+
+.video-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.video-main-title {
+    font-size: 35px;
+    font-weight: 700;
+    font-family: 'Libre Baskerville', serif;
+    max-width: 850px;
+    width: 100%;
+    line-height: 1.35;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56%;
+    overflow: hidden;
+}
+
+.offset-nav {
+    height: 180px;
 }
 
 @media(max-width: 576px) {

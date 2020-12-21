@@ -1064,7 +1064,16 @@ class publicController extends Controller
         //     ['blog' => $blog, 'relatatedblog' => $relatatedBlog ]
         //     , 200);
 
-    }
+	}
+	
+	// Videos
+	public function allVideos() {
+		return view('pages.videos');
+	}
+
+	public function singleVideo() {
+		return view('pages.video');
+	}
 
     // pagination filter
     private function SearchPagination($parms)

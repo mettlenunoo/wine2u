@@ -85,6 +85,10 @@ Route::get('/blog', 'publicController@blog');
 Route::get('/blog/{slug}', 'publicController@single_blog');
 Route::get('/pairing/{id}', 'publicController@single_pairing');
 
+// Videos 
+Route::get('/videos', 'publicController@allVideos');
+Route::get('/video', 'publicController@singleVideo');
+
 
 // Age Verification
 Route::get('/age-verification', 'ageVerificationController@ageVerificationPage');
