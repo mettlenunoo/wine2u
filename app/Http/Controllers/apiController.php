@@ -23,6 +23,7 @@ use App\Order;
 use App\Coupon;
 use App\Shippingrate;
 use App\Shipping;
+use App\OrderProduct;
 use App\paymentmethod;
 use App\Blog;
 use App\Blogcategory;
@@ -825,264 +826,248 @@ class apiController extends Controller
          return response()->json(['price' =>  number_format($rate,2)] , 200);
      }
 
+    
+
+
     public function checkout_store(Request $request)
-    {
+    {               
 
-      
-            $shippingamt = $request->input('shipping_amt');
+                $this->validate($request, [
 
-            if(auth()->user() == null){
+                        'billingfname' => ['required', 'string', 'max:255'],
+                        'billingsname' => ['required', 'string', 'max:255'],
+                        'billingemail' => ['required', 'string', 'max:255'],
+                        'billingpnumber' => ['required', 'string', 'max:255'],
+                        'shippingfname' => ['required', 'string', 'max:255'],
+                        'shippingsname' => ['required', 'string', 'max:255'],
+                        'shippingpnumber' => ['required', 'string', 'max:255'],
+                        'shippingemail' => ['required', 'string', 'max:255'],
+                        'payment_method' => ['required', 'string', 'max:255']
+                    ],
+                );
 
-                $customer = Customer::WHERE('email', $request->input('billingemail'))->first();
-        
-                if(empty($customer)){
+              
+                $totalAmount = 00;
+                $weight = 0.00;
+                $tax  = 0.0;
+                $qty = 0;
+                $totalQty = 0;
+                $subTotal = 0;
+                $itemSubTotal = 0;
+                $totalPrice = 0.0;
+                $taxAmt = 0.0;
+                $shipping = 0.0;
+                $discount = 0.0;
+                $couponCode = "";
+
+                if(count($request->input('cart')) > 0){
+
+                    foreach ($request->input('cart') as $key => $item){
+
+                        $totalPrice = $item['productPrice'] * $item['quantity'];
+                        $totalQty = $totalQty + $item['quantity'];
+                        $weight = $weight + $item['productWeight'];
+                        $subTotal = $subTotal + $totalPrice;
+
+                    }
+
+                    if($request->input('coupon') != ""){
+
+                        $discount = $request->input('coupon')['discount'];
+                        $couponCode = $request->input('coupon')['code'];
+
+                    }
+
                 
-                    $customer = new Customer;
-                    $customer->fname = $request->input('billingfname');
-                    $customer->lname = $request->input('billingsname');
-                    $customer->email = $request->input('billingemail');
-                    $customer->phone = $request->input('billingpnumber');
-                    $customer->country = $request->input('billingcountry');
-                    $customer->address = $request->input('billingaddress');
-                    $customer->apartment = $request->input('billingapartment');
-                    $customer->city = $request->input('billingcity');
-                    $customer->state = $request->input('billingstate');
-                    $customer->zip = $request->input('billingzipcode');
-                    $customer->remembertoken = str_slug(Hash::make($request->input('billingemail'))).time();;
-                    $customer->shop_id = $this->shop_id;
+                    $shipping = $request->input('shipping_amt');
 
-                    // SAVE
-                    $customer->save();
-
-                    // GET PRODUCT ID
-                    $customerID = $customer->id;
-                    $customer_name = $request->input('billingfname'). " " .$request->input('billingsname');
-                    $phone_number = $request->input('billingpnumber');
-                    $email = $request->input('billingemail');
-                    $country = $request->input('billingcountry');
-
-                }else{
-
-                    $customerID = $customer->id;
-                    $customer_name = $customer->fname. " " .$customer->lname;
-                    $phone_number = $customer->phone;
-                    $email = $customer->email;
-                    $country = $customer->country;
+                    $taxAmt = ($tax / 100) * $totalAmount;
+                    $totalAmount = ($subTotal + $taxAmt + $shipping) - $discount;
                 }
 
-            }else{
-                
-                    $customerID = auth()->user()->id;
-                    $customer_name = auth()->user()->fname. " " .auth()->user()->lname;
-                    $phone_number = auth()->user()->phone;
-                    $email = auth()->user()->email;
-                    $country = auth()->user()->country;
-            }
+                $shop = shop::WHERE('id', '=', $this->shopId)
+                ->WHERE('status', '=', 'Approved')
+                ->with('payment_gateways')
+                ->with('shipping_address')
+                ->first();
 
-        //SHIPPING
-        $shippingFullname = $request->input('shippingfname')." ".$request->input('shippingsname');
+                $calculation = (object)[
 
-        $shipping = new Shipping;
-        $shipping->fname = $request->input('shippingfname');
-        $shipping->sname = $request->input('shippingsname');
-        $shipping->ship_address = $request->input('shippingpaddress');
-        $shipping->ship_email = $request->input('shippingemail');
-        $shipping->ship_apartment = $request->input('shippingapartment');
-        $shipping->ship_phone = $request->input('shippingpnumber');
-        $shipping->ship_city = $request->input('shippingcity');
-        $shipping->ship_state = $request->input('shippingstate');
-        $shipping->ship_zip = $request->input('shippingdigitaladdress');
-        $shipping->country = $request->input('shippingcountry');
-        $shipping->customer_id = $customerID;
+                    "totalAmount" => $totalAmount,
+                    "weight" =>  $weight,
+                    "tax"  => $tax,
+                    "qty" => $qty,
+                    "totalQty" => $totalQty,
+                    "subTotal" => $subTotal,
+                    "itemSubTotal" => $itemSubTotal,
+                    "totalPrice" => $totalPrice,
+                    "taxAmt" => $taxAmt,
+                    "shipping" => $shipping,
+                    "discount" => $discount,
+                    "couponCode" => $couponCode,
+                    "shop" => $shop
+                ];
 
-            // SAVE
-        $shipping->save();
+                session()->put('weight',$weight);
 
-        // ORDERS
-        $order = new Order;
-        $order->customer_id = $customerID;
-        $order->customer_name = $customer_name;
-        $order->phone_number = $phone_number;
-        $order->email = $email;
-        $order->country = $country;
+                $customer = \App\Customer::updateOrCreate(
+                    ['email' => $request->input('billingemail')],
+                    [
+                        'fname' => $request->input('billingfname'), 
+                        'lname' => $request->input('billingsname'),
+                        'phone' => $request->input('billingpnumber'), 
+                        'country' => $request->input('billingcountry'),
+                        'address' => $request->input('billingaddress'), 
+                        'apartment' => $request->input('billingapartment'), 
+                        'city' => $request->input('billingcity'),
+                        'state' => $request->input('billingstate'), 
+                        'zip' => $request->input('billingzipcode'),
+                        'remembertoken' => str_slug(Hash::make($request->input('billingemail'))).time(), 
+                        'shop_id' => $this->shopId,
+                    ]
+                );
 
+                $shipping = \App\Shipping::updateOrCreate(
+                    ['ship_email' => $request->input('shippingemail')],
+                    [
+                        'fname' => $request->input('shippingfname'), 
+                        'sname' => $request->input('shippingsname'),
+                        'ship_address' => $request->input('shippingpaddress'), 
+                        'ship_apartment' => $request->input('shippingapartment'),
+                        'ship_phone' => $request->input('shippingpnumber'), 
+                        'ship_city' => $request->input('shippingcity'), 
+                        'ship_state' => $request->input('shippingstate'),
+                        'ship_zip' => $request->input('billingzipcode'), 
+                        'ship_digital_address' => $request->input('shippingdigitaladdress'),
+                        'country' => $request->input('shippingcountry'), 
+                        'customer_id' => $customer->id,
+                    ]
+                );
+
+                // variable
+                $customerID = $customer->id;
+                $customer_name = $customer->fname. " " .$customer->lname;
+                $phone_number = $customer->phone;
+                $email = $customer->email;
+                $country = $customer->country;
+                $shippingFullname  = $request->input('shippingfname')." ".$request->input('shippingsname');
+                $ship_to = $shippingFullname. " ".$request->input('shippingpaddress')." ".$request->input('shippingemail')." ".$request->input('shippingapartment')." ".$request->input('shippingpnumber')." ".$request->input('shippingcity')." ".$request->input('shippingstate')." ".$request->input('shippingdigitaladdress')." ".$request->input('shippingcountry');
+
+                // ORDERS
+                $order = new Order;
+                $order->customer_id = $customerID;
+                $order->customer_name = $customer_name;
+                $order->phone_number = $phone_number;
+                $order->email = $email;
+                $order->country = $country;
+                $order->ship_to = $ship_to;
+                $order->ship_code = time();
+                $order->quantity = $calculation->qty;
+                $order->totalamount = $calculation->totalAmount;
+                $order->payment_method = $request->input('payment_method');
+                $order->shipping_amt =  $calculation->shipping;
+                $order->taxes = $calculation->taxAmt;
+
+                // OTHERS
+                $order->complete_status = "pending";
+                $order->tracking_code = time();
+                $order->country_id = $this->shopId;
     
-        // SHIPPING INFO
-        $ship_to = $shippingFullname. " ".$request->input('shippingpaddress')." ".$request->input('shippingemail')." ".$request->input('shippingapartment')." ".$request->input('shipphonenumber')." ".$request->input('shippingcity')." ".$request->input('shippingstate')." ".$request->input('shippingdigitaladdress')." ".$request->input('shippingcountry');
+                // COUPON SECTION
+                $order->coupon_code = $calculation->couponCode;
+                $order->coupon_amount = $calculation->discount;
 
-        $order->ship_to = $ship_to;
-        $ship_code = time();
-        $order->ship_code = $ship_code;
+                // FAST DELIVERY
+                $order->priority_delivery = 0.0;
 
-        // TOTAL CALCULATION
-        $order->quantity = 0;
-        $order->totalamount = 0;
-        $order->payment_method = $request->input('payment_method');
-        $order->shipping_amt =  $shippingamt;
-        $order->taxes = 0.0;
-
-        // OTHERS
-        $order->complete_status = "pending";
-        $order->tracking_code = time();
-        $order->country_id = $this->shop_id;
-    
-         // COUPON SECTION
-        $order->coupon_code = "";
-        $order->coupon_amount = 0.0;
-
-        // FAST DELIVERY
-        $order->priority_delivery = 0.0;
-
-        // SAVE
-        $order->save();
-
-
-         // GET ORDER  ID
-         $orderID = $order->id;
-
-         // Global order id for the current order
-         //Session::put('orderID', $orderID);
-
-         $totalAmt = 0;
-         $totalQty = 0;
-
-         foreach ($request->input('cart') as $item){
-        
-                $orderpro = new OrderProduct;
-                $orderpro->quantity = $item->quantity;
-                $orderpro->product_id = $item->productId;
-                $orderpro->client_id = $customerID;
-                $orderpro->order_id = $orderID;
-                $orderpro->attribute = $item->productAttribute;
-                $orderpro->price = $item->productPrice;
                 // SAVE
-                $orderpro->save();
-                $totalQty = $totalQty + $item->quantity;
-                $totalAmt =  $totalAmt + ($item->quantity * $item->productPrice);
-         }
+                $order->save();
 
-         $shopInfo = shop::find($this->shop_id);
-         $paymentInfo = paymentmethod::WHERE('shop_id', $this->shop_id)->firstorfail();
-         $taxAmt = $totalAmt * ($shopInfo->tax/100);
+                // GET ORDER  ID
+                $orderID = $order->id;
 
-         if($request->input('coupon')){
-
-            if($request->input('coupon')->type == "percentage"){
-
-                $discountCode = $request->input('coupon')->code;
-                $discountAmt = ($request->input('coupon')->discount / 100) * $totalAmt;
-
-            }elseif ($request->input('coupon')->type == "fixed") {
+                foreach ($request->input('cart') as $item){
                 
-                $discountCode = $request->input('coupon')->code;
-                $discountAmt = ($request->input('coupon')->discount);
+                    $orderpro = new OrderProduct;
+                    $orderpro->quantity = $item['quantity'];
+                    $orderpro->product_id = $item['productId'];
+                    $orderpro->client_id = $customerID;
+                    $orderpro->order_id = $orderID;
+                    $orderpro->attribute = $item['productAttribute'];
+                    $orderpro->price = $item['productPrice'];
+                    // SAVE
+                    $orderpro->save();
+                }
 
-            }
-         }else{
+                // Accept Payment Gateways for The Selected Shop.
+                $paymentGateWays = $calculation->shop->payment_gateways;
 
-                $discountCode = "";
-                $discountAmt = 0.0;
-         }
+                // Payment Param for Gateway API's
+                $paymentParam = array('email' => $email,'amt' => number_format($calculation->totalAmount,2),'phone' => $phone_number, 'desc' => $calculation->shop->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($calculation->shop->country), 'currency' => $calculation->shop->currency);
+                
+                
+                if($request->input('payment_method') == "Rave" || $request->input('payment_method') == "Ravevisa" ){
+                    
+                
+                    $paymentParam['api'] = $paymentGateWays->rave_api;
 
-         $totalAmt =  ($totalAmt + $taxAmt + $shippingamt  ) - $discountAmt;
+                     // Send Email
+                     $this->sendEmail($order->id);
+
+                     return response()->json(['message' =>  'success','payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
+                   
+                }elseif($request->input('payment_method') == "Paypal"){
+
+                    $paymentParam['api'] = $paymentGateWays->paypal_api;
+                   
+                     // Send Email
+                     $this->sendEmail($order->id);
+
+                     return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
+                     
        
+                }elseif($request->input('payment_method') == "Paystack"){
 
-         // UPDATE ORDER RECORD
-        $order = Order::find($orderID);
-        $order->quantity = $totalQty;
-        $order->totalamount = $totalAmt;
-        $order->taxes = $taxAmt;
+                    $paymentParam['api'] = $paymentGateWays->paystack_api;
+                 
+                    // Send Email
+                     $this->sendEmail($order->id);
 
-         // COUPON SECTION
-        $order->coupon_code = $discountCode;
-        $order->coupon_amount = $discountAmt;
-        $order->save();
+                     return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'),'paymentinfo' => $paymentParam ], 200);
+       
+                }elseif($request->input('payment_method') == "express-pay"){
+                    
+                    $paymentParam['api'] = $paymentGateWays->expresspay_api;
+                     // Send Email
+                     $this->sendEmail($order->id);
 
-         
-        if($request->input('payment_method') == "Rave" || $request->input('payment_method') == "Ravevisa" ){
-           
-             // assign param
-           $paymentParam = array('email' => $email,'amt' => number_format($totalAmt,2),'phone' => $phone_number, 'desc' => $shopInfo->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($shopInfo->country), 'currency' => $shopInfo->currency, 'payment_gateway' => $request->input('payment_method'),'api' => $paymentInfo->rave_api);
+                     return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'),'paymentinfo' => $paymentParam ], 200);
+       
+       
+                }elseif($request->input('payment_method') == "hubtel"){
+                    
+                    $paymentParam['api'] = $paymentGateWays->hubtel_api;
+                    // Send Email
+                    $this->sendEmail($order->id);
 
-           return response()->json(['payment' =>  number_format($paymentParam,2)] , 200);
+                    return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
+       
+                }elseif($request->input('payment_method') == "pay_on_delivery"){
+                    
+                    // Send Email
+                    $this->sendEmail($order->id);
 
-           // session
-           //Session::put('paymentinfo', $paymentParam);
-            
-           // Send Email
-          // $this->orderEmail($request->input('shop_id'));
+                    return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
+               
+                }else{
+                    
+                  // Send Email
+                  $this->sendEmail($order->id);
 
-           // return rave
-          // return redirect("/checkout/payment/ravepay");
-            
-         }elseif($request->input('payment_method') == "Paypal"){
-
-             // assign param
-           $paymentParam = array('email' => $email,'amt' => number_format($totalAmt,2),'phone' => $phone_number, 'desc' => $shopInfo->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($shopInfo->country), 'currency' => $shopInfo->currency, 'payment_gateway' => $request->input('payment_method') ,'api' => $paymentInfo->paypal_api);
-
-           return response()->json(['payment' =>  number_format($paymentParam,2)] , 200);
-           // session
-           // Session::put('paymentinfo', $paymentParam);
-          
-           // Send Email
-          //  $this->orderEmail($request->input('shop_id'));
-
-           // return paypal
-           // return redirect("/checkout/payment/paypal");
-
-
-         }elseif($request->input('payment_method') == "express-pay"){
-
-            // assign param
-          $paymentParam = array('email' => $email,'amt' =>  number_format($totalAmt,2),'phone' => $phone_number, 'desc' => $shopInfo->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($shopInfo->country), 'currency' => $shopInfo->currency,'payment_gateway' => $request->input('payment_method'), 'api' => $paymentInfo->expresspay_api);
-
-          return response()->json(['payment' =>  number_format($paymentParam,2)] , 200);
-          // session
-         // Session::put('paymentinfo', $paymentParam);
-         
-          // Send Email
-          // $this->orderEmail($request->input('shop_id'));
-
-          // return paypal
-         // return redirect("/checkout/payment/expresspay");
-
-
-         }elseif($request->input('payment_method') == "hubtel"){
-
-            // assign param
-          $paymentParam = array('email' => $email,'amt' =>  number_format($totalAmt,2),'phone' => $phone_number, 'desc' => $shopInfo->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($shopInfo->country), 'currency' => $shopInfo->currency, 'payment_gateway' => $request->input('payment_method'),'api' => $paymentInfo->hubtel_api);
-          return response()->json(['payment' =>  number_format($paymentParam,2)] , 200);
-          // session
-         // Session::put('paymentinfo', $paymentParam);
-         
-          // Send Email
-         //  $this->orderEmail($request->input('shop_id'));
-
-          // return paypal
-          //return redirect("/checkout/payment/mpower");
-
-
-         }elseif($request->input('payment_method') == "pay_on_delivery"){
-
-            // assign param
-           $paymentParam = array('email' => $email,'amt' =>  number_format($totalAmt,2),'phone' => $phone_number, 'desc' => $shopInfo->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($shopInfo->country),'payment_gateway' => $request->input('payment_method'), 'currency' => $shopInfo->currency);
-           return response()->json(['payment' =>  number_format($paymentParam,2)] , 200);
-
-           // session
-           //Session::put('paymentinfo', $paymentParam);
-
-            // Send Email
-            // $this->orderEmail($request->input('shop_id'));
-
-           // return Thank you page
-           // return redirect("/thankyou");
-        
-         }else{
-
-            //return redirect("/thankyou");
-
-         }
-
+                  return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
+       
+                }
+       
     }
 
     public function all_shipping_address()
@@ -1470,6 +1455,26 @@ class apiController extends Controller
                 ->WHERE('publish', '=', 'Yes')
                 ->get();
         return response()->json(['ads' => $ads], 200);
+
+    }
+
+    public function sendEmail($order_id){
+
+        
+        $order = Order::find($order_id);
+        $orderProduct =  OrderProduct::WHERE('order_id', $order_id)->get();
+        $products =  Product::WHERE('country_id','=', $this->shopId)->get();
+
+        if($order_id != ""){
+            // ####################   EMAIL ###############################
+                $toEmail = $order->email;
+                $storeOwner = "dabdulmanan@gmail.com";
+                // $storeOwner = "hello@wine2u.com";
+                \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
+                $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
+                });
+
+        }
 
     }
 
