@@ -30,15 +30,18 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/checkout/user', 'apiController@checkout_store'); //Checkout
     Route::get('/logout', 'apiController@logout');
 
-    // SHIPPING
-    Route::get('/shipping', 'apiController@all_shipping_address'); 
-    Route::post('/shipping', 'apiController@store_shipping_address'); 
-    Route::get('/shipping/{id}', 'apiController@show_shipping_address');
-    Route::get('/shipping/{id}/edit', 'apiController@edit_shipping_address'); 
-    Route::put('/shipping/{id}', 'apiController@update_shipping_address');
-    Route::delete('/shipping/{id}', 'apiController@delete_shipping'); 
+    
 
 });
+
+
+// SHIPPING
+Route::get('/shipping', 'apiController@all_shipping_address'); 
+Route::post('/shipping', 'apiController@store_shipping_address'); 
+Route::get('/shipping/{id}', 'apiController@show_shipping_address');
+Route::get('/shipping/{id}/edit', 'apiController@edit_shipping_address'); 
+Route::put('/shipping/{id}', 'apiController@update_shipping_address');
+Route::delete('/shipping/{id}', 'apiController@delete_shipping'); 
 
 
 Route::get('/', 'apiController@all_products'); // ALL PRODUCTS
