@@ -334,7 +334,7 @@
 <section class="wine-2uprob2 py-md-5 pb-5">
    <div class="container-fluid container-w2u">
       <div class="row">
-         <div class="col-12 mb-5 d-flex ">
+         <div class="col-12 mb-5">
 			<div class="row">
 				<div class="col-6">
 					<h5>Reviews </h5>
