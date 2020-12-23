@@ -17,39 +17,119 @@
 
 
 <section class="home-top">
-  <div class="container-fluid container-w2u">
+	<div class="home-top-bg"></div>
+  <div class="container-fluid container-w2u p-relative">
     <div class="row ">
        <div class="col-12 col-lg-7">
          <h1 class="home-top-b">Shop <br>
          Winery-Direct Exclusives</h1>
-         <p>Shop the latest releases of wine along with exclusive offers, rare <br> and limited edition wines, as well as the latest merchandise from <br> our tasting rooms.</p>
-         
+         <p class="max-w-500">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
+		<div class="new-arrivals pb-4">
+			<div class="new-arr-bg"></div>
+			<div class="new-arr-top mb-4">
+				<p class="libre-font mb-0">NEW ARRIVALS</p>
+				<div class="arr-ctrls">
+					<button id="arr-left">
+						<img src="/page_assets/img/leftarrow.svg" alt="">
+					</button>
+					<button class="ml-2" id="arr-right">
+						<img src="/page_assets/img/rightarrow.svg" alt="">
+					</button>
+				</div>
+			</div>
+			<div class="arr-slide-area px-md-4">
+				<div class="arr-slides owl-carousel owl-theme">
+					@foreach ($newArrivals as $key => $product)
+						<div class="arr-product">
+							<div class="arr-img mb-2">
+								<img src="/product_images/{{ $product->img1 }}" alt="/products/{{ $product->slug }}" class="as-background">
+								<a href="/products/{{ $product->slug }}" class="arr-mini-btn">
+									<i class="fa fa-plus"></i>
+								</a>
+							</div>
+							<div class="text-center">
+								<p class="small mb-0">Moet & Chandon | Paris</p>
+								<a href="/products/{{ $product->slug }}" class="mb-1 arr-title">{{ ucwords($product->product_name) }}</a>
+							</div>
+						</div>
+					@endforeach
+					<!-- <div class="arr-product">
+						<div class="arr-img">
+							<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+							<button class="arr-mini-btn">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+						<div class="text-center">
+							<p class="small mb-0">Moet & Chandon | Paris</p>
+							<a href="" class="mb-1 arr-title">Moet Imperial</a>
+						</div>
+					</div>
+					<div class="arr-product">
+						<div class="arr-img">
+							<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+							<button class="arr-mini-btn">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+						<div class="text-center">
+							<p class="small mb-0">Moet & Chandon | Paris</p>
+							<a href="" class="mb-1 arr-title">Moet Imperial</a>
+						</div>
+					</div>
+					<div class="arr-product">
+						<div class="arr-img">
+							<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+							<button class="arr-mini-btn">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+						<div class="text-center">
+							<p class="small mb-0">Moet & Chandon | Paris</p>
+							<a href="" class="mb-1 arr-title">Moet Imperial</a>
+						</div>
+					</div>
+					<div class="arr-product">
+						<div class="arr-img">
+							<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+							<button class="arr-mini-btn">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+						<div class="text-center">
+							<p class="small mb-0">Moet & Chandon | Paris</p>
+							<a href="" class="mb-1 arr-title">Moet Imperial</a>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
        </div>
-       <div class="col-12 col-lg-5 d-none d-md-none d-lg-block d-xl-block ">
+       <div class="col-12 col-lg-5 d-none d-md-none d-lg-block d-xl-block">
           <img src="/page_assets/img/wineandgrape.png" class="img-fluid w-100  mt-4" alt="">
        </div>
     </div>
   </div>
 </section>
 
-<div class="container-fluid container-w2u moveupfeature">
-   <div class="row">
-   <div class="col-12 col-md-12 col-lg-6 newArrivals">
-   <div class="row">
-      <div class="col-6">
-         <P class="Na-title">New arrivals</P>
-      </div>
-   <div class="col-6 text-right">
-   <ul class="list-inline">
-      <li class="list-inline-item px-2" href="#featurewine" role="button" data-slide="prev">
-      <img src="/page_assets/img/leftarrow.svg" alt="">
-      </li>
-      <li class="list-inline-item px-2"  href="#featurewine" role="button" data-slide="next">
-  <img src="/page_assets/img/rightarrow.svg" alt="">
-      </li>
-   </ul>
+<div class="container-fluid container-w2u moveupfeature d-none">
+   	<div class="row">
+	<div class="col-12 col-md-12 col-lg-6 newArrivals">
+	<div class="row">
+		<div class="col-6">
+			<P class="Na-title">New arrivals</P>
+		</div>
+	<div class="col-6 text-right">
+	<ul class="list-inline">
+		<li class="list-inline-item px-2" href="#featurewine" role="button" data-slide="prev">
+		<img src="/page_assets/img/leftarrow.svg" alt="">
+		</li>
+		<li class="list-inline-item px-2"  href="#featurewine" role="button" data-slide="next">
+			<img src="/page_assets/img/rightarrow.svg" alt="">
+		</li>
+	</ul>
+	</div>
 </div>
-   </div>
 
    @php $counter = 1; @endphp
      <!--  -->
@@ -334,10 +414,10 @@
 						<div class="item">
 							<div class="row centerit mb-md-5">
 								<div class="col-12 col-md-12 col-lg-4 text-center mb-4">
-									<img src="/page_assets/img/linnegrape.svg" alt="">
+									<img src="/page_assets/img/linnegrape.svg" alt="" class="mini-img">
 									<p class="text-uppercase my-3  wine2upc">Trending Winery</p>
 									<h1 class="wineslide">{{ ucwords($product->product_name) }}</h1>
-									<img src="/page_assets/img/winelinedash.svg" alt="{{ ucwords($product->product_name) }}">
+									<img src="/page_assets/img/winelinedash.svg" alt="{{ ucwords($product->product_name) }}" class="mini-img">
 								</div>
 								<div class="col-12 col-md-6 col-lg-4 mb-4">
 									<div class="wine-img">

@@ -124,4 +124,41 @@ $(document).ready(function () {
 			}, 1000);
 		})
 	}
+
+	const windowWidth = window.innerWidth;
+	const arrSlider = $(".arr-slides");
+
+	if(windowWidth > 576) {
+		$(".arr-slides").owlCarousel({
+			center: false,
+			margin: 15,
+			loop: true,
+			autoplay: true,
+			items: 3,
+			autoplayTimeout: 4000,
+			autoplayHoverPause: false,
+			nav: false,
+			dots: false,
+		});
+	} else {
+		$(".arr-slides").owlCarousel({
+			center: false,
+			margin: 15,
+			loop: true,
+			autoplay: true,
+			items: 2,
+			autoplayTimeout: 4000,
+			autoplayHoverPause: false,
+			nav: false,
+			dots: false,
+		});
+	}
+
+	$('#arr-left').click(function() {
+		arrSlider.trigger('prev.owl.carousel');
+	});
+
+	$('#arr-right').click(function() {
+		arrSlider.trigger('next.owl.carousel');
+	});
 });

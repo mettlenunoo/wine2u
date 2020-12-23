@@ -1730,9 +1730,130 @@ input[type=checkbox] {
     color: #BB804D;
 }
 
-@media(max-width: 768px) {}
+.home-top-b {
+    font-size: 55px;
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+}
+
+.home-top {
+    height: auto;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+}
+
+.home-top-bg {
+    background: #FFF5EA;
+    height: 85%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.new-arrivals {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.new-arr-bg {
+    background: #2B4036;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 5px solid #BB804D;
+}
+
+.new-arr-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arr-ctrls {
+    display: flex;
+    align-items: center;
+}
+
+.arr-ctrls button {
+    background: transparent;
+    border: none;
+    outline: none !important;
+    padding: 7px;
+    transition: 0.3s ease;
+}
+
+.arr-ctrls button:hover {
+    color: #c39153;
+}
+
+.arr-product {
+    color: white;
+    position: relative;
+}
+
+.arr-img {
+    position: relative;
+    padding-bottom: 115%;
+}
+
+.arr-mini-btn {
+    position: absolute;
+    left: 22%;
+    bottom: 25%;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-rule: white;
+    background: #99093E;
+    border-radius: 100%;
+    border: none;
+    color: white;
+    transition: 0.3s ease;
+    outline: none !important;
+}
+
+.arr-mini-btn:hover {
+    color: white;
+    background: #c39153;
+}
+
+.arr-title {
+    color: white;
+}
+
+.max-w-500 {
+    max-width: 500px;
+    width: 100%;
+}
+
+.owl-wineslide .item .mini-img {
+    width: auto;
+    display: initial;
+}
+
+@media(max-width: 992px) {
+    .home-top {
+        min-height: 700px;
+    }
+}
 
 @media(max-width: 576px) {
+    .home-top-b {
+        font-size: 42px;
+    }
+
+    .new-arr-bg {
+        width: calc(100% + 30px);
+        left: -15px;
+    }
+
     .exclusive {
         background-attachment: initial;
     }

@@ -68,7 +68,7 @@
     </div>
 </section>
 
-<div class="privacy-policy" id="privacy-policy">
+<div class="privacy-policy d-none" id="privacy-policy">
 	<div class="privacy-top">
 		<p class="fw-bold mb-0">We serve cookies</p>
 		<button id="close-cookies">
