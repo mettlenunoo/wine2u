@@ -1678,25 +1678,56 @@ input[type=checkbox] {
     top: 180px;
 }
 
-.radio-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-}
-
-.custom-radio {
-    margin: 0px;
-}
-
-.radio-btn .hobbies-icon {
+.privacy-policy {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
     width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: #2B4036;
+    color: white;
+    z-index: 1000;
+    transition: 0.2s ease-out;
 }
 
-.radio-btn {
-    margin: 0px;
-    width: 100%;
-    height: 180px;
+.privacy-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#close-cookies {
+    background: transparent;
+    border: none;
+    padding: 5px;
+    margin-left: 10px;
+    color: white;
+    transition: 0.3s ease;
+    outline: none !important;
+}
+
+#close-cookies:hover {
+    color: #BB804D;
+    background: transparent;
+}
+
+.cookies-btn {
     display: block;
+    width: 100%;
+    padding: 7px 25px;
+    background: #BB804D;
+    color: white;
+    border: none;
+    text-align: center;
+    transition: 0.3s ease;
+    font-size: 12px;
+}
+
+.cookies-btn:hover {
+    background: white;
+    color: #BB804D;
 }
 
 @media(max-width: 768px) {}
@@ -1729,6 +1760,12 @@ input[type=checkbox] {
     .stick-to-top {
         position: relative;
         top: auto;
+    }
+
+    .privacy-policy {
+        bottom: 0;
+        right: 0;
+        left: 0;
     }
 
     .footer-grid {

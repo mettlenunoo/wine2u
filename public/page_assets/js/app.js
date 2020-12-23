@@ -1,6 +1,6 @@
-const {
-    filter
-} = require("lodash");
+// const {
+//     filter
+// } = require("lodash");
 
 
 $(document).ready(function () {
@@ -110,5 +110,18 @@ $(document).ready(function () {
                 items: 1,
             },
         },
-    });
+	});
+	
+	const privacyPolicy = document.getElementById("privacy-policy");
+
+	if(privacyPolicy) {
+		const closePolicy = document.getElementById("close-cookies");
+		closePolicy.addEventListener("click", function(){
+			privacyPolicy.style.opacity = 0;
+
+			setTimeout(function() {
+				privacyPolicy.style.display = "none";
+			}, 1000);
+		})
+	}
 });

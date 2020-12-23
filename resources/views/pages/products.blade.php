@@ -43,7 +43,7 @@
 	@include('pages.includes.filters')
 
   <div class="col-12 col-md-7 col-lg-9">
-    <div class="form-row filter_data">
+    <div class="row filter_data">
 
       {{-- @forelse ($products as $product)
         <div class="col-12  col-md-4  px-md-4 mb-5 ">

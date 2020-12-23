@@ -67,3 +67,14 @@
 		</div>
     </div>
 </section>
+
+<div class="privacy-policy" id="privacy-policy">
+	<div class="privacy-top">
+		<p class="fw-bold mb-0">We serve cookies</p>
+		<button id="close-cookies">
+			<i class="fa fa-close"></i>
+		</button>
+	</div> 
+	<p class="mb-3 small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl, mauris dolor vulputate elementum. Vel habitasse faucibus volutpat commodo duis lacinia. Pellentesque tortor, feugiat consectetur condimentum proin. Quam viverra volutpat enim bibendum.</p>
+	<button class="cookies-btn">Accept Cookies</button>
+</div>
