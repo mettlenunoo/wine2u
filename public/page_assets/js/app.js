@@ -4,6 +4,21 @@
 
 
 $(document).ready(function () {
+	console.log("Got here");
+
+	const openNavSearch = document.querySelector(".open-form-search");
+	const navSearchInput = document.querySelector(".nv-form-input");
+	const navSearchResult = document.querySelector(".nv-form-results");
+
+	if(openNavSearch) {
+		openNavSearch.addEventListener("click", function(e){
+			e.preventDefault();
+			console.log("Clicked");
+			navSearchInput.classList.toggle("active");
+			navSearchResult.classList.toggle("active");
+		})
+	}
+
     $(".owl-gallery").owlCarousel({
         center: true,
         loop: true,
