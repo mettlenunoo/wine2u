@@ -1,0 +1,263 @@
+<nav class="site-nav navbar navbar-expand-sm fixed-top">
+	<div class="w-100">
+		<div class="container px-0">
+			<div class="nv-top">
+				<div class="nv-top-l d-none d-md-flex">
+					<a href="" target="new">
+						<img src="/page_assets/img/facebookicon.svg" width="19" alt="">
+					</a>
+					<a href="" target="new">
+						<img src="/page_assets/img/twittericon.svg" width="22" alt="">
+					</a>
+					<a href="" target="new">
+						<img src="/page_assets/img/instagramicon.svg" width="22" alt="">
+					</a>
+				</div>
+				<a href="" class="navbar-brand">
+					<img src="/page_assets/img/wine2ulogo.svg" class="navbar-band" alt="" width="70">
+				</a>
+				<div class="nv-top-r z-1">
+					<div class="nv-form-search">
+						<input type="text" placeholder="Keyword" class="nv-form-input">
+						<button class="open-form-search">
+							<img src="/page_assets/img/search.svg" width="20" alt="">
+						</button>
+						<div class="nv-form-results">
+							<a href="" class="nv-form-res">
+								<div class="nv-res-img">
+									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+								</div>
+								<div class="nv-res-content">
+									<p class="mb-1 nv-res-title">Rose Imperial</p>
+									<p class="small mb-1">Moet & Chendron</p>
+									<p class="small mb-1">Paris</p>
+								</div>
+							</a>
+							<a href="" class="nv-form-res">
+								<div class="nv-res-img">
+									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+								</div>
+								<div class="nv-res-content">
+									<p class="mb-1 nv-res-title">Rose Imperial</p>
+									<p class="small mb-1">Moet & Chendron</p>
+									<p class="small mb-1">Paris</p>
+								</div>
+							</a>
+							<a href="" class="nv-form-res">
+								<div class="nv-res-img">
+									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
+								</div>
+								<div class="nv-res-content">
+									<p class="mb-1 nv-res-title">Rose Imperial</p>
+									<p class="small mb-1">Moet & Chendron</p>
+									<p class="small mb-1">Paris</p>
+								</div>
+							</a>
+						</div>
+					</div>
+					<button class="nv-cart ml-3" onclick="openNav()">
+						<img src="/page_assets/img/cart.svg" width="20" alt=""> 
+						<span class="nv-cart-num">
+							@php $totalItems = 0; @endphp
+							@if(session()->has('cart'))
+								@foreach (session()->get('cart') as $key => $item)
+									@php 
+										$totalItems = $totalItems + $item['quantity'];
+									@endphp                        
+								@endforeach
+								{{ $totalItems }}
+							@else
+								{{ $totalItems }}
+							@endif
+						</span>
+					</button>
+					@if(!auth('customer')->user())
+						<div class="nv-auth-links d-none d-md-flex ml-3">
+							<a href="">Register</a>
+							<span class="px-2">/</span>
+							<a href="">Login</a>
+						</div>
+					@else
+						<a href="/account" class="nv-auth-prof ml-3 d-none d-md-flex">
+							<img src="/page_assets/img/review2.png" alt="" class="mr-2">
+							<span>Michael Doe</span>
+						</a>
+					@endif
+					<button class="navbar-toggler ml-3" data-toggle="collapse" data-target="#site-nav">
+						<i class="fa fa-bars"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="container px-0">
+			<div class="collapse navbar-collapse" id="site-nav">
+				<div class="navbar-nav mx-md-auto">
+					<div class="nv-dropdown" href="#">
+						<a href="" class="px-md-3 py-md-2">Wine <i class="fa fa-angle-down ml-2"></i></a>
+						<div class="nv-drop-menu">
+							<div class="nv-dropdown">
+								<a href="">Wine</a>
+								<div class="nv-drop-menu">
+									<a href="">Manan</a>
+									<a href="">Dawud</a>
+								</div>
+							</div>
+							<div class="nv-dropdown">
+								<a href="">Liquor</a>
+								<div class="nv-drop-menu">
+									<a href="">Manan</a>
+									<a href="">Dawud</a>
+								</div>
+							</div>
+							<div class="nv-dropdown">
+								<a href="">Booze</a>
+								<div class="nv-drop-menu">
+									<a href="">Manan</a>
+									<a href="">Dawud</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a class="px-md-3 py-md-2" href="#">Champagne</a>
+					<a class="px-md-3 py-md-2" href="#">Prosecco</a>
+					<a class="px-md-3 py-md-2" href="#">Hard Liquor</a>
+					<a class="px-md-3 py-md-2" href="#">Pairing</a>
+					<a class="px-md-3 py-md-2" href="#">Region</a>
+					<a class="px-md-3 py-md-2" href="#">Our Blog</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn py-4" onclick="closeNav()">
+		<img src="/page_assets/img/cross.svg" width="20" alt="">
+	</a> 
+	<div class="row spacearound">
+		<h1 class="checkout-titile1">Cart</h1>
+		<div class="col-12 py-1 px-1 py-md-4 px-md-4">
+			<div id="myCart">
+				@php 
+					$totalAmount = 00;
+					$subAmount = 00
+				@endphp
+
+				@if(session()->has('cart'))
+					@foreach (session()->get('cart') as $key => $item)
+						@php    
+							$totalPrice = $item['productPrice'] * $item['quantity'];
+							// $totalQty = $totalQty + $item['quantity'];
+							$totalAmount = $totalAmount + $totalPrice;
+						@endphp
+						<div class="row" id="{{$key}}_cartPage">
+							<div class="col-3">
+								<img src="/product_images/{{ $item['productImage'] }}" class="img-fluid cartimage" alt="">
+							</div>
+							<div class="col-7">
+								<p class="mb-0 fot-titile"> {{ ucwords($item['productName']) }}</p>
+								<small class="">Quantity:<span> {{ $item['quantity'] }} </span></small> <br>
+								<small class="">Size:<span> {{ $item['productAttribute'] }}</span></small>
+							</div>
+							<div class="col-2 text-right">
+								<p class="fot-titile"> GHS <span>{{ number_format($totalPrice,2) }}</span></p>
+								<small style="cursor: pointer; " onclick="deleteCartPage({{$key}})">Remove</small>
+							</div>
+							<div class="col-12">
+								<hr>
+							</div>
+						</div>
+					@endforeach
+				@else
+					<h4 class="fw-bold">Empty Cart</h4>
+				@endif
+			</div>
+			<div class="form-row mt-5 pt-5">
+				<div class="form-group col-md-12">
+					<a href="/checkout">
+						<button type="button" class="btn btn-wine2u-deep px-5 btn-block">Checkout</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.site-nav .navbar-nav a {
+		display: block;
+	}
+
+	.nv-dropdown {
+		position: relative;
+	}
+
+	.nv-dropdown:hover > .nv-drop-menu {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.nv-drop-menu {
+		position: absolute;
+		left: 0;
+		top: calc(100% + 0px);
+		background: white;
+		width: 180px;
+		transition: opacity 0.3s ease;
+		opacity: 0;
+		pointer-events: none;
+		/* border-radius: 8px; */
+		/* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); */
+	}
+
+	.nv-drop-menu a {
+		display: block;
+		width: 100%;
+		padding: 10px;
+	}
+
+	.nv-drop-menu a:hover {
+		background: #f7f7f7;
+	}
+
+	.nv-drop-menu .nv-drop-menu {
+		top: 0;
+		left: 100%;
+		border-left: 1px solid #c4c4c4;
+	}
+
+	@media(max-width: 576px) {
+		.site-nav .navbar-nav {
+			background: white;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			max-height: 450px;
+    		overflow-y: auto;
+		}
+
+		.site-nav .navbar-nav a {
+			padding: 10px;
+		}
+
+		.nv-drop-menu {
+			position: relative;
+			opacity: 1;
+			width: 100%;
+			pointer-events: all;
+			left: initial;
+			top: initial;
+			max-height: 0px;
+			overflow: hidden;
+		}
+
+		.nv-drop-menu .nv-drop-menu {
+			top: initial;
+			left: initial;
+			border-left: none;
+		}
+
+		.nv-dropdown:hover > .nv-drop-menu {
+			max-height: 200px;
+		}
+	}
+</style>
