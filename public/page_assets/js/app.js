@@ -1,108 +1,179 @@
+// const {
+//     filter
+// } = require("lodash");
+
+
 $(document).ready(function () {
-  $(".owl-gallery").owlCarousel({
-    center: true,
-    loop: true,
-    autoplay: false,
-    items: 1,
-    lazyLoad: true,
-    autoplayTimeout: 3000,
-    autoplayHoverPause: false,
-    nav: true,
-    navText: [
-      "<i class='fa fa-angle-left fa-2x'></i>",
-      "<i class='fa fa-angle-right fa-2x'></i>",
-    ],
-    dots: false,
-    pagination: false,
-    animateOut: "fadeOut",
-    animateIn: "fadeIn",
+	console.log("Got here");
 
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 1,
-      },
-      992: {
-        items: 1,
-      },
+	const openNavSearch = document.querySelector(".open-form-search");
+	const navSearchInput = document.querySelector(".nv-form-input");
+	const navSearchResult = document.querySelector(".nv-form-results");
 
-      1200: {
-        items: 1,
-      },
-    },
-  });
+	if(openNavSearch) {
+		openNavSearch.addEventListener("click", function(e){
+			e.preventDefault();
+			console.log("Clicked");
+			navSearchInput.classList.toggle("active");
+			navSearchResult.classList.toggle("active");
+		})
+	}
 
-  /*how it works*/
-  $(".owl-hit").owlCarousel({
-    center: true,
-    loop: true,
-    autoplay: true,
-    items: 1,
-    lazyLoad: true,
-    autoplayTimeout: 5000,
-    autoplayHoverPause: false,
-    nav: false,
-    navText: [
-      "<i class='fa fa-angle-left fa-2x'></i>",
-      "<i class='fa fa-angle-right fa-2x'></i>",
-    ],
-    dots: false,
-    pagination: false,
-    animateOut: "fadeOut",
-    animateIn: "fadeInRight",
+    $(".owl-gallery").owlCarousel({
+        center: true,
+        loop: true,
+        autoplay: false,
+        items: 1,
+        lazyLoad: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        nav: true,
+        navText: [
+            "<i class='fa fa-angle-left fa-2x'></i>",
+            "<i class='fa fa-angle-right fa-2x'></i>",
+        ],
+        dots: false,
+        pagination: false,
+        animateOut: "fadeOut",
+        animateIn: "fadeIn",
 
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 1,
-      },
-      992: {
-        items: 1,
-      },
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
 
-      1200: {
-        items: 1,
-      },
-    },
-  });
+            1200: {
+                items: 1,
+            },
+        },
+    });
 
-  $(".owl-wineslide").owlCarousel({
-    center: true,
-    margin: 20,
-    loop: true,
-    autoplay: true,
-    items: 1,
-    lazyLoad: true,
-    autoplayTimeout: 7000,
-    autoplayHoverPause: false,
-    nav: false,
-    navText: [
-      "<i class='fa fa-angle-left fa-2x'></i>",
-      "<i class='fa fa-angle-right fa-2x'></i>",
-    ],
-    dots: true,
-    pagination: false,
-    animateOut: "fadeOutLeft",
-    animateIn: "fadeInRight",
+    /*how it works*/
+    $(".owl-hit").owlCarousel({
+        center: true,
+        loop: true,
+        autoplay: true,
+        items: 1,
+        lazyLoad: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: false,
+        nav: false,
+        navText: [
+            "<i class='fa fa-angle-left fa-2x'></i>",
+            "<i class='fa fa-angle-right fa-2x'></i>",
+        ],
+        dots: false,
+        pagination: false,
+        animateOut: "fadeOut",
+        animateIn: "fadeInRight",
 
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 1,
-      },
-      992: {
-        items: 1,
-      },
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
 
-      1200: {
+            1200: {
+                items: 1,
+            },
+        },
+    });
+
+    $(".owl-wineslide").owlCarousel({
+        center: true,
+        margin: 20,
+        loop: true,
+        autoplay: true,
         items: 1,
-      },
-    },
-  });
+        lazyLoad: true,
+        autoplayTimeout: 7000,
+        autoplayHoverPause: false,
+        nav: false,
+        navText: [
+            "<i class='fa fa-angle-left fa-2x'></i>",
+            "<i class='fa fa-angle-right fa-2x'></i>",
+        ],
+        dots: true,
+        pagination: false,
+        // autoHeight: true,
+        animateOut: "fadeOutLeft",
+        animateIn: "fadeInRight",
+
+        responsive: {
+            0: {
+                items: 1,
+            },
+            768: {
+                items: 1,
+            },
+            992: {
+                items: 1,
+            },
+
+            1200: {
+                items: 1,
+            },
+        },
+	});
+	
+	const privacyPolicy = document.getElementById("privacy-policy");
+
+	if(privacyPolicy) {
+		const closePolicy = document.getElementById("close-cookies");
+		closePolicy.addEventListener("click", function(){
+			privacyPolicy.style.opacity = 0;
+
+			setTimeout(function() {
+				privacyPolicy.style.display = "none";
+			}, 1000);
+		})
+	}
+
+	const windowWidth = window.innerWidth;
+	const arrSlider = $(".arr-slides");
+
+	if(windowWidth > 576) {
+		$(".arr-slides").owlCarousel({
+			center: false,
+			margin: 15,
+			loop: true,
+			autoplay: true,
+			items: 3,
+			autoplayTimeout: 4000,
+			autoplayHoverPause: false,
+			nav: false,
+			dots: false,
+		});
+	} else {
+		$(".arr-slides").owlCarousel({
+			center: false,
+			margin: 15,
+			loop: true,
+			autoplay: true,
+			items: 2,
+			autoplayTimeout: 4000,
+			autoplayHoverPause: false,
+			nav: false,
+			dots: false,
+		});
+	}
+
+	$('#arr-left').click(function() {
+		arrSlider.trigger('prev.owl.carousel');
+	});
+
+	$('#arr-right').click(function() {
+		arrSlider.trigger('next.owl.carousel');
+	});
 });

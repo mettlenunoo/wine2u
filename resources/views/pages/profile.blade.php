@@ -19,8 +19,8 @@
   <div class="container-fluid container-w2u">
   
 
-    <div class="row">
-  <div class="col-12 col-md-3 col-lg-3 mb-4">
+    <div class="row align-items-start">
+  <div class="col-12 col-md-3 col-lg-3 mb-4 stick-to-top">
     <div class="list-group" id="list-tab" role="tablist">
 
     <a class="list-group-item list-group-item-action "   role="tab" aria-controls="Personal-details">
@@ -53,7 +53,7 @@
 
     <!-- profile Details -->
       <div class="tab-pane fade show active" id="list-Personal-details" role="tabpanel" aria-labelledby="list-Personal-details-list">
-      <h1 class="profilet1 mb-5">Personal details</h1>
+      <h1 class="profilet1 mb-3">Personal details</h1>
       
      <form id="profile_form" >
        @csrf

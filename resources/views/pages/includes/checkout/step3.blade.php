@@ -13,7 +13,7 @@
    
    
       <div class="form-row mt-5">
-   <div class="main-container">
+   <div class="main-container w-100">
       <div class="radio-buttons">
 
          @if($calculation->shop->payment_gateways->rave == "Yes")

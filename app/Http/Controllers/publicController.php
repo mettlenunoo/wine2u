@@ -52,11 +52,11 @@ class publicController extends Controller
      public function __construct()
      {
        
-        if(Cookie::get('age') == false){
+        //if(Cookie::get('age') == false){
 
-            redirect()->route('age-verification')->send();
-           // return redirect('/age-verification');
-        }
+        	//redirect()->route('age-verification')->send();
+        	// return redirect('/age-verification');
+        //}
         
      }
      
@@ -404,32 +404,34 @@ class publicController extends Controller
 
         foreach ($products as $product){
 
-        $items .= '<div class="col-12  col-md-4  px-md-4 mb-5 ">
+        $items .= '<div class="col-6 col-md-6 mb-4 col-lg-4">
           <div class="productmain">
-            <a href="/products/'.$product->slug.'"> <img src="/product_images/'.$product->img1.'"  class="w-100" alt="'.ucwords($product->product_name).'" height="100%"></a>
-           
-              <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">'.$product->review_summary->average_rating.'</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> 
-                    <input type="radio" name="rating-'.$product->id.'" value="5" id="5-'.$product->id.'"'; if($product->review_summary->average_rating == 5 ){ $items .= 'checked'; } $items .= '>'.
-                    '<label for="5-'. $product->id .'">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="4" id="4-'.$product->id .'"'; if($product->review_summary->average_rating >= 4 && $product->review_summary->average_rating < 5){ $items .= 'checked'; } $items .= '>'.
-                    '<label for="4-'. $product->id .'">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="3" id="3-'.$product->id .'"'; if($product->review_summary->average_rating >= 3 && $product->review_summary->average_rating < 4 ){ $items .= 'checked'; } $items .= '>'.
-                    '<label for="3-{{ $product->id }}">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="2" id="2-'. $product->id .'"'; if($product->review_summary->average_rating >= 2 && $product->review_summary->average_rating < 3){ $items .= 'checked'; } $items .= '>'.
-                    '<label for="2-'.$product->id .'">☆</label>
-                    <input type="radio" name="rating-'. $product->id .'" value="1" id="1-'.$product->id .'"'; if($product->review_summary->average_rating >= 1 && $product->review_summary->average_rating < 2){ $items .= 'checked'; } $items .= '>'.
-                    '<label for="1-'. $product->id .'">☆</label>
-                 </div>
-                </div>
-              </div>
+			<a href="/products/'.$product->slug.'" class="product-img"> 
+				<img src="/product_images/'.$product->img1.'"  class="as-background" alt="'.ucwords($product->product_name).'" height="100%">
+			</a>
 
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="/products/'.$product->slug.'"> '. ucwords($product->product_name) .'</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
+              <div class="bd-highlight px-2 pt-2">
+				<p class="mb-0 product-small prd-brand">'. ucwords($product->product_name) .'</p>
+				<div class="rating"> 
+					<input type="radio" name="rating-'.$product->id.'" value="5" id="5-'.$product->id.'"'; if($product->review_summary->average_rating == 5 ){ $items .= 'checked'; } $items .= '>'.
+					'<label for="5-'. $product->id .'">☆</label>
+					<input type="radio" name="rating-{{ $product->id }}" value="4" id="4-'.$product->id .'"'; if($product->review_summary->average_rating >= 4 && $product->review_summary->average_rating < 5){ $items .= 'checked'; } $items .= '>'.
+					'<label for="4-'. $product->id .'">☆</label>
+					<input type="radio" name="rating-{{ $product->id }}" value="3" id="3-'.$product->id .'"'; if($product->review_summary->average_rating >= 3 && $product->review_summary->average_rating < 4 ){ $items .= 'checked'; } $items .= '>'.
+					'<label for="3-{{ $product->id }}">☆</label>
+					<input type="radio" name="rating-{{ $product->id }}" value="2" id="2-'. $product->id .'"'; if($product->review_summary->average_rating >= 2 && $product->review_summary->average_rating < 3){ $items .= 'checked'; } $items .= '>'.
+					'<label for="2-'.$product->id .'">☆</label>
+					<input type="radio" name="rating-'. $product->id .'" value="1" id="1-'.$product->id .'"'; if($product->review_summary->average_rating >= 1 && $product->review_summary->average_rating < 2){ $items .= 'checked'; } $items .= '>'.
+					'<label for="1-'. $product->id .'">☆</label>
+				</div>
+			  </div>
+
+              <div class="d-md-flex mb-2 align-items-end">
+				<div class="mr-auto pl-2">
+					<p class="product-small mb-0">Paris</p>
+					<a href="/products/'.$product->slug.'" class="font-weight-bold"> '. ucwords($product->product_name) .'</a> 
+				</div>
+                <div class="px-2 font-weight-bold ">
                   <a href="/products/'. $product->slug .'" class="product-price">GhS '. number_format($product->base_price,2) .'</a>
                 </div>
               </div>
@@ -1062,7 +1064,16 @@ class publicController extends Controller
         //     ['blog' => $blog, 'relatatedblog' => $relatatedBlog ]
         //     , 200);
 
-    }
+	}
+	
+	// Videos
+	public function allVideos() {
+		return view('pages.videos');
+	}
+
+	public function singleVideo() {
+		return view('pages.video');
+	}
 
     // pagination filter
     private function SearchPagination($parms)

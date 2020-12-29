@@ -40,8 +40,8 @@
      <!-- Discount -->
 
     <!--  Total -->
-    <div class="col-12 totalback">
-       <div class="d-flex bd-highlight mb-3">
+    <div class="col-12">
+       <div class="d-flex bd-highlight mb-3 totalback px-3 py-2">
           <div class="mr-auto p-2 bd-highlight  font-weight-bold">Total</div>
           <div class="p-2 bd-highlight  font-weight-bold "> GHS <span class="total-amount"> {{ number_format($calculation->totalAmount,2) }} </span> </div>
           <input type="hidden" class="total-amt" value="{{ $calculation->totalAmount }}">

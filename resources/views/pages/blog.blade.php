@@ -67,7 +67,7 @@
 
        <div class="row my-5">
           @forelse ($blogs as $blog)
-            <div class="col-12 col-md-4 px-md-4 mb-5">
+            <div class="col-12 col-md-4 px-md-4 mb-4">
                 <a href="/blog/{{$blog->slug}} ">
                     <img src="/blog_images/{{ $blog->pic }}" class="bolg_img mb-2" alt="{{ ucwords($blog->title)}}">
                     <p class="f_titile_p2 mb-0 py-3"> {{ ucwords($blog->title)}} </p>
@@ -81,14 +81,14 @@
 
           @empty
 
-            <div class="col-12 col-md-12 px-md-12 mb-5">
+            <div class="col-12 col-md-12 px-md-12 mb-4">
                 <h5> No blog, Please try again </h5>
             </div>
               
           @endforelse
 
 
-         <div class="col-12 text-center my-5">
+         <div class="col-12 text-center m-0">
           {{ $blogs->links("pages.includes.paginate_style") }}
          </div>
 

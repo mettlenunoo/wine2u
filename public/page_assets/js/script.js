@@ -1,4 +1,4 @@
-const { get } = require("jquery");
+// const { get } = require("jquery");
 
 // $(window).bind("pageshow", function () {
 //     $("#inputState").val('');
