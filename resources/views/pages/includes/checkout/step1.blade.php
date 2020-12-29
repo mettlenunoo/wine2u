@@ -2,18 +2,16 @@
    <!-- left  side -->
    <div class="col-12 col-md-6 pr-md-5">
 
-   <div class="mb-5">
-      
-            @if(!auth('customer')->user())
-               <div class="alert shadow-sm   alert-dismissible fade show" role="alert">
-                  <strong> Already have an account? </strong> <a href="login.php">Log in</a> | <span >or  Continue as a Guest </span>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                     <span aria-hidden="true">×</span>
-                  </button>
-               </div>
-            @endif
-
+      @if(!auth('customer')->user())
+      <div class="mb-5">
+		<div class="alert shadow-sm alert-dismissible fade show" role="alert">
+			<strong> Already have an account? </strong> <a href="login.php">Log in</a> | <span >or  Continue as a Guest </span>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
       </div>
+	  @endif
       <p> <small>1 out 4  steps</small></p>
       <h1 class="checkout-titile1">
          Payment Information
@@ -25,12 +23,12 @@
       <h1 class="f_titile_p2b mt-4 ">Billing address</h1>
       <div class="form-row mt-4">
          {{-- <form> --}}
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_FirstName">First Name *</label>
             <input type="text"  name="billingfname" class="form-control form-control-wine2u wizard-required" id="bill_fname" placeholder="" value="{{ $customer->fname }}" required="required"> 
             <div class="wizard-form-error"></div>
          </div>
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_LastName">Last Name *</label>
             <input type="text" name="billingsname" class="form-control form-control-wine2u wizard-required" id="bill_lname" placeholder="" value="{{ $customer->lname }}"> 
             <div class="wizard-form-error"></div>
@@ -47,7 +45,7 @@
             <div class="wizard-form-error"></div>
          </div>
 
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-country">Country *</label> 
             <select id="bill_country" name="billingcountry" class="form-control form-control-wine2u wizard-required">
                   <option selected> Choose... </option>
@@ -303,7 +301,7 @@
                 </select>
            
          </div>
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_city">Region / State </label>
             <input type="text" name="billingstate" class="form-control form-control-wine2u" id="bill_region" placeholder="" value="{{ $customer->state }}">
          </div>

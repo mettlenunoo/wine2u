@@ -8,18 +8,18 @@
       Delivery and shipping
 address
       </h1>
-      <div class="custom-control custom-checkbox">
+      <div class="custom-control custom-checkbox mt-4">
          <input type="checkbox" class="custom-control-input" name="billingtoo" id="customCheck1" onclick="FillBilling(this.form)">
          <label class="custom-control-label" for="customCheck1">Shipping address is the same my billing address</label>
       </div>
    
       <div class="form-row mt-4">
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_FirstName">First Name *</label>
             <input type="text"  name="shippingfname" class="form-control form-control-wine2u wizard-required" id="shipping_fname" placeholder=""> 
             <div class="wizard-form-error"></div>
          </div>
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_LastName">Last Name *</label>
             <input type="text" name="shippingsname" class="form-control form-control-wine2u wizard-required" id="shipping_last" placeholder=""> 
             <div class="wizard-form-error"></div>
@@ -34,7 +34,7 @@ address
             <input type="tel" name="shippingpnumber" class="form-control form-control-wine2u wizard-required" id="shipping_pnumber" placeholder=""> 
             <div class="wizard-form-error"></div>
          </div>
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-country">Country *</label> 
             <select id="shipping_country" name="shippingcountry" class="form-control form-control-wine2u wizard-required" onchange="shiprate(this);">
                <option selected >Choose...</option>
@@ -44,7 +44,7 @@ address
                {{-- <option value="Ghana">Ghana</option> --}}
             </select>
          </div>
-         <div class="form-group col-12 col-md-12">
+         <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_city">Region / State </label>
             <input type="text" name="shippingstate" class="form-control form-control-wine2u" id="shipping_state" placeholder="">
          </div>

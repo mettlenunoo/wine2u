@@ -38,20 +38,19 @@
 
 
 <section class="my-5  py-5"> 
- <div class="container-fluid container-w2u">
+ <div class="container">
   <div class="row">
+	@include('pages.includes.filters')
 
-
-    @include('pages.includes.filters')
-
-
-  <div class="col-12 col-md-12 col-lg-9">
+  <div class="col-12 col-md-7 col-lg-9">
     <div class="row filter_data">
 
       {{-- @forelse ($products as $product)
         <div class="col-12  col-md-4  px-md-4 mb-5 ">
           <div class="productmain">
-            <a href="/products/{{ $product->slug }}"> <img src="/product_images/{{ $product->img1 }}"  class="w-100" alt="{{ ucwords($product->product_name) }}" height="100%"></a>
+			<a href="/products/{{ $product->slug }}"> 
+				<img src="/product_images/{{ $product->img1 }}"  class="w-100" alt="{{ ucwords($product->product_name) }}" height="100%">
+			</a>
             <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
               <div class="d-flex bd-highlight ">
                 <div class="mr-auto p-2 bd-highlight  product-small "> {{ $product->review_summary->average_rating }} </div>
@@ -354,6 +353,16 @@ a purchase</p>
 
  <script>
   $(document).ready(function(){
+	const filterToggle = document.getElementById("toggle-filter");
+	console.log(filterToggle);
+
+    if (filterToggle) {
+        filterToggle.addEventListener("click", function () {
+			const filters = document.getElementById("filter-wrapper");
+            filterToggle.classList.toggle("open");
+            filters.classList.toggle("open");
+        });
+    }
 
     $(document).on('click', '.pager-list', function(event){
         event.preventDefault(); 

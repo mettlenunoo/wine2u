@@ -211,6 +211,33 @@
 </style>
   
 
+<style>
+	.radio-buttons {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px;
+	}
+
+	.custom-radio {
+		margin: 0px;
+	}
+
+	.radio-btn .hobbies-icon {
+		width: 100%;
+	}
+
+	.radio-btn {
+		margin: 0px;
+		width: 100%;
+		height: 180px;
+		display: block;
+	}
+
+	.form-wizard-submit {
+		border: none;
+	}
+
+</style>
 
 
 <section class="profile-topw">
