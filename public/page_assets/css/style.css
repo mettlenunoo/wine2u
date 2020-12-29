@@ -1538,6 +1538,10 @@ input[type=checkbox] {
     object-fit: cover;
 }
 
+.product-img .as-background {
+    object-fit: contain;
+}
+
 .product-price {
     white-space: nowrap;
 }
