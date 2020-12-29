@@ -21,9 +21,13 @@ class SocialAccountsService
             ->where('provider_id', $providerUser->getId())
             ->first();
         if ($linkedSocialAccount) {
+
             return $linkedSocialAccount->customer;
+
         } else {
+
             $user = null;
+
             if ($email = $providerUser->getEmail()) {
                 $user = Customer::where('email', $email)->first();
             }
@@ -34,10 +38,12 @@ class SocialAccountsService
                     'email' => $providerUser->getEmail(),
                 ]);
             }
+            
             $user->linkedSocialAccounts()->create([
                 'provider_id' => $providerUser->getId(),
                 'provider_name' => $provider,
             ]);
+
             return $user;
         }
     }
