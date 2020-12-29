@@ -37,7 +37,7 @@ $tax  = 0.0
             <div class="media centerit">
                 <img src="/product_images/{{ $item['productImage'] }}" class="pr-3 cartimage" alt="{{ ucwords($item['productName']) }}">
                 <div class="media-body">
-                    <p class="mb-0"><small>x {{ $item['quantity'] }}, GHS  {{ number_format($item['productPrice'],2) }}</small></p>
+                    <p class="mb-0"><small> GHS  {{ number_format($item['productPrice'],2) }}</small></p>
                     <p class="mt-0"><strong>{{ ucwords($item['productName']) }}</strong> </p>
                 </div>
             </div>
