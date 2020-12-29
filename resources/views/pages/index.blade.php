@@ -12,7 +12,7 @@
 
    <!-- include navigation -->
       @include("pages.includes.nav-links")
-      @include("pages.includes.navigation-new")
+      @include("pages.includes.navigation")
    <!-- include navigation -->
 
 
