@@ -23,8 +23,11 @@ class SocialUserResolver implements SocialUserResolverInterface
         } catch (Exception $exception) {}
         
         if ($providerUser) {
+
             return (new SocialAccountsService())->findOrCreate($providerUser, $provider);
+
         }
+        
         return null;
     }
 }
