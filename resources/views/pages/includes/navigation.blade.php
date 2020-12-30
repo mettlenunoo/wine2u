@@ -13,7 +13,7 @@
 						<img src="/page_assets/img/instagramicon.svg" width="22" alt="">
 					</a>
 				</div>
-				<a href="" class="navbar-brand">
+				<a href="/" class="navbar-brand">
 					<img src="/page_assets/img/wine2ulogo.svg" class="navbar-band" alt="" width="70">
 				</a>
 				<div class="nv-top-r z-1">
