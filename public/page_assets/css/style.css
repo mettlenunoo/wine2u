@@ -1552,6 +1552,10 @@ input[type=checkbox] {
     padding-bottom: 160%;
 }
 
+.wine-img .as-background {
+    object-fit: contain;
+}
+
 .rating>label {
     margin: 0px;
     width: auto;
@@ -2079,6 +2083,11 @@ input[type=checkbox] {
     border-left: 1px solid #c4c4c4;
 }
 
+.top_titile_bk,
+.spaceup {
+    margin-top: 122px;
+}
+
 /* Side nav*/
 .expand {
     width: 40% !important;
@@ -2130,6 +2139,44 @@ input[type=checkbox] {
 
 .pointer {
     cursor: pointer;
+}
+
+/* Filter Styles */
+.productside .card-body {
+    padding: 0px;
+}
+
+.card-filter-sect {
+    padding: 15px 10px;
+    margin: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.border-top-none {
+    border-top: none !important;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.filter-group .form-check-input {
+    position: relative;
+}
+
+.filter-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.filter-range {
+    padding: 5px 10px;
 }
 
 @media screen and (max-height: 450px) {
@@ -2202,6 +2249,11 @@ input[type=checkbox] {
         max-height: 200px;
     }
 
+    .top_titile_bk,
+    .spaceup {
+        margin-top: 91px;
+    }
+
     .home-top-b {
         font-size: 42px;
     }
@@ -2233,6 +2285,16 @@ input[type=checkbox] {
     .productside.open {
         max-height: 450px;
         overflow-y: auto;
+    }
+
+    .card-filter-sect {
+        padding: 15px;
+    }
+
+    .filter-group,
+    .filter-price,
+    .filter-range {
+        padding: 5px 15px;
     }
 
     .stick-to-top {
