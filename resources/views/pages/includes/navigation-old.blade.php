@@ -285,7 +285,7 @@
   .pointer  {
     cursor: pointer;
   }
-  </style>
+</style>
   <!-- for Nv  Drawer -->
   
   

@@ -1,5 +1,14 @@
 @font-face {
     font-family: "Sopia Pro";
+    src: url("SofiaProLight.eot") format("embedded-opentype"),
+        url("SofiaProLight.ttf") format("truetype"),
+        url("SofiaProLight.woff") format("woff"),
+        url("SofiaProLight.woff2") format("woff2");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Sopia Pro";
     src: url("SofiaProRegular.eot") format("embedded-opentype"),
         url("SofiaProRegular.ttf") format("truetype"),
         url("SofiaProRegular.woff") format("woff"),
@@ -1538,6 +1547,10 @@ input[type=checkbox] {
     object-fit: cover;
 }
 
+.product-img .as-background {
+    object-fit: contain;
+}
+
 .product-price {
     white-space: nowrap;
 }
@@ -1546,6 +1559,10 @@ input[type=checkbox] {
     position: relative;
     overflow: hidden;
     padding-bottom: 160%;
+}
+
+.wine-img .as-background {
+    object-fit: contain;
 }
 
 .rating>label {
@@ -1872,7 +1889,7 @@ input[type=checkbox] {
     justify-content: space-between;
     width: 100%;
     position: relative;
-    height: 70px;
+    min-height: 70px;
 }
 
 .nv-top-l {
@@ -2016,6 +2033,208 @@ input[type=checkbox] {
     color: #c39153;
 }
 
+.nav-bg {
+    background: white;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nv-auth-prof {
+    display: flex;
+    align-items: center
+}
+
+.nv-auth-prof img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.site-nav .navbar-nav a {
+    display: block;
+}
+
+.nv-dropdown {
+    position: relative;
+}
+
+.nv-dropdown:hover>.nv-drop-menu {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.nv-drop-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0px);
+    background: white;
+    width: 180px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    /* border-radius: 8px; */
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05); */
+}
+
+.nv-drop-menu a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+}
+
+.nv-drop-menu a:hover {
+    background: #f7f7f7;
+}
+
+.nv-drop-menu .nv-drop-menu {
+    top: 0;
+    left: 100%;
+    border-left: 1px solid #c4c4c4;
+}
+
+.top_titile_bk,
+.spaceup {
+    margin-top: 122px;
+}
+
+/* Side nav*/
+.expand {
+    width: 40% !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3000;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    z-index: 3000;
+}
+
+.spacearound {
+    padding: 0rem 4rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+/* Filter Styles */
+.productside .card-body {
+    padding: 0px;
+}
+
+.card-filter-sect {
+    padding: 15px 10px;
+    margin: 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.border-top-none {
+    border-top: none !important;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.filter-group .form-check-input {
+    position: relative;
+}
+
+.filter-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.filter-range {
+    padding: 5px 10px;
+}
+
+/* Country Page */
+.f-title {
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.f-title img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.f-sub-title {
+    margin-left: 38px;
+    margin-bottom: 7px;
+    font-weight: 300;
+    font-size: 12px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .spacearound {
+        padding: 0rem 3rem;
+    }
+
+    .expand {
+        width: 100% !important;
+    }
+}
+
+/* End of side nav */
+
 @media(max-width: 992px) {
     .home-top {
         min-height: 700px;
@@ -2023,6 +2242,52 @@ input[type=checkbox] {
 }
 
 @media(max-width: 576px) {
+    .navbar-brand {
+        position: relative;
+        left: initial;
+        top: initial;
+        right: initial;
+        transform: none;
+    }
+
+    .site-nav .navbar-nav {
+        background: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        max-height: 450px;
+        overflow-y: auto;
+    }
+
+    .site-nav .navbar-nav a {
+        padding: 10px;
+    }
+
+    .nv-drop-menu {
+        position: relative;
+        opacity: 1;
+        width: 100%;
+        pointer-events: all;
+        left: initial;
+        top: initial;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    .nv-drop-menu .nv-drop-menu {
+        top: initial;
+        left: initial;
+        border-left: none;
+    }
+
+    .nv-dropdown:hover>.nv-drop-menu {
+        max-height: 200px;
+    }
+
+    .top_titile_bk,
+    .spaceup {
+        margin-top: 91px;
+    }
+
     .home-top-b {
         font-size: 42px;
     }
@@ -2054,6 +2319,16 @@ input[type=checkbox] {
     .productside.open {
         max-height: 450px;
         overflow-y: auto;
+    }
+
+    .card-filter-sect {
+        padding: 15px;
+    }
+
+    .filter-group,
+    .filter-price,
+    .filter-range {
+        padding: 5px 15px;
     }
 
     .stick-to-top {
