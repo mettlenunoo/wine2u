@@ -21,8 +21,8 @@
   <div class="container-fluid container-w2u p-relative">
     <div class="row ">
        <div class="col-12 col-lg-7">
-         <h1 class="home-top-b">Shop <br>
-         Winery-Direct Exclusives</h1>
+    		<h1 class="home-top-b">Shop <br>
+        	Exclusively From Our Winery</h1>
          <p class="max-w-500">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
 		<div class="new-arrivals pb-4">
 			<div class="new-arr-bg"></div>
@@ -313,7 +313,7 @@
 		<div class="row ">
 			<div class="col-12 col-md-6">
 				<h1>Exclusive range  <br> of winery</h1>
-				<p class="wine_wc">Lorem ipsum color sit amet, consectetur adipiscing elit. Dui vel amet nunc lectus nullam sed nisl scelerisque at. Faucibus vivamus libero viverra ipsum, ut in amet.</p>
+				<p class="wine_wc">Enjoy collections of exclusive fine wines and spirits from all around the world. Italy to South Africa, we’ve got a wine for you.</p>
 			</div>
 		</div>
    	</div>
@@ -544,7 +544,7 @@
       	</div>
    	</div>
 </section>
-<!-- Greate With Salads -->
+<!-- Great With Salads -->
 
 
 <!--Who we are  -->
@@ -559,7 +559,7 @@
 					<img src="/page_assets/img/grapewineandglass.svg" alt="">
 
 					<p class="text-uppercase my-3  wine2upc">WHO  ARE WE</p>
-					<p>Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Dui vel amet nunc lectus nullam  <br> sed nisl scelerisque at. Faucibus vivamus libero <br> viverra ipsum, ut in amet.</p>
+					<p>At Wine2u, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. Our team of dedicated sommeliers strive to be the best partner to our suppliers and customers by providing the finest wines from around the world. </p>
 					<a href="#category.php" class="btn btn-wine2u px-4">Learn More</a>
 				</div>
 			</div>
@@ -587,7 +587,7 @@
 					</div>
 					<div class="col-6 col-md-6 col-lg-6 mb-5 px-md-5">
 						<img src="/page_assets/img/delivery.svg" alt="">
-						<p class="wine_wc mt-4">Carefully and efficiently dilvering your orders right to your doorsteps</p>
+						<p class="wine_wc mt-4">Carefully and efficiently delivering your orders right to your doorsteps</p>
 					</div>
 					<div class="col-6 col-md-6 col-lg-6 mb-5 px-md-5">
 						<img src="/page_assets/img/ratings.svg" alt="">
