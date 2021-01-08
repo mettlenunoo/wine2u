@@ -35,9 +35,9 @@
   <div class="container  ">
     <div class="row">
        <div class="col-12 col-md-6 text-center ">
-         <h1 class="land_titile">Your Palate, <br>
+         <h1 class="land_titile">Your Palette, <br>
 Our Passion.</h1>
-<p class="my-4">Shop the latest releases of wine along with exclusive offers, rare  <br> and limited edition wines, as well as the latest merchandise from  <br> our tasting rooms.</p>
+<p class="my-4">Shop rare, limited and latest releases of wine along with exclusive offers from our tasting rooms.</p>
      
 <p class="landing_p" data-toggle="modal" data-target="#check-age">ENTER SITE</p>
 
@@ -59,14 +59,13 @@ Our Passion.</h1>
   <div class="modal-dialog modal-dialog-centered">
     <div class=" modal-content-wine2u">
         <div class="modal-header-wine2u d-flex justify-content-center mt-5">
-            <h1 class="sign_title wine2upc">Age Verification</h1>
+            <h1 class="sign_title wine2upc">Hello there! </h1>
         </div>
         <div class="text-center mb-2">
             <img src="/page_assets/img/shortdash.svg" alt="">
         </div>
         <div class="modal-body text-center">
-            <p>You must be 18 years and above to enter. Are <br>
-  you sure you are atleast 18 years?</p>
+            <p>Want to join us on this journey?<br>You must be at least 18+ to access this site.</p>
         </div>
         <div class="modal-footer-wine2u d-flex justify-content-center mb-5 ">
           <form method="POST" action="{{ route('age-verification') }}">
