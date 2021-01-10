@@ -38,7 +38,6 @@
                 We are excited to take your taste buds through vineyards from different amazing wine countries and regions.<br> 
                 Discover the right wine for you with us.
                 </p>
-                <p>Enter your email for a chance to win a stay.</p>
 
                 <p class="col-12 col-md-12 mx-auto" id="success"></p>
                 
