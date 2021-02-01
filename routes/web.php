@@ -69,6 +69,9 @@ Route::get('/', 'comingSoonController@coming_soon');
 Route::get('/index', 'comingSoonController@coming_soon');
 Route::get('/site', 'publicController@index')->name("index");
 
+// Product
+Route::get('/about', 'publicController@about');
+
 // Search
 //Route::get('/products/search', 'publicController@search'); 
 Route::get('/search', 'publicController@search'); 

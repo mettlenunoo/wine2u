@@ -22,5 +22,8 @@
 	<!-- custom -->
     <link rel="stylesheet" href="/page_assets/css/style.css" >
 
+    <!--FavIcon-->
+    <link rel="shortcut icon" type="image/png" href="{{ asset('page_assets/img/favicon.png') }}">
+
   </head>
   <body>

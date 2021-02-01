@@ -176,7 +176,7 @@ a.navbar-wholsome.active {
 }
 
 
-.exclusive h1 {
+.exclusive h1, .about-hero h1 {
     font-family: Libre Baskerville;
     font-weight: bold;
     font-size: 43.3793px;
@@ -302,6 +302,63 @@ label {
     font-size: 13px;
 }
 
+/*About page*/
+.about-hero {
+    background: linear-gradient(to bottom, #00000073 19.04%, rgb(0 0 0 / 35%) 215.59%), url(../img/about-hero.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 75vh;
+}
+.about-hero-text{
+    max-width: 750px;
+}
+@media (max-width: 768px){
+    #about-hero-title{
+        font-size: 36px;
+    }
+}
+@media (max-width: 576px){
+    #about-hero-title{
+        font-size: 24px;
+        line-height: 40px;
+    }
+    .about-hero-desc{
+        font-size: 12px;
+    }
+}
+@media (max-width: 374px){
+    #about-hero-title{
+        font-size: 22px;
+        line-height: 30px;
+    }
+}
+.border-r{
+    border-right: 1px solid #C39154;
+}
+.border-rt{
+    border-right: 1px solid #C39154;
+    border-top: 1px solid #C39154;
+}
+
+@media (min-width: 576px){
+    .border-l{
+        border-left: 1px solid #C39154;
+    }
+}
+.hr-different{
+    border-top: 1px solid #C39154;
+}
+
+.pt-8rem{
+    padding-top: 8rem;
+}
+
+.min-height-w{
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center;
+}
 /* landing pages and checks */
 
 

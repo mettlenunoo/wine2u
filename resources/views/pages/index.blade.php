@@ -560,7 +560,7 @@
 
 					<p class="text-uppercase my-3  wine2upc">WHO  ARE WE</p>
 					<p>At Wine2u, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. Our team of dedicated sommeliers strive to be the best partner to our suppliers and customers by providing the finest wines from around the world. </p>
-					<a href="#category.php" class="btn btn-wine2u px-4">Learn More</a>
+					<a href="/about" class="btn btn-wine2u px-4">Learn More</a>
 				</div>
 			</div>
 		</div>
