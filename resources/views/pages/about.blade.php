@@ -20,11 +20,10 @@
   <section class="about-hero p-md-5">
 			  <div class="about-hero-text d-flex flex-column justify-content-center h-100 p-5">
           <p class="about-hero-tag wine_wc">About Us</p>
-          <h1 id="about-hero-title">A one-stop shop for all your wine and alcoholic beverage purchases</h1>
-          <p class="about-hero-desc wine_wc">Today, we are proud to be the first winery to ever receive Living Building 
-          Challenge certification in all seven performance areas, or “petals,” from the International Living 
-          Future Institute (ILFI). The Living Building Challenge is the built environment’s most ambitious 
-          performance standard. For context, this achievement is now shared by only 25 buildings in the world.
+          <h1 id="about-hero-title">A Passion For Fine Wine & Alcoholic Beverages</h1>
+          <p class="about-hero-desc wine_wc">At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. 
+          By offering a dynamic portfolio and a robust platform. Our team of dedicated specialists strive to be the best partner to suppliers and customers alike.
+          You can trust us to give you the finest wines in the world—backed by the most exclusive wine experience.
           </p>
         </div>
   </section>
@@ -80,15 +79,9 @@
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
             <h2 class="2col-text-title">Convenience</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever 
-              receive Living Building Challenge certification in all seven performance areas, 
-              or “petals,” from the International Living Future Institute (ILFI). 
-              The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
-            <p class="2col-text-desc">“It’s inspiring to see such a beautiful facility earn the world’s most 
-              ambitious standard for regenerative design,” said Jason F. McLennan, the founder of ILFI and the 
-              Living Building Challenge. “The fact that a manufacturing facility with such unique challenges achieved 
-              Living Certification is a true tribute to the collaborative nature of the project and the power of good design.”</p>
+            <p class="2col-text-desc">Get first taste of wine2u from the comforts of your home.</p>
+            <p class="2col-text-desc">As a team, we understand your need for convenience, this is why you can learn, browse and purchase wines and spirits from the best wine countries around the world.</p>
+            <p class="2col-text-desc">We want you to allow us take your taste buds on a journey of wine discovery.</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -99,13 +92,11 @@
       </div>
 
       <div class="row py-5">
-      <div class="col-md-6 centerit mb-4 d-block d-md-none">
+        <div class="col-md-6 centerit mb-4 d-flex d-md-none">
           <div class="2col-text">
             <h2 class="2col-text-title">Own Your Palate</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever receive Living Building 
-              Challenge certification in all seven performance areas, or “petals,” from the International Living 
-              Future Institute (ILFI). The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
+            <p class="2col-text-desc">Savour every sip and taste of wine from our collection; we have created filters for you to select and curate your wine list according to your taste buds.</p>
+            <p class="2col-text-desc fw-bold">We let you decide and we deliver</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -113,13 +104,11 @@
             <img src="{{ asset ('page_assets/img/2col-img2.jpg') }}" alt="" class="2col-img w-100">
           </div>
         </div>
-        <div class="col-md-6 centerit d-none d-md-block">
+        <div class="col-md-6 centerit d-none d-md-flex">
           <div class="2col-text">
             <h2 class="2col-text-title">Own Your Palate</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever receive Living Building 
-              Challenge certification in all seven performance areas, or “petals,” from the International Living 
-              Future Institute (ILFI). The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
+            <p class="2col-text-desc">Savour every sip and taste of wine from our collection; we have created filters for you to select and curate your wine list according to your taste buds.</p>
+            <p class="2col-text-desc fw-bold">We let you decide and we deliver</p>
           </div>
         </div>
       </div>
@@ -134,13 +123,8 @@
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
             <h2 class="2col-text-title">The Experience</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever 
-              receive Living Building Challenge certification in all seven performance areas, 
-              or “petals,” from the International Living Future Institute (ILFI). 
-              The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
-            <p class="2col-text-desc">“It’s inspiring to see such a beautiful facility earn the world’s most 
-              ambitious standard for regenerative design,” said Jason F. McLennan, the founder</p>
+            <p class="2col-text-desc">Not only do we want you to taste beautiful, hand-selected wines from around the world, we want you to have access to our dedicated wine specialists for expert advice on wine selection , exclusive invitation offerings to wine2u events and an access to join one of the best wine clubs on our continent.</p>
+            <p class="2col-text-desc fw-bold">That is the wine2u experience</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -159,14 +143,9 @@
         <div class="col-md-6 centerit mb-4 mb-md-0 ">
           <div class="2col-text">
             <h2 class="2col-text-title">Premium quality drink from premium producers</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever 
-              receive Living Building Challenge certification in all seven performance areas, 
-              or “petals,” from the International Living Future Institute (ILFI). 
-              The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
-            <p class="2col-text-desc">“It’s inspiring to see such a beautiful facility earn the world’s most 
-              ambitious standard for regenerative design,” said Jason F. McLennan, the founder of ILFI and the 
-              Living Building Challenge.</p>
+            <p class="2col-text-desc">We put together in our collection the best wines from across the globe.</p>
+            <p class="2col-text-desc">We have been intentional to connect with the history and story behind every bottle, every taste and every brand we offer you.</p>
+            <p class="2col-text-desc">From the hillsides of Priorat, Spain to the expansive lands of South Africa, we have curated nothing but the finest.</p>
           </div>
         </div>
         <div class="col-md-6 d-block d-md-none">
@@ -179,12 +158,8 @@
       <div class="row py-5">
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
-            <h2 class="2col-text-title">Interactions</h2>
-            <p class="2col-text-desc">Today, we are proud to be the first winery to ever 
-              receive Living Building Challenge certification in all seven performance areas, 
-              or “petals,” from the International Living Future Institute (ILFI). 
-              The Living Building Challenge is the built environment’s most ambitious performance standard. 
-              For context, this achievement is now shared by only 25 buildings in the world.</p>
+            <h2 class="2col-text-title">Interaction</h2>
+            <p class="2col-text-desc">Get into our community, get access to reviews and blog posts about wines, wine regions and wine countries and many other exciting information you want to know.</p>
           </div>
         </div>
         <div class="col-md-6">
