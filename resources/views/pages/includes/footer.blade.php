@@ -3,16 +3,16 @@
 		<div class="row">
 			<div class="col-12 col-lg-4 mb-4"> 
 				<img src="/page_assets/img/wine2ulogo.svg" alt="" width="70">
-				<p class="wine_wc ">©2020 wine 2 u</p>
+				<p class="wine_wc ">©2020 wine2u</p>
 				<ul class="list-inline">
 					<li class="list-inline-item px-2">
-						<a href="#"><img src="/page_assets/img/facebookw.svg" alt=""></a>
+						<a href="https://m.facebook.com/wine2uinternational/"><img src="/page_assets/img/facebookw.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
-						<a href="#"><img src="/page_assets/img/instagram.svg" alt=""></a>
+						<a href="https://instagram.com/wine2u__"><img src="/page_assets/img/instagram.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
-						<a href="#"><img src="/page_assets/img/twitter.svg" alt=""></a>
+						<a href="https://twitter.com/wine2u_"><img src="/page_assets/img/twitter.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
 						<a href="#"><img src="/page_assets/img/youtube.svg" alt=""></a>
@@ -52,7 +52,7 @@
 					<div class="mb-4">
 						<h1 class="mb-3">Apps</h1>
 						<ul class="list-unstyled">
-							<li class="mb-2"><a href="#">ISO</a></li>
+							<li class="mb-2"><a href="#">IOS</a></li>
 							<li class="mb-2"><a href="#">Android</a></li>
 						</ul>
 					</div>
@@ -61,7 +61,7 @@
 
 			<div class="col-12 text-md-right mt-5">
 				<p class="wine_wc">
-					<small>Copyright © 2020 wine 2u  - All rights reserved.</small>
+					<small>Copyright © 2020 wine2u  - All rights reserved.</small>
 				</p>
 			</div>
 		</div>
@@ -75,6 +75,6 @@
 			<i class="fa fa-close"></i>
 		</button>
 	</div> 
-	<p class="mb-3 small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl, mauris dolor vulputate elementum. Vel habitasse faucibus volutpat commodo duis lacinia. Pellentesque tortor, feugiat consectetur condimentum proin. Quam viverra volutpat enim bibendum.</p>
+	<p class="mb-3 small">We use cookies to improve user experience and analyse our website traffic. For these reasons, we may share your information from our site to our analytics partners. By clicking "Accept Cookies", you have given consent for the above to be done whenever you visit our site. <br> You can change your cookie settings at any time by clicking "Cookie Preferences".</p>
 	<button class="cookies-btn">Accept Cookies</button>
 </div>
