@@ -1012,7 +1012,7 @@ class apiController extends Controller
                     $paymentParam['api'] = $paymentGateWays->rave_api;
 
                      // Send Email
-                     $this->sendEmail($order->id);
+                     //$this->sendEmail($order->id);
 
                      return response()->json(['message' =>  'success','payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
                    
@@ -1021,7 +1021,7 @@ class apiController extends Controller
                     $paymentParam['api'] = $paymentGateWays->paypal_api;
                    
                      // Send Email
-                     $this->sendEmail($order->id);
+                    // $this->sendEmail($order->id);
 
                      return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
                      
@@ -1031,7 +1031,7 @@ class apiController extends Controller
                     $paymentParam['api'] = $paymentGateWays->paystack_api;
                  
                     // Send Email
-                     $this->sendEmail($order->id);
+                     //$this->sendEmail($order->id);
 
                      return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'),'paymentinfo' => $paymentParam ], 200);
        
@@ -1039,7 +1039,7 @@ class apiController extends Controller
                     
                     $paymentParam['api'] = $paymentGateWays->expresspay_api;
                      // Send Email
-                     $this->sendEmail($order->id);
+                     //$this->sendEmail($order->id);
 
                      return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'),'paymentinfo' => $paymentParam ], 200);
        
@@ -1048,21 +1048,21 @@ class apiController extends Controller
                     
                     $paymentParam['api'] = $paymentGateWays->hubtel_api;
                     // Send Email
-                    $this->sendEmail($order->id);
+                    //$this->sendEmail($order->id);
 
                     return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
        
                 }elseif($request->input('payment_method') == "pay_on_delivery"){
                     
                     // Send Email
-                    $this->sendEmail($order->id);
+                   // $this->sendEmail($order->id);
 
                     return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
                
                 }else{
                     
                   // Send Email
-                  $this->sendEmail($order->id);
+                  //$this->sendEmail($order->id);
 
                   return response()->json(['message' =>  'success', 'payment_method' => $request->input('payment_method'), 'paymentinfo' => $paymentParam ], 200);
        
