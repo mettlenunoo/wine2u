@@ -2408,3 +2408,56 @@ input[type=checkbox] {
         font-weight: inherit;
     }
 }
+
+/* Newsletter modal */
+.nw-modal {
+    z-index: 100000;
+    padding: 0px;
+}
+.nw-popup-img {
+    padding-bottom: 56.25%;
+    position: relative;
+}
+.nw-popup-body {
+    padding: 40px 3vw;
+    background: #FFF5EA;
+    color: #2B4036;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.form-grid input {
+    width: 100%;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #e7e7e7;
+}
+.form-grid button {
+    padding: 10px 20px;
+    color: #ffffff;
+    border: 1px solid #bb804d;
+    background: #BB804D;
+    cursor: pointer;
+}
+.nw-modal .modal-dialog {
+    max-width: 550px;
+}
+.nw-modal .modal-content {
+    border: none;
+    border-radius: 0px;
+    position: relative;
+    padding: 0;
+}
+.nw-modal .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 34px;
+    color: #000;
+    z-index: 1;
+    padding: 10px 20px;
+    line-height: 1;
+}

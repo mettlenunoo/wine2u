@@ -630,6 +630,11 @@
 <!-- footer includes -->
   @include("pages.includes.footer")
   @include("pages.includes.footer-links")
+  <script>
+    $(document).ready(function(){
+        $("#nw-modal").modal('show');
+    });
+</script>
  <!-- footer includes -->
 
   </body>
