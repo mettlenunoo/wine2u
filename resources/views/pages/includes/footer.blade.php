@@ -78,3 +78,34 @@
 	<p class="mb-3 small">We use cookies to improve user experience and analyse our website traffic. For these reasons, we may share your information from our site to our analytics partners. By clicking "Accept Cookies", you have given consent for the above to be done whenever you visit our site. <br> You can change your cookie settings at any time by clicking "Cookie Preferences".</p>
 	<button class="cookies-btn">Accept Cookies</button>
 </div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nw-modal">
+	Launch demo modal
+  </button>
+
+	<!-- Modal -->
+	<div class="modal fade nw-modal" id="nw-modal" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<button class="close-btn" id="closemodal" data-dismiss="modal" style="cursor: pointer" >
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="nw-popup-img">
+					<img src="/page_assets/img/about-hero.jpg" alt="" class="as-background"/>
+				</div>
+				<div class="nw-popup-body">
+					<h2>Get the latest updates!</h2>
+					<p>
+						Enter you email address below to subscribe to Wine2U.
+					</p>
+					<form id="subscribe_model">
+						<div class="form-grid">
+							<input id="m_email"  type="email" placeholder="Email Address"  required/>
+							<button type="submit" id="model_btn">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
