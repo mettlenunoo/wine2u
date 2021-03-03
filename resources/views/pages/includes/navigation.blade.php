@@ -123,7 +123,7 @@
 					<a class="px-md-3 py-md-2" href="#">Hard Liquor</a>
 					<a class="px-md-3 py-md-2" href="#">Pairing</a>
 					<a class="px-md-3 py-md-2" href="#">Region</a>
-					<a class="px-md-3 py-md-2" href="#">Our Blog</a>
+					<a class="px-md-3 py-md-2" href="/blog">Our Blog</a>
 				</div>
 			</div>
 		</div>
