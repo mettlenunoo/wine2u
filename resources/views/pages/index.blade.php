@@ -631,9 +631,57 @@
   @include("pages.includes.footer")
   @include("pages.includes.footer-links")
   <script>
+	
+	//LOADS SUBSCRIBE FORM - Needs to be changed to check if user is already subscribed before loading
     $(document).ready(function(){
         $("#nw-modal").modal('show');
     });
+	
+	//Subscribe form
+	$('#subscribe_model').submit(function(event) {
+        event.preventDefault();
+
+    var email = document.getElementById("m_email").value;
+    
+    // Disable the Submit button
+    $("#model_btn").html("Loading...");
+    $("#model_btn").attr("disabled", true);
+
+      // BINDING DATA TO DATA FORM
+      var formData = new FormData();
+      formData.append('email', email);
+
+        $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+    $.ajax({
+        method:'POST',
+        url:'/subscribe',
+        data:formData,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success:function(response){
+
+          console.log(response);
+          $('#subscribe_model').trigger("reset");
+
+          if(response == "success"){              
+            swal( " Thank You! ", "Subscribed Successfully", "success");
+          }else{
+            swal( "Whoops", "There is an error. Please try again", "error");
+          }
+            // Enable the Submit button
+            $('#nw-modal').modal('hide');
+            $("#model_btn").attr("disabled", false);
+         }
+
+      });
+
+  });
 </script>
  <!-- footer includes -->
 

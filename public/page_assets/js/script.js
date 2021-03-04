@@ -292,7 +292,7 @@ setTimeout(function(){
 
 
 
-
+/* 
 $('#subscribe_form').submit(function(event) {
 event.preventDefault();
 
@@ -343,7 +343,7 @@ success:function(response){
 }
 });
 
-});
+});*/
 
 function hideCookie(){
 $.ajaxSetup({
