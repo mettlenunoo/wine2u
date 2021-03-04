@@ -73,9 +73,9 @@
 					</button>
 					@if(!auth('customer')->user())
 						<div class="nv-auth-links d-none d-md-flex ml-3">
-							<a href="">Register</a>
+							<a href="/signup">Register</a>
 							<span class="px-2">/</span>
-							<a href="">Login</a>
+							<a href="/sign-in">Login</a>
 						</div>
 					@else
 						<a href="/account" class="nv-auth-prof ml-3 d-none d-md-flex">
@@ -118,11 +118,11 @@
 							</div>
 						</div>
 					</div>
-					<a class="px-md-3 py-md-2" href="#">Champagne</a>
-					<a class="px-md-3 py-md-2" href="#">Prosecco</a>
-					<a class="px-md-3 py-md-2" href="#">Hard Liquor</a>
-					<a class="px-md-3 py-md-2" href="#">Pairing</a>
-					<a class="px-md-3 py-md-2" href="#">Region</a>
+					<a class="px-md-3 py-md-2" href="/products">Champagne</a>
+					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
+					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a>
+					<a class="px-md-3 py-md-2" href="/products">Pairing</a>
+					<a class="px-md-3 py-md-2" href="/products">Region</a>
 					<a class="px-md-3 py-md-2" href="/blog">Our Blog</a>
 				</div>
 			</div>

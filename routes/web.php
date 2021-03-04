@@ -66,11 +66,13 @@ Route::resource('/admin/setup/shop','setupController');
 // Product
 Route::get('/', 'comingSoonController@coming_soon');
 //Route::get('/', 'publicController@index');
-Route::get('/index', 'comingSoonController@coming_soon');
+//Route::get('/index', 'comingSoonController@coming_soon');
+Route::get('/index', 'publicController@landing');
 Route::get('/site', 'publicController@index')->name("index");
 
-// Product
+// About
 Route::get('/about', 'publicController@about');
+
 
 // Search
 //Route::get('/products/search', 'publicController@search'); 

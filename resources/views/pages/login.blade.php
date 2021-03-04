@@ -25,7 +25,7 @@
          <h1 class="sign_title">Login</h1>
          <p>Thank you for your interest in Wine 2 U. Please complete the form below <br>
            to join our Preferred Customer List. </p>
-          @include('pages.message');
+          @include('pages.message')
        </div>
  
        <form method="POST" action="{{ route('customer-sign-in') }}">

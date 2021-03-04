@@ -79,7 +79,7 @@
 	<button class="cookies-btn">Accept Cookies</button>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nw-modal">
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#nw-modal">
 	Launch demo modal
   </button>
 
