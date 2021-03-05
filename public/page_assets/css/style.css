@@ -328,6 +328,12 @@ label {
     .about-hero-desc{
         font-size: 12px;
     }
+    .sign_title {
+        font-size: 28px;
+    }
+    .exclusive h1, .about-hero h1 {
+        font-size: 34px;
+    }
 }
 @media (max-width: 374px){
     #about-hero-title{
@@ -1297,14 +1303,12 @@ label {
 
 
 .blackhome {
-    height: 22rem;
     background: black;
     color: #ffffff;
 }
 
-
 .blackhome2 {
-    height: 22rem;
+    height: 100%;
     color: #ffffff;
     object-fit: cover;
     width: 100%;

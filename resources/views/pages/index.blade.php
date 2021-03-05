@@ -551,7 +551,7 @@
 <section class="whoweare">
 	<div class="container-fluid container-w2u">
 		<div class="row">
-			<div class="col-12 col-md-7 px-0 py-0 h-100 order-md-2">
+			<div class="col-12 col-md-7 px-0 py-0 order-md-2">
 				<img src="/page_assets/img/house.jpg" class="img-fluid px-0 py-0  blackhome2" alt="">
 			</div>
 			<div class="col-12 col-md-5 text-center blackhome py-5 centerit order-md-1">
