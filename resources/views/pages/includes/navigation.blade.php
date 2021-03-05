@@ -98,22 +98,22 @@
 							<div class="nv-dropdown">
 								<a href="">Wine</a>
 								<div class="nv-drop-menu">
-									<a href="">Manan</a>
-									<a href="">Dawud</a>
+									<a href="">Wine 1</a>
+									<a href="">Wine 2</a>
 								</div>
 							</div>
 							<div class="nv-dropdown">
 								<a href="">Liquor</a>
 								<div class="nv-drop-menu">
-									<a href="">Manan</a>
-									<a href="">Dawud</a>
+									<a href="">Liquor 1</a>
+									<a href="">Liquor 2</a>
 								</div>
 							</div>
 							<div class="nv-dropdown">
-								<a href="">Booze</a>
+								<a href="">Drink</a>
 								<div class="nv-drop-menu">
-									<a href="">Manan</a>
-									<a href="">Dawud</a>
+									<a href="">Drink 1</a>
+									<a href="">Drink 2</a>
 								</div>
 							</div>
 						</div>
@@ -121,8 +121,8 @@
 					<a class="px-md-3 py-md-2" href="/products">Champagne</a>
 					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
 					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a>
-					<a class="px-md-3 py-md-2" href="/products">Food Pairing</a>
-					<a class="px-md-3 py-md-2" href="/products">Region</a>
+					<a class="px-md-3 py-md-2" href="/products">Pairings</a>
+					<a class="px-md-3 py-md-2" href="/products">Wine Regions</a>
 					<a class="px-md-3 py-md-2" href="/blog">Kɔkɔ's Blog</a>
 				</div>
 			</div>
