@@ -371,7 +371,7 @@ label {
 
 
 .landing {
-    background: url(../img/landing.png);
+    background: url(../img/landing2.jpg);
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
@@ -389,12 +389,16 @@ label {
     font-size: 60px;
     font-family: 'Libre Baskerville', serif;
     font-weight: 700;
-    color: #2B4036;
+    color: #fff;
 }
 
+.max600{
+    max-height: 600px;
+}
 
 .landing p {
     line-height: 1.5;
+    
 }
 
 
