@@ -20,7 +20,7 @@
   <section class="about-hero p-md-5">
 			  <div class="about-hero-text d-flex flex-column justify-content-center h-100 p-5">
           <p class="about-hero-tag wine_wc">About Us</p>
-          <h1 id="about-hero-title">Your Palette, Our Passion</h1>
+          <h1 id="about-hero-title">A one stop shop for all your wine and alcoholic beverage purchase.</h1>
           <p class="about-hero-desc wine_wc">The inspirational impression and deep connection we make with our customers and suppliers is crucial.
             At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. 
           </p>
@@ -40,13 +40,13 @@
         <div class="col-sm-6 px-0">
           <div class="different-textbox centerit flex-column p-4 p-sm-5">
             <img src="{{ asset ('page_assets/img/different-icon1.png') }}" alt="" class="different-textbox-icon mb-4">
-            <p class="different-text text-center px-md-5">We are team of friendly and passoionate people.</p>
+            <p class="different-text text-center px-md-5">We are a team of friendly and passionate people</p>
           </div>
         </div>
         <div class="col-sm-6 px-0">
           <div class="different-textbox centerit flex-column p-4 p-sm-5 border-l">
             <img src="{{ asset ('page_assets/img/different-icon2.png') }}" alt="" class="different-textbox-icon mb-4">
-            <p class="different-text text-center px-md-5">With a combined experience and exposure to wine of 35 years.</p>
+            <p class="different-text text-center px-md-5">With a combined experience and exposure to wine of 35 years</p>
           </div>
         </div>
       </div>
@@ -57,14 +57,22 @@
         <div class="col-sm-6 px-0">
           <div class="different-textbox centerit flex-column p-4 p-sm-5">
             <img src="{{ asset ('page_assets/img/different-icon3.png') }}" alt="" class="different-textbox-icon mb-4">
-            <p class="different-text text-center px-md-5">We purchase directly from the vineyard thereby guaranteeing the very best in quality, assistance before, during and after purchase and not to forget, the very best prices in the business.</p>
+            <p class="different-text text-center px-md-5">We purchase directly from the vineyards thereby guaranteeing the very best in quality, assistance before/during/ and after purchase and to to forget, the very best prices in the business
+            </p>
           </div>
         </div>
         <div class="col-sm-6 px-0">
           <div class="different-textbox centerit flex-column p-4 p-sm-5 border-l">
             <img src="{{ asset ('page_assets/img/different-icon4.png') }}" alt="" class="different-textbox-icon mb-4">
-            <p class="different-text text-center px-md-5">For us, business is not complete until you are satisfied with our drinks, our service and you are confident enough to initiate a repeat purchase and refer a friend.</p>
+            <p class="different-text text-center px-md-5">For us, the business is not complete until you are satisfied with our drinks , our service, and you are confident enough to initiate a repeat purchase and refer a friend
+            </p>
           </div>
+        </div>
+      </div>
+      <div class="row mt-5 mb-0">
+        <div class="col-12 pt-5">
+          <p class="different-text text-center px-md-5">Our online store has been inspired by you, designed by us and created for you, to simplify your purchase of wines and alcoholic beverages.
+            Consider wine2u as your personal online sommelier, wine educator, and wine-store where you get to interact with us to assist you with your selection and purchase of wines to suit every occasion.</p>            
         </div>
       </div>
 
@@ -83,9 +91,14 @@
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
             <h2 class="2col-text-title">Convenience</h2>
-            <p class="2col-text-desc">Get first taste of wine2u from the comforts of your home.</p>
-            <p class="2col-text-desc">As a team, we understand your need for convenience, this is why you can learn, browse and purchase wines and spirits from the best wine countries around the world.</p>
-            <p class="2col-text-desc">We want you to allow us take your taste buds on a journey of wine discovery.</p>
+            <p class="2col-text-desc">Have you had an experience throwing a party and suddenly finding that the number of guests you catered for, has doubled(each person brought a plus one or two) as it happens in our neck of woods?
+              And suddenly you are panicking that your drinks will run out?
+              Have you had friends just turn up unannounced for home visits and you look in your drink’s cupboard, wine fridge or cellar and realise that you haven’t stocked up? And yet the shops are also closed?
+              And what about the impromptu board meeting where your PA has not stocked up from the last meeting?
+              </p>
+            <p class="2col-text-desc">If you experienced any of the above and you were unable to top up, wine2u.com has been designed for you.
+              Sit on your sofa, relax and let us bring your favorite drinks home to you. No more last minute rush, unpleasant surprises at your parties and events, poor quality drinks etc. We’ve got all angles covered at wine2u.
+              </p>
           </div>
         </div>
         <div class="col-md-6">
@@ -99,8 +112,9 @@
         <div class="col-md-6 centerit mb-4 d-flex d-md-none">
           <div class="2col-text">
             <h2 class="2col-text-title">Own Your Palate</h2>
-            <p class="2col-text-desc">Savour every sip and taste of wine from our collection; we have created filters for you to select and curate your wine list according to your taste buds.</p>
-            <p class="2col-text-desc fw-bold">We let you decide and we deliver</p>
+            <p class="2col-text-desc">Your palate is our passion, and what we want to achieve is that you have a ‘Winestatic’ experience. </p>
+            <p class="2col-text-desc">Because we believe that each individual has their own unique palate, and the “one size fits all” notion does not apply when selecting what your favorite tipple is, especially as a beginner to wines.</p>
+            <p class="2col-text-desc">At wine2u, we hope to assist you to master your own palate, and walk away with the knowledge from our panel of experts.</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -111,8 +125,9 @@
         <div class="col-md-6 centerit d-none d-md-flex">
           <div class="2col-text">
             <h2 class="2col-text-title">Own Your Palate</h2>
-            <p class="2col-text-desc">Savour every sip and taste of wine from our collection; we have created filters for you to select and curate your wine list according to your taste buds.</p>
-            <p class="2col-text-desc fw-bold">We let you decide and we deliver</p>
+            <p class="2col-text-desc">Your palate is our passion, and what we want to achieve is that you have a ‘Winestatic’ experience. </p>
+            <p class="2col-text-desc">Because we believe that each individual has their own unique palate, and the “one size fits all” notion does not apply when selecting what your favorite tipple is, especially as a beginner to wines.</p>
+            <p class="2col-text-desc">At wine2u, we hope to assist you to master your own palate, and walk away with the knowledge from our panel of experts.</p>
           </div>
         </div>
       </div>
