@@ -121,7 +121,7 @@
 					<a class="px-md-3 py-md-2" href="/products">Champagne</a>
 					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
 					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a>
-					<a class="px-md-3 py-md-2" href="/products">Pairings</a>
+					<a class="px-md-3 py-md-2" href="/products">Food Pairings</a>
 					<a class="px-md-3 py-md-2" href="/products">Wine Regions</a>
 					<a class="px-md-3 py-md-2" href="/blog">Kɔkɔ's Blog</a>
 				</div>
