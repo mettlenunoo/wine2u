@@ -21,9 +21,9 @@
 			  <div class="about-hero-text d-flex flex-column justify-content-center h-100 p-5">
           <p class="about-hero-tag wine_wc">About Us</p>
           <h1 id="about-hero-title">A Passion For Fine Wine & Alcoholic Beverages</h1>
-          <p class="about-hero-desc wine_wc">At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. 
-          By offering a dynamic portfolio and a robust platform. Our team of dedicated specialists strive to be the best partner to suppliers and customers alike.
-          You can trust us to give you the finest wines in the world—backed by the most exclusive wine experience.
+          <p class="about-hero-desc wine_wc">The inspirational impression and deep connection we make with our customers and suppliers is crucial.
+            At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. Our team of dedicated specialists strives to be the best partner to our suppliers and customers. In doing so, we give the finest wines in the world—and the people who bring them to life—the room to grow and thrive, and the consumers a “Winetastic” Experience.
+            …“THE EXPERIENCE” is what we would like to highlight, and that what we want people to walk away with is: “When I go to a restaurant I can have this experience” “when I have an event, I can have this experience” “when I purchase wine, this is what I can have in my home”.
           </p>
         </div>
   </section>

@@ -559,7 +559,7 @@
 					<img src="/page_assets/img/grapewineandglass.svg" alt="">
 
 					<p class="text-uppercase my-3  wine2upc">WHO  ARE WE</p>
-					<p>At Wine2u, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. Our team of dedicated sommeliers strive to be the best partner to our suppliers and customers by providing the finest wines from around the world. </p>
+					<p>The inspirational impression and deep connection we make with our customers and suppliers is crucial. At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. Our team of dedicated specialists strives to be the best partner to our suppliers and customers. In doing so, we give the finest wines in the world—and the people who bring them to life—the room to grow and thrive, and the consumers a “Winetastic” Experience.</p>
 					<a href="/about" class="btn btn-wine2u px-4">Learn More</a>
 				</div>
 			</div>
