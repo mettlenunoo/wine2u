@@ -294,7 +294,7 @@
         @endforeach
 
         
-        <p><a  href="/blog" >Korkor's Blog</a></p>
+        <p><a  href="/blog" >Kɔkɔ's Blog</a></p>
   </div>
 </div>
   <div class="row centerit">

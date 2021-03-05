@@ -179,7 +179,7 @@
             <h2 class="2col-text-title">Interaction</h2>
             <p class="2col-text-desc">If you are just curious about wines and want to learn more, visit our Tutorials and hear what the experts have to say.</p>
             <p class="2col-text-desc">And if you want suggestions on food and wine pairing for the ultimate experience, go to the Pairing section.</p>
-            <p class="2col-text-desc">You may also want to visit Korkor's Blog for our daily broadcasts ranging from new discoveries to everyday questions about wine and alcoholic beverages.</p>
+            <p class="2col-text-desc">You may also want to visit Kɔkɔ's Blog for our daily broadcasts ranging from new discoveries to everyday questions about wine and alcoholic beverages.</p>
           </div>
         </div>
         <div class="col-md-6">

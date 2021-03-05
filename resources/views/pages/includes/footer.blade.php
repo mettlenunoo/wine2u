@@ -37,7 +37,7 @@
 						<ul class="list-unstyled">
 							<li class="mb-2"><a href="#">Grapes</a></li>
 							<li class="mb-2"><a href="#">Regions</a></li>
-							<li class="mb-2"><a href="#">Korkor's Blog</a></li>
+							<li class="mb-2"><a href="#">Kɔkɔ's Blog</a></li>
 						</ul>
 					</div>
 
