@@ -24,7 +24,7 @@
 
 <body>
 
-    <section class="vv" style="background-image: url('/page_assets/img/landing2.jpg')">
+    <section class="vv">
         <div class="overlay"></div>
         {{-- <video src="{{asset('/landing/show2.mp4')}}" autoplay loop muted></video> --}}
         <div class="content1">

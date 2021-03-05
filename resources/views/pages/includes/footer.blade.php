@@ -91,7 +91,7 @@
 					<span aria-hidden="true" class="clr-white">&times;</span>
 				</button>
 				<div class="nw-popup-img">
-					<img src="/page_assets/img/modal-he.jpg" alt="" class="as-background"/>
+					<img src="{{ asset('page_assets/img/modal-he.jpg') }}" alt="" class="as-background"/>
 				</div>
 				<div class="nw-popup-body">
 					<h2>Get the latest updates!</h2>
