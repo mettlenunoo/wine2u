@@ -225,7 +225,7 @@
 <!-- Our Bestsellers -->
 <section class="my-5 py-5 relativetins">
 	<img src="/page_assets/img/Wine2U-03.svg" class="righteffect" alt="">
-	<div class="container">
+	<div class="container-fluid container-w2u">
 		<div class="row align-items-center">
 			<div class="col-6">
 				<h1 class="sign_title">Our Bestsellers </h1>
@@ -309,7 +309,7 @@
 
 <!-- Exclusive range  of winery -->
 <section class="exclusive centerit">
- 	<div class="container">
+ 	<div class="container-fluid container-w2u">
 		<div class="row ">
 			<div class="col-12 col-md-6">
 				<h1>Exclusive range  <br> of winery</h1>
@@ -323,7 +323,7 @@
 
 <!-- italy finest  -->
 <section class="my-5 py-5">
-	<div class="container">
+	<div class="container-fluid container-w2u">
       	<div class="row align-items-center">
 			<div class="col-6">
 				<h1 class="sign_title">Top Rated Products </h1>
@@ -406,7 +406,7 @@
 
 <!-- wine slide -->
 <section  class="productgreenline">
-    <div class="container">
+    <div class="container-fluid container-w2u">
     	<div class="row">
       		<div class="col-12">
        			<div class="owl-carousel  owl-wineslide owl-theme">
@@ -464,7 +464,7 @@
 
 
 <section class="my-5 py-5">
-   	<div class="container">
+   	<div class="container-fluid container-w2u">
       	<div class="row align-items-center">
          	<div class="col-6">
             	<h1 class="sign_title">Champagne</h1>
@@ -549,7 +549,7 @@
 
 <!--Who we are  -->
 <section class="whoweare">
-	<div class="container">
+	<div class="container-fluid container-w2u">
 		<div class="row">
 			<div class="col-12 col-md-7 px-0 py-0 h-100 order-md-2">
 				<img src="/page_assets/img/house.jpg" class="img-fluid px-0 py-0  blackhome2" alt="">
@@ -573,7 +573,7 @@
 	<img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt="">
     <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
     <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
-    <div class="container">
+    <div class="container-fluid container-w2u">
     	<div class="row">
 			<div class="col-12 col-lg-9 mx-auto">
 				<div class="row">

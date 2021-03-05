@@ -74,7 +74,9 @@ a.navbar-wholsome.active {
     color: #ffffff !important;
 
 }
-
+.clr-white{
+    color: #fff;
+}
 
 
 /* Global Syles */

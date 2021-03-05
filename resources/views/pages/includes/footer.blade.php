@@ -88,10 +88,10 @@
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<button class="close-btn" id="closemodal" data-dismiss="modal" style="cursor: pointer" >
-					<span aria-hidden="true">&times;</span>
+					<span aria-hidden="true" class="clr-white">&times;</span>
 				</button>
 				<div class="nw-popup-img">
-					<img src="/page_assets/img/about-hero.jpg" alt="" class="as-background"/>
+					<img src="/page_assets/img/modal-hero.jpg" alt="" class="as-background"/>
 				</div>
 				<div class="nw-popup-body">
 					<h2>Get the latest updates!</h2>
