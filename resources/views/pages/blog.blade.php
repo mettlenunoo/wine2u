@@ -19,7 +19,7 @@
   <div class="container ">
     <div class="row ">
      <div class="col-12 text-center">
-     <h1 class="sign_title wine2upc">Our Blog</h1>
+     <h1 class="sign_title wine2upc">Korkor's Blog</h1>
      <p class="wine2upc ">Be informed about our latest findings and wine tutorials</p>
      </div>
     </div>
