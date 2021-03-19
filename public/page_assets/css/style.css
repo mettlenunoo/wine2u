@@ -2471,3 +2471,6 @@ input[type=checkbox] {
     padding: 10px 20px;
     line-height: 1;
 }
+.hidden{
+    opacity: 0;
+}

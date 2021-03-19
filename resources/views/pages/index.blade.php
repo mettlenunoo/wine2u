@@ -632,12 +632,18 @@
 <!-- footer includes -->
   @include("pages.includes.footer")
   @include("pages.includes.footer-links")
-  <script>
+  <script type="text/javascript">
 	
 	//LOADS SUBSCRIBE FORM - Needs to be changed to check if user is already subscribed before loading
-    $(document).ready(function(){
-        $("#nw-modal").modal('show');
-    });
+	$(document).ready(function() {
+		new WOW().init();
+
+		if (sessionStorage.getItem('#nw-modal') !== 'true') {
+			setTimeout(function() {$('#nw-modal').modal('show');},
+			3000);
+			sessionStorage.setItem('#nw-modal','true');     
+		}
+	});
 	
 	//Subscribe form
 	$('#subscribe_model').submit(function(event) {

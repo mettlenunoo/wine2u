@@ -68,7 +68,7 @@
     </div>
 </section>
 
-<div class="privacy-policy" id="privacy-policy">
+<div class="privacy-policy" id="cookie-ticker">
 	<div class="privacy-top">
 		<p class="fw-bold mb-0">We serve cookies</p>
 		<button id="close-cookies">
@@ -76,12 +76,8 @@
 		</button>
 	</div> 
 	<p class="mb-3 small">We use cookies to improve user experience and analyse our website traffic. For these reasons, we may share your information from our site to our analytics partners. By clicking "Accept Cookies", you have given consent for the above to be done whenever you visit our site. <br> You can change your cookie settings at any time by clicking "Cookie Preferences".</p>
-	<button class="cookies-btn">Accept Cookies</button>
+	<button class="cookies-btn" id="accept-cookies">Accept Cookies</button>
 </div>
-
-<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#nw-modal">
-	Launch demo modal
-  </button>
 
 	<!-- Modal -->
 	<div class="modal fade nw-modal" id="nw-modal" tabindex="-1">
