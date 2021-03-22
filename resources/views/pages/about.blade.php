@@ -57,7 +57,7 @@
         <div class="col-sm-6 px-0">
           <div class="different-textbox centerit flex-column p-4 p-sm-5">
             <img src="{{ asset ('page_assets/img/different-icon3.png') }}" alt="" class="different-textbox-icon mb-4">
-            <p class="different-text text-center px-md-5">We purchase directly from the vineyards thereby guaranteeing the very best in quality, assistance before/during/ and after purchase and to to forget, the very best prices in the business
+            <p class="different-text text-center px-md-5">We purchase directly from the vineyards thereby guaranteeing the very best in quality, assistance before/during/ and after purchase and not to forget, the very best prices in the business
             </p>
           </div>
         </div>
