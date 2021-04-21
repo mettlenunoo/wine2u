@@ -21,11 +21,18 @@
       <div class="row ">
          <div class="col-12 text-center">
             <h1 class="sign_title wine2upc"> {{ ucwords($product->product_name) }} </h1>
-            <p class="wine2upc "> 
-               {{-- <span>2018</span> | 
-               <span>Red Wine</span>  |  
-               <span>Cabernet Sauvignon</span> |
-               <span> Raspberry</span>  --}}
+            @php 
+               $tags = explode(",",$product->tag); 
+            @endphp
+            <p class="wine2upc ">
+               <span class="font-weight-light">|</span>
+               @if(!empty($tags))
+
+                  @foreach ($tags as $tag)
+                     <span class="mx-1 font-weight-light">{{ ucwords($tag) }}</span> |
+                  @endforeach
+
+               @endif 
             </p>
          </div>
       </div>
@@ -104,12 +111,13 @@
                </div>
                <div class="col-6 col-md-4 col-lg-5">
                   
-                  <select class="form-control form-prod text-center single-prd-sel"  onchange="getval(this);" >
+                  {{--<select class="form-control form-prod text-center single-prd-sel"  onchange="getval(this);" >
                      @foreach ($product->variableProductAttributes as $att)
                         <option value="{{ $att->id }}"> {{ $att->attribute->title }} </option>
                      @endforeach
                     
-                  </select>
+                  </select>--}}
+                  <button type="submit" class="btn btn-prod btn-block" onclick="addToCart()" id="addbtn">Add to Cart</button>
                </div>
 
                @if(auth('customer')->user())
@@ -126,13 +134,13 @@
 
             </div>
 
-            <div class="row">
+            {{--<div class="row">
              
                <div class="col-12 col-md-12 col-lg-9">
                   <button type="submit" class="btn btn-prod btn-block" onclick="addToCart()" id="addbtn">Add to Cart</button>
                </div>
                
-            </div>
+            </div>--}}
 
             <!-- award -->
             {{-- <div class="row">
@@ -149,14 +157,11 @@
             <div class="row">
                <div class="col-12 mb-3 mt-3">
                   <h5>Description </h5>
-                  @php 
-                     $tags = explode(",",$product->tag); 
-                  @endphp
                   <ul class="list-inline">
                      @if(!empty($tags))
 
                         @foreach ($tags as $tag)
-                           <li class="list-inline-item pill-wine2 mb-2"> {{ ucwords($tag) }} </li>
+                           <li class="list-inline-item pill-wine2 mb-2 font-weight-light"> {{ ucwords($tag) }} </li>
                         @endforeach
 
                      @endif
@@ -180,6 +185,86 @@
 <section class="wine-2uprob ">
    <div class="container-fluid container-w2u">
       <div class="row">
+         <div class="col-12 col-md-6 pr-md-5 mb-4">
+            <div class="row">
+               <div class="col-6">
+                  <h5>Reviews </h5>
+               </div>
+               @if(auth('customer')->user())
+                  <div class="col-6 text-right">
+                     <li class="list-inline-item pill-review mb-2 pointer" data-toggle="modal" data-target="#reviewModal"> Add Review</li>
+                  </div>
+               @endif
+            </div>
+            <div class="row d-flex align-items-center justify-content-center my-4 pb-4">
+               <div class="col-md-4 total-stars mb-3 mb-md-0">
+                  <div id="container"></div>
+               </div>
+               <div class="col-md-8">
+                  <div class="progress-reviews d-flex align-items-center mb-2">
+                     <label for="5star" class="mb-0 mr-2 star-label">5 Stars:</label>
+                     <progress id="5star" max="100" value="100"> 100% </progress><!--VALUE SHOULD BE EQUAL TO AMOUNT OF STARS -->
+                  </div>
+                  <div class="progress-reviews d-flex align-items-center mb-2">
+                     <label for="4star" class="mb-0 mr-2 star-label">4 Stars:</label>
+                     <progress id="4star" max="100" value="60"> 60% </progress>
+                  </div>
+                  <div class="progress-reviews d-flex align-items-center mb-2">
+                     <label for="3star" class="mb-0 mr-2 star-label">3 Stars:</label>
+                     <progress id="3star" max="100" value="40"> 40% </progress>
+                  </div>
+                  <div class="progress-reviews d-flex align-items-center mb-2">
+                     <label for="2star" class="mb-0 mr-2 star-label">2 Stars:</label>
+                     <progress id="2star" max="100" value="80"> 80% </progress>
+                  </div>
+                  <div class="progress-reviews d-flex align-items-center mb-2">
+                     <label for="1star" class="mb-0 mr-2 star-label">1 Star:</label>
+                     <progress id="1star" max="100" value="20"> 20% </progress>
+                  </div>
+               </div>
+            </div>
+            <!--</div>-->
+            {{--
+            <div class="col-12">
+               <div class="row view_review"></div>
+            </div>
+               <div class="col-12 text-center view_review_btn"></div>
+            
+            --}}
+
+               <!--<div class="col-12 col-md-6 pr-md-5 mb-4">-->
+            <div class="row centerit mb-3">
+               <div class="col-9">
+                  <div class="media centerit">
+                     <img src="/page_assets/img/review2.png" class=" reviewimage" alt="...">
+                     <div class="media-body pl-2">
+                        <p class="mb-0"><strong>John Doe</strong> </p>
+                        <ul class="list-inline">
+                           <li class="list-inline-item">4.5</li>
+                           <li class="list-inline-item">
+                              <div class="rating"> 
+                                 <input type="radio" name="ratingl5" value="5" id="ratingl5"><label for="ratingl5">☆</label> 
+                                 <input type="radio" name="ratingl4" value="4" id="ratingl4"><label for="ratingl4">☆</label> 
+                                 <input type="radio" name="ratingl3" value="3" id="ratingl3"><label for="ratingl3">☆</label> 
+                                 <input type="radio" name="ratingl2" value="2" id="ratingl2"><label for="ratingl2">☆</label> 
+                                 <input type="radio" name="ratingl1" value="1" id="ratingl1"><label for="ratingl1">☆</label>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-3 text-right">
+                  1st, August, 2020
+               </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut diam consectetur integer sem mattis integer aliquam mauris. Purus suspendisse fermentum, nulla dignissim pretium scelerisque sed. Ultricies quis tellus amet in nisi mattis in. Sagittis ullamcorper amet sit justo ultricies.</p>
+            <!-- load more -->
+            <div class="w-100 text-center my-4">
+               <button type="" class="btn btn-wine2u px-5 ">Read More Reviews</button>
+            </div> 
+         </div> 
+         
          <div class="col-12 col-md-6 pr-md-5" >
             <h5>Characteristics</h5>
             <div class="row mt-5 ">
@@ -213,7 +298,15 @@
                </div>
             </div>
          </div>
-         <div class="col-12 col-md-6">
+      </div>
+   </div>
+</section>
+<!-- Characteristics and Taste Notes -->
+<!-- Reviews -->
+<section class="py-md-5 pb-5">
+   <div class="container-fluid container-w2u">
+      <div class="row pb-5">
+         <div class="col-12">
             {{-- <div class="row my-5 relativetins">
                <div class="col-12">
                   <h5>Taste Notes </h5>
@@ -267,7 +360,7 @@
             @if(count($product->pairing) > 0)
                <div class="row my-5 relativetins">
                   <div class="col-12 mb-4">
-                     <h5>Parings </h5>
+                     <h5 class="sign_title">Food Parings </h5>
                   </div>
                   <div class="col-10 mx-auto">
                      <div id="paringcarouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -327,65 +420,23 @@
 
          </div>
       </div>
-   </div>
-</section>
-<!-- Characteristics and Taste Notes -->
-<!-- Reviews -->
-<section class="wine-2uprob2 py-md-5 pb-5">
-   <div class="container-fluid container-w2u">
-      <div class="row">
-         <div class="col-12 mb-5">
-			<div class="row">
-				<div class="col-6">
-					<h5>Reviews </h5>
-				</div>
-				@if(auth('customer')->user())
-				   <div class="col-6 text-right">
-					  <li class="list-inline-item pill-review mb-2 pointer" data-toggle="modal" data-target="#reviewModal"> Add Review</li>
-				   </div>
-				@endif
-			</div>
-		  </div>
-		  <div class="col-12">
-			  <div class="row view_review"></div>
-		  </div>
-          <div class="col-12 text-center view_review_btn"></div>
-       
-         <!-- lead more -->
-            {{-- <div class="col-12 text-center">
-               <button type="" class="btn btn-wine2u px-5 ">Load More</button>
-            </div> --}}
-         <!-- lead more -->
 
-         {{-- <div class="col-12 col-md-6 pr-md-5 mb-4">
-            <div class="row centerit mb-3">
-               <div class="col-9">
-                  <div class="media centerit">
-                     <img src="/page_assets/img/review2.png" class=" reviewimage" alt="...">
-                     <div class="media-body pl-2">
-                        <p class="mb-0"><strong>John Doe</strong> </p>
-                        <ul class="list-inline">
-                           <li class="list-inline-item">4.5</li>
-                           <li class="list-inline-item">
-                              <div class="rating"> 
-                                 <input type="radio" name="ratingl5" value="5" id="ratingl5"><label for="ratingl5">☆</label> 
-                                 <input type="radio" name="ratingl4" value="4" id="ratingl4"><label for="ratingl4">☆</label> 
-                                 <input type="radio" name="ratingl3" value="3" id="ratingl3"><label for="ratingl3">☆</label> 
-                                 <input type="radio" name="ratingl2" value="2" id="ratingl2"><label for="ratingl2">☆</label> 
-                                 <input type="radio" name="ratingl1" value="1" id="ratingl1"><label for="ratingl1">☆</label>
-                              </div>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-3 text-right">
-                  1st, August, 2020
-               </div>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut diam consectetur integer sem mattis integer aliquam mauris. Purus suspendisse fermentum, nulla dignissim pretium scelerisque sed. Ultricies quis tellus amet in nisi mattis in. Sagittis ullamcorper amet sit justo ultricies.</p>
-         </div> --}}
-      </div>
+      <div class="row py-5">
+         <div class="col-md-6 centerit mb-4 mb-md-0">
+           <div class="2col-text">
+             <h2 class="2col-text-title">More Information</h2>
+             <p class="2col-text-desc">
+               {!! ucfirst($product->more_description) !!}
+            </p>
+           </div>
+         </div>
+         <div class="col-md-6">
+           <div class="2col-img-container-fluid">
+             <img src="{{ asset ('page_assets/img/2col-img1.jpg') }}" alt="" class="2col-img w-100">
+           </div>
+         </div>
+       </div>
+
    </div>
 </section>
 <!-- Reviews -->
@@ -730,5 +781,42 @@
    });
    </script>
 
+         <!--PROGRESS BAR-->
+         <script src="/page_assets/js/progressbar.js"></script>
+         <script>
+
+            var bar = new ProgressBar.Circle(container, {
+            color: '#2B4036',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+               autoStyleContainer: false
+            },
+            from: { color: '#aaa', width: 1 },
+            to: { color: '#2B4036', width: 4 },
+            // Set default step function for all animate calls
+            step: function(state, circle) {
+               circle.path.setAttribute('stroke', state.color);
+               circle.path.setAttribute('stroke-width', state.width);
+               //Value to be displayed currently static
+               var value = (circle.value() * 20) / 4;
+               if (value === 0) {
+                  circle.setText('');
+               } else {
+                  circle.setText(value.toFixed(1));
+               }
+
+            }
+            });
+            bar.text.style.fontFamily = "'Sopia Pro', sans-serif";
+            bar.text.style.fontSize = '2rem';
+            bar.text.style.fontWeight = 'bold';
+
+            bar.animate(0.84);  // Number from 0.0 to 1.0
+         </script>
   </body>
 </html>

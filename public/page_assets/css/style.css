@@ -959,7 +959,12 @@ label {
     font-size: 14px;
     color: #C39154;
 }
-
+.font-weight-100{
+    font-weight: 100;
+}
+.progress-reviews progress{
+    width: 100%;
+}
 .award-pushl {
     margin-left: -21px;
 }
@@ -1415,7 +1420,46 @@ input[type=checkbox] {
     background: #2B4036;
 }
 
+progress {
+    border: none;
+    background-color: rgba(43, 64, 54, 0.1);
+    color: #2B4036;
+    border-radius: 10px;
+    height: 6px;
+  }
+  
+  progress::-webkit-progress-value {
+    background: #2b4036;
+    border-radius: 10px;
+    height: 6px;
+  }
+  
+  progress::-moz-progress-bar {
+    background: rgba(43, 64, 54, 0.1);
+    border-radius: 10px;
+    height: 6px;
+  }
+  
+  progress::-webkit-progress-value {
+    background: #2B4036;
+    border-radius: 10px;
+    height: 6px;
+  }
+  
+  progress::-webkit-progress-bar {
+    background: rgba(43, 64, 54, 0.1);
+    border-radius: 10px;
+    height: 6px;
+  }
 
+  .total-stars #container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .star-label{
+      white-space: nowrap !important;
+  }
 
 /* range slider */
 
