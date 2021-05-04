@@ -74,7 +74,6 @@ class RegisterController extends Controller
             'type' => $data['type'],
             'status' => $data['status'],
 
-
         ]);
     }
 }

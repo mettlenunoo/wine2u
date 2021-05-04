@@ -327,22 +327,7 @@ class Product extends Model
         return $query;
     }
 
-    public function scopeFee($query,$fee)
-    {
-        if(!Empty($fee)){
-            return $query->where('fee_id',$fee);
-        }
-        return $query;
-    }
-
-    public function scopeRecency($query,$recency)
-    {
-        if(!Empty($recency)){
-            $cutoff = Carbon::now()->subDays($recency)->format('Y-m-d');
-            return $query->where('updated_at','>',$cutoff);
-        }
-        return $query;
-    }
+   
 
     public function customer()
     {

@@ -184,7 +184,7 @@ class productController extends Controller
             // SLUG
             // To check whether two pieces of content with the same title.
                 $results = Product::WHERE('product_name', $request->input('product_name'))->WHERE('country_id','=',$shopId)->get();
-                $slug = $this->checker_slug($request->input('product_name'), $old_slug = null,$results);
+                $slug = $this->checker_slug($request->input('product_name') ,$results , $old_slug = null);
             // END OF SLUG
 
             $img1 = "";
@@ -217,8 +217,8 @@ class productController extends Controller
             $product = new Product;
             $product->product_name = $request->input('product_name');
             $product->slug =  $slug;
-            $product->description = $request->input('short_description');
-            $product->short_description = $request->input('description');
+            $product->description = $request->input('description') ;
+            $product->short_description = $request->input('short_description');
             $product->more_description = $request->input('more_description');
             $product->img1 = $img1;
             $product->img2 = $img2;
@@ -367,7 +367,7 @@ class productController extends Controller
          // SLUG
          // To check whether two pieces of content with the same title.
              $results = Product::WHERE('product_name', $request->input('product_name'))->WHERE('country_id','=',$shopId)->get();
-             $slug = $this->checker_slug($request->input('product_name'), $product->slug,$results);
+             $slug = $this->checker_slug($request->input('product_name'),$results, $product->slug);
          // END OF SLUG
 
      
@@ -397,8 +397,8 @@ class productController extends Controller
           
              $product->product_name = $request->input('product_name');
              $product->slug =  $slug;
-             $product->description = $request->input('short_description');
-            $product->short_description = $request->input('description');
+             $product->description = $request->input('description');
+            $product->short_description = $request->input('short_description');
             $product->more_description = $request->input('more_description');
              $product->video = $request->input('video_link');
              $product->tag = $request->input('tag');
@@ -535,7 +535,7 @@ class productController extends Controller
             // SLUG
             // To check whether two pieces of content with the same title.
                 $results = Product::WHERE('product_name', $request->input('product_name'))->WHERE('country_id','=',$shopId)->get();
-                $slug = $this->checker_slug($request->input('product_name'), $product->slug,$results);
+                $slug = $this->checker_slug($request->input('product_name'),$results, $product->slug);
             // END OF SLUG
 
         
@@ -894,7 +894,7 @@ class productController extends Controller
     }
 
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name, $results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;

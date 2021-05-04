@@ -72,7 +72,7 @@
                              <p class="" for="example-text-input">Short Product Description</p>
                              <p id="desc" style="color:red;"> </p>
                                         <!-- Summernote Container -->
-                            <textarea class="js-summernote" name="description" id="desc"></textarea>
+                            <textarea class="js-summernote" name="short_description" id="desc"></textarea>
                                         
                         </div>
                   </div>
@@ -86,7 +86,7 @@
                         <div class=" block-content-full">
                             <p class="" for="example-text-input">Extended Description</p>
                                         <!-- Summernote Container -->
-                            <textarea class="js-summernote" name="short_description"></textarea>
+                            <textarea class="js-summernote" name="description"></textarea>
                                         
                         </div>
                 </div>
@@ -278,7 +278,7 @@
                 <div class="form-group">
                     <label class="col-xs-12" for="example-select">Select Brand</label>
                          <div class="col-sm-12">
-                           <select  class="js-select2 form-control" id="example2-select2"  style="width: 100%;" data-placeholder="Choose .."    name="brand"  required="">
+                           <select  class="js-select2 form-control" id="example2-select2"  style="width: 100%;" data-placeholder="Choose .."    name="brand" >
                                <option value="" >None</option>
                                 @foreach($brands as $key => $brand) 
                                     <option  value="{{ $brand->id }}" > {{ $brand->title }} </option>
@@ -290,7 +290,7 @@
                 <div class="form-group">
                     <label class="col-xs-12" for="example-select">Select Wine Type</label>
                          <div class="col-sm-12">
-                           <select  class="js-select2 form-control" id="example2-select2"  style="width: 100%;" data-placeholder="Choose many.."  multiple  name="wines[]"  required="">
+                           <select  class="js-select2 form-control" id="example2-select2"  style="width: 100%;" data-placeholder="Choose many.."  multiple  name="wines[]"  >
                                <option disabled >None</option>
                                 @foreach($wines as $key => $wine) 
                                     <option  disabled > {{ $wine->title }} </option>
