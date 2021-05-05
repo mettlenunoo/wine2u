@@ -57,7 +57,7 @@
 					</div>
 					<button class="nv-cart ml-3" onclick="openNav()">
 						<img src="/page_assets/img/cart.svg" width="20" alt=""> 
-						<span class="nv-cart-num">
+						<span class="nv-cart-num" id="totalItems">
 							@php $totalItems = 0; @endphp
 							@if(session()->has('cart'))
 								@foreach (session()->get('cart') as $key => $item)
@@ -79,8 +79,8 @@
 						</div>
 					@else
 						<a href="/account" class="nv-auth-prof ml-3 d-none d-md-flex">
-							<img src="/page_assets/img/review2.png" alt="" class="mr-2">
-							<span>Michael Doe</span>
+							<img src="/images/avatar.jpg" alt="" class="mr-2">
+							<span>{{ auth('customer')->user()->fname." ".auth('customer')->user()->lname }}</span>
 						</a>
 					@endif
 					<button class="navbar-toggler ml-3" data-toggle="collapse" data-target="#site-nav">

@@ -712,35 +712,35 @@ with friends and family earn points.</p>
                   <tbody>
                     @forelse ($profile->orders as $order)
 
-                    <tr>
-                      <td scope="row"> 
-                        <strong>{{ $order->tracking_code}} </strong><br>
-                       {{ $order->ship_to }}
-                      </td>
-                      <td>
-                        {{ $order->created_at}}
-                      </td>
-                      <td>
-                        {{ $order->quantity}} item(s)
-                      </td>
-                      @php  $subTotal = $order->totalamount - ($order->taxes + $order->Shipping_amt + $order->coupon_amount  ) @endphp
-                      <td>
-                        {{ number_format($subTotal,2)}}
-                      </td>
-                      <td>
-                        {{ $order->taxes}}
-                      </td>
-                      <td>
-                        {{ $order->shipping_amt}}
-                        Coupon  {{ $order->coupon_amount }}
-                      </td>
-                      <td>
-                        {{ $order->totalamount}}
-                      </td>
-                      <td>
-                        {{ $order->complete_status}}
-                      </td>
-                    </tr>
+                        <tr>
+                          <td scope="row"> 
+                            <strong>{{ $order->tracking_code}} </strong><br>
+                          {{ $order->ship_to }}
+                          </td>
+                          <td>
+                            {{ $order->created_at}}
+                          </td>
+                          <td>
+                            {{ $order->quantity}} item(s)
+                          </td>
+                          @php  $subTotal = $order->totalamount - ($order->taxes + $order->Shipping_amt + $order->coupon_amount  ) @endphp
+                          <td>
+                            {{ number_format($subTotal,2)}}
+                          </td>
+                          <td>
+                            {{ $order->taxes}}
+                          </td>
+                          <td>
+                            {{ $order->shipping_amt}}
+                            Coupon  {{ $order->coupon_amount }}
+                          </td>
+                          <td>
+                            {{ $order->totalamount}}
+                          </td>
+                          <td>
+                            {{ $order->complete_status}}
+                          </td>
+                        </tr>
 
                     @empty
 

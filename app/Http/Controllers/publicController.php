@@ -460,12 +460,19 @@ class publicController extends Controller
 
     public function single_products($slug) 
     {
+
+        $product = Product::WHERE('products.country_id', '=', $this->shopId)
+        ->searchSlug($slug)
+        ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery'])
+        ->firstorfail();
+
+
         $wishList = [];
         $review  = "";
-        $product = Product::WHERE('products.country_id', '=', $this->shopId)
-                    ->searchSlug($slug)
-                    ->with(['variableProductAttributes','categories','pairing','countryRegion', 'gallery','wines'])
-                    ->firstorfail();
+        // $product = Product::WHERE('products.country_id', '=', $this->shopId)
+        //             ->searchSlug($slug)
+        //             ->with(['variableProductAttributes','categories','pairing','countryRegion', 'gallery','wines'])
+        //             ->firstorfail();
         if(auth('customer')->user()){
 
             $wishList = WishList::WHERE('product_id','=', $product->id)->WHERE('customer_id','=',auth('customer')->user()->id)->get();
@@ -491,7 +498,7 @@ class publicController extends Controller
             ->limit(4)
             ->get();
 
-           // dd($product);
+       // dd($product->ReviewSummary);
                     
         return view('pages.single_product',compact('product','review','wishList','similarProducts'));
 
@@ -1186,17 +1193,17 @@ class publicController extends Controller
                 if(auth('customer')->user()){
                     $reviews = $reviews->orderByRaw("(customer_id = ".auth('customer')->user()->id.") DESC");
                 }
-                $reviews = $reviews->paginate(2);
+                $reviews = $reviews->paginate(1);
                 $output = "";
                 foreach ($reviews as $review){
 
                 $output .=' 
-                <div class="col-12 col-md-6 pr-md-5 mb-4">
+                <div class="col-12 col-md-12 pr-md-1 mb-4">
                 <div class="row centerit mb-3">
                     <div class="col-9">
                         <div class="media centerit">';
                             if($review->review_customer->user_profile_image == null){
-                            $output .='<img src="/page_assets/img/review1.png" class=" reviewimage" alt="...">';
+                            $output .='<img src="/images/avatar.jpg" class=" reviewimage" alt="...">';
                             }else{
                             $output .='<img src="/user_pic/'.$review->review_customer->user_profile_image.'" class=" reviewimage" alt="'.$review->review_customer->fname.'" "'.$review->review_customer->lname.'">';
                             }

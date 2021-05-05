@@ -188,7 +188,7 @@
          <div class="col-12 col-md-6 pr-md-5 mb-4">
             <div class="row">
                <div class="col-6">
-                  <h5>Reviews </h5>
+                  <h5>Reviews  </h5>
                </div>
                @if(auth('customer')->user())
                   <div class="col-6 text-right">
@@ -200,47 +200,54 @@
                <div class="col-md-4 total-stars mb-3 mb-md-0">
                   <div id="container"></div>
                </div>
+               {{-- chart value --}}
+            
+               <input type="hidden" value="{{ $product->ReviewSummary->average_rating }}" id="average-rate">
                <div class="col-md-8">
                   <div class="progress-reviews d-flex align-items-center mb-2">
                      <label for="5star" class="mb-0 mr-2 star-label">5 Stars:</label>
-                     <progress id="5star" max="100" value="100"> 100% </progress><!--VALUE SHOULD BE EQUAL TO AMOUNT OF STARS -->
+                     <progress id="5star" max="100" value="{{ rateCalculator($product->ReviewSummary->five_stars, $product->ReviewSummary->total_user) }}"> {{ rateCalculator($product->ReviewSummary->five_stars, $product->ReviewSummary->total_user) }}% </progress><!--VALUE SHOULD BE EQUAL TO AMOUNT OF STARS -->
                   </div>
                   <div class="progress-reviews d-flex align-items-center mb-2">
                      <label for="4star" class="mb-0 mr-2 star-label">4 Stars:</label>
-                     <progress id="4star" max="100" value="60"> 60% </progress>
+                     <progress id="4star" max="100" value=" {{ rateCalculator($product->ReviewSummary->four_stars, $product->ReviewSummary->total_user)  }} "> {{ rateCalculator($product->ReviewSummary->four_stars, $product->ReviewSummary->total_user) }}% </progress>
                   </div>
                   <div class="progress-reviews d-flex align-items-center mb-2">
                      <label for="3star" class="mb-0 mr-2 star-label">3 Stars:</label>
-                     <progress id="3star" max="100" value="40"> 40% </progress>
+                     <progress id="3star" max="100" value="{{ rateCalculator($product->ReviewSummary->three_stars, $product->ReviewSummary->total_user) }}"> {{ rateCalculator($product->ReviewSummary->three_stars, $product->ReviewSummary->total_user) }} % </progress>
                   </div>
                   <div class="progress-reviews d-flex align-items-center mb-2">
                      <label for="2star" class="mb-0 mr-2 star-label">2 Stars:</label>
-                     <progress id="2star" max="100" value="80"> 80% </progress>
+                     <progress id="2star" max="100" value="{{ rateCalculator($product->ReviewSummary->two_stars, $product->ReviewSummary->total_user) }}"> {{ rateCalculator($product->ReviewSummary->two_stars, $product->ReviewSummary->total_user) }}% </progress>
                   </div>
                   <div class="progress-reviews d-flex align-items-center mb-2">
                      <label for="1star" class="mb-0 mr-2 star-label">1 Star:</label>
-                     <progress id="1star" max="100" value="20"> 20% </progress>
+                     <progress id="1star" max="100" value="{{ rateCalculator($product->ReviewSummary->one_star, $product->ReviewSummary->total_user) }}"> {{ rateCalculator($product->ReviewSummary->one_star, $product->ReviewSummary->total_user) }}% </progress>
                   </div>
                </div>
             </div>
             <!--</div>-->
-            {{--
+            
             <div class="col-12">
                <div class="row view_review"></div>
             </div>
-               <div class="col-12 text-center view_review_btn"></div>
+
+            <div class="col-12 text-center view_review_btn"></div>
             
-            --}}
+           
 
                <!--<div class="col-12 col-md-6 pr-md-5 mb-4">-->
-            <div class="row centerit mb-3">
+
+
+
+            {{-- <div class="row centerit mb-3">
                <div class="col-9">
                   <div class="media centerit">
                      <img src="/page_assets/img/review2.png" class=" reviewimage" alt="...">
                      <div class="media-body pl-2">
                         <p class="mb-0"><strong>John Doe</strong> </p>
                         <ul class="list-inline">
-                           <li class="list-inline-item">4.5</li>
+                           <li class="list-inline-item">3.4</li>
                            <li class="list-inline-item">
                               <div class="rating"> 
                                  <input type="radio" name="ratingl5" value="5" id="ratingl5"><label for="ratingl5">☆</label> 
@@ -258,12 +265,12 @@
                   1st, August, 2020
                </div>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut diam consectetur integer sem mattis integer aliquam mauris. Purus suspendisse fermentum, nulla dignissim pretium scelerisque sed. Ultricies quis tellus amet in nisi mattis in. Sagittis ullamcorper amet sit justo ultricies.</p>
+            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut diam consectetur integer sem mattis integer aliquam mauris. Purus suspendisse fermentum, nulla dignissim pretium scelerisque sed. Ultricies quis tellus amet in nisi mattis in. Sagittis ullamcorper amet sit justo ultricies.</p> --}}
             <!-- load more -->
-            <div class="w-100 text-center my-4">
+            {{-- <div class="w-100 text-center my-4">
                <button type="" class="btn btn-wine2u px-5 ">Read More Reviews</button>
-            </div> 
-         </div> 
+            </div>  --}}
+         </div>  
          
          <div class="col-12 col-md-6 pr-md-5" >
             <h5>Characteristics</h5>
@@ -432,7 +439,7 @@
          </div>
          <div class="col-md-6">
            <div class="2col-img-container-fluid">
-             <img src="{{ asset ('page_assets/img/2col-img1.jpg') }}" alt="" class="2col-img w-100">
+             <img src="/product_images/{{$product->img1}}" alt="" class="2col-img w-100">
            </div>
          </div>
        </div>
@@ -741,7 +748,7 @@
                   data:{product_id:product_id,rating:rating, comment:comment},
                   success:function(data){
                   if(data == "Success"){
-                     swal("Submiited", "Thanks for your feedback", "success");
+                     swal("Submitted", "Thanks for your feedback", "success");
                      $('#reviewModal').modal('hide');
                   }
 
@@ -803,20 +810,28 @@
                circle.path.setAttribute('stroke', state.color);
                circle.path.setAttribute('stroke-width', state.width);
                //Value to be displayed currently static
-               var value = (circle.value() * 20) / 4;
+               var value = ((circle.value() * 10) / 2);
                if (value === 0) {
+
                   circle.setText('');
+
                } else {
+
                   circle.setText(value.toFixed(1));
                }
 
+               console.log(circle.value());
             }
             });
+            
             bar.text.style.fontFamily = "'Sopia Pro', sans-serif";
             bar.text.style.fontSize = '2rem';
             bar.text.style.fontWeight = 'bold';
-
-            bar.animate(0.84);  // Number from 0.0 to 1.0
+            var average_rate = $('#average-rate').val();
+            average_rate = ( average_rate * 2 ) / 10;
+            console.log(average_rate);
+            
+            bar.animate(average_rate);  // Number from 0.0 to 1.0
          </script>
   </body>
 </html>

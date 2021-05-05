@@ -84,6 +84,22 @@ function strip_html_tags($words){
     return $ids;
 }
 
+
+function rateCalculator($stars,$total_user){
+
+    if($total_user == 0){
+
+        $result = 0;
+
+    }else{
+
+        $result =  ($stars / $total_user) * 100;
+
+    }
+
+   return $result;
+}
+
    // pagination filter
 //  function SearchPagination($parms)
 // { 

@@ -30,14 +30,17 @@ to join our Preferred Customer List.</p>
         @csrf
 
           <div class="form-row">
+          
             <div class="form-group col-12 col-md-6">
-            <label for="signup_FirstName">First Name</label>
-              <input type="text" class="form-control form-control-wine2u @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" id="signup_FirstName"  placeholder="First Name">
-              @error('fname')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-              @enderror
+
+                <label for="signup_FirstName">First Name</label>
+                <input type="text" class="form-control form-control-wine2u @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" id="signup_FirstName"  placeholder="First Name">
+                @error('fname')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+                @enderror
+
             </div>
 
 

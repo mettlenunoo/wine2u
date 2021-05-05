@@ -514,10 +514,8 @@ class apiController extends Controller
         $customer->referral = $request->input('referral');
         $customer->referral_code  = $request->input('lname')."-". str_random(3);
         $customer->shop_id =  $shop_id;
-        $customer->remembertoken =  str_slug(Hash::make($request->input('password')).time());
+        $customer->remembertoken =  str_slug(Hash::make($request->input('email')).time());
         $customer->save();
-
-
 
 
         if( $customer ){

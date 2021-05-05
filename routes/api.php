@@ -50,16 +50,16 @@ Route::get('/all-products', 'apiController@all_products'); // ALL PRODUCTS
 Route::get('/all-products/{slug}', 'apiController@parent_cat_products'); // PARENT CATEGORY PRODUCTS
 Route::get('/all-products/{parent}/{slug}', 'apiController@sub_cat_products'); // SUB CATEGORY PRODUCTS
 Route::get('/products/{slug}', 'apiController@single_products'); // SINGLR PRODUCT
-Route::get('/categories', 'apiController@all_categories'); // ALL CATEGORIES
-Route::get('/review', 'reviewController@index'); // ALL CATEGORIES
-Route::post('/review/add', 'reviewController@store'); // ALL CATEGORIES
-Route::delete('/review/delete/{id}', 'reviewController@destroy'); // ALL CATEGORIES
-Route::post('/wishlist/add', 'apiController@wishList'); // ALL CATEGORIES
-Route::delete('/wishlist/delete/{id}', 'apiController@removeWishList'); // ALL CATEGORIES
-Route::post('/user/login', 'apiController@login'); // USER REGISTRATION
+Route::get('/categories', 'apiController@all_categories'); 
+Route::get('/review', 'reviewController@index'); 
+Route::post('/review/add', 'reviewController@store'); 
+Route::delete('/review/delete/{id}', 'reviewController@destroy'); 
+Route::post('/wishlist/add', 'apiController@wishList'); 
+Route::delete('/wishlist/delete/{id}', 'apiController@removeWishList'); 
+Route::post('/user/login', 'apiController@login'); 
 Route::post('/user/register', 'apiController@userRegister'); // USER REGISTRATION
-Route::post('/coupon', 'apiController@setCoupon'); // USER REGISTRATION
-Route::get('/shipping/price/{zone}/{weight}', 'apiController@shippingPrice'); // USER REGISTRATION
+Route::post('/coupon', 'apiController@setCoupon'); 
+Route::get('/shipping/price/{zone}/{weight}', 'apiController@shippingPrice'); 
 Route::post('/checkout', 'apiController@checkout_store'); //Checkout
 
 // Shop Settings
@@ -81,16 +81,3 @@ Route::post('/checkout/payment/paypal', 'apiController@paypal');
 //Route::get('/checkout/payment/expresspay', 'publicController@expresspay');
 Route::post('/checkout/payment/mpower', 'apiController@mpower');
 //Route::get('/expresspay/processor', 'publicController@expresspay_processor');
-
-
-
-
-
-
-
-
-
-
-
-
-

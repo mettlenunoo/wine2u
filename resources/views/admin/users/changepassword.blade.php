@@ -26,7 +26,7 @@
                             <div class="form-group">     
                                 <div class="form-material form-material-primary floating">
 
-                                    <input id="currentpassword" type="password" class="form-control{{ $errors->has('currentpassword') ? ' is-invalid' : '' }}" name="currentpassword" required  autofocus>
+                                    <input id="currentpassword" type="password" class="form-control {{ $errors->has('currentpassword') ? ' is-invalid' : '' }}" name="currentpassword" required  autofocus>
                                     <label for="password" >{{ __('Current Password ') }}</label>
 
                                     @if ($errors->has('currentpassword'))

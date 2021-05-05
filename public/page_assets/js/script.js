@@ -23,7 +23,7 @@ function addToCart(id='')
           success:function(response){
 
           document.getElementById("totalItems").innerHTML = response['0']; //response;
-          document.getElementById("mTotalItems").innerHTML = response['0']; //response;
+        //  document.getElementById("mTotalItems").innerHTML = response['0']; //response;
           
           if(id == ''){
               document.getElementById("addbtn").innerHTML = "Add To Cart";
@@ -56,7 +56,7 @@ function addToCart(id='')
                 //console.log(response);
               //document.getElementById("myCart").innerHTML = response['0']; //response;
               document.getElementById("totalItems").innerHTML = response['0']; //response;
-              document.getElementById("mTotalItems").innerHTML = response['0']; //response;
+              //document.getElementById("mTotalItems").innerHTML = response['0']; //response;
             //  document.getElementById("cartTotalAmt").innerHTML = response['1']; //response; 
               document.getElementById("subTotal").innerHTML = response['1']; //response;  grossTotal cart page 
               document.getElementById("grossTotal").innerHTML = response['2']; //response;  grossTotal cart page
@@ -186,7 +186,7 @@ if (willDelete) {
           
           document.getElementById("myCart").innerHTML = response['0']; //response;
           document.getElementById("totalItems").innerHTML = response['1']; 
-          document.getElementById("mTotalItems").innerHTML = response['1']; 
+         // document.getElementById("mTotalItems").innerHTML = response['1']; 
             // document.getElementById("myCart").innerHTML = response['2']; 
           if(page != ""){
 
