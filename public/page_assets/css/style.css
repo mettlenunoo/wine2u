@@ -387,7 +387,9 @@ label {
 .main-fix{
     margin-top: 15%;
 }
-
+.landing-sm-text{
+    color: #fff;
+}
 
 
 .landingimg{
@@ -421,7 +423,9 @@ label {
 .landing_p {
     font-family: 'Libre Baskerville', serif;
     letter-spacing: 3px;
-    color: #2B4036;
+    color: #C39154;
+    font-size: 60px;
+    font-weight: 500;
 }
 
 .modal-content-wine2u {
