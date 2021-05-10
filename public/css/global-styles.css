@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+button{
+    padding: 0; 
+    border-width: none;
+}
+
 #result,
 #result_mobile {
     position: absolute;

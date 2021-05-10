@@ -8,6 +8,10 @@ body {
     text-align: left;
     background-color: #fff;
 }
+button{
+    padding: 0; !important
+    border-width: none; !important
+}
 
 .shrink {
     background-color: #ffffff;
