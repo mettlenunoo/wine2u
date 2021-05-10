@@ -38,7 +38,7 @@
                   <div class="hobbies-icon">
                  
                   <h3>Paystack</h3>
-                  <img width="210px" src="/page-assets/img/payment_options.png" alt="">
+                  <img width="210px" src="/page_assets/img/payment_options.png" alt="">
                   </div>
                </span>
             </label>
