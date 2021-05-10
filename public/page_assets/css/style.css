@@ -49,6 +49,11 @@ body {
     background-color: #fff;
 }
 
+button{
+    padding: 0;
+    border :none;
+}
+
 
 .navbar-wholsome {
     color: #000000;
@@ -377,6 +382,16 @@ label {
     background-size: cover;
     height: 100vh;
 
+}
+
+.main-fix{
+    margin-top: 15%;
+}
+
+
+
+.landingimg{
+    height: 100vh;
 }
 
 .land_titile {
@@ -2517,4 +2532,39 @@ progress {
 }
 .hidden{
     opacity: 0;
+}
+
+
+
+/* media */
+@media (max-width: 1281px){
+    .main-fix{
+        margin-top: 19%;
+    }
+}
+
+@media (max-width: 1025px){
+    .main-fix{
+        margin-top: 33%;
+    }
+}
+
+@media (max-width: 415px){
+    .land_titile {
+        font-size: 36px;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 700;
+        color: #fff;
+    }
+    
+}
+
+@media (max-width: 321px){
+    .land_titile {
+        font-size: 28px;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 700;
+        color: #fff;
+    }
+    
 }
