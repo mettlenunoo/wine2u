@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/page_assets/plugins/animate.css">
     <link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.carousel.min.css">
     <link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/page_assets/css/checkout.css" >
 
     <!-- custom -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

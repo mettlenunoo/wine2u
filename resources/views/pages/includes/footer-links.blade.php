@@ -7,6 +7,7 @@
 
     <script src="/page_assets/js/app.js"></script>
     <script src="/page_assets/js/script.js"></script>
+    <script src="/page_assets/js/checkout.js"></script>
 
 
     <script src="/page_assets/plugins/wow/wow.min.js"></script>
@@ -47,14 +48,14 @@
       document.getElementById("mySidenav").classList.add('expand');
       // document.getElementById("mySidenav").style.width = "40%";
     
-      document.getElementById("main").style.marginright = "0";
+     // document.getElementById("main").style.marginright = "0";
       // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
     
     function closeNav() {
       
       document.getElementById("mySidenav").classList.remove('expand');
-      document.getElementById("main").style.marginLeft= "0";
+     // document.getElementById("main").style.marginLeft= "0";
       document.body.style.backgroundColor = "white";
     }
     </script>

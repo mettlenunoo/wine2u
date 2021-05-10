@@ -5,7 +5,7 @@
       @if(!auth('customer')->user())
       <div class="mb-5">
 		<div class="alert shadow-sm alert-dismissible fade show" role="alert">
-			<strong> Already have an account? </strong> <a href="/user-signin?direct=checkout">Log in</a> | <span >or  Continue as a Guest </span>
+			<strong> Already have an account? </strong> <a href="login.php">Log in</a> | <span >or  Continue as a Guest </span>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">×</span>
 			</button>
@@ -26,39 +26,29 @@
          <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_FirstName">First Name *</label>
             <input type="text"  name="billingfname" class="form-control form-control-wine2u wizard-required" id="bill_fname" placeholder="" value="{{ $customer->fname }}" required="required"> 
-             <div class="wizard-form-error">
-               Enter Your First Name
-            </div>
+            <div class="wizard-form-error"></div>
          </div>
          <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-address_LastName">Last Name *</label>
             <input type="text" name="billingsname" class="form-control form-control-wine2u wizard-required" id="bill_lname" placeholder="" value="{{ $customer->lname }}"> 
-             <div class="wizard-form-error">
-
-               Enter Your Last Name
-            
-            </div>
+            <div class="wizard-form-error"></div>
          </div>
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Email *</label>
             <input type="email" name="billingemail" class="form-control form-control-wine2u wizard-required" id="bill_email" placeholder="" value="{{ $customer->email }}"> 
-             <div class="wizard-form-error">
-                Enter Your Email
-            </div>
+            <div class="wizard-form-error"></div>
          </div>
 
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Phone Number *</label>
             <input type="tel" name="billingpnumber" class="form-control form-control-wine2u wizard-required" id="bill_phonenumber" placeholder="" value="{{ $customer->phone }}"> 
-            <div class="wizard-form-error">
-                Enter Your Phone Number
-            </div>
+            <div class="wizard-form-error"></div>
          </div>
 
          <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-country">Country *</label> 
             <select id="bill_country" name="billingcountry" class="form-control form-control-wine2u wizard-required">
-                  <option selected value=""> Choose... </option>
+                  <option selected> Choose... </option>
                   <option @if($customer->country == "land Islands") selected @endif  value="land Islands">&#197;land Islands</option>
                   <option @if($customer->country == "Afghanistan") selected @endif value="Afghanistan">Afghanistan</option>
                   <option @if($customer->country == "Albania") selected @endif  value="Albania">Albania</option>
@@ -309,10 +299,6 @@
                   <option @if($customer->country == "Zambia") selected @endif value="Zambia">Zambia</option>
                   <option @if($customer->country == "Zimbabwe") selected @endif value="Zimbabwe">Zimbabwe</option>
                 </select>
-
-                 <div class="wizard-form-error">
-                     Select a Country / Region
-                 </div>
            
          </div>
          <div class="form-group col-12 col-md-12 col-lg-6">
@@ -381,6 +367,19 @@
       </div>
 
       @include("pages.includes.checkout.subtotal")
+
    </div>
    <!-- right side -->
 </div>
+{{-- 
+
+
+Things Left
+- cart
+- calculation
+- coupon
+- shipping 
+- save
+- email
+- payment Setting up
+- refactor  --}}
