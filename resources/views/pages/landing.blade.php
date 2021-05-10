@@ -53,8 +53,8 @@
                 </div>
                 <div class="container main-fix">
                     <div class="row">
-                        <div class="row landing-fix">
-                            <div class="col-11 text-center ">
+                        <div class="row landing-fix justify-content-center">
+                            <div class="col-12 text-center ">
                                 <!-- <h1 class="land_titile">Your Palette, <br>
                                     Our Passion.</h1>
                                 <p class="my-4 landing-sm-text">Shop rare, limited and latest releases of wine along with exclusive

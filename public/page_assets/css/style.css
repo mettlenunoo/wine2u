@@ -385,7 +385,7 @@ label {
 }
 
 .main-fix{
-    margin-top: 15%;
+    margin-top: 22%;
 }
 .landing-sm-text{
     color: #fff;
@@ -2543,13 +2543,13 @@ progress {
 /* media */
 @media (max-width: 1281px){
     .main-fix{
-        margin-top: 19%;
+        margin-top: 21%;
     }
 }
 
 @media (max-width: 1025px){
     .main-fix{
-        margin-top: 33%;
+        margin-top: 58%;
     }
 
     
