@@ -45,7 +45,7 @@ use Paystack;
 class publicController extends Controller
 {
      
-     public $shopId = 1 ;
+     public $shopId = 1;
      public $shop_currency ;
     
 
@@ -1837,7 +1837,7 @@ class publicController extends Controller
                     $storeOwner = "dabdulmanan@gmail.com";
                     // $storeOwner = "hello@wine2u.com";
                     \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
-                    $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
+                    $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('uniquefloralpayments@gmail.com','wine2u.com - Order');
                     });
     
             }
