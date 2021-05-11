@@ -10,4 +10,11 @@ class Pairing extends Model
     {
         return $this->hasMany(Pairing::class, 'parent', 'id');
     }
+
+    // public function blog()
+    // {
+
+    //     return $this->hasOne('App\Blog','id', 'blog_id')->withTimestamps();
+
+    // }
 }

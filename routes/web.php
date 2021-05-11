@@ -88,6 +88,7 @@ Route::post('/subscribe', 'comingSoonController@subscribe')->name("subscribe");
 // Blog
 Route::get('/blog', 'publicController@blog');
 Route::get('/blog/{slug}', 'publicController@single_blog');
+Route::get('/pairing', 'publicController@pairing');
 Route::get('/pairing/{id}', 'publicController@single_pairing');
 
 // Videos 

@@ -994,7 +994,9 @@ class publicController extends Controller
             $blogs = Blog::WHERE('publish', '<=', $today)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId);
 
             if($featured){
+
                 $blogs->WHERE('id', '!=', $featured->id);
+
             }
 
             $blogs->with('categories');
@@ -1036,6 +1038,8 @@ class publicController extends Controller
          
             //dd($blogs);
             return view('pages.blog',compact('blogs','featured'));
+
+
            // return response()->json($blogs, 200);
 
     }
@@ -1065,6 +1069,16 @@ class publicController extends Controller
 
         }
 
+    }
+
+    public function pairing(){
+
+        $pairings = Pairing::WHERE('parent', 0)
+                  ->WHERE('country_id','=',$this->shopId)
+                  ->with('subPairing')
+                  ->paginate('20');
+
+                  return view('pages.pairing',compact('pairings'));
     }
 
     public function single_pairing($id)
