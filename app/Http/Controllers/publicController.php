@@ -52,11 +52,11 @@ class publicController extends Controller
      public function __construct()
      {
        
-        //if(Cookie::get('age') == false){
+        if(Cookie::get('age') == false){
 
-        	//redirect()->route('age-verification')->send();
-        	// return redirect('/age-verification');
-        //}
+        	redirect()->route('age-verification')->send();
+        	return redirect('/age-verification');
+        }
         
      }
      
