@@ -99,7 +99,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class=" modal-content-wine2u">
                 <div class="modal-header-wine2u d-flex justify-content-center mt-5">
-                    <h1 class="sign_title wine2upc">Hello there! </h1>
+                    <h1 class="sign_title wine2upc">Age Verification </h1>
                 </div>
                 <div class="text-center mb-2">
                     <img src="/page_assets/img/shortdash.svg" alt="">
