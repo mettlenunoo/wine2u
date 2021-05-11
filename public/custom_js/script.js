@@ -338,75 +338,13 @@ $.ajax({
 });
 
 
-function hideCookie(){
-    $.ajaxSetup({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-          });
-  
-    $.ajax({
-          type:'GET',
-          url:'/cookies',
-          success:function(response){
-         
-          console.log(response);
-          $('#cookies').fadeOut();
-  
-          }
-        });
-    
-  
-  }
+
 
 		
-//   $(document).ready(function(){
+  // $(document).ready(function(){
 
-// $('#search').keyup(function(){
-// //alert('man');
-//          $('#result').html('');
-//  var search = document.getElementById("search").value;
-
-//  if(search == ''){
-//    $('#result').html('');	 
-//  }else{
-
-//   var country = document.getElementById("country").value;
-//   var shopid = document.getElementById("shopId").value;
-
-//   // BINDING DATA TO DATA FORM
-//   var formData = new FormData();
-//   formData.append('name',search);
-//   formData.append('shop_id',shopid);
-//   formData.append('country',country);
-
-//   $.ajaxSetup({
-//     headers: {
-//     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//       }
-//   });
-// //alert(search);
-//   $.ajax({
-//      type: "POST",
-//      data: formData,
-//      url: "/product/search",
-//      cache:false,
-//      contentType: false,
-//      processData: false,
-//      success: function(msg){
-//      $('#result').append(msg);
-      
-//      //console.log(msg);
-
-//      //document.getElementById("result").innerHTML = msg; //response;
-//      //document.getElementById("lod").innerHTML = "";
-//      }
-//   });
-           
-//  } // END OF IF STATEMENT
-
-// });
-// });
+   
+  // });
 
 
 // $(document).ready(function(){

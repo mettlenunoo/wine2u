@@ -63,7 +63,7 @@
                     </p>
                     @endforeach
 
-                    {{-- @php  print_r($product->countryRegion)  @endphp --}}
+                    
 
                     <h3 class="font-weight-light mt-2">{{ ucwords($product->product_name) }}</h3>
                     <ul class="list-inline single-prd mt-2">

@@ -283,6 +283,49 @@ class publicController extends Controller
     }
 
 
+    public function search_product($keywords)
+    {
+
+            $items = "";
+
+            $products = Product::WHERE('country_id', '=', $this->shopId)
+            ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery'])
+            ->search($keywords)
+            ->latest()
+            ->limit(7)
+            ->get();
+
+            foreach ($products as $key => $product) {
+
+                    $items .= '<a href="/products/'.$product->slug.'" class="nv-form-res">
+                            <div class="nv-res-img">
+                                <img src="/product_images/'. $product->img1 .'" alt="" class="as-background">
+                            </div>
+                            <div class="nv-res-content">
+                                <p class="mb-1 nv-res-title">'.ucwords($product->product_name).'</p>';
+
+                                foreach ($product->categories as $category){
+                                    $items .= '<p class="small mb-1">'.$category->title.'</p>';
+                                }
+                                
+                                foreach ($product->countryRegion as $region){
+                                    $items .= '<p class="small mb-1">'.ucwords($region->name) .' <span> | </span>';
+                                        foreach ($region->countryFrRegion as $country){
+                                         $items .= ucwords($country->name);
+                                        }
+                                    $items .='</p>';
+                                }
+
+                             $items .= 
+                             '</div>
+                          </a>';
+            }
+
+            return $items;
+
+    }
+
+
     public function filter_products()
     {
 
@@ -1851,6 +1894,14 @@ class publicController extends Controller
         // });
 
     
+    }
+
+
+    public function accept_cookie(){
+
+         Cookie::queue("website_cookie","preferences",'1576803');
+         return "success";
+
     }
   
 

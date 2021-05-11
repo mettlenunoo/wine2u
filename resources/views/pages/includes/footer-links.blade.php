@@ -59,4 +59,68 @@
       document.body.style.backgroundColor = "white";
     }
     </script>
+
+    <script>
+
+     $('#search_input').keyup(function(){
+
+      $('#search_result').html('');
+      var search = document.getElementById("search_input").value;
+
+    if(search == ''){
+
+        $('#search_result').html('');	 
+
+
+    } else {
+
+        $.ajaxSetup({
+          headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
+        $.ajax({
+
+          type: "get",
+         // data: ,
+          url: "/products/search/" + search,
+          cache:false,
+          contentType: false,
+          processData: false,
+          success: function(products){
+
+           $('#search_result').append(products);
+            
+          }
+        });
+              
+    } // END OF IF STATEMENT
+
+    });
+
+
+    function acceptCookies(){
+  
+        $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+      
+        $.ajax({
+              type:'GET',
+              url:'/cookies',
+              success:function(response){
+            
+              console.log(response);
+              
+                $('#cookie-ticker').fadeOut();
+      
+              }
+            });
+  
+    }
+
+    </script>
        <!-- cart Drawer -->
