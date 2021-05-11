@@ -130,6 +130,15 @@ class publicController extends Controller
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
+
+        
+        if(isset($_GET['price'])){
+
+            $price = $_GET['price'];
+            $products = $products->WHERE('products.base_price', '<=', $price );
+            $this->SearchPagination("price");
+
+        }
         
         // PAGINATION
         if(isset($_GET['pn'])){
@@ -236,6 +245,7 @@ class publicController extends Controller
 
             }
 
+
         }
 
         $products = $products->latest()
@@ -332,6 +342,32 @@ class publicController extends Controller
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
         
+        if(isset($_GET['price'])){
+
+            $price = $_GET['price'];
+            $products = $products->WHERE('products.base_price', '<=', $price );
+            $this->SearchPagination("price");
+
+        }
+
+
+        if(isset($_GET['light'])){
+
+            $light = $_GET['light'];
+            $products = $products->WHERE('products.light', '<=', $light );
+            $this->SearchPagination("light");
+
+        }
+
+
+        if(isset($_GET['smooth'])){
+
+            $smooth = $_GET['smooth'];
+            $products = $products->WHERE('products.smooth', '<=', $smooth );
+            $this->SearchPagination("smooth");
+
+        }
+
         // PAGINATION
         if(isset($_GET['pn'])){
 
