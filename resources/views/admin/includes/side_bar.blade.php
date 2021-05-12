@@ -70,7 +70,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="/admin/pair" <?php if($page == "pair"){?> class="active"<?php }?>>Pair</a>
+                                    <a href="/admin/pair" <?php if($page == "pair"){?> class="active"<?php }?>>Pairings</a>
                                 </li>
                                 <li>
                                     <a href="/admin/country" <?php if($page == "all-country"){?> class="active"<?php }?>>Countries</a>
