@@ -75,7 +75,7 @@ class blogController extends Controller
             // SLUG
             // To check whether two pieces of content with the same title.
                 $results = Blog::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-                $slug = $this->checker_slug($request->input('title'), $old_slug = null,$results);
+                $slug = $this->checker_slug($request->input('title'),$results, $old_slug = null);
             // END OF SLUG
 
             // IMAGE PROCESSOR
@@ -196,7 +196,7 @@ class blogController extends Controller
             // SLUG
             // To check whether two pieces of content with the same title.
                 $results = Blog::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-                $slug = $this->checker_slug($request->input('title'), $blog->slug,$results);
+                $slug = $this->checker_slug($request->input('title'),$results, $blog->slug);
             // END OF SLUG
 
             // IMAGE PROCESSOR
@@ -288,7 +288,7 @@ class blogController extends Controller
             }
     }
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name,$results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;

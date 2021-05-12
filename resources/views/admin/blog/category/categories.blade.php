@@ -87,18 +87,19 @@
                     </div>
              </div>
 
-             <div class="form-group">
+             {{-- <div class="form-group">
                 <div class="col-sm-12">
                     <div class="form-material floating">
                         <select class="js-select2 form-control" id="material-select2" name="type" size="1" required>
                             <option></option><!-- Empty value for demostrating material select box -->
                             <option value="Blog">Blog </option>
                             <option value="News"> News </option>
+                            <option value="Video"> Video </option>
                         </select>
                         <label for="material-select2">Type</label>
                     </div>
                 </div>
-           </div>
+           </div> --}}
 
              <div class="form-group">
                     <div class="col-sm-12">
