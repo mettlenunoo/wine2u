@@ -354,9 +354,9 @@ a purchase</p>
  <script>
   $(document).ready(function(){
 
-  var filter_price = $('#price_range').val();
-  var filter_light = $('#light_range').val();
-  var filter_smooth = $('#smooth_range').val();
+ // var filter_price = $('#price_range').val();
+ // var filter_light = $('#light_range').val();
+ // var filter_smooth = $('#smooth_range').val();
 
 
 	const filterToggle = document.getElementById("toggle-filter");
@@ -397,7 +397,7 @@ a purchase</p>
           $.ajax({
               url:"/filter_products",
               method:"GET",
-              data:{page:pn, wine:wines, grapes:grapes, pairing:pairing, country:country, price:filter_price ,light:filter_light  ,smooth:filter_smooth },
+              data:{page:pn, wine:wines, grapes:grapes, pairing:pairing, country:country },
               success:function(data){
                // alert(data);
                 console.log(data);
@@ -420,27 +420,27 @@ a purchase</p>
       });
 
 
-       $('#price_range').change(function(){
+      // $('#price_range').change(function(){
           
-          filter_price = $(this).val();
-          filter_data();
+      //    filter_price = $(this).val();
+      //    filter_data();
 
-        });
+      //  });
 
 
-         $('#light_range').change(function(){
+     //    $('#light_range').change(function(){
           
-          filter_light = $(this).val();
-          filter_data();
+      //    filter_light = $(this).val();
+      //    filter_data();
 
-        });
+      //  });
 
-         $('#smooth_range').change(function(){
+      //   $('#smooth_range').change(function(){
           
-          smooth_light = $(this).val();
-          filter_data();
+      //    smooth_light = $(this).val();
+       //   filter_data();
 
-        });
+       // });
 
     
 

@@ -122,7 +122,7 @@
 			</div>
 			<!--  -->
 
-			<div class="mb-3">
+			{{-- <div class="mb-3">
 				<h6 class="fw-bold card-filter-sect">Price</h6>
 				<div class="filter-price">
 					<span>$10</span>
@@ -131,10 +131,10 @@
 				<div class="filter-range">
 					<input type="range" class="custom-range" min="10" max="100" value="20" id="price_range">
 				</div>
-			</div>
+			</div> --}}
 			<!--  -->
 			
-			<div class="mb-3">
+			{{-- <div class="mb-3">
 				<h6 class="fw-bold card-filter-sect">Characteristics</h6>
 				<div class="filter-price">
 					<span>Light</span>
@@ -150,7 +150,7 @@
 				<div class="filter-range">
 					<input type="range" class="custom-range" min="0" max="100" value="60" id="smooth_range">
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
  </div>

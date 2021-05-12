@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 </style>
-<div class="col-12 text-align pagination">
+<div class="col-12  pagination">
     @if ($paginator->hasPages())
     
     
