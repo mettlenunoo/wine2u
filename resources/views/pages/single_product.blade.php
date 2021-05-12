@@ -490,6 +490,7 @@
                             <div class="carousel-inner">
 
                                 <div class="carousel-item active">
+                                   
                                     <img src="/product_images/{{$product->img1}}" class="d-block w-100" alt="...">
                                 </div>
 
