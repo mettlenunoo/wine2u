@@ -506,9 +506,20 @@ class publicController extends Controller
 			  </div>
 
               <div class="d-md-flex mb-2 align-items-end">
-				<div class="mr-auto pl-2">
-					<p class="product-small mb-0">Paris</p>
-					<a href="/products/'.$product->slug.'" class="font-weight-bold"> '. ucwords($product->product_name) .'</a> 
+				<div class="mr-auto pl-2">';
+                    foreach ($product->countryRegion as $region){
+
+                        $items .=' <p class="product-small mb-0"> <a href="/country/'.$region->slug .'">'.ucwords($region->name) .'</a>
+                        <span>|</span>';
+
+                        foreach ($region->countryFrRegion as $country){
+                            $items .=  '<a href="/country/'. $country->slug .'">'.ucwords($country->name) .'</a>';
+                        }
+                        
+                        $items .= '</p>';
+                    }
+				
+                    $items .=' <a href="/products/'.$product->slug.'" class="font-weight-bold"> '. ucwords($product->product_name) .'</a> 
 				</div>
                 <div class="px-2 font-weight-bold ">
                   <a href="/products/'. $product->slug .'" class="product-price">GhS '. number_format($product->base_price,2) .'</a>

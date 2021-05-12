@@ -48,7 +48,16 @@
 								</a>
 							</div>
 							<div class="text-center">
-								<p class="small mb-0">Moet & Chandon | Paris</p>
+								{{-- <p class="small mb-0">Moet & Chandon | Paris</p> --}}
+								  @foreach ($product->countryRegion as $region)
+									<p class="small mb-0"> <a href="/country/{{ $region->slug }}" style="color:#fff">{{ ucwords($region->name) }}</a>
+										<span>|</span>
+										@foreach ($region->countryFrRegion as $country)
+										<a href="/country/{{ $country->slug }}" style="color:#fff">{{ ucwords($country->name) }}</a>
+										@endforeach
+									</p>
+									@php break; @endphp
+                    			  @endforeach
 								<a href="/products/{{ $product->slug }}" class="mb-1 arr-title">{{ ucwords($product->product_name) }}</a>
 							</div>
 						</div>
@@ -276,7 +285,8 @@
 										</div>
 										<div class="d-md-flex mb-2 align-items-end">
 											<div class="mr-auto pl-2">
-												<p class="product-small mb-0">Paris</p>
+											
+												{{-- <p class="product-small mb-0">Paris</p> --}}
 												<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a> 
 											</div>
 											<div class="px-2 font-weight-bold">
@@ -375,7 +385,7 @@
                               	</div>
                               	<div class="d-md-flex mb-2 align-items-end">
 									<div class="mr-auto pl-2">
-										<p class="product-small mb-0">Paris</p>
+										{{-- <p class="product-small mb-0">Paris</p> --}}
 										<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a> 
 									</div>
 									<div class="px-2 font-weight-bold">
@@ -517,7 +527,8 @@
 										</div>
 										<div class="d-md-flex mb-2 align-items-end">
 											<div class="mr-auto pl-2">
-												<p class="product-small mb-0">Paris</p>
+												{{-- 
+												 --}}
 												<a href="/products/{{ $product->slug }}" class="font-weight-bold">
 													{{ ucwords($product->product_name) }}
 												</a> 
