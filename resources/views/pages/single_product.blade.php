@@ -483,28 +483,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="2col-img-container-fluid">
-                        <!-- <img src="/product_images/{{$product->img1}}" alt="" class="2col-img w-100"> -->
+                        
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
 
                             <div class="carousel-inner">
 
-                                <div class="carousel-item active">
-                                   
-                                    <img src="/product_images/{{$product->img1}}" class="d-block w-100" alt="...">
-                                </div>
-
-                                @if($product->img2 != "")
-
-                                    <div class="carousel-item">
-                                        <img src="/product_images/{{ $product->img2 }}" class="d-block w-100" alt="...">
-                                    </div>
-
-                                @endif
                               
                                @foreach($product->gallery as $key => $image)
                                    
-                                    <div class="carousel-item">
+                                    <div class="carousel-item  @if($key == 0)  active  @endif">
                                         <img src="/product_images/{{ $image->img }}" class="d-block w-100" alt="...">
                                     </div>
 
