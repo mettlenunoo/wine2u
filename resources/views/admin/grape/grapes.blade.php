@@ -135,7 +135,7 @@
                                         <td class="text-center">
                                             <div class="btn-group">
                                             <a href="/admin/grape/{{ $item->id }}/edit" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
-                                            {!! Form::open(['action' => ['categoryController@destroy', $item->id ], 'method' => 'POST']) !!}
+                                            {!! Form::open(['action' => ['grapeController@destroy', $item->id ], 'method' => 'POST']) !!}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" onClick ="return confirm('Are you sure You want to Delete')" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button> 
                                              {!! Form::close() !!}
