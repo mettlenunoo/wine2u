@@ -309,22 +309,22 @@ class publicController extends Controller
 
                     $items .= '<a href="/products/'.$product->slug.'" class="nv-form-res">
                             <div class="nv-res-img">
-                                <img src="/product_images/'. $product->img1 .'" alt="" class="as-background">
+                                <img src="/product_images/'. $product->img1 .'" alt="" class="as-background-top">
                             </div>
                             <div class="nv-res-content">
                                 <p class="mb-1 nv-res-title">'.ucwords($product->product_name).'</p>';
 
-                                foreach ($product->categories as $category){
-                                    $items .= '<p class="small mb-1">'.$category->title.'</p>';
-                                }
+                                // foreach ($product->categories as $category){
+                                //     $items .= '<p class="small mb-1">'.$category->title.'</p>';
+                                // }
                                 
-                                foreach ($product->countryRegion as $region){
-                                    $items .= '<p class="small mb-1">'.ucwords($region->name) .' <span> | </span>';
-                                        foreach ($region->countryFrRegion as $country){
-                                         $items .= ucwords($country->name);
-                                        }
-                                    $items .='</p>';
-                                }
+                                // foreach ($product->countryRegion as $region){
+                                //     $items .= '<p class="small mb-1">'.ucwords($region->name) .' <span> | </span>';
+                                //         foreach ($region->countryFrRegion as $country){
+                                //          $items .= ucwords($country->name);
+                                //         }
+                                //     $items .='</p>';
+                                // }
 
                              $items .= 
                              '</div>

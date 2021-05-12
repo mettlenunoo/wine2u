@@ -1,11 +1,13 @@
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   <script src="/page_assets/js/jquery-3.5.1.js"></script>
+   	<script src="/page_assets/js/jquery-3.5.1.js"></script>
     <script src="/page_assets/js/popper.min.js"></script>
     <script src="/page_assets/js/bootstrap.js"></script>
     <script src="/page_assets/plugins/owlcarousel/owl.carousel.min.js" ></script>
+    <script src="/page_assets/plugins/slick/slick.min.js" ></script>
 
     <script src="/page_assets/js/app.js"></script>
+    <script src="/page_assets/js/landing-slider.js"></script>
     <script src="/page_assets/js/script.js"></script>
     <script src="/page_assets/js/checkout.js"></script>
 

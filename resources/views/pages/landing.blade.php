@@ -9,31 +9,45 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-
-
     <!-- include navigation -->
     @include("pages.includes.nav-links")
     <!-- include navigation -->
 
 
-    <nav class="  fixed-top  pt-3">
+    <nav class="fixed-top  pt-3">
         <div class="container">
             <div class="row">
                 <div class="col-12  text-center">
-                    <a href="/index"><img src="/page_assets/img/wine2ulogo.svg" class="navbar-band" alt=""
-                            width="100"></a>
+                    <a href="/index">
+						<img src="/page_assets/img/wine2ulogo.svg" class="navbar-band" alt="" width="100">
+					</a>
                 </div>
             </div>
         </div>
     </nav>
 
 
+	<div class="landing-wrapper">
+		<div class="landing-slider">
+			<img src="page_assets/img/landing-1.jpg" alt="First slide">
+			<img src="page_assets/img/landing-2.jpg" alt="Second slide">
+			<img src="page_assets/img/landing-4.jpg" alt="Third slide">
+			<img src="page_assets/img/landing-4.jpg" alt="Fourth slide">
+		</div>
+		<div class="container p-relative">
+			<div class="mw-450 text-center">
+				<h1 class="mb-3">
+					Your Palate, <br>
+					Our Passion.
+				</h1>
+				<p class="mb-4">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
+				<a href="/site">ENTER SITE</a>
+			</div>
+		</div>
+	</div>
 
 
-
-
-
-    <section class="main-landing">
+    <section class="main-landing d-none">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item  active">
@@ -59,17 +73,11 @@
                                     Our Passion.</h1>
                                 <p class="my-4 landing-sm-text">Shop rare, limited and latest releases of wine along with exclusive
                                     offers from our tasting rooms.</p> -->
-
                                 <p class="landing_p " data-toggle="modal" data-target="#check-age">ENTER SITE</p>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- <div class="container  ">
                 <div class="row">
@@ -78,22 +86,15 @@
                             Our Passion.</h1>
                         <p class="my-4">Shop rare, limited and latest releases of wine along with exclusive offers from
                             our tasting rooms.</p>
-
                         <p class="landing_p" data-toggle="modal" data-target="#check-age">ENTER SITE</p>
-
-
                     </div>
                 </div>
             </div> -->
     </section>
 
 
-
-
     <!-- modal age verification -->
     <!-- Button trigger modal -->
-
-
     <!-- Modal -->
     <div class="modal fade" id="check-age" tabindex="-1" aria-labelledby="check-ageLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -119,11 +120,7 @@
             </div>
         </div>
     </div>
-    <!--  -->
     <!-- modal age verification -->
-
-
-
 
     <!-- footer includes -->
     @include("pages.includes.footer-links")

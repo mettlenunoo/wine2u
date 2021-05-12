@@ -49,9 +49,9 @@ body {
     background-color: #fff;
 }
 
-button{
+button {
     padding: 0;
-    border :none;
+    border: none;
 }
 
 
@@ -79,10 +79,55 @@ a.navbar-wholsome.active {
     color: #ffffff !important;
 
 }
-.clr-white{
+
+.clr-white {
     color: #fff;
 }
 
+/* Landing Page */
+.landing-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.landing-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.landing-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mw-450 {
+    width: 100%;
+    max-width: 450px;
+}
+
+.landing-wrapper h1 {
+    font-size: 40px;
+}
+
+.landing-wrapper a {
+    transition: 0.3s ease;
+    letter-spacing: 5px;
+    font-size: 16px;
+    color: white;
+}
+
+.landing-wrapper a:hover {
+    color: #C39154;
+}
 
 /* Global Syles */
 .container-w2u {
@@ -183,7 +228,8 @@ a.navbar-wholsome.active {
 }
 
 
-.exclusive h1, .about-hero h1 {
+.exclusive h1,
+.about-hero h1 {
     font-family: Libre Baskerville;
     font-weight: bold;
     font-size: 43.3793px;
@@ -317,61 +363,73 @@ label {
     background-size: cover;
     height: 75vh;
 }
-.about-hero-text{
+
+.about-hero-text {
     max-width: 750px;
 }
-@media (max-width: 768px){
-    #about-hero-title{
+
+@media (max-width: 768px) {
+    #about-hero-title {
         font-size: 36px;
     }
 }
-@media (max-width: 576px){
-    #about-hero-title{
+
+@media (max-width: 576px) {
+    #about-hero-title {
         font-size: 24px;
         line-height: 40px;
     }
-    .about-hero-desc{
+
+    .about-hero-desc {
         font-size: 12px;
     }
+
     .sign_title {
         font-size: 28px;
     }
-    .exclusive h1, .about-hero h1 {
+
+    .exclusive h1,
+    .about-hero h1 {
         font-size: 34px;
     }
 }
-@media (max-width: 374px){
-    #about-hero-title{
+
+@media (max-width: 374px) {
+    #about-hero-title {
         font-size: 22px;
         line-height: 30px;
     }
 }
-.border-r{
+
+.border-r {
     border-right: 1px solid #C39154;
 }
-.border-rt{
+
+.border-rt {
     border-right: 1px solid #C39154;
     border-top: 1px solid #C39154;
 }
 
-@media (min-width: 576px){
-    .border-l{
+@media (min-width: 576px) {
+    .border-l {
         border-left: 1px solid #C39154;
     }
 }
-.hr-different{
+
+.hr-different {
     border-top: 1px solid #C39154;
 }
 
-.pt-8rem{
+.pt-8rem {
     padding-top: 8rem;
 }
 
-.min-height-w{
+.min-height-w {
     min-height: 500px;
     object-fit: cover;
     object-position: center;
 }
+
 /* landing pages and checks */
 
 
@@ -384,15 +442,16 @@ label {
 
 }
 
-.main-fix{
+.main-fix {
     margin-top: 22%;
 }
-.landing-sm-text{
+
+.landing-sm-text {
     color: #fff;
 }
 
 
-.landingimg{
+.landingimg {
     height: 100vh;
 }
 
@@ -409,13 +468,13 @@ label {
     color: #fff;
 }
 
-.max600{
+.max600 {
     max-height: 600px;
 }
 
 .landing p {
     line-height: 1.5;
-    
+
 }
 
 
@@ -748,7 +807,7 @@ label {
 .cartimage {
     width: 70px;
     height: 89px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 
@@ -978,12 +1037,15 @@ label {
     font-size: 14px;
     color: #C39154;
 }
-.font-weight-100{
+
+.font-weight-100 {
     font-weight: 100;
 }
-.progress-reviews progress{
+
+.progress-reviews progress {
     width: 100%;
 }
+
 .award-pushl {
     margin-left: -21px;
 }
@@ -1445,40 +1507,41 @@ progress {
     color: #2B4036;
     border-radius: 10px;
     height: 6px;
-  }
-  
-  progress::-webkit-progress-value {
+}
+
+progress::-webkit-progress-value {
     background: #2b4036;
     border-radius: 10px;
     height: 6px;
-  }
-  
-  progress::-moz-progress-bar {
+}
+
+progress::-moz-progress-bar {
     background: rgba(43, 64, 54, 0.1);
     border-radius: 10px;
     height: 6px;
-  }
-  
-  progress::-webkit-progress-value {
+}
+
+progress::-webkit-progress-value {
     background: #2B4036;
     border-radius: 10px;
     height: 6px;
-  }
-  
-  progress::-webkit-progress-bar {
+}
+
+progress::-webkit-progress-bar {
     background: rgba(43, 64, 54, 0.1);
     border-radius: 10px;
     height: 6px;
-  }
+}
 
-  .total-stars #container {
+.total-stars #container {
     width: 100%;
     height: 100%;
     position: relative;
-  }
-  .star-label{
-      white-space: nowrap !important;
-  }
+}
+
+.star-label {
+    white-space: nowrap !important;
+}
 
 /* range slider */
 
@@ -2354,7 +2417,7 @@ progress {
     letter-spacing: 1px;
 }
 
-.product-image{
+.product-image {
     width: 20%;
     height: 20%;
 }
@@ -2503,25 +2566,30 @@ progress {
     z-index: 100000;
     padding: 0px;
 }
+
 .nw-popup-img {
     padding-bottom: 56.25%;
     position: relative;
 }
+
 .nw-popup-body {
     padding: 40px 3vw;
     background: #FFF5EA;
     color: #2B4036;
 }
+
 .form-grid {
     display: grid;
     grid-template-columns: 1fr auto;
 }
+
 .form-grid input {
     width: 100%;
     padding: 10px;
     width: 100%;
     border: 1px solid #e7e7e7;
 }
+
 .form-grid button {
     padding: 10px 20px;
     color: #ffffff;
@@ -2529,15 +2597,18 @@ progress {
     background: #BB804D;
     cursor: pointer;
 }
+
 .nw-modal .modal-dialog {
     max-width: 550px;
 }
+
 .nw-modal .modal-content {
     border: none;
     border-radius: 0px;
     position: relative;
     padding: 0;
 }
+
 .nw-modal .close-btn {
     position: absolute;
     top: 0;
@@ -2550,7 +2621,8 @@ progress {
     padding: 10px 20px;
     line-height: 1;
 }
-.hidden{
+
+.hidden {
     opacity: 0 !important;
 }
 
@@ -2558,36 +2630,36 @@ progress {
 
 
 /* media */
-@media (max-width: 1281px){
-    .main-fix{
+@media (max-width: 1281px) {
+    .main-fix {
         margin-top: 21%;
     }
 }
 
-@media (max-width: 1025px){
-    .main-fix{
+@media (max-width: 1025px) {
+    .main-fix {
         margin-top: 58%;
     }
 
-    
+
 }
 
-@media (max-width: 415px){
+@media (max-width: 415px) {
     .land_titile {
         font-size: 36px;
         font-family: 'Libre Baskerville', serif;
         font-weight: 700;
         color: #fff;
     }
-    
+
 }
 
-@media (max-width: 321px){
+@media (max-width: 321px) {
     .land_titile {
         font-size: 28px;
         font-family: 'Libre Baskerville', serif;
         font-weight: 700;
         color: #fff;
     }
-    
+
 }
