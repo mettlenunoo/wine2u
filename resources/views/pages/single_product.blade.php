@@ -140,10 +140,10 @@
                         @if(auth('customer')->user())
                         <div class="col-2 col-md-2 col-lg-2">
 
-                            <button class="btn btn-prod2 px-4 wishlist" @if(count($wishList)==1)
+                            <!-- <button class="btn btn-prod2 px-4 wishlist" @if(count($wishList)==1)
                                 style="background:rgb(228 196 156)" @endif><img
                                     src="/page_assets/img/bx_bx-bookmark-plus.svg" alt=""></button>
-                            <input type="hidden" value="{{ count($wishList) }}" class="wishlistproduct">
+                            <input type="hidden" value="{{ count($wishList) }}" class="wishlistproduct"> -->
 
 
                         </div>
