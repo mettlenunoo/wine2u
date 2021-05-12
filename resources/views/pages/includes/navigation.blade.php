@@ -3,7 +3,7 @@
 		<div class="container px-0">
 			<div class="nv-top">
 				<div class="nv-top-l d-none d-md-flex">
-					<a href="" target="new">
+					<a href="https://facebook.com/wine2uinternational/" target="_blank" >
 						<img src="/page_assets/img/facebookicon.svg" width="19" alt="">
 					</a>
 					<a href="" target="new">
