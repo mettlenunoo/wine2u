@@ -1686,6 +1686,8 @@ progress {
     object-fit: contain;
 }
 
+
+
 .product-img .as-background {
     object-fit: contain;
 }
@@ -2549,8 +2551,9 @@ progress {
     line-height: 1;
 }
 .hidden{
-    opacity: 0;
+    opacity: 0 !important;
 }
+
 
 
 

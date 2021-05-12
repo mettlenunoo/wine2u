@@ -6,13 +6,13 @@
 				<p class="wine_wc ">©2020 wine2u</p>
 				<ul class="list-inline">
 					<li class="list-inline-item px-2">
-						<a href="https://m.facebook.com/wine2uinternational/"><img src="/page_assets/img/facebookw.svg" alt=""></a>
+						<a href="https://facebook.com/wine2uinternational/" target="_blank" ><img src="/page_assets/img/facebookw.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
-						<a href="https://instagram.com/wine2u__"><img src="/page_assets/img/instagram.svg" alt=""></a>
+						<a href="https://instagram.com/wine2u__" target="_blank"><img src="/page_assets/img/instagram.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
-						<a href="https://twitter.com/wine2u_"><img src="/page_assets/img/twitter.svg" alt=""></a>
+						<a href="https://twitter.com/wine2u_" target="_blank"><img src="/page_assets/img/twitter.svg" alt=""></a>
 					</li>
 					<li class="list-inline-item px-2">
 						<a href="#"><img src="/page_assets/img/youtube.svg" alt=""></a>
