@@ -22,9 +22,8 @@
                <span class="radio-btn"
                   ></i>
                   <div class="hobbies-icon">
-                  {{-- <i class="lab la-cc-visa"></i> --}}
+                  <i class="lab la-cc-visa"></i>
                   <h3>Rave</h3>
-                  <img width="210px" src="/page_assets/img/payment_options.png" alt="">
                   </div>
                </span>
             </label>
@@ -36,9 +35,8 @@
                <span class="radio-btn"
                   ></i>
                   <div class="hobbies-icon">
-                 
+                  <i class="lab la-cc-visa"></i>
                   <h3>Paystack</h3>
-                  <img width="210px" src="/page_assets/img/payment_options.png" alt="">
                   </div>
                </span>
             </label>
@@ -50,9 +48,8 @@
                <span class="radio-btn"
                   ></i>
                   <div class="hobbies-icon">
-                  {{-- <i class="lab la-cc-visa"></i> --}}
+                  <i class="lab la-cc-visa"></i>
                   <h3>Paypal</h3>
-
                   </div>
                </span>
             </label>
@@ -64,9 +61,8 @@
                   <span class="radio-btn"
                      ></i>
                      <div class="hobbies-icon">
-                     {{-- <i class="lab la-cc-visa"></i> --}}
+                     <i class="lab la-cc-visa"></i>
                      <h3>Express-pay</h3>
-                     <img width="210px" src="/page_assets/img/payment_options.png" alt="">
                      </div>
                   </span>
                </label>
@@ -78,10 +74,8 @@
                   <span class="radio-btn"
                      ></i>
                      <div class="hobbies-icon">
-                        
-                        {{-- <i class="lab la-cc-visa"></i> --}}
-                        <h3>Hubtel</h3>
-                        <img width="210px" src="/page_assets/img/payment_options.png" alt="">
+                     <i class="lab la-cc-visa"></i>
+                     <h3>Hubtel</h3>
                      </div>
                   </span>
                </label>
@@ -89,12 +83,12 @@
 
          @if($calculation->shop->payment_gateways->cash_on_delivery == "Yes")
             <label class="custom-radio">
-               <input type="radio" class="payment_method" name="payment_method"  value="pay on delivery"  />
+               <input type="radio" class="payment_method" name="payment_method"  value="pay_on_delivery"  />
                <span class="radio-btn"
                   ></i>
                   <div class="hobbies-icon">
-                     <i class="lab la-cc-shipping"></i>
-                     <h3>Pay on Delivery</h3>
+                  <i class="lab la-cc-visa"></i>
+                  <h3>Pay on Delivery</h3>
                   </div>
                </span>
             </label>

@@ -35,7 +35,7 @@ $tax  = 0.0
     <div class="row centerit mb-3">
         <div class="col-6">
             <div class="media centerit">
-                <img src="{{ $item['productImage'] }}" class="pr-3 cartimage" alt="{{ ucwords($item['productName']) }}">
+                <img src="/product_images/{{ $item['productImage'] }}" class="pr-3 cartimage" alt="{{ ucwords($item['productName']) }}">
                 <div class="media-body">
                     <p class="mb-0"><small> GHS  {{ number_format($item['productPrice'],2) }}</small></p>
                     <p class="mt-0"><strong>{{ ucwords($item['productName']) }}</strong> </p>
@@ -46,7 +46,7 @@ $tax  = 0.0
             <p>Qty: <span class="pl-2"> {{ $item['quantity'] }} </span></p>
         </div>
         <div class="col-3 text-right">
-            GHC <span> {{ number_format($totalPrice,2) }} </span>
+            GHC<span> {{ number_format($totalPrice,2) }} </span>
         </div>
     </div>
 @endforeach

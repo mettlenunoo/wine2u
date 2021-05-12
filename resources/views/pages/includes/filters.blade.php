@@ -129,7 +129,7 @@
 					<span>$100</span>
 				</div>
 				<div class="filter-range">
-					<input type="range" class="custom-range" min="10" max="100" value="20">
+					<input type="range" class="custom-range" min="10" max="100" value="20" id="price_range">
 				</div>
 			</div>
 			<!--  -->
@@ -141,14 +141,14 @@
 					<span>Bold</span>
 				</div>
 				<div class="filter-range">
-					<input type="range" class="custom-range" min="0" max="100" value="30">
+					<input type="range" class="custom-range" min="0" max="100" value="30" id="light_range">
 				</div>
 				<div class="filter-price">
 					<span>Smooth</span>
 					<span>Tannic</span>
 				</div>
 				<div class="filter-range">
-					<input type="range" class="custom-range" min="0" max="100" value="60">
+					<input type="range" class="custom-range" min="0" max="100" value="60" id="smooth_range">
 				</div>
 			</div>
 		</div>

@@ -32,7 +32,11 @@ function addToCart(id='')
           document.getElementById("myCart").innerHTML = response['5']; //response;
 
           openNav();
-          //window.location.replace("/cart");
+
+          setTimeout(function(){  
+           closeNav(); 
+          }, 3000);
+         
 
           }
       });

@@ -45,18 +45,18 @@ use Paystack;
 class publicController extends Controller
 {
      
-     public $shopId = 1 ;
+     public $shopId = 1;
      public $shop_currency ;
     
 
      public function __construct()
      {
        
-        //if(Cookie::get('age') == false){
+        if(Cookie::get('age') == false){
 
-        	//redirect()->route('age-verification')->send();
-        	// return redirect('/age-verification');
-        //}
+        	redirect()->route('age-verification')->send();
+        	return redirect('/age-verification');
+        }
         
      }
      
@@ -130,6 +130,15 @@ class publicController extends Controller
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
+
+        
+        if(isset($_GET['price'])){
+
+            $price = $_GET['price'];
+            $products = $products->WHERE('products.base_price', '<=', $price );
+            $this->SearchPagination("price");
+
+        }
         
         // PAGINATION
         if(isset($_GET['pn'])){
@@ -236,6 +245,7 @@ class publicController extends Controller
 
             }
 
+
         }
 
         $products = $products->latest()
@@ -283,12 +293,81 @@ class publicController extends Controller
     }
 
 
+    public function search_product($keywords)
+    {
+
+            $items = "";
+
+            $products = Product::WHERE('country_id', '=', $this->shopId)
+            ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery'])
+            ->search($keywords)
+            ->latest()
+            ->limit(7)
+            ->get();
+
+            foreach ($products as $key => $product) {
+
+                    $items .= '<a href="/products/'.$product->slug.'" class="nv-form-res">
+                            <div class="nv-res-img">
+                                <img src="/product_images/'. $product->img1 .'" alt="" class="as-background">
+                            </div>
+                            <div class="nv-res-content">
+                                <p class="mb-1 nv-res-title">'.ucwords($product->product_name).'</p>';
+
+                                foreach ($product->categories as $category){
+                                    $items .= '<p class="small mb-1">'.$category->title.'</p>';
+                                }
+                                
+                                foreach ($product->countryRegion as $region){
+                                    $items .= '<p class="small mb-1">'.ucwords($region->name) .' <span> | </span>';
+                                        foreach ($region->countryFrRegion as $country){
+                                         $items .= ucwords($country->name);
+                                        }
+                                    $items .='</p>';
+                                }
+
+                             $items .= 
+                             '</div>
+                          </a>';
+            }
+
+            return $items;
+
+    }
+
+
     public function filter_products()
     {
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
         
+        if(isset($_GET['price'])){
+
+            $price = $_GET['price'];
+            $products = $products->WHERE('products.base_price', '<=', $price );
+            $this->SearchPagination("price");
+
+        }
+
+
+        if(isset($_GET['light'])){
+
+            $light = $_GET['light'];
+            $products = $products->WHERE('products.light', '<=', $light );
+            $this->SearchPagination("light");
+
+        }
+
+
+        if(isset($_GET['smooth'])){
+
+            $smooth = $_GET['smooth'];
+            $products = $products->WHERE('products.smooth', '<=', $smooth );
+            $this->SearchPagination("smooth");
+
+        }
+
         // PAGINATION
         if(isset($_GET['pn'])){
 
@@ -951,7 +1030,9 @@ class publicController extends Controller
             $blogs = Blog::WHERE('publish', '<=', $today)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId);
 
             if($featured){
+
                 $blogs->WHERE('id', '!=', $featured->id);
+
             }
 
             $blogs->with('categories');
@@ -993,6 +1074,8 @@ class publicController extends Controller
          
             //dd($blogs);
             return view('pages.blog',compact('blogs','featured'));
+
+
            // return response()->json($blogs, 200);
 
     }
@@ -1022,6 +1105,16 @@ class publicController extends Controller
 
         }
 
+    }
+
+    public function pairing(){
+
+        $pairings = Pairing::WHERE('parent', 0)
+                  ->WHERE('country_id','=',$this->shopId)
+                  ->with('subPairing')
+                  ->paginate('20');
+
+                  return view('pages.pairing',compact('pairings'));
     }
 
     public function single_pairing($id)
@@ -1837,7 +1930,7 @@ class publicController extends Controller
                     $storeOwner = "dabdulmanan@gmail.com";
                     // $storeOwner = "hello@wine2u.com";
                     \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
-                    $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
+                    $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('uniquefloralpayments@gmail.com','wine2u.com - Order');
                     });
     
             }
@@ -1851,6 +1944,14 @@ class publicController extends Controller
         // });
 
     
+    }
+
+
+    public function accept_cookie(){
+
+         Cookie::queue("website_cookie","preferences",'1576803');
+         return "success";
+
     }
   
 

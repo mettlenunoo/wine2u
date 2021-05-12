@@ -75,7 +75,7 @@ Route::get('/about', 'publicController@about');
 
 
 // Search
-//Route::get('/products/search', 'publicController@search'); 
+Route::get('/products/search/{keywords}', 'publicController@search_product'); 
 Route::get('/search', 'publicController@search'); 
 
 Route::get('/products', 'publicController@products')->name("products");
@@ -88,6 +88,7 @@ Route::post('/subscribe', 'comingSoonController@subscribe')->name("subscribe");
 // Blog
 Route::get('/blog', 'publicController@blog');
 Route::get('/blog/{slug}', 'publicController@single_blog');
+Route::get('/pairing', 'publicController@pairing');
 Route::get('/pairing/{id}', 'publicController@single_pairing');
 
 // Videos 
@@ -161,7 +162,7 @@ Route::get('/checkout/rate/{zone}', 'publicController@checkoutrate');
 
 // Route::post('/index', 'publicController@selectCountry');
 // COOKIES
-//Route::get('/cookies', 'publicController@cookies');
+Route::get('/cookies', 'publicController@accept_cookie');
 
 
 // Route::get('{country}', 'publicController@countryInfo');

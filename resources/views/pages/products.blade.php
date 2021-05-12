@@ -353,6 +353,12 @@ a purchase</p>
 
  <script>
   $(document).ready(function(){
+
+  var filter_price = $('#price_range').val();
+  var filter_light = $('#light_range').val();
+  var filter_smooth = $('#smooth_range').val();
+
+
 	const filterToggle = document.getElementById("toggle-filter");
 	console.log(filterToggle);
 
@@ -383,6 +389,7 @@ a purchase</p>
           //var page = pn;
           // var minimum_price = $('#hidden_minimum_price').val();
           // var maximum_price = $('#hidden_maximum_price').val();
+         
           var wines = get_filter('wines');
           var grapes = get_filter('grapes');
           var pairing = get_filter('pairs');
@@ -390,7 +397,7 @@ a purchase</p>
           $.ajax({
               url:"/filter_products",
               method:"GET",
-              data:{page:pn, wine:wines, grapes:grapes, pairing:pairing, country:country },
+              data:{page:pn, wine:wines, grapes:grapes, pairing:pairing, country:country, price:filter_price ,light:filter_light  ,smooth:filter_smooth },
               success:function(data){
                // alert(data);
                 console.log(data);
@@ -412,6 +419,31 @@ a purchase</p>
           filter_data();
       });
 
+
+       $('#price_range').change(function(){
+          
+          filter_price = $(this).val();
+          filter_data();
+
+        });
+
+
+         $('#light_range').change(function(){
+          
+          filter_light = $(this).val();
+          filter_data();
+
+        });
+
+         $('#smooth_range').change(function(){
+          
+          smooth_light = $(this).val();
+          filter_data();
+
+        });
+
+    
+
       // $('.wishlist').click(function(){
       //     //filter_data();
       //     alert("manan");
@@ -419,7 +451,7 @@ a purchase</p>
 
       $(document).on('click', '.wishlist', function(event){
         event.preventDefault(); 
-        alert("manan");
+      //  alert("manan");
         // var page = $(this).attr('href');
         // console.log(page);
         // alert(page);
@@ -427,6 +459,12 @@ a purchase</p>
         // var page = $(this).attr('href').split('page=')[1];
         // filter_data(page);
      });
+
+    
+      // $('#price_range').slider(
+         
+      //    alert("manan");
+      // );
   
       // $('#price_range').slider({
       //     range:true,

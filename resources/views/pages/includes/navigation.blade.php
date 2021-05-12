@@ -18,12 +18,13 @@
 				</a>
 				<div class="nv-top-r z-1">
 					<div class="nv-form-search">
-						<input type="text" placeholder="Keyword" class="nv-form-input">
+						<input type="text" placeholder="Keyword" class="nv-form-input" id="search_input">
 						<button class="open-form-search">
 							<img src="/page_assets/img/search.svg" width="20" alt="">
 						</button>
-						<div class="nv-form-results">
-							<a href="" class="nv-form-res">
+						<div class="nv-form-results" id="search_result">
+
+							{{-- <a href="" class="nv-form-res">
 								<div class="nv-res-img">
 									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
 								</div>
@@ -32,27 +33,9 @@
 									<p class="small mb-1">Moet & Chendron</p>
 									<p class="small mb-1">Paris</p>
 								</div>
-							</a>
-							<a href="" class="nv-form-res">
-								<div class="nv-res-img">
-									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
-								</div>
-								<div class="nv-res-content">
-									<p class="mb-1 nv-res-title">Rose Imperial</p>
-									<p class="small mb-1">Moet & Chendron</p>
-									<p class="small mb-1">Paris</p>
-								</div>
-							</a>
-							<a href="" class="nv-form-res">
-								<div class="nv-res-img">
-									<img src="/page_assets/img/wine1.png" alt="" class="as-background">
-								</div>
-								<div class="nv-res-content">
-									<p class="mb-1 nv-res-title">Rose Imperial</p>
-									<p class="small mb-1">Moet & Chendron</p>
-									<p class="small mb-1">Paris</p>
-								</div>
-							</a>
+							</a> --}}
+
+
 						</div>
 					</div>
 					<button class="nv-cart ml-3" onclick="openNav()">
