@@ -28,7 +28,8 @@
           <h1 class="f_titile_blk my-3 pb-2"> {{ ucwords($blog->title) }} </h1>
 
           <div class="embed-responsive embed-responsive-21by9 my-5">
-            {!! $blog->video !!}
+          <iframe src="{!! $blog->video !!}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" class="as-background"></iframe>
+            
           </div>
 
           <div>
