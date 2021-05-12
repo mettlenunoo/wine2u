@@ -42,7 +42,7 @@
 					@foreach ($newArrivals as $key => $product)
 						<div class="arr-product">
 							<div class="arr-img mb-2">
-								<img src="/product_images/{{ $product->img1 }}" alt="/products/{{ $product->slug }}" class="as-background">
+								<img src="/product_images/{{ $product->img1 }}" alt="/products/{{ $product->slug }}" class="as-background-top">
 								<a href="/products/{{ $product->slug }}" class="arr-mini-btn">
 									<i class="fa fa-plus"></i>
 								</a>

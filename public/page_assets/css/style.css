@@ -1677,6 +1677,15 @@ progress {
     object-fit: cover;
 }
 
+.as-background-top {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: contain;
+}
+
 .product-img .as-background {
     object-fit: contain;
 }
