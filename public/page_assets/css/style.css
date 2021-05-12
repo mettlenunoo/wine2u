@@ -2343,6 +2343,11 @@ progress {
     letter-spacing: 1px;
 }
 
+.product-image{
+    width: 20%;
+    height: 20%;
+}
+
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;
