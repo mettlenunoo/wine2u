@@ -71,22 +71,22 @@
                         <li class="list-inline-item">
                             <div class="rating">
 
-                                <input type="radio" name="rating-{{ $product->id }}" value="5" id="5-{{ $product->id }}"
+                                <input type="radio" value="5" id="5-{{ $product->id }}"
                                     @if($product->review_summary->average_rating == 5) checked @endif >
                                 <label for="5-{{ $product->id }}">☆</label>
-                                <input type="radio" name="rating-{{ $product->id }}" value="4" id="4-{{ $product->id }}"
+                                <input type="radio"  value="4" id="4-{{ $product->id }}"
                                     @if($product->review_summary->average_rating >= 4 &&
                                 $product->review_summary->average_rating < 5 ) checked @endif>
                                     <label for="4-{{ $product->id }}">☆</label>
-                                    <input type="radio" name="rating-{{ $product->id }}" value="3"
+                                    <input type="radio"  value="3"
                                         id="3-{{ $product->id }}" @if($product->review_summary->average_rating >= 3 &&
                                     $product->review_summary->average_rating < 4) checked @endif>
                                         <label for="3-{{ $product->id }}">☆</label>
-                                        <input type="radio" name="rating-{{ $product->id }}" value="2"
+                                        <input type="radio" value="2"
                                             id="2-{{ $product->id }}" @if($product->review_summary->average_rating >= 2
                                         && $product->review_summary->average_rating < 3) checked @endif>
                                             <label for="2-{{ $product->id }}">☆</label>
-                                            <input type="radio" name="rating-{{ $product->id }}" value="1"
+                                            <input type="radio"  value="1"
                                                 id="1-{{ $product->id }}" @if($product->review_summary->average_rating >
                                             0 && $product->review_summary->average_rating < 2) checked @endif>
                                                 <label for="1-{{ $product->id }}">☆</label>
