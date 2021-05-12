@@ -20,6 +20,10 @@
 	<!-- <link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.carousel.min.css">
 	<link rel="stylesheet" href="/page_assets/plugins/owlcarousel/owl.theme.default.css"> -->
 
+	<!-- Slick Carousel -->
+	<link rel="stylesheet" href="/page_assets/plugins/slick/slick-theme.min.css">
+	<link rel="stylesheet" href="/page_assets/plugins/slick/slick.min.css">
+
 	<!-- custom -->
     <link rel="stylesheet" href="/page_assets/css/style.css" >
 
