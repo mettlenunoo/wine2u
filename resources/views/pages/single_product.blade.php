@@ -667,10 +667,14 @@
                 <form id="addRate">
                     <div class="media centerit">
                         @if(auth('customer')->user()->user_profile_image == null)
-                        <img src="/page_assets/img/review1.png" class=" reviewimage" alt="...">
+
+                            <img src="/images/avatar2.png" class=" reviewimage" alt="...">
+
                         @else
-                        <img src="/user_pic/{{ auth('customer')->user()->user_profile_image }}" class=" reviewimage"
+
+                            <img src="/user_pic/{{ auth('customer')->user()->user_profile_image }}" class=" reviewimage"
                             alt="{{ auth('customer')->user()->fname." ".auth('customer')->user()->lname }}">
+
                         @endif
 
                         <div class="media-body pl-2">
