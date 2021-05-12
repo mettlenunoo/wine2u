@@ -55,7 +55,7 @@ class grapeController extends Controller
            // SLUG
            // To check whether two pieces of content with the same title.
                $results = Grape::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-               $slug = $this->checker_slug($request->input('title'), $old_slug = null,$results);
+               $slug = $this->checker_slug($request->input('title'),$results ,$old_slug = null);
            // END OF SLUG
            
            //BING PARAM
@@ -123,7 +123,7 @@ class grapeController extends Controller
              // SLUG
              // To check whether two pieces of content with the same title.
                  $results = Grape::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-                 $slug = $this->checker_slug($request->input('title'), $grape->slug,$results);
+                 $slug = $this->checker_slug($request->input('title'),$results ,$grape->slug);
              // END OF SLUG
              
              //BING PARAM
@@ -158,7 +158,7 @@ class grapeController extends Controller
         return redirect('/admin/grape')->with(['success' => "Deleted Successfully"]);
     }
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name,$results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;
