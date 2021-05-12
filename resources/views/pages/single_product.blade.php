@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Wine2u | {{ ucwords($product->product_name) }}</title>
+    <title>Wine2U | {{ ucwords($product->product_name) }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -475,7 +475,7 @@
             <div class="row py-5">
                 <div class="col-md-6 centerit mb-4 mb-md-0">
                     <div class="2col-text">
-                        <h2 class="2col-text-title">More Information</h2>
+                        <h2 class="2col-text-title">Learn More</h2>
                         <p class="2col-text-desc">
                             {!! ucfirst($product->more_description) !!}
                         </p>
