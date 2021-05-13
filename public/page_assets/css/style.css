@@ -129,6 +129,28 @@ a.navbar-wholsome.active {
     color: #C39154;
 }
 
+/* Filters Overflow Wrapper */
+.filters-ov-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
 /* Global Syles */
 .container-w2u {
     width: 85%;
