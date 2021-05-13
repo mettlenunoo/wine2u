@@ -1,3 +1,4 @@
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/page_assets/css/bootstrap.css" >
     <link rel="stylesheet" href="/page_assets/plugins/animate.css">

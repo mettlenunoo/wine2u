@@ -829,7 +829,7 @@ label {
 .cartimage {
     width: 70px;
     height: 89px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 
@@ -975,18 +975,18 @@ label {
     opacity: 0
 }
 
-.rating>label:hover:before,
+/* .rating>label:hover:before,
 .rating>label:hover~label:before {
     opacity: 1 !important
-}
+} */
 
 .rating>input:checked~label:before {
     opacity: 1
 }
 
-.rating:hover>input:checked~label:before {
+/* .rating:hover>input:checked~label:before {
     opacity: 0.4
-}
+} */
 
 /* ratings */
 

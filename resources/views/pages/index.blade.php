@@ -688,11 +688,11 @@
           console.log(response);
           $('#subscribe_model').trigger("reset");
 
-          if(response == "success"){              
+         // if(response == "success"){              
             swal( " Thank You! ", "Subscribed Successfully", "success");
-          }else{
-            swal( "Whoops", "There is an error. Please try again", "error");
-          }
+         // }else{
+          //  swal( "Whoops", "There is an error. Please try again", "error");
+         // }
             // Enable the Submit button
             $('#nw-modal').modal('hide');
             $("#model_btn").attr("disabled", false);

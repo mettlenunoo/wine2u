@@ -71,22 +71,22 @@
                         <li class="list-inline-item">
                             <div class="rating">
 
-                                <input type="radio" name="rating-{{ $product->id }}" value="5" id="5-{{ $product->id }}"
+                                <input type="radio" value="5" id="5-{{ $product->id }}"
                                     @if($product->review_summary->average_rating == 5) checked @endif >
                                 <label for="5-{{ $product->id }}">☆</label>
-                                <input type="radio" name="rating-{{ $product->id }}" value="4" id="4-{{ $product->id }}"
+                                <input type="radio"  value="4" id="4-{{ $product->id }}"
                                     @if($product->review_summary->average_rating >= 4 &&
                                 $product->review_summary->average_rating < 5 ) checked @endif>
                                     <label for="4-{{ $product->id }}">☆</label>
-                                    <input type="radio" name="rating-{{ $product->id }}" value="3"
+                                    <input type="radio"  value="3"
                                         id="3-{{ $product->id }}" @if($product->review_summary->average_rating >= 3 &&
                                     $product->review_summary->average_rating < 4) checked @endif>
                                         <label for="3-{{ $product->id }}">☆</label>
-                                        <input type="radio" name="rating-{{ $product->id }}" value="2"
+                                        <input type="radio" value="2"
                                             id="2-{{ $product->id }}" @if($product->review_summary->average_rating >= 2
                                         && $product->review_summary->average_rating < 3) checked @endif>
                                             <label for="2-{{ $product->id }}">☆</label>
-                                            <input type="radio" name="rating-{{ $product->id }}" value="1"
+                                            <input type="radio"  value="1"
                                                 id="1-{{ $product->id }}" @if($product->review_summary->average_rating >
                                             0 && $product->review_summary->average_rating < 2) checked @endif>
                                                 <label for="1-{{ $product->id }}">☆</label>
@@ -140,10 +140,10 @@
                         @if(auth('customer')->user())
                         <div class="col-2 col-md-2 col-lg-2">
 
-                            <button class="btn btn-prod2 px-4 wishlist" @if(count($wishList)==1)
+                            <!-- <button class="btn btn-prod2 px-4 wishlist" @if(count($wishList)==1)
                                 style="background:rgb(228 196 156)" @endif><img
                                     src="/page_assets/img/bx_bx-bookmark-plus.svg" alt=""></button>
-                            <input type="hidden" value="{{ count($wishList) }}" class="wishlistproduct">
+                            <input type="hidden" value="{{ count($wishList) }}" class="wishlistproduct"> -->
 
 
                         </div>
@@ -667,10 +667,14 @@
                 <form id="addRate">
                     <div class="media centerit">
                         @if(auth('customer')->user()->user_profile_image == null)
-                        <img src="/page_assets/img/review1.png" class=" reviewimage" alt="...">
+
+                            <img src="/images/avatar2.png" class=" reviewimage" alt="...">
+
                         @else
-                        <img src="/user_pic/{{ auth('customer')->user()->user_profile_image }}" class=" reviewimage"
+
+                            <img src="/user_pic/{{ auth('customer')->user()->user_profile_image }}" class=" reviewimage"
                             alt="{{ auth('customer')->user()->fname." ".auth('customer')->user()->lname }}">
+
                         @endif
 
                         <div class="media-body pl-2">
