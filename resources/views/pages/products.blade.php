@@ -314,8 +314,7 @@
           
           <div class="col-12 text-center  mt-5">
             <h4 class="wine_wc">  <strong>Download our Mobile App</strong></h4>
-            <p class="wine_wc">It's the fastest way to search for  the best wine and make
-a purchase</p>
+            <p class="wine_wc">It's the fastest way to search for  the best wine and make a purchase</p>
           </div>
 
           <div class="col-12  mt-5">
@@ -336,8 +335,6 @@ a purchase</p>
       <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
 
       <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
-
-
 
     </div>
   </section>
