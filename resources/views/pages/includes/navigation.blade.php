@@ -79,28 +79,42 @@
 						<a href="" class="px-md-3 py-md-2">Wine <i class="fa fa-angle-down ml-2"></i></a>
 						<div class="nv-drop-menu">
 							<div class="nv-dropdown">
-								<a href="">Wine</a>
-								<div class="nv-drop-menu">
+								<a href="">red wine</a>
+								{{-- <div class="nv-drop-menu">
 									<a href="">Wine 1</a>
 									<a href="">Wine 2</a>
-								</div>
+								</div> --}}
 							</div>
 							<div class="nv-dropdown">
-								<a href="">Liquor</a>
-								<div class="nv-drop-menu">
-									<a href="">Liquor 1</a>
-									<a href="">Liquor 2</a>
-								</div>
+								<a href="">White wine</a>
+								
 							</div>
 							<div class="nv-dropdown">
-								<a href="">Drink</a>
-								<div class="nv-drop-menu">
-									<a href="">Drink 1</a>
-									<a href="">Drink 2</a>
-								</div>
+								<a href="">Rosé wine</a>
+								
 							</div>
+
+							<div class="nv-dropdown">
+								<a href="">Sweet wine</a>
+								
+							</div>
+							<div class="nv-dropdown">
+								<a href=""> Moscato</a>
+								
+							</div>
+
+							<div class="nv-dropdown">
+								<a href=""> Asti</a>
+								
+							</div>
+
+							<div class="nv-dropdown">
+								<a href="">Baccorosa</a>
+							</div>
+
 						</div>
 					</div>
+
 					<a class="px-md-3 py-md-2" href="/products">Champagne</a>
 					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
 					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a>

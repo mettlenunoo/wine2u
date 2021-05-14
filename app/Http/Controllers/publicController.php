@@ -627,7 +627,7 @@ class publicController extends Controller
     {   
         $shop = shop::WHERE('id','=',$this->shopId)->first();
         $categories = Category::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->get();
-        $wines = Wine::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subWines')->get();
+        $wines = Wine::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subWines')->orderby('position', 'asc')->get();
         $offers = Offer::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subOffers')->get();
         $grapes = Grape::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subGrapes')->get();
         $pairs = Pairing::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subPairing')->get();
