@@ -229,6 +229,17 @@ a.navbar-wholsome.active {
     opacity: 1;
 }
 
+/* Nav Search */
+#nav-logo img {
+    transition: 0.3s ease;
+}
+
+#nav-logo.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
 /* Global Syles */
 .container-w2u {
     width: 85%;
@@ -2232,7 +2243,7 @@ progress::-webkit-progress-bar {
 }
 
 .nv-form-input.active {
-    width: 220px;
+    width: 400px;
     opacity: 1;
     pointer-events: all;
 }
@@ -2252,7 +2263,7 @@ progress::-webkit-progress-bar {
     top: calc(100% + 5px);
     left: 0;
     background: white;
-    width: 220px;
+    width: 400px;
     transition: 0.3s ease;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
@@ -2539,6 +2550,17 @@ progress::-webkit-progress-bar {
 
     .expand {
         width: 100% !important;
+    }
+
+    .nv-form-input.active,
+    .nv-form-results,
+    .nv-form-results.active {
+        width: 120px;
+    }
+
+    #nav-logo.hide {
+        opacity: 1;
+        pointer-events: all;
     }
 }
 
