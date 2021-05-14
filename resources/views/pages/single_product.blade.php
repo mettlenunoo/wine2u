@@ -408,9 +408,15 @@
             <div class="row align-items-center">  
                 <div class="col-md-6 col-12 mb-4-mb-md-0 order-md-2">
                     <div class="lm-slider">
-                        <img src="/page_assets/img/singleblog1.jpg" alt="">
+                
+                        @foreach($product->gallery as $key => $image)
+
+                            <img src="/product_images/{{ $image->img }}" alt="">
+
+                        @endforeach
+                        {{-- <img src="/page_assets/img/singleblog1.jpg" alt="">
                         <img src="/page_assets/img/singleblog2.jpg" alt="">
-                        <img src="/page_assets/img/house.jpg" alt="">
+                        <img src="/page_assets/img/house.jpg" alt=""> --}}
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mb-4 mb-md-0 order-md-1">
@@ -547,7 +553,7 @@
                 </div>
             </div>
 
-            <div class="row py-5">
+            {{-- <div class="row py-5">
                 <div class="col-md-6 centerit mb-4 mb-md-0">
                     <div class="2col-text">
                         <h2 class="2col-text-title">Learn More</h2>
@@ -589,7 +595,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </section>
