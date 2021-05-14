@@ -402,6 +402,29 @@
 		</div>
 	@endif
 
+    <!-- Learn More -->
+    <div class="py-5">
+        <div class="container">
+            <div class="row align-items-center">  
+                <div class="col-md-6 col-12 mb-4-mb-md-0 order-md-2">
+                    <div class="lm-slider">
+                        <img src="/page_assets/img/singleblog1.jpg" alt="">
+                        <img src="/page_assets/img/singleblog2.jpg" alt="">
+                        <img src="/page_assets/img/house.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 mb-4 mb-md-0 order-md-1">
+                    <div class="">
+                        <h2 class="">Learn More</h2>
+                        <p class="learn-more-txt">
+                            {!! ucfirst($product->more_description) !!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Reviews -->
     <section class="py-md-5 pb-5 d-none">
         <div class="container-fluid container-w2u">

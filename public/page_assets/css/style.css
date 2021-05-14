@@ -193,6 +193,42 @@ a.navbar-wholsome.active {
     margin-bottom: 10px;
 }
 
+/* Learn More */
+.learn-more-txt,
+.learn-more-txt>* {
+    font-family: 'Sopia Pro', sans-serif !important;
+}
+
+.lm-slider img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.lm-slider .slick-dots {
+    bottom: 0;
+}
+
+.lm-slider .slick-dots li,
+.lm-slider .slick-dots li button {
+    width: 10px;
+    height: 10px;
+}
+
+.lm-slider .slick-dots li button:before {
+    background: white;
+    content: "";
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+}
+
+.lm-slider .slick-dots li.slick-active button:before {
+    background: #c39154;
+    opacity: 1;
+}
+
 /* Global Syles */
 .container-w2u {
     width: 85%;
