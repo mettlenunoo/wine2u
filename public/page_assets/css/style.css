@@ -104,14 +104,14 @@ a.navbar-wholsome.active {
 .landing-slider {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     top: 0;
     left: 0;
 }
 
 .landing-slider img {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     object-fit: cover;
 }
 
