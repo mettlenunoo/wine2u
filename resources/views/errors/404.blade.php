@@ -21,7 +21,7 @@
        <div class="col-12 col-md-7 mx-auto text-center ">
          <img src="/page_assets/img/404image.svg" class="img-fluid" alt="">
          <h5>Ooops!.... something went wrong</h5>
-         <a href="/index"><h5>Go Back Home</h5></a>
+          
        </div>
     </div>
   </div>
