@@ -5,7 +5,7 @@
       @if(!auth('customer')->user())
       <div class="mb-5">
 		<div class="alert shadow-sm alert-dismissible fade show" role="alert">
-			<strong> Already have an account? </strong> <a href="/user-signin?direct=checkout">Log in</a> | <span >or  Continue as a Guest </span>
+			<strong> Already have an account? </strong> <a href="/sign-in?direct=checkout">Log in</a> | <span >or  Continue as a Guest </span>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">×</span>
 			</button>
