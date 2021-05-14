@@ -49,9 +49,15 @@ body {
     background-color: #fff;
 }
 
+a {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
 button {
     padding: 0;
     border: none;
+    transition: 0.3s ease;
 }
 
 
@@ -127,6 +133,64 @@ a.navbar-wholsome.active {
 
 .landing-wrapper a:hover {
     color: #C39154;
+}
+
+/* Filters Overflow Wrapper */
+.filters-ov-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.filters-ov-wrapper::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+/* Food Pairings Slider */
+.fp-slider {
+    display: flex;
+    align-items: center;
+}
+
+.fp-slider button {
+    background: transparent;
+    border: none;
+    outline: none !important;
+}
+
+.fp-slider button img {
+    width: 16px;
+}
+
+.fp-slides {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.fp-slide {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    display: block;
+}
+
+.fp-slide img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
 /* Global Syles */

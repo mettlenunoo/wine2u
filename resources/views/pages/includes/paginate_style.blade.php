@@ -1,16 +1,18 @@
 <style>
 .pagination {
-  text-align: center;
-  display: inline-block;
+  	text-align: center;
+  	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
 }
 </style>
+
 <div class="col-12  pagination">
     @if ($paginator->hasPages())
     

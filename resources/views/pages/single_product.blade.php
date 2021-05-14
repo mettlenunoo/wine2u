@@ -349,9 +349,61 @@
             </div>
         </div>
     </section>
-    <!-- Characteristics and Taste Notes -->
+	<!-- Characteristics and Taste Notes -->
+	
+	<!-- Food Pairings -->
+    @if(count($product->pairing) > 0)
+		<div class="py-md-5">
+			<div class="container">
+				<h5 class="sign_title mb-5">Food Parings </h5>
+				
+				@if(count($product->pairing) > 4)
+					<div class="fp-slider">
+						<button class="mr-2" id="fp-prev">
+							<img src="/page_assets/img/leftarrow.svg" alt="">
+						</button>
+						<div class="fp-slides mb-0">
+							@foreach ($product->pairing as $key => $pair)
+								<a 
+									href="/pairing/{{ $pair->blog_id }}" 
+									class="fp-slide"
+								>
+									<img 
+										src="/images/{{ $pair->image }}" 
+										alt="{{ ucwords($pair->title) }}"
+									>
+									<p class="mb-1">{{ ucwords($pair->title) }}</p>
+								</a>
+							@endforeach
+						</div>
+						<button class="ml-2" id="fp-next">
+							<img src="/page_assets/img/rightarrow.svg" alt="">
+						</button>
+					</div>
+				@else
+					<div class="row">
+						@foreach ($product->pairing as $key => $pair)
+							<div class="col-lg-3 col-md-6 col-12 mb-4">
+								<a 
+									href="/pairing/{{ $pair->blog_id }}" 
+									class="fp-slide mx-0"
+								>
+									<img 
+										src="/images/{{ $pair->image }}" 
+										alt="{{ ucwords($pair->title) }}"
+									>
+									<p class="mb-1">{{ ucwords($pair->title) }}</p>
+								</a>
+							</div>
+						@endforeach
+					</div>
+				@endif
+			</div>
+		</div>
+	@endif
+
     <!-- Reviews -->
-    <section class="py-md-5 pb-5">
+    <section class="py-md-5 pb-5 d-none">
         <div class="container-fluid container-w2u">
             <div class="row pb-5">
                 <div class="col-12">
@@ -518,7 +570,8 @@
 
         </div>
     </section>
-    <!-- Reviews -->
+	<!-- Reviews -->
+	
     <!-- Similar Products -->
     <section class="my-5 py-5">
         <div class="container-fluid container-w2u">
