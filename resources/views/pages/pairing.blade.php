@@ -20,7 +20,7 @@
     <div class="row ">
      <div class="col-12 text-center">
      <h1 class="sign_title wine2upc">Food Pairing</h1>
-     <p class="wine2upc ">Be informed about our latest findings and wine tutorials</p>
+     <p class="wine2upc ">Combine the right food with the right wine to enhance both flavours</p>
      </div>
     </div>
     <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
