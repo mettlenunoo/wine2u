@@ -75,52 +75,55 @@
 		<div class="container px-0">
 			<div class="collapse navbar-collapse" id="site-nav">
 				<div class="navbar-nav mx-md-auto">
-					<div class="nv-dropdown" href="#">
-						<a href="" class="px-md-3 py-md-2">Wine <i class="fa fa-angle-down ml-2"></i></a>
-						<div class="nv-drop-menu">
-							<div class="nv-dropdown">
-								<a href="">red wine</a>
-								{{-- <div class="nv-drop-menu">
-									<a href="">Wine 1</a>
-									<a href="">Wine 2</a>
-								</div> --}}
-							</div>
-							<div class="nv-dropdown">
-								<a href="">White wine</a>
-								
-							</div>
-							<div class="nv-dropdown">
-								<a href="">Rosé wine</a>
-								
-							</div>
+					@foreach($menu->wines as $key => $wine)
+						
+						<div class="nv-dropdown" href="#">
+							<a href="/products?wine={{ $wine->slug }}" class="px-md-3 py-md-2">{{ ucwords($wine->title) }} <i class="fa fa-angle-down ml-2"></i></a>
+							<div class="nv-drop-menu">
 
-							<div class="nv-dropdown">
-								<a href="">Sweet wine</a>
-								
-							</div>
-							<div class="nv-dropdown">
-								<a href=""> Moscato</a>
-								
-							</div>
+								@foreach ($wine->subWines as $subWine)
+									<div class="nv-dropdown">
+										<a href="/products?wine={{ $subWine->slug }}">{{ ucwords($subWine->title) }}</a>
+										{{-- <div class="nv-drop-menu">
+											<a href="">Wine 1</a>
+											<a href="">Wine 2</a>
+										</div> --}}
+									</div>
+								@endforeach
 
-							<div class="nv-dropdown">
-								<a href=""> Asti</a>
-								
 							</div>
-
-							<div class="nv-dropdown">
-								<a href="">Baccorosa</a>
-							</div>
-
 						</div>
-					</div>
 
-					<a class="px-md-3 py-md-2" href="/products">Champagne</a>
+					@endforeach
+
+						
+					{{-- <a class="px-md-3 py-md-2" href="/products">Champagne</a>
 					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
-					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a>
-					<a class="px-md-3 py-md-2" href="/products">Food Pairings</a>
-					<a class="px-md-3 py-md-2" href="/products">Wine Regions</a>
-					<a class="px-md-3 py-md-2" href="/blog">Kɔkɔ's Blog</a>
+					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a> --}}
+					<a class="px-md-3 py-md-2" href="/pairing">Food Pairings</a>
+					<a class="px-md-3 py-md-2" href="#">Wine Regions</a>
+
+					@foreach($menu->blogCategories as $key => $blogCategory)
+						
+						<div class="nv-dropdown" href="#">
+							<a href="/blog" class="px-md-3 py-md-2"> {{ ucwords($blogCategory->title) }} <i class="fa fa-angle-down ml-2"></i></a>
+							<div class="nv-drop-menu">
+
+								@foreach ($blogCategory->subCategories as $subCategory)
+									<div class="nv-dropdown">
+										<a href="/blog?category={{ $subCategory->slug }}">{{ ucwords($subCategory->title) }}</a>
+										{{-- <div class="nv-drop-menu">
+											<a href="">Wine 1</a>
+											<a href="">Wine 2</a>
+										</div> --}}
+									</div>
+								@endforeach
+
+							</div>
+						</div>
+
+					@endforeach
+					
 				</div>
 			</div>
 		</div>

@@ -627,6 +627,7 @@ class publicController extends Controller
     {   
         $shop = shop::WHERE('id','=',$this->shopId)->first();
         $categories = Category::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->get();
+        $blogCategories = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->get();
         $wines = Wine::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subWines')->orderby('position', 'asc')->get();
         $offers = Offer::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subOffers')->get();
         $grapes = Grape::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subGrapes')->get();
@@ -637,6 +638,7 @@ class publicController extends Controller
         $menu = (object) [
             "shop" => $shop,
             "categories" => $categories,
+            "blogCategories" => $blogCategories,
             "wines" => $wines,
             "offers" => $offers,
             "grapes" => $grapes,
@@ -1067,7 +1069,7 @@ class publicController extends Controller
 
                 $getSlugs = explode(",",$_GET['category']);
                 $categories = Blogcategory::whereIN('slug',$getSlugs)->with('subCategories')->get();
-                $ids = $this->filterIds($categories,'subCategories');
+                $ids = filterIds($categories,'subCategories');
                 //dd($idss);
                 $blogs = $blogs->whereHas('categories', function ($query) use ($ids) {
                     $query->whereIN('id', $ids);
