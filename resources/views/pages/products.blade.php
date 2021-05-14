@@ -382,7 +382,7 @@
   
       function filter_data(pn = 1)
       {
-          $('.filter_data').html('<div id="loading" style=""></div>');
+          $('.filter_data').html('<div id="loading" class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"></div>');
           //var page = pn;
           // var minimum_price = $('#hidden_minimum_price').val();
           // var maximum_price = $('#hidden_maximum_price').val();
@@ -398,7 +398,16 @@
               success:function(data){
                // alert(data);
                 console.log(data);
-              $('.filter_data').html(data);
+                if(data == ""){
+                
+                    $('.filter_data').html('<div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"> <h3>No product under this category. Please try again.</h3></div>');
+
+                 } else {
+
+                   $('.filter_data').html(data);
+
+                 }
+                
               }
           });
       }

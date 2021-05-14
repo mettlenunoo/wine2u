@@ -375,7 +375,7 @@ class publicController extends Controller
             $this->SearchPagination("pn");
         } else{
 
-            $pn = 5;
+            $pn = 12;
         }
 
 
