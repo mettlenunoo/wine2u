@@ -37,7 +37,7 @@
                     </p>
                 </div>
             </div>
-            <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
+            <!-- <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt=""> -->
         </div>
     </section>
     <!-- product and add -->
