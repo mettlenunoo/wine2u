@@ -11,6 +11,7 @@
 				<h6 class="fw-bold card-filter-sect border-top-none">Wine Type</h6>
 				<div class="filters-ov-wrapper">
 					@foreach ($menu->wines as $wine)
+
 						@php
 							if(isset($_GET['wine'])){
 								$selWine = $_GET['wine'];
@@ -18,12 +19,14 @@
 								$selWine = "";
 							}
 						@endphp
+
 						<div class="filter-group">
 							<label class="form-check-label mr-2" for="wines">
-								{{ ucwords($wine->title) }}
+							<b>	{{ ucwords($wine->title) }} </b>
 							</label>
-							<input class="form-check-input common_selector wines" type="checkbox" id="wines" value="{{ $wine->slug }}" @if($selWine == $wine->slug ) checked  @endif>
+							{{-- <input class="form-check-input common_selector wines" type="checkbox" id="wines" value="{{ $wine->slug }}" @if($selWine == $wine->slug ) checked  @endif> --}}
 						</div>
+
 						@foreach ($wine->subWines as $subWine)
 							<div class="filter-group">
 								<label class="form-check-label" for="wines">
@@ -32,6 +35,7 @@
 								<input class="form-check-input common_selector wines" type="checkbox" id="wines" value="{{ $subWine->slug }}" @if($selWine == $subWine->slug ) checked  @endif>
 							</div>
 						@endforeach
+
 					@endforeach
 				</div>
 			</div>
@@ -52,9 +56,9 @@
 	
 						<div class="filter-group">
 							<label class="form-check-label" for="grape">
-								{{ ucwords($grape->title) }}
+								<b> {{ ucwords($grape->title) }} </b>
 							</label>
-							<input class="form-check-input common_selector grapes" type="checkbox" id="grape"  value="{{ $grape->slug }}" @if($selGrape == $grape->slug ) checked  @endif>
+							{{-- <input class="form-check-input common_selector grapes" type="checkbox" id="grape"  value="{{ $grape->slug }}" @if($selGrape == $grape->slug ) checked  @endif> --}}
 						</div>
 						@foreach ($grape->subGrapes as $subGrape)
 							<div class="filter-group">
@@ -83,9 +87,9 @@
 					@foreach ($menu->pairs as $pair)
 						<div class="filter-group">
 							<label class="form-check-label" for="pairs">
-								{{ ucwords($pair->title) }}
+								<b> {{ ucwords($pair->title) }} </b>
 							</label>
-							<input class="form-check-input common_selector pairs" type="checkbox" id="pairs" value="{{ $pair->slug }}" @if($selPairing == $pair->slug ) checked  @endif>
+							{{-- <input class="form-check-input common_selector pairs" type="checkbox" id="pairs" value="{{ $pair->slug }}" @if($selPairing == $pair->slug ) checked  @endif> --}}
 						</div>
 						@foreach ($pair->subPairing as $subPairing)
 						<div class="filter-group">
@@ -113,9 +117,9 @@
 					@foreach ($menu->countries as $country)
 						<div class="filter-group">
 							<label class="form-check-label" for="country">
-								{{ ucwords($country->name) }}
+								<b> {{ ucwords($country->name) }} </b>
 							</label>
-							<input class="form-check-input common_selector country" type="checkbox" id="country" value="{{ $country->slug }}" @if($selCountry == $country->slug ) checked  @endif >
+							{{-- <input class="form-check-input common_selector country" type="checkbox" id="country" value="{{ $country->slug }}" @if($selCountry == $country->slug ) checked  @endif > --}}
 						</div>
 						@foreach ($country->regions as $region)
 							<div class="filter-group">
