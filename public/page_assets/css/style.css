@@ -34,6 +34,18 @@
     font-weight: 700;
 }
 
+@font-face {
+    font-family: "Libre Baskerville";
+    src: url("LibreBaskerville-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Libre Baskerville";
+    src: url("LibreBaskerville-Regular.ttf") format("truetype");
+    font-weight: 700;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -2746,6 +2758,10 @@ progress::-webkit-progress-bar {
 
 .hidden {
     opacity: 0 !important;
+}
+
+.libre{
+    font-family: 'Libre Baskerville' ;
 }
 
 

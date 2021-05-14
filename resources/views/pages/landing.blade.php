@@ -36,12 +36,12 @@
 		</div>
 		<div class="container p-relative">
 			<div class="mw-450 text-center">
-				<h1 class="mb-3">
+				<h1 class="mb-3 libre">
 					Your Palate, <br>
 					Our Passion.
 				</h1>
 				<p class="mb-4">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
-				<a href="/site">ENTER SITE</a>
+				<a  class="libre" href="/site">ENTER SITE</a>
 			</div>
 		</div>
 	</div>
