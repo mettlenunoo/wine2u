@@ -95,6 +95,8 @@
                   <div class="hobbies-icon">
                      <i class="lab la-cc-shipping"></i>
                      <h3>Pay on Delivery</h3>
+                     <img width="210px" src="/images/summary.png" alt="">
+                    
                   </div>
                </span>
             </label>
