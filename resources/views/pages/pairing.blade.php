@@ -32,9 +32,9 @@
    <section class="my-5">
      <div class="container ">
        <div class="row">
-         <div class="col-12  text-center">
+         {{-- <div class="col-12  text-center">
            <h1  class="sign_title">Food Pairing</h1>
-         </div>
+         </div> --}}
        </div>
 
        <div class="row my-5">
