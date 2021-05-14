@@ -342,31 +342,31 @@ class publicController extends Controller
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
         
-        if(isset($_GET['price'])){
+        // if(isset($_GET['price'])){
 
-            $price = $_GET['price'];
-            $products = $products->WHERE('products.base_price', '<=', $price );
-            $this->SearchPagination("price");
+        //     $price = $_GET['price'];
+        //     $products = $products->WHERE('products.base_price', '<=', $price );
+        //     $this->SearchPagination("price");
 
-        }
-
-
-        if(isset($_GET['light'])){
-
-            $light = $_GET['light'];
-            $products = $products->WHERE('products.light', '<=', $light );
-            $this->SearchPagination("light");
-
-        }
+        // }
 
 
-        if(isset($_GET['smooth'])){
+        // if(isset($_GET['light'])){
 
-            $smooth = $_GET['smooth'];
-            $products = $products->WHERE('products.smooth', '<=', $smooth );
-            $this->SearchPagination("smooth");
+        //     $light = $_GET['light'];
+        //     $products = $products->WHERE('products.light', '<=', $light );
+        //     $this->SearchPagination("light");
 
-        }
+        // }
+
+
+        // if(isset($_GET['smooth'])){
+
+        //     $smooth = $_GET['smooth'];
+        //     $products = $products->WHERE('products.smooth', '<=', $smooth );
+        //     $this->SearchPagination("smooth");
+
+        // }
 
         // PAGINATION
         if(isset($_GET['pn'])){
@@ -384,9 +384,10 @@ class publicController extends Controller
             if(isset($_GET['wine'])){
 
                // $getWinesID = explode(",",$_GET['wine']);
-                $getWinesID[] = $_GET['wine'];
-                $wines = Wine::whereIN('slug',$getWinesID)->with('subWines')->get();
-                $wineIDs = filterIds($wines,'subWines');
+                 $getWinesID = $_GET['wine'];
+                 $wines = Wine::whereIN('slug',$getWinesID)->with('subWines')->get();
+                 $wineIDs = filterIds($wines,'subWines');
+                // dd($wineIDs);
 
                 //dd($getWinesID);
 
@@ -400,7 +401,7 @@ class publicController extends Controller
 
             if(isset($_GET['offers'])){
 
-                $getOffersID[] = $_GET['offers'];
+                $getOffersID = $_GET['offers'];
                 $offers = Offer::whereIN('slug',$getOffersID)->with('subOffers')->get();
                 $offerIDs = filterIds($offers,'subOffers');
 
@@ -415,7 +416,7 @@ class publicController extends Controller
 
             if(isset($_GET['pairing'])){
 
-                $getPairingID[] = $_GET['pairing'];
+                $getPairingID = $_GET['pairing'];
                 $pairings = Pairing::whereIN('slug',$getPairingID)->with('subPairing')->get();
                 $pairIDs = filterIds($pairings,'subPairing');
 
@@ -430,7 +431,7 @@ class publicController extends Controller
 
             if(isset($_GET['grapes'])){
 
-                $getGrapesID[] = $_GET['grapes'];
+                $getGrapesID = $_GET['grapes'];
                 $grapes = Grape::whereIN('slug',$getGrapesID)->with('subGrapes')->get();
                 $grapeIDs = filterIds($grapes,'subGrapes');
 
@@ -445,7 +446,7 @@ class publicController extends Controller
 
             if(isset($_GET['country'])){
 
-                $getSlugs[] = $_GET['country'];
+                $getSlugs = $_GET['country'];
                 // dd($getSlugs);
                 $countries = Country::whereIN('slug',$getSlugs)->with('regions')->get();
                 $ids = filterIds($countries,'regions');
@@ -461,7 +462,7 @@ class publicController extends Controller
 
             if(isset($_GET['category'])){
 
-                $getSlugs[] = $_GET['category'];
+                $getSlugs = $_GET['category'];
                 $categories = Category::whereIN('slug',$getSlugs)->with('subCategories')->get();
                 $ids = filterIds($categories,'subCategories');
                 //dd($idss);
