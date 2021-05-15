@@ -21,7 +21,20 @@
         <div class="container ">
             <div class="row ">
                 <div class="col-12 text-center">
-                    <h1 class="sign_title wine2upc"> {{ ucwords($product->product_name) }} </h1>
+                <h1 class="sign_title wine2upc"> OUR PRODUCTS </h1>
+                
+                    <!-- <p class="wine2upc ">
+                        <span class="font-weight-light">|</span>
+                        @if(!empty($tags))
+
+                        @foreach ($tags as $tag)
+                        <span class="mx-1 font-weight-light">{{ ucwords($tag) }}</span> |
+                        @endforeach
+
+                        @endif
+                    </p> -->
+
+                    <!-- <h1 class="sign_title wine2upc"> {{ ucwords($product->product_name) }} </h1>
                     @php
                     $tags = explode(",",$product->tag);
                     @endphp
@@ -34,7 +47,7 @@
                         @endforeach
 
                         @endif
-                    </p>
+                    </p> -->
                 </div>
             </div>
             <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
