@@ -41,7 +41,7 @@
         </div>
     </section> -->
     <!-- product and add -->
-    <section class="my-5">
+    <section class="my-5 relativetins">
         <div class="container">
             <div class="row">
                 <!-- left side -->
