@@ -17,7 +17,7 @@
     @include("pages.includes.navigation")
     <!-- include navigation -->
 
-    <!-- <section class="top_titile_bk  centerit relativetins">
+    <section class="top_titile_bk  centerit relativetins">
         <div class="container ">
             <div class="row ">
                 <div class="col-12 text-center">
@@ -39,9 +39,9 @@
             </div>
             <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
         </div>
-    </section> -->
+    </section>
     <!-- product and add -->
-    <section class="my-5 relativetins">
+    <section class="my-5">
         <div class="container">
             <div class="row">
                 <!-- left side -->
