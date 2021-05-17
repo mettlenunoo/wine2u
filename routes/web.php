@@ -15,11 +15,7 @@
 //     return view('welcome');
 // });
 
-/* 
-|
-|  FRONT END ROUTER
-|
-*/
+
 
  // ALWAY MAKE SURE DECLARED RESOURCE  FIRST
 Route::get('/admin','Auth\LoginController@showAdminLogin')->name('admin');
@@ -43,6 +39,7 @@ Route::resource('/admin/subscribers','subscriberController');
 Route::resource('/admin/paymethod','paymentMethodController');
 Route::resource('/admin/product','productController');
 Route::resource('/admin/order','orderController');
+
 // coupon
 Route::resource('/admin/coupon','couponController');
 Route::post('/addcoupon', 'publicController@addcoupon');
@@ -266,21 +263,6 @@ Route::get('/cookies', 'publicController@accept_cookie');
 
 
 
-/*
-|
-|  END OF FRONT END ROUTER
-|
-
-*/
-
-
-/*
-|
-|  BACKEND ROUTERS
-|
-*/
-
-
 
 Route::get('/admin/account/settings','setupController@shopSettings');
 Route::get('/admin/change/shop/{id}', 'setupController@changeShop');
@@ -299,6 +281,8 @@ Route::post('/admin/shipping/rate/import', 'shippingController@importfromexcel')
 Route::get('/admin/report/{search}', 'ReportController@search');
 Route::resource('/admin/report', 'ReportController');
 
+// Payment Gateway
+Route::resource('/admin/payment-gateway','PaymentGatewayController');
 
 
 //Route::resource('user/dashboard','orderController');

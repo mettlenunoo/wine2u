@@ -231,7 +231,7 @@
 
 
     @if(auth()->user()->type == "Super Administrator" || auth()->user()->type == "Administrator" )
-         <li <?php if($page == "settings" || $page == "payment" ){?> class="open" <?php }?> >
+         <li <?php if($page == "settings" || $page == "payment" || $page == "paymentgateway_tb" || $page == "paymentgateway_add" ){?> class="open" <?php }?> >
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-settings"></i><span class="sidebar-mini-hide">Settings</span></a>
               <ul>
                     <li>
@@ -239,6 +239,18 @@
                     </li>
                     <li>
                     <a href="/admin/paymethod/" <?php if($page == "payment" ){ ?> class="active" <?php } ?> > Payment </a>
+                    </li>
+
+                    <li <?php if($page == "paymentgateway_tb" || $page == "paymentgateway_add"){?> class="open" <?php }?> >
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-money"></i><span class="sidebar-mini-hide">Payment Gateway</span></a>
+                        <ul>
+                            <li>
+                                <a href="/admin/payment-gateway"  <?php if($page == "paymentgateway_tb"){?> class="active"<?php }?> >All</a>
+                            </li>
+                            <li>
+                                <a href="/admin/payment-gateway/create"  <?php if($page == "paymentgateway_add"){?> class="active"<?php }?> >Add New</a>
+                            </li>
+                        </ul>
                     </li>
                  
              </ul>
