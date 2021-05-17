@@ -122,11 +122,16 @@ Route::get('/sign-in/google/redirect', 'socialiteController@google_redirect');
 Route::get('/sign-in/google', 'socialiteController@google_Callback');
 
 //  User Account
-Route::get('/account', 'customerContoller@profile');
-Route::get('/account/logout', 'customerContoller@logout');
-Route::post('/account/update_profile', 'publicController@userUpdate');
-Route::post('/account/profile/changepassword', 'publicController@changepassword');
 
+Route::prefix('/account')->name('account.')->group(function(){
+
+    Route::get('/', 'customerContoller@profile');
+    Route::get('/user-account', 'customerContoller@profile');
+    Route::get('/logout', 'customerContoller@logout');
+    Route::post('/update_profile', 'customerContoller@userUpdate');
+    Route::post('/profile/changepassword', 'customerContoller@changepassword');
+
+});
 
 // Country
 Route::get('/country/{slug}', 'publicController@single_country');

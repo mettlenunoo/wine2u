@@ -17,11 +17,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // if (Auth::guard($guard)->check()) {
-        //     return redirect('/home');
-        // }
         if ($guard == "customer" && Auth::guard($guard)->check()) {
-            return redirect('/'.strtolower(session()->get('shopCountry')).'/account');
+            return redirect('/account');
         }
         if (Auth::guard($guard)->check()) {
             return redirect('/admin/dashboard');
