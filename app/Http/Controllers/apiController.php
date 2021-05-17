@@ -71,6 +71,50 @@ class apiController extends Controller
         }
 
 
+        if(isset($_GET['price'])){
+
+            $price = $_GET['price'];
+            $products = $products->WHERE('products.base_price', '<=', $price );
+            $this->SearchPagination("price");
+
+        }
+
+
+        if(isset($_GET['light'])){
+
+            $light = $_GET['light'];
+            $products = $products->WHERE('products.light', '<=', $light );
+            $this->SearchPagination("light");
+
+        }
+
+
+        if(isset($_GET['smooth'])){
+
+            $smooth = $_GET['smooth'];
+            $products = $products->WHERE('products.smooth', '<=', $smooth );
+            $this->SearchPagination("smooth");
+
+        }
+
+        if(isset($_GET['dry'])){
+
+            $light = $_GET['dry'];
+            $products = $products->WHERE('products.dry', '<=', $light );
+            $this->SearchPagination("dry");
+
+        }
+
+
+        if(isset($_GET['soft'])){
+
+            $smooth = $_GET['soft'];
+            $products = $products->WHERE('products.soft', '<=', $smooth );
+            $this->SearchPagination("soft");
+
+        }
+
+
         if(isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category'])){
 
             if(isset($_GET['wine'])){
