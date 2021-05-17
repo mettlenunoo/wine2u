@@ -8,7 +8,7 @@ class shop extends Model
 {
     public function payment_gateways()
     {
-        return $this->hasOne('App\Paymentmethod', 'shop_id', 'id');
+        return $this->hasMany('App\Models\PaymentGateway', 'shop_id', 'id');
 
     }
 
