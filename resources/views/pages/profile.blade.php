@@ -50,7 +50,7 @@
                                 <tr>
                                   <th scope="col">Order Details</th>
                                   <th scope="col">Date</th>
-                                  <th scope="col">Quantity</th>
+                                  {{-- <th scope="col">Quantity</th> --}}
                                   <th scope="col">Status</th>
                                   <th scope="col" class="text-right">Amount GHS</th>
                                 </tr>
@@ -69,9 +69,9 @@
                                         <td>
                                           {{ $order->created_at}}
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                           {{ $order->quantity}} Item(s)
-                                        </td>
+                                        </td> --}}
                                         <td>
                                           {{ $order->complete_status}}
                                         </td>
