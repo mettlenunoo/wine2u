@@ -53,7 +53,7 @@
         </div>
 
         <div class="form-group col-12 text-right">
-          <a href="reset_password"><small>I forgot my password</small></a>
+          <a href="/acccount/password/reset"><small>I forgot my password</small></a>
         </div>
 
         </div>
