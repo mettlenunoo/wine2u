@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use App\Notifications\CustomerResetPasswordNotification;
 
 class Customer extends Authenticatable 
 {
@@ -33,8 +34,11 @@ class Customer extends Authenticatable
         'password', 'remembertoken',
     ];
 
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomerResetPasswordNotification($token));
+    }
 
-    
     public function orders(): HasMany
     {
         return $this->hasMany('App\Order', 'customer_id', 'id');
