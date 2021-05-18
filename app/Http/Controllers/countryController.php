@@ -86,7 +86,7 @@ class countryController extends Controller
            // SLUG
            // To check whether two pieces of content with the same title.
                $results = Country::WHERE('name', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-               $slug = $this->checker_slug($request->input('title'), $old_slug = null,$results);
+               $slug = $this->checker_slug($request->input('title'),$results, $old_slug = null);
            // END OF SLUG
   
            // IMAGE PROCESSOR
@@ -183,7 +183,7 @@ class countryController extends Controller
         // SLUG
         // To check whether two pieces of content with the same title.
             $results = Country::WHERE('name', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-            $slug = $this->checker_slug($request->input('title'), $old_slug = null,$results);
+            $slug = $this->checker_slug($request->input('title'),$results, $old_slug = null);
         // END OF SLUG
 
         $country = Country::find($id);
@@ -239,7 +239,7 @@ class countryController extends Controller
         return back()->with(['success' => "Deleted Successfully"]);
     }
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name,$results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;

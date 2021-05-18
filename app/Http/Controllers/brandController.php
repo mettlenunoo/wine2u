@@ -57,7 +57,7 @@ class brandController extends Controller
           // SLUG
           // To check whether two pieces of content with the same title.
             $results = Brand::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-            $slug = $this->checker_slug($request->input('title'), null,$results);
+            $slug = $this->checker_slug($request->input('title'),$results, null);
 
             $brand = new Brand;
             $brand->title = $request->input('title');
@@ -122,7 +122,7 @@ class brandController extends Controller
         $shopId = Session::get('shopId');
         $brand =  Brand::find($id);
         $results = Brand::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-        $slug = $this->checker_slug($request->input('title'), $brand->slug,$results);
+        $slug = $this->checker_slug($request->input('title'),$results, $brand->slug);
 
         $brand->title = $request->input('title');
         $brand->slug =  $slug;
@@ -161,7 +161,7 @@ class brandController extends Controller
             return view('admin.brand.brand',compact('brands','success','page','allShops'));
     }
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name,$results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;

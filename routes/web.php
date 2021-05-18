@@ -16,7 +16,6 @@
 // });
 
 
-
  // ALWAY MAKE SURE DECLARED RESOURCE  FIRST
 Route::get('/admin','Auth\LoginController@showAdminLogin')->name('admin');
 Route::resource('/admin/blog/categories','blogCategoryController');
@@ -130,6 +129,12 @@ Route::prefix('/account')->name('account.')->group(function(){
     Route::get('/logout', 'customerContoller@logout');
     Route::post('/update_profile', 'customerContoller@userUpdate');
     Route::post('/profile/changepassword', 'customerContoller@changepassword');
+
+     // Password reset routes
+    Route::post('/password/email', 'Auth\CustomerForgotPasswordController@sendResetLinkEmail')->name('customer.password.email');
+    Route::get('/password/reset', 'Auth\CustomerForgotPasswordController@showLinkRequestForm')->name('customer.password.request');
+    Route::post('/password/reset', 'Auth\CustomerResetPasswordController@reset');
+    Route::get('/password/reset/{token}', 'Auth\CustomerResetPasswordController@showResetForm')->name('customer.password.reset');
 
 });
 

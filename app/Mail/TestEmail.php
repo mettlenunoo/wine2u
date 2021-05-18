@@ -28,10 +28,10 @@ class TestEmail extends Mailable
      */
     public function build()
     {
-        $address = "yawasante2003@gmail.com";
+        $address = "";
         //$address = 'dabdulmanan@gmail.com';
-        $subject = 'Order From Hvafrica';
-        $name = 'Hvafrica - Order';
+        $subject = 'Order From win2u';
+        $name = 'wine2u - Order';
 
         return $this->view('mail.email')
                     ->from($address, $name)

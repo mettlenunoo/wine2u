@@ -84,7 +84,7 @@ class categoryController extends Controller
             // SLUG
             // To check whether two pieces of content with the same title.
                 $results = Category::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-                $slug = $this->checker_slug($request->input('title'), $old_slug = null,$results);
+                $slug = $this->checker_slug($request->input('title'),$results, $old_slug = null);
             // END OF SLUG
 
             // IMAGE PROCESSOR
@@ -229,7 +229,7 @@ class categoryController extends Controller
             // SLUG
                 // To check whether two pieces of content with the same title.
                     $results = Category::WHERE('title', $request->input('title'))->WHERE('country_id','=',$shopId)->get();
-                    $slug = $this->checker_slug($request->input('title'), $category->slug, $results);
+                    $slug = $this->checker_slug($request->input('title'), $results, $category->slug);
                 // END OF SLUG
                
                
@@ -313,7 +313,7 @@ class categoryController extends Controller
         }
     }
 
-    public function checker_slug($name, $old_slug = null,$results){
+    public function checker_slug($name,$results, $old_slug = null){
         // To check whether  
       $q_count = count($results);
       $count=1;
