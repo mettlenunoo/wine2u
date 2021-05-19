@@ -466,19 +466,31 @@
                             <option disabled >None</option>
 
                             @foreach($countries as $key => $country) 
-                                
-                            <option  disabled > {{ $country->name }} </option>   
-                             @foreach ($country->regions as $key => $row) 
-                                @php $wasFound = false; @endphp
-                                    @foreach ($product->country as $selCountry)
-                                        @if($selCountry->id == $sub->id )
-                                            <option value="{{ $row->id }}" selected > <span aria-hidden="true">—</span>{{ $row->name }}</option>
-                                            @php $wasFound = true @endphp
+
+                
+                                <option  disabled > {{ $country->name }} </option>   
+
+                                @foreach ($country->regions as $key => $row) 
+
+                                        @php $wasFound = false @endphp
+
+                                        @foreach ($product->country as $selCountry)
+
+                                            @php $wasFound = false @endphp
+
+                                            @if($selCountry->id == $row->id )
+
+                                                <option value="{{ $row->id }}" selected > <span aria-hidden="true">—</span>{{ $row->name }}</option>
+                                                @php $wasFound = true @endphp
+
+                                            @endif
+
+                                        @endforeach
+
+                                        @if($wasFound == false)
+                                            <option value="{{ $row->id }}"> <span aria-hidden="true">—</span>{{ $row->name }}</option>
                                         @endif
-                                    @endforeach
-                                    @if($wasFound == false)
-                                        <option value="{{ $row->id }}" > <span aria-hidden="true">—</span>{{ $row->name }}</option>
-                                    @endif
+
                                 @endforeach
 
                             @endforeach

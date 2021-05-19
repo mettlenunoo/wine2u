@@ -239,13 +239,13 @@ class productController extends Controller
             // SAVE
             $product->save();
 
-            $product->categories()->syncWithoutDetaching($request->input('category'));
-            $product->brands()->syncWithoutDetaching($request->input('brand'));
-            $product->wines()->syncWithoutDetaching($request->input('wines'));
-            $product->offers()->syncWithoutDetaching($request->input('offers'));
-            $product->grapes()->syncWithoutDetaching($request->input('grapes'));
-            $product->pairing()->syncWithoutDetaching($request->input('pairs'));
-            $product->country()->syncWithoutDetaching($request->input('country'));
+            $product->categories()->sync($request->input('category'));
+            $product->brands()->sync($request->input('brand'));
+            $product->wines()->sync($request->input('wines'));
+            $product->offers()->sync($request->input('offers'));
+            $product->grapes()->sync($request->input('grapes'));
+            $product->pairing()->sync($request->input('pairs'));
+            $product->country()->sync($request->input('country'));
 
 
             //VARIABLE PRODUCT
@@ -398,8 +398,8 @@ class productController extends Controller
              $product->product_name = $request->input('product_name');
              $product->slug =  $slug;
              $product->description = $request->input('description');
-            $product->short_description = $request->input('short_description');
-            $product->more_description = $request->input('more_description');
+             $product->short_description = $request->input('short_description');
+             $product->more_description = $request->input('more_description');
              $product->video = $request->input('video_link');
              $product->tag = $request->input('tag');
              $product->visibility = $request->input('visibility');
@@ -417,13 +417,13 @@ class productController extends Controller
              // SAVE
              $product->save();
  
-             $product->categories()->syncWithoutDetaching($request->input('category'));
-             $product->brands()->syncWithoutDetaching($request->input('brand'));
-             $product->wines()->syncWithoutDetaching($request->input('wines'));
-             $product->offers()->syncWithoutDetaching($request->input('offers'));
-             $product->grapes()->syncWithoutDetaching($request->input('grapes'));
-             $product->pairing()->syncWithoutDetaching($request->input('pairs'));
-             $product->country()->syncWithoutDetaching($request->input('country'));
+             $product->categories()->sync($request->input('category'));
+             $product->brands()->sync($request->input('brand'));
+             $product->wines()->sync($request->input('wines'));
+             $product->offers()->sync($request->input('offers'));
+             $product->grapes()->sync($request->input('grapes'));
+             $product->pairing()->sync($request->input('pairs'));
+             $product->country()->sync($request->input('country'));
  
  
              //VARIABLE PRODUCT
@@ -502,10 +502,7 @@ class productController extends Controller
          
              }
  
-            //  dd($product);
-           
-            //  $success =  'success';
-            //  return $success;
+          
 
             $success = 'You Have Updated a Product Successfully .';
             return back()->with(['success' => $success]);

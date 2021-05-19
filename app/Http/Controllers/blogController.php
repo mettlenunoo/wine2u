@@ -114,7 +114,7 @@ class blogController extends Controller
             // SAVE
               $blog->save();
 
-              $blog->categories()->syncWithoutDetaching($request->input('category'));
+              $blog->categories()->sync($request->input('category'));
 
           
             //
@@ -235,7 +235,7 @@ class blogController extends Controller
             // SAVE
               $blog->save();
 
-              $blog->categories()->syncWithoutDetaching($request->input('category'));
+              $blog->categories()->sync($request->input('category'));
           
             //
             $blog = Blog::find($id);
