@@ -10,14 +10,6 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
-public/images/
-public/attributes-images/
-public/blog-category-images/
-public/category-images/
-public/product-images/
-public/blog-images/
-public/venue-images/
-
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage

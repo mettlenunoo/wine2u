@@ -33,6 +33,672 @@ use Auth;
 
 class apiController extends Controller
 {
+
+/**
+ * @OA\Get(
+ *      path="/api/products",
+ *      operationId="getProductList",
+ *      tags={"Product"},
+ *      summary="Get list of products",
+ *      description="Returns list of products",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ * 
+ *  
+ *     )
+ *
+ * Returns list of products
+ * 
+ *  @OA\Get(
+ *      path="/api/products/{slug}",
+ *      operationId="getProductSingle",
+ *      tags={"Product"},
+ *      summary="The /api/products/{slug} endpoint returns an Object of a specific product",
+ *      description="Product Slug slug=[string]",
+*        @OA\Parameter( 
+*          name="slug",
+*          description="slug",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *     )
+ *
+ * Returns an Object a Specific Product.
+ * 
+ * @OA\Get(
+ *      path="/api/categories",
+ *      operationId="getProductCategoriesList",
+ *      tags={"Category"},
+ *      summary="Get list of Categories",
+ *      description="Returns list of Categories",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ * 
+ *  
+ *     )
+ *
+ * Returns list of Categories
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/review/add",
+ * summary="Add a  Review ",
+ * description="Add a review",
+ * operationId="add a review",
+ * tags={"Review"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="",
+ *    @OA\JsonContent(
+ *       required={"user_id","product_id","rating","comment"},
+ *       @OA\Property(property="user_id", type="integer", format="number", example="1"),
+ *       @OA\Property(property="product_id", type="integer", format="number", example="2"),
+ *       @OA\Property(property="rating", type="integer", example="2"),
+ *       @OA\Property(property="comment", type="string", example="Good product!"),   
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Incorrect Data ",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong Input. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ *  @OA\Delete(
+ *      path="/api/review/delete/{id}",
+ *      operationId="deleteReview",
+ *      tags={"Review"},
+ *      summary="The /api/review/delete/{id} endpoint Delete Specific Review ",
+ *      description="Review id=[integer]",
+*        @OA\Parameter( 
+*          name="id",
+*          description="id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *     )
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/wishlist/add",
+ * summary="Add a wishlist ",
+ * description="Add a wishlist",
+ * operationId="add a wishlist",
+ * tags={"WishList"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="",
+ *    @OA\JsonContent(
+ *       required={"user_id","product_id"},
+ *       @OA\Property(property="user_id", type="integer", format="number", example="1"),
+ *       @OA\Property(property="product_id", type="integer", format="number", example="2") 
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Incorrect Data ",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong Input. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ * *  @OA\Delete(
+ *      path="/api/wishlist/delete/{id}",
+ *      operationId="deleteWishList",
+ *      tags={"WishList"},
+ *      summary="The /api/wishlist/delete/{id} endpoint Delete Specific WishList ",
+ *      description=" id=[integer]",
+*        @OA\Parameter( 
+*          name="id",
+*          description="id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *     )
+ * 
+ * 
+ * * @OA\Post(
+ * path="/api/coupon",
+ * summary="Add a Coupon ",
+ * description="Add a Coupon",
+ * operationId="Add a Coupon",
+ * tags={"Coupon"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="",
+ *    @OA\JsonContent(
+ *       required={"coupon_code"},
+ *       @OA\Property(property="coupon_code", type="integer", example="Accra2020")
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Incorrect Data ",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong Input. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * @OA\Get(
+ *      path="/api/ads",
+ *      operationId="getAdsList",
+ *      tags={"Ads"},
+ *      summary="Get list of Ads",
+ *      description="The /api/ads endpoint returns a list of all Ads that belong to a specific country...",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       )
+ *     )
+ *
+ * Returns list of Ads
+ * 
+ * 
+ * @OA\Get(
+ *      path="/api/blogs",
+ *      operationId="getBlogList",
+ *      tags={"Blog"},
+ *      summary="Get list of Blog",
+ *      description="The /api/blogs endpoint returns a list of all Blog that belong to a specific country...",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       )
+ *     )
+ *
+ * Returns list of Blog
+ * 
+ * @OA\Get(
+ *      path="/api/blog/category",
+ *      operationId="getBlogCategoryList",
+ *      tags={"Blog"},
+ *      summary="Get list of BlogCategory",
+ *      description="The /api/blog/category endpoint returns a list of all Blog category that belong to a specific country...",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       )
+ *     )
+ *
+ * Returns list of Blog Category
+ * 
+ *  @OA\Get(
+ *      path="/api/blogs/{slug}",
+ *      operationId="getBlogSingle",
+ *      tags={"Blog"},
+ *      summary="The /api/blogs/{slug} endpoint returns an Object of a specific Blog",
+ *      description="Blog Slug slug=[string]",
+*        @OA\Parameter( 
+*          name="slug",
+*          description="slug",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *     )
+ * 
+ *  Returns list of Single Product
+ * 
+ * 
+ * @OA\Get(
+ *      path="/api/shop_settings",
+ *      operationId="getSettingsObject",
+ *      tags={"Settings"},
+ *      summary="Get  Settings, payment_gateways and shipping_addresses Objects",
+ *      description="The /api/shop_settings endpoint returns an Object for a specific country...",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       )
+ *     )
+ *
+ * Returns  Settings, payment_gateways and shipping_addresses Objects
+ * 
+ * 
+ * 
+ *  @OA\Get(
+ *      path="/api/shipping/price/{zone}/{weight}",
+ *      operationId="getShippingRate",
+ *      tags={"Shipping"},
+ *      summary="The /api/shipping/price/{zone}/{weight} endpoint returns an Object of a specific Shpping Rate",
+ *      description="Shipping Rate zone=[integer], weight=[integer]",
+*        @OA\Parameter( 
+*          name="zone",
+*          description="zone",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+*        @OA\Parameter( 
+*          name="weight",
+*          description="weight",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *   )
+ * 
+ * @OA\Get(
+ *      path="/api/shipping",
+ *      operationId="getShippingList",
+ *      tags={"Shipping"},
+ *      security={ {"bearer": {} }},
+ *      summary="Get list of Shipping Addresses",
+ *      description="The /api/shipping endpoint returns a list of all Shipping Addresses For a User",
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       )
+ *     )
+ *
+ * Returns list of Shipping Addresses
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/add/shipping",
+ * summary="Add a New Shipping Address",
+ * description="Add a New Shipping Address",
+ * operationId="authAddShipping",
+ * tags={"Shipping"},
+ * security={ {"bearer": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass Shipping Addresses",
+ *    @OA\JsonContent(
+ *       required={"fname","sname","email","state","address"},
+ *       @OA\Property(property="fname", type="string",  example="First Name"),
+ *       @OA\Property(property="sname", type="string", example="Second Name"),
+ *       @OA\Property(property="email", type="string", format="string", example="user1@mail.com"),
+ *       @OA\Property(property="pnumber", type="string",  example="000 0000 000"),
+ *       @OA\Property(property="address", type="string", example="Awudome-Estate"),
+ *       @OA\Property(property="street", type="string", format="string", example="Awudome-Estate"),
+ *       @OA\Property(property="apartment", type="string",  example=""),
+ *       @OA\Property(property="city", type="string", example="Accra"),
+ *       @OA\Property(property="state", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="zipcode", type="string", example="00233"),
+ *       @OA\Property(property="digitaladdress", type="string", example="GA-202929"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * @OA\Put(
+ * path="/api/shipping/{id}",
+ * summary="Edit a  Shipping Address",
+ * description="Edit a  Shipping Address",
+ * operationId="authEditShipping",
+ * tags={"Shipping"},
+ * security={ {"bearer": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass Shipping Addresses",
+ *    @OA\JsonContent(
+ *       required={"fname","sname","email","state","address"},
+ *       @OA\Property(property="fname", type="string",  example="First Name"),
+ *       @OA\Property(property="sname", type="string", example="Second Name"),
+ *       @OA\Property(property="email", type="string", format="string", example="user1@mail.com"),
+ *       @OA\Property(property="pnumber", type="string",  example="000 0000 000"),
+ *       @OA\Property(property="address", type="string", example="Awudome-Estate"),
+ *       @OA\Property(property="street", type="string", format="string", example="Awudome-Estate"),
+ *       @OA\Property(property="apartment", type="string",  example=""),
+ *       @OA\Property(property="city", type="string", example="Accra"),
+ *       @OA\Property(property="state", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="zipcode", type="string", example="00233"),
+ *       @OA\Property(property="digitaladdress", type="string", example="GA-202929"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ *  @OA\Get(
+ *      path="/api/shipping/{id}",
+ *      operationId="getShippingInfo",
+ *      tags={"Shipping"},
+ *      security={ {"bearer": {} }},
+ *      summary="The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
+ *      description="The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
+*        @OA\Parameter( 
+*          name="id",
+*          description="id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+*       
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *   )
+ * 
+ * 
+ * @OA\Delete(
+ *      path="/api/shipping/{id}",
+ *      operationId="deleteShippingAddress",
+ *      tags={"Shipping"},
+ *      security={ {"bearer": {} }},
+ *      summary="The /api/shipping/{id} endpoint Delete Specific Shipping Address ",
+ *      description="Review id=[integer]",
+*        @OA\Parameter( 
+*          name="id",
+*          description="id",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description="successful operation"
+ *       ),
+ *
+ *  )
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/user/login",
+ * summary="Sign in",
+ * description="Login by email, password",
+ * operationId="authLogin",
+ * tags={"auth"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user credentials",
+ *    @OA\JsonContent(
+ *       required={"email","password"},
+ *       @OA\Property(property="email", type="string", format="email", example="user1@mail.com"),
+ *       @OA\Property(property="password", type="string", format="password", example="PassWord@12345"),
+ *       @OA\Property(property="persistent", type="boolean", example="true"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/user/register",
+ * summary="Sign up",
+ * description="Sign Up by fname, lname, email, password",
+ * operationId="authSignUp",
+ * tags={"auth"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user credentials",
+ *    @OA\JsonContent(
+ *       required={"fname","lname","email","password"},
+ *       @OA\Property(property="fname", type="string",  example="First Name"),
+ *       @OA\Property(property="lname", type="string", example="Second Name"),
+ *       @OA\Property(property="email", type="email", format="email", example="user1@mail.com"),
+ *       @OA\Property(property="password", type="password", format="password", example="PassWord@12345"),
+ *       @OA\Property(property="referral", type="string", example=""),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ * @OA\Get(
+ * path="/api/logout",
+ * summary="Logout",
+ * description="Logout user and invalidate token",
+ * operationId="authLogout",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\Response(
+ *    response=200,
+ *    description="Success"
+ *     ),
+ * @OA\Response(
+ *    response=401,
+ *    description="Returns when user is not authenticated",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Not authorized"),
+ *    )
+ * )
+ * )
+ * 
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/user/changepassword",
+ * summary="Change Password",
+ * description="change User Password",
+ * operationId="authChangePassword",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user credentials",
+ *    @OA\JsonContent(
+ *       required={"currentpassword","password"},
+ *       @OA\Property(property="currentpassword", type="string",  example="PassWord@12345"),
+ *       @OA\Property(property="password", type="string", format="password", example="PassWord@12345New"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/user/update",
+ * summary="Update User Profile",
+ * description="Update User Profile",
+ * operationId="authUpdateProfile",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user Info",
+ *    @OA\JsonContent(
+ *       required={"fname","lname","email","gender","dob","nationality"},
+ *       @OA\Property(property="fname", type="string",  example="First Name"),
+ *       @OA\Property(property="lname", type="string", example="Second Name"),
+ *       @OA\Property(property="email", type="string", format="string", example="user1@mail.com"),
+ *       @OA\Property(property="phonenumber", type="string",  example="000 0000 000"),
+ *       @OA\Property(property="country", type="string", example="GH"),
+ *       @OA\Property(property="street", type="string", format="string", example="Awudome-Estate"),
+ *       @OA\Property(property="apartment", type="string",  example=""),
+ *       @OA\Property(property="city", type="string", example="Accra"),
+ *       @OA\Property(property="state", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="zip", type="string", example="00233"),
+ *       @OA\Property(property="nationality", type="string", format="string", example="Ghanaian"),
+ *       @OA\Property(property="gender", type="string",  example="Male"),
+ *       @OA\Property(property="dob", type="string", example="1997-05-07"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ * 
+ * @OA\Get(
+ * path="/api/user",
+ * summary="Get User information",
+ * description="Returns User data",
+ * operationId="authUserProfile",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\Response(
+ *    response=200,
+ *    description="Success"
+ *     ),
+ * @OA\Response(
+ *    response=401,
+ *    description="Returns when user is not authenticated",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Not authorized"),
+ *    )
+ * )
+ * )
+ * 
+ * 
+ * @OA\Get(
+ * path="/api/user/wishlist",
+ * summary="Get User WishList information",
+ * description="Returns User WishList data",
+ * operationId="authUserWishList",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\Response(
+ *    response=200,
+ *    description="Success"
+ *     ),
+ * @OA\Response(
+ *    response=401,
+ *    description="Returns when user is not authenticated",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Not authorized"),
+ *    )
+ * )
+ * )
+ * 
+ * 
+ * @OA\Get(
+ * path="/api/user/orders",
+ * summary="Get User Orders information",
+ * description="Returns User Orders data",
+ * operationId="authUserOrder",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\Response(
+ *    response=200,
+ *    description="Success"
+ *     ),
+ * @OA\Response(
+ *    response=401,
+ *    description="Returns when user is not authenticated",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Not authorized"),
+ *    )
+ * )
+ * )
+ * 
+ * 
+ * 
+ * @OA\Post(
+ * path="/api/user/referralcode",
+ * summary="Change or Add Referral Code",
+ * description="Change or Add Referral Code",
+ * operationId="authChangeAddReferral",
+ * tags={"auth"},
+ * security={ {"bearer": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Referral Code",
+ *    @OA\JsonContent(
+ *       required={"referral_code"},
+ *       @OA\Property(property="referral_code", type="string",  example="12345667"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ *
+ * 
+ *
+ * 
+ */
+ 
+
     public $shop = "";
     public $shopId = 1;
     public $currency = "";
@@ -558,7 +1224,7 @@ class apiController extends Controller
         $customer->referral = $request->input('referral');
         $customer->referral_code  = $request->input('lname')."-". str_random(3);
         $customer->shop_id =  $shop_id;
-        $customer->remembertoken =  str_slug(Hash::make($request->input('email')).time());
+        $customer->remember_token =  str_slug(Hash::make($request->input('email')).time());
         $customer->save();
 
 

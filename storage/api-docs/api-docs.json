@@ -1,0 +1,1189 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wine2u API",
+        "description": " description",
+        "contact": {
+            "email": "dawud@effectstudios.co"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get list of products",
+                "description": "Returns list of products",
+                "operationId": "getProductList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/products/{slug}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "The /api/products/{slug} endpoint returns an Object of a specific product",
+                "description": "Product Slug slug=[string]",
+                "operationId": "getProductSingle",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get list of Categories",
+                "description": "Returns list of Categories",
+                "operationId": "getProductCategoriesList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/review/add": {
+            "post": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "Add a  Review ",
+                "description": "Add a review",
+                "operationId": "add a review",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id",
+                                    "rating",
+                                    "comment"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "2"
+                                    },
+                                    "rating": {
+                                        "type": "integer",
+                                        "example": "2"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "Good product!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Incorrect Data ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong Input. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/review/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Review"
+                ],
+                "summary": "The /api/review/delete/{id} endpoint Delete Specific Review ",
+                "description": "Review id=[integer]",
+                "operationId": "deleteReview",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/wishlist/add": {
+            "post": {
+                "tags": [
+                    "WishList"
+                ],
+                "summary": "Add a wishlist ",
+                "description": "Add a wishlist",
+                "operationId": "add a wishlist",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "product_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "1"
+                                    },
+                                    "product_id": {
+                                        "type": "integer",
+                                        "format": "number",
+                                        "example": "2"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Incorrect Data ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong Input. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/wishlist/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "WishList"
+                ],
+                "summary": "The /api/wishlist/delete/{id} endpoint Delete Specific WishList ",
+                "description": " id=[integer]",
+                "operationId": "deleteWishList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/coupon": {
+            "post": {
+                "tags": [
+                    "Coupon"
+                ],
+                "summary": "Add a Coupon ",
+                "description": "Add a Coupon",
+                "operationId": "Add a Coupon",
+                "requestBody": {
+                    "description": "",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "coupon_code"
+                                ],
+                                "properties": {
+                                    "coupon_code": {
+                                        "type": "integer",
+                                        "example": "Accra2020"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Incorrect Data ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong Input. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ads": {
+            "get": {
+                "tags": [
+                    "Ads"
+                ],
+                "summary": "Get list of Ads",
+                "description": "The /api/ads endpoint returns a list of all Ads that belong to a specific country...",
+                "operationId": "getAdsList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/blogs": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get list of Blog",
+                "description": "The /api/blogs endpoint returns a list of all Blog that belong to a specific country...",
+                "operationId": "getBlogList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/blog/category": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Get list of BlogCategory",
+                "description": "The /api/blog/category endpoint returns a list of all Blog category that belong to a specific country...",
+                "operationId": "getBlogCategoryList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/blogs/{slug}": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "The /api/blogs/{slug} endpoint returns an Object of a specific Blog",
+                "description": "Blog Slug slug=[string]",
+                "operationId": "getBlogSingle",
+                "parameters": [
+                    {
+                        "name": "slug",
+                        "in": "path",
+                        "description": "slug",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/shop_settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Get  Settings, payment_gateways and shipping_addresses Objects",
+                "description": "The /api/shop_settings endpoint returns an Object for a specific country...",
+                "operationId": "getSettingsObject",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/shipping/price/{zone}/{weight}": {
+            "get": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "The /api/shipping/price/{zone}/{weight} endpoint returns an Object of a specific Shpping Rate",
+                "description": "Shipping Rate zone=[integer], weight=[integer]",
+                "operationId": "getShippingRate",
+                "parameters": [
+                    {
+                        "name": "zone",
+                        "in": "path",
+                        "description": "zone",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "weight",
+                        "in": "path",
+                        "description": "weight",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/shipping": {
+            "get": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "Get list of Shipping Addresses",
+                "description": "The /api/shipping endpoint returns a list of all Shipping Addresses For a User",
+                "operationId": "getShippingList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/add/shipping": {
+            "post": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "Add a New Shipping Address",
+                "description": "Add a New Shipping Address",
+                "operationId": "authAddShipping",
+                "requestBody": {
+                    "description": "Pass Shipping Addresses",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fname",
+                                    "sname",
+                                    "email",
+                                    "state",
+                                    "address"
+                                ],
+                                "properties": {
+                                    "fname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "sname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "pnumber": {
+                                        "type": "string",
+                                        "example": "000 0000 000"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "street": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "apartment": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Accra"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Greater Accra"
+                                    },
+                                    "zipcode": {
+                                        "type": "string",
+                                        "example": "00233"
+                                    },
+                                    "digitaladdress": {
+                                        "type": "string",
+                                        "example": "GA-202929"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/shipping/{id}": {
+            "get": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
+                "description": "The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
+                "operationId": "getShippingInfo",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "Edit a  Shipping Address",
+                "description": "Edit a  Shipping Address",
+                "operationId": "authEditShipping",
+                "requestBody": {
+                    "description": "Pass Shipping Addresses",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fname",
+                                    "sname",
+                                    "email",
+                                    "state",
+                                    "address"
+                                ],
+                                "properties": {
+                                    "fname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "sname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "pnumber": {
+                                        "type": "string",
+                                        "example": "000 0000 000"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "street": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "apartment": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Accra"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Greater Accra"
+                                    },
+                                    "zipcode": {
+                                        "type": "string",
+                                        "example": "00233"
+                                    },
+                                    "digitaladdress": {
+                                        "type": "string",
+                                        "example": "GA-202929"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Shipping"
+                ],
+                "summary": "The /api/shipping/{id} endpoint Delete Specific Shipping Address ",
+                "description": "Review id=[integer]",
+                "operationId": "deleteShippingAddress",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sign in",
+                "description": "Login by email, password",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord@12345"
+                                    },
+                                    "persistent": {
+                                        "type": "boolean",
+                                        "example": "true"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sign up",
+                "description": "Sign Up by fname, lname, email, password",
+                "operationId": "authSignUp",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fname",
+                                    "lname",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "fname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "lname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "email": {
+                                        "type": "email",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "password",
+                                        "format": "password",
+                                        "example": "PassWord@12345"
+                                    },
+                                    "referral": {
+                                        "type": "string",
+                                        "example": ""
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logout",
+                "description": "Logout user and invalidate token",
+                "operationId": "authLogout",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not authorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/changepassword": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Change Password",
+                "description": "change User Password",
+                "operationId": "authChangePassword",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "currentpassword",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "currentpassword": {
+                                        "type": "string",
+                                        "example": "PassWord@12345"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord@12345New"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/update": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Update User Profile",
+                "description": "Update User Profile",
+                "operationId": "authUpdateProfile",
+                "requestBody": {
+                    "description": "Pass user Info",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fname",
+                                    "lname",
+                                    "email",
+                                    "gender",
+                                    "dob",
+                                    "nationality"
+                                ],
+                                "properties": {
+                                    "fname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "lname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "phonenumber": {
+                                        "type": "string",
+                                        "example": "000 0000 000"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "GH"
+                                    },
+                                    "street": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "apartment": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Accra"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Greater Accra"
+                                    },
+                                    "zip": {
+                                        "type": "string",
+                                        "example": "00233"
+                                    },
+                                    "nationality": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Ghanaian"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "Male"
+                                    },
+                                    "dob": {
+                                        "type": "string",
+                                        "example": "1997-05-07"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Get User information",
+                "description": "Returns User data",
+                "operationId": "authUserProfile",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not authorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/wishlist": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Get User WishList information",
+                "description": "Returns User WishList data",
+                "operationId": "authUserWishList",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not authorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/orders": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Get User Orders information",
+                "description": "Returns User Orders data",
+                "operationId": "authUserOrder",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Returns when user is not authenticated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Not authorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/user/referralcode": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Change or Add Referral Code",
+                "description": "Change or Add Referral Code",
+                "operationId": "authChangeAddReferral",
+                "requestBody": {
+                    "description": "Referral Code",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "referral_code"
+                                ],
+                                "properties": {
+                                    "referral_code": {
+                                        "type": "string",
+                                        "example": "12345667"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

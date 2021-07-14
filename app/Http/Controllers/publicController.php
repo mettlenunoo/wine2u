@@ -1948,14 +1948,6 @@ class publicController extends Controller
                     });
     
             }
-    
-       
-        // // EMAIL 
-        // $toEmail = $request->input('email');
-        // \Mail::send('email.member_email',array('Title' => 'Invitation', 'slug' => $rememberToken), function($message) use ($toEmail){
-        // $message->to($toEmail,'Invitation')->subject('Welcome! Invitation From Jamjar!');
-
-        // });
 
     
     }

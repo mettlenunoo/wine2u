@@ -115,6 +115,7 @@
 					<!-- profile Details -->
 					<div class="tab-pane fade" id="list-Personal-details" role="tabpanel" aria-labelledby="list-Personal-details-list">
 						<h1 class="profilet1 mb-3">Personal details</h1>
+            <p class="col-12 col-md-12" id="profile_message"></p>
             <form id="profile_form" >
               @csrf
               <div class="form-row">
