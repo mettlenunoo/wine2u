@@ -373,7 +373,7 @@ class apiController extends Controller
  *    response=422,
  *    description="Wrong credentials response",
  *    @OA\JsonContent(
- *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address. Please try again")
  *        )
  *     )
  * )
@@ -407,7 +407,7 @@ class apiController extends Controller
  *    response=422,
  *    description="Wrong credentials response",
  *    @OA\JsonContent(
- *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong email address. Please try again")
  *        )
  *     )
  * )
@@ -692,8 +692,83 @@ class apiController extends Controller
  * )
  * 
  * 
- *
  * 
+ * @OA\Post(
+ * path="/api/checkout",
+ * summary="checkout Endpoint",
+ * description="Returns  billing info and selected payment gateway object ",
+ * operationId="checkout",
+ * tags={"Checkout"},
+ * security={ {"apiAuth": {} }},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Checkout",
+ *    @OA\JsonContent(
+ *       required={"billingfname","billingsname","billingemail","billingpnumber","billingaddress","payment_method","shipping_amt"},
+ * 
+ *       @OA\Property(property="billingfname", type="string",  example="First Name"),
+ *       @OA\Property(property="billingsname", type="string", example="Second Name"),
+ *       @OA\Property(property="billingemail", type="string", format="string", example="user1@mail.com"),
+ *       @OA\Property(property="billingpnumber", type="string",  example="000 0000 000"),
+ *       @OA\Property(property="billingcountry", type="string", example="Ghana"),
+ *       @OA\Property(property="billingaddress", type="string", format="string", example="Awudome-Estate"),
+ *       @OA\Property(property="billingapartment", type="string",  example=""),
+ *       @OA\Property(property="billingcity", type="string", example="Accra"),
+ *       @OA\Property(property="billingstate", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="billingzipcode", type="string", example="00233"),
+ *       @OA\Property(property="shippingfname", type="string",  example="First Name"),
+ *       @OA\Property(property="shippingsname", type="string", example="Second Name"),
+ *       @OA\Property(property="shippingpaddress", type="string", format="string", example="Estate Legon"),
+ *       @OA\Property(property="shippingemail", type="string",  example="user1@mail.com"),
+ *       @OA\Property(property="shippingapartment", type="string", example=""),
+ *       @OA\Property(property="shippingcity", type="string", format="string", example=""),
+ *       @OA\Property(property="shippingstate", type="string",  example=""),
+ *       @OA\Property(property="shippingdigitaladdress", type="string", example=""),
+ *       @OA\Property(property="shippingcountry", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="payment_method", type="string", example="paystack"),
+ *       @OA\Property(property="shipping_amt", type="string", example="30"),
+ * 
+ * 
+ * 
+ *       @OA\Property(
+ * 
+*           property="cart",
+*           type="array",
+ *          collectionFormat="multi",
+*            @OA\Items(
+*                  type="object",
+*                  @OA\Property(property="productId", type="integer", example="30"),
+*                  @OA\Property(property="quantity", type="integer", example="3"),
+*                  @OA\Property(property="productAttribute", type="integer", example="2"),
+*                  @OA\Property(property="productPrice", type="interger", example="100.00"),
+*                  @OA\Property(property="productWeight", type="interger", example="0.1"),
+*              ),
+*
+*         ),
+*
+*          @OA\Property(
+* 
+*           property="coupon",
+*           type="object",
+*        
+*                  @OA\Property(property="code", type="string", example="Accra2020"),
+*                  @OA\Property(property="type", type="string", example="percentage"),
+*                  @OA\Property(property="discount", type="integer", example="20"),
+*         ),
+ *    ),
+ * ),
+ * 
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong input. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ *
  *
  * 
  */
@@ -1546,10 +1621,10 @@ class apiController extends Controller
                         'billingsname' => ['required', 'string', 'max:255'],
                         'billingemail' => ['required', 'string', 'max:255'],
                         'billingpnumber' => ['required', 'string', 'max:255'],
-                        'shippingfname' => ['required', 'string', 'max:255'],
-                        'shippingsname' => ['required', 'string', 'max:255'],
-                        'shippingpnumber' => ['required', 'string', 'max:255'],
-                        'shippingemail' => ['required', 'string', 'max:255'],
+                        // 'shippingfname' => ['required', 'string', 'max:255'],
+                        // 'shippingsname' => ['required', 'string', 'max:255'],
+                        // 'shippingpnumber' => ['required', 'string', 'max:255'],
+                        // 'shippingemail' => ['required', 'string', 'max:255'],
                         'payment_method' => ['required', 'string', 'max:255']
                     ],
                 );
