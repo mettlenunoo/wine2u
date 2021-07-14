@@ -425,7 +425,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -525,7 +525,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -556,7 +556,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             },
@@ -654,7 +654,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             },
@@ -683,7 +683,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -847,7 +847,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -906,7 +906,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -1016,7 +1016,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -1052,7 +1052,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -1088,7 +1088,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -1124,7 +1124,7 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
             }
@@ -1177,9 +1177,21 @@
                 },
                 "security": [
                     {
-                        "bearer": []
+                        "apiAuth": []
                     }
                 ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiAuth": {
+                "type": "http",
+                "description": "Login with email and password to get the authentication token",
+                "name": "Token based Based",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     },

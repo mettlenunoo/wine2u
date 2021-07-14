@@ -332,7 +332,7 @@ class apiController extends Controller
  *      path="/api/shipping",
  *      operationId="getShippingList",
  *      tags={"Shipping"},
- *      security={ {"bearer": {} }},
+ *      security={ {"apiAuth": {} }},
  *      summary="Get list of Shipping Addresses",
  *      description="The /api/shipping endpoint returns a list of all Shipping Addresses For a User",
  *      @OA\Response(
@@ -350,7 +350,7 @@ class apiController extends Controller
  * description="Add a New Shipping Address",
  * operationId="authAddShipping",
  * tags={"Shipping"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\RequestBody(
  *    required=true,
  *    description="Pass Shipping Addresses",
@@ -384,7 +384,7 @@ class apiController extends Controller
  * description="Edit a  Shipping Address",
  * operationId="authEditShipping",
  * tags={"Shipping"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\RequestBody(
  *    required=true,
  *    description="Pass Shipping Addresses",
@@ -417,7 +417,7 @@ class apiController extends Controller
  *      path="/api/shipping/{id}",
  *      operationId="getShippingInfo",
  *      tags={"Shipping"},
- *      security={ {"bearer": {} }},
+ *      security={ {"apiAuth": {} }},
  *      summary="The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
  *      description="The /api/shipping/{id} endpoint returns an Object of a specific Shpping Address",
 *        @OA\Parameter( 
@@ -442,7 +442,7 @@ class apiController extends Controller
  *      path="/api/shipping/{id}",
  *      operationId="deleteShippingAddress",
  *      tags={"Shipping"},
- *      security={ {"bearer": {} }},
+ *      security={ {"apiAuth": {} }},
  *      summary="The /api/shipping/{id} endpoint Delete Specific Shipping Address ",
  *      description="Review id=[integer]",
 *        @OA\Parameter( 
@@ -523,7 +523,7 @@ class apiController extends Controller
  * description="Logout user and invalidate token",
  * operationId="authLogout",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\Response(
  *    response=200,
  *    description="Success"
@@ -545,7 +545,7 @@ class apiController extends Controller
  * description="change User Password",
  * operationId="authChangePassword",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\RequestBody(
  *    required=true,
  *    description="Pass user credentials",
@@ -571,7 +571,7 @@ class apiController extends Controller
  * description="Update User Profile",
  * operationId="authUpdateProfile",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\RequestBody(
  *    required=true,
  *    description="Pass user Info",
@@ -609,7 +609,7 @@ class apiController extends Controller
  * description="Returns User data",
  * operationId="authUserProfile",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\Response(
  *    response=200,
  *    description="Success"
@@ -630,7 +630,7 @@ class apiController extends Controller
  * description="Returns User WishList data",
  * operationId="authUserWishList",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\Response(
  *    response=200,
  *    description="Success"
@@ -651,7 +651,7 @@ class apiController extends Controller
  * description="Returns User Orders data",
  * operationId="authUserOrder",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\Response(
  *    response=200,
  *    description="Success"
@@ -673,7 +673,7 @@ class apiController extends Controller
  * description="Change or Add Referral Code",
  * operationId="authChangeAddReferral",
  * tags={"auth"},
- * security={ {"bearer": {} }},
+ * security={ {"apiAuth": {} }},
  * @OA\RequestBody(
  *    required=true,
  *    description="Referral Code",
@@ -1382,7 +1382,7 @@ class apiController extends Controller
 
         return response()->json([
             'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
+            'token_type' => 'apiAuth',
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString(),
