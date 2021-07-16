@@ -514,7 +514,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Sorry, wrong email address or password. Please try again"
+                                            "example": "Sorry, wrong email address. Please try again"
                                         }
                                     },
                                     "type": "object"
@@ -643,7 +643,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Sorry, wrong email address or password. Please try again"
+                                            "example": "Sorry, wrong email address. Please try again"
                                         }
                                     },
                                     "type": "object"
@@ -1167,6 +1167,197 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "apiAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/checkout": {
+            "post": {
+                "tags": [
+                    "Checkout"
+                ],
+                "summary": "checkout Endpoint",
+                "description": "Returns  billing info and selected payment gateway object ",
+                "operationId": "checkout",
+                "requestBody": {
+                    "description": "Checkout",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "billingfname",
+                                    "billingsname",
+                                    "billingemail",
+                                    "billingpnumber",
+                                    "billingaddress",
+                                    "payment_method",
+                                    "shipping_amt"
+                                ],
+                                "properties": {
+                                    "billingfname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "billingsname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "billingemail": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "billingpnumber": {
+                                        "type": "string",
+                                        "example": "000 0000 000"
+                                    },
+                                    "billingcountry": {
+                                        "type": "string",
+                                        "example": "Ghana"
+                                    },
+                                    "billingaddress": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Awudome-Estate"
+                                    },
+                                    "billingapartment": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "billingcity": {
+                                        "type": "string",
+                                        "example": "Accra"
+                                    },
+                                    "billingstate": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Greater Accra"
+                                    },
+                                    "billingzipcode": {
+                                        "type": "string",
+                                        "example": "00233"
+                                    },
+                                    "shippingfname": {
+                                        "type": "string",
+                                        "example": "First Name"
+                                    },
+                                    "shippingsname": {
+                                        "type": "string",
+                                        "example": "Second Name"
+                                    },
+                                    "shippingpaddress": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Estate Legon"
+                                    },
+                                    "shippingemail": {
+                                        "type": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "shippingapartment": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "shippingcity": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": ""
+                                    },
+                                    "shippingstate": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "shippingdigitaladdress": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "shippingcountry": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Greater Accra"
+                                    },
+                                    "payment_method": {
+                                        "type": "string",
+                                        "example": "paystack"
+                                    },
+                                    "shipping_amt": {
+                                        "type": "string",
+                                        "example": "30"
+                                    },
+                                    "cart": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "productId": {
+                                                    "type": "integer",
+                                                    "example": "30"
+                                                },
+                                                "quantity": {
+                                                    "type": "integer",
+                                                    "example": "3"
+                                                },
+                                                "productAttribute": {
+                                                    "type": "integer",
+                                                    "example": "2"
+                                                },
+                                                "productPrice": {
+                                                    "type": "interger",
+                                                    "example": "100.00"
+                                                },
+                                                "productWeight": {
+                                                    "type": "interger",
+                                                    "example": "0.1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "collectionFormat": "multi"
+                                    },
+                                    "coupon": {
+                                        "properties": {
+                                            "code": {
+                                                "type": "string",
+                                                "example": "Accra2020"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "example": "percentage"
+                                            },
+                                            "discount": {
+                                                "type": "integer",
+                                                "example": "20"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong input. Please try again"
                                         }
                                     },
                                     "type": "object"
