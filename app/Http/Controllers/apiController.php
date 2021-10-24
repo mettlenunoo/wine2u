@@ -789,9 +789,9 @@ class apiController extends Controller
         $shop = shop::WHERE('id', '=', $this->shopId)
                 ->WHERE('status', '=', 'Approved')
                 ->with('payment_gateways')
-                ->with('shipping_address')
+                ->with('shipping_addresses')
                 ->first();
-        return response()->json(['shop_settingd' => $shop], 200);
+        return response()->json(['shop_settings' => $shop], 200);
 
     }
 

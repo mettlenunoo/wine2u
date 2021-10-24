@@ -12,7 +12,7 @@ class shop extends Model
 
     }
 
-    public function shipping_address()
+    public function shipping_addresses()
     {
         return $this->hasMany('App\Shippingcountry', 'country_id', 'id');
     }
