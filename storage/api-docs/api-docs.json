@@ -498,6 +498,14 @@
                                     "digitaladdress": {
                                         "type": "string",
                                         "example": "GA-202929"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "Ghana"
+                                    },
+                                    "primary_address": {
+                                        "type": "string",
+                                        "example": "false"
                                     }
                                 },
                                 "type": "object"
@@ -627,6 +635,14 @@
                                     "digitaladdress": {
                                         "type": "string",
                                         "example": "GA-202929"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "Ghana"
+                                    },
+                                    "primary_address": {
+                                        "type": "string",
+                                        "example": "false"
                                     }
                                 },
                                 "type": "object"

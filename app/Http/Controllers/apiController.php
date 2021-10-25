@@ -367,6 +367,8 @@ class apiController extends Controller
  *       @OA\Property(property="state", type="string", format="string", example="Greater Accra"),
  *       @OA\Property(property="zipcode", type="string", example="00233"),
  *       @OA\Property(property="digitaladdress", type="string", example="GA-202929"),
+ *       @OA\Property(property="country", type="string", example="Ghana"),
+ *       @OA\Property(property="primary_address", type="string", example="false"),
  *    ),
  * ),
  * @OA\Response(
@@ -401,6 +403,8 @@ class apiController extends Controller
  *       @OA\Property(property="state", type="string", format="string", example="Greater Accra"),
  *       @OA\Property(property="zipcode", type="string", example="00233"),
  *       @OA\Property(property="digitaladdress", type="string", example="GA-202929"),
+ *       @OA\Property(property="country", type="string", example="Ghana"),
+ *       @OA\Property(property="primary_address", type="string", example="false"),
  *    ),
  * ),
  * @OA\Response(
@@ -1885,7 +1889,8 @@ class apiController extends Controller
         $shipping->ship_state = $request->input('state');
         $shipping->ship_zip = $request->input('zipcode');
         $shipping->ship_digital_address = $request->input('digitaladdress');
-        $shipping->country = $this->shopId;
+        $shipping->country = $request->input('country');
+        $shipping->primary_address = $request->input('primary_address');
        // $shipping->customer_id = $request->input('user_id');
         $shipping->customer_id = auth()->user()->id;
         $shipping->save();
@@ -1919,7 +1924,8 @@ class apiController extends Controller
         $shipping->ship_state = $request->input('state');
         $shipping->ship_zip = $request->input('zipcode');
         $shipping->ship_digital_address = $request->input('digitaladdress');
-        $shipping->country = $this->shopId;
+        $shipping->country = $request->input('country');
+        $shipping->primary_address = $request->input('primary_address');
         $shipping->customer_id = auth()->user()->id;
         // $shipping->customer_id = $request->input('user_id');
         $shipping->save();
