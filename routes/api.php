@@ -40,9 +40,6 @@ Route::group(['middleware' => 'auth:api'], function(){
 });
 
 
-
-
-
 Route::get('/', 'apiController@all_products'); // ALL PRODUCTS
 Route::get('/products', 'apiController@products'); //  PRODUCTS
 Route::get('/menu', 'apiController@menu'); //  PRODUCTS
@@ -82,3 +79,6 @@ Route::post('/checkout/payment/paypal', 'apiController@paypal');
 //Route::get('/checkout/payment/expresspay', 'publicController@expresspay');
 Route::post('/checkout/payment/mpower', 'apiController@mpower');
 //Route::get('/expresspay/processor', 'publicController@expresspay_processor');
+
+// PAYSTACK 
+Route::get('/paystack-tran-verify/{trx}', 'apiController@paystack_verify');

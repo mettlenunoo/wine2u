@@ -1437,6 +1437,32 @@
                     }
                 ]
             }
+        },
+        "/api/paystack-tran-verify/{trx}": {
+            "get": {
+                "tags": [
+                    "Paystack"
+                ],
+                "summary": "The /api/paystack-tran-verify/{trx} endpoint returns payment obj from Paystack",
+                "description": "Transaction reference trx=[string]",
+                "operationId": "paystack-verify",
+                "parameters": [
+                    {
+                        "name": "trx",
+                        "in": "path",
+                        "description": "trx",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
         }
     },
     "components": {

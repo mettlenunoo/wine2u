@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 use App\Category;
 use App\Product;
@@ -30,6 +31,8 @@ use App\Blogcategory;
 use App\Models\Ads;
 use Validator;
 use Auth;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
 
 class apiController extends Controller
 {
@@ -799,6 +802,32 @@ class apiController extends Controller
  *        )
  *     )
  * )
+ * 
+ * 
+ *  @OA\Get(
+ *      path="/api/paystack-tran-verify/{trx}",
+ *      operationId="paystack-verify",
+ *      tags={"Paystack"},
+ *      summary="The /api/paystack-tran-verify/{trx} endpoint returns payment obj from Paystack",
+ *      description="Transaction reference trx=[string]",
+*        @OA\Parameter( 
+*          name="trx",
+*          description="trx",
+*          required=true,
+*          in="path",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+ *      @OA\Response(
+ *          response=200,
+ *          description=""
+ *       ),
+ *
+ * )
+ *
+ * 
+ * 
  */
  
 
@@ -2312,6 +2341,15 @@ class apiController extends Controller
 
         }
 
+    }
+
+
+    public function paystack_verify($trx)
+    {
+        $response = Http::accept('application/json')
+                    ->withToken('sk_live_51a104460001630932353d46331c06c946341ad6')
+                    ->get('https://api.paystack.co/transaction/verify/'.$trx);
+        return $response;
     }
 
     

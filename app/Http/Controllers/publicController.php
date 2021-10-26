@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 // use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -1958,6 +1959,24 @@ class publicController extends Controller
          Cookie::queue("website_cookie","preferences",'1576803');
          return "success";
 
+    }
+
+    public function paystack_verify(){
+        $response = Http::accept('application/json')
+                    ->withToken('sk_live_51a104460001630932353d46331c06c946341ad6')
+                    ->get('https://api.paystack.co/transaction/verify/trx_sjdhf2987hb');
+
+        return $response;
+        // Http::withHeaders([
+        //     'Authorization' => 'foo',
+        //     'Content-Type' => 'application/json'
+        // ])
+        // $response = Http::withHeaders([
+        //     'Authorization' => 'foo',
+        //     'Content-Type' => 'application/json'
+        // ])->post('http://example.com/users', [
+        //     'name' => 'Taylor',
+        // ]);
     }
   
 

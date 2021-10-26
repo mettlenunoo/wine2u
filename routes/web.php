@@ -171,6 +171,9 @@ Route::get('/checkout/rate/{zone}', 'publicController@checkoutrate');
 // COOKIES
 Route::get('/cookies', 'publicController@accept_cookie');
 
+// PAYSTACK VERIFY TRANSACTION
+ Route::get('/verify', 'publicController@paystack_verify');
+
 
 // Route::get('{country}', 'publicController@countryInfo');
 // Route::get('/{country}/checkout', 'publicController@checkout');
