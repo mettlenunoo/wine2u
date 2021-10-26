@@ -34,6 +34,17 @@ class Customer extends Authenticatable
         'password', 'remembertoken',
     ];
 
+     /**
+     * Get the Image absolute URL.
+     *
+     * @return string
+     */
+    public function setUserProfileImageAttribute($value){
+
+        return $this->attributes['user_profile_image'] = "https://wine2u.com/user_pic/".$value;
+
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomerResetPasswordNotification($token));

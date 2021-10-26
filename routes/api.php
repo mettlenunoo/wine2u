@@ -76,6 +76,7 @@ Route::get('/ads', 'apiController@ads');
 
 
 // PAYMENT METHOD
+Route::post('/paystack', 'publicController@redirectToGateway')->name('paystack-pay');
 Route::post('/checkout/payment/ravepay', 'apiController@ravepay');
 Route::post('/checkout/payment/paypal', 'apiController@paypal');
 //Route::get('/checkout/payment/expresspay', 'publicController@expresspay');

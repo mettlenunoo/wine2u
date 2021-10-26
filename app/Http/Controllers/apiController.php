@@ -771,10 +771,34 @@ class apiController extends Controller
  *     )
  * )
  * 
- * 
- *
- *
- * 
+ * @OA\Post(
+ *   path="/api/image-upload",
+ *   tags={"auth"},
+ *   security={ {"apiAuth": {} }},
+ *   summary="Upload Profile Picture",
+ *   description="Return user Object",
+ *   @OA\RequestBody(
+ *     required=true,
+ *     description="upload Profile Picture",
+ *     @OA\MediaType(
+ *       mediaType="multipart/form-data",
+ *       @OA\Schema(
+ *         @OA\Property(
+ *           property="profile_pic",
+ *           type="string",
+ *           format="binary"
+ *         )
+ *       )
+ *     )
+ *   ),
+ *   @OA\Response(
+ *    response=422,
+ *    description="Incorrect Image Format",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong input. Please try again")
+ *        )
+ *     )
+ * )
  */
  
 
@@ -1368,31 +1392,53 @@ class apiController extends Controller
  
         $validator = Validator::make($request->all(), [ 
               //'user_id' => 'required',
-              'file'  => 'required|mimes:png,jpg|max:2048',
+              'profile_pic'  => 'required|mimes:png,jpg|max:2048',
         ]);   
  
         if ($validator->fails()) {          
             return response()->json(['error'=>$validator->errors()], 401);                        
          }  
- 
-  
-        if ($files = $request->file('file')) {
-             
-            //store file into document folder
-            $file = $request->file->store('public/user_pic');
- 
+
+
+         $profile_pic = "";
+         $customer = "";
+
+         if ($request->hasFile('profile_pic')) {
+
+            $images = $request->file('profile_pic');
+            $profile_pic = rand().time().'.'.$images->getClientOriginalExtension();
+            $destinationPath = public_path('/user_pic');
+            $images->move($destinationPath, $profile_pic);
+
             //store your file into database
-            $document = Customer::find(auth()->user()->id);
-            $document->user_profile_image = $file;
-            $document->save();
-              
-            return response()->json([
-                "success" => true,
-                "message" => "File successfully uploaded",
-                "file" => $file
-            ]);
-  
+            $customer = Customer::find(auth()->user()->id);
+            $customer->user_profile_image = $profile_pic;
+            $customer->save();
+
         }
+
+
+        return response()->json([
+            "success" => true,
+            "message" => "File successfully uploaded",
+            "file" => $profile_pic,
+            "profile" => $customer,
+        ]);
+ 
+  
+        // if ($file = $request->file('profile_pic')) {
+             
+        //     //store file into document folder
+        //     $profile_pic = $file->store('/public/user_pic');
+ 
+        //     //store your file into database
+        //     $customer = Customer::find(auth()->user()->id);
+        //     $customer->user_profile_image = $profile_pic;
+        //     $customer->save();
+              
+           
+  
+        // }
  
   
     }
