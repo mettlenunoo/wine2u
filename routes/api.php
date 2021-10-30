@@ -81,4 +81,5 @@ Route::post('/checkout/payment/mpower', 'apiController@mpower');
 //Route::get('/expresspay/processor', 'publicController@expresspay_processor');
 
 // PAYSTACK 
-Route::get('/paystack-tran-verify/{trx}', 'apiController@paystack_verify');
+Route::get('/paystack-verify-transaction', 'apiController@paystack_verify');
+Route::post('/paystack/pay', 'apiController@paystack');

@@ -1438,19 +1438,89 @@
                 ]
             }
         },
-        "/api/paystack-tran-verify/{trx}": {
+        "/api/paystack/pay": {
+            "post": {
+                "tags": [
+                    "Paystack"
+                ],
+                "summary": "Paystack Payment",
+                "description": "Paystack Payment",
+                "operationId": "paystack",
+                "requestBody": {
+                    "description": "Pass user Info",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "amount",
+                                    "orderID",
+                                    "email",
+                                    "quantity",
+                                    "currency"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "orderID": {
+                                        "type": "string",
+                                        "example": "00001"
+                                    },
+                                    "amount": {
+                                        "type": "string",
+                                        "example": "200"
+                                    },
+                                    "quantity": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "1"
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "example": "GHS"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong input. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/paystack-verify-transaction?trxref=xxxxx": {
             "get": {
                 "tags": [
                     "Paystack"
                 ],
-                "summary": "The /api/paystack-tran-verify/{trx} endpoint returns payment obj from Paystack",
-                "description": "Transaction reference trx=[string]",
+                "summary": "The /api/paystack-verify-transaction?trxref=xxxx endpoint returns payment obj from Paystack",
+                "description": "Transaction reference trxref=[string]",
                 "operationId": "paystack-verify",
                 "parameters": [
                     {
-                        "name": "trx",
+                        "name": "trxref",
                         "in": "path",
-                        "description": "trx",
+                        "description": "trxref",
                         "required": true,
                         "schema": {
                             "type": "string"

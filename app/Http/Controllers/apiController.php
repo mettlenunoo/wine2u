@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use App\Category;
 use App\Product;
@@ -33,6 +34,7 @@ use Validator;
 use Auth;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use Paystack;
 
 class apiController extends Controller
 {
@@ -804,15 +806,44 @@ class apiController extends Controller
  * )
  * 
  * 
+ * @OA\Post(
+ * path="/api/paystack/pay",
+ * summary="Paystack Payment",
+ * description="Paystack Payment",
+ * operationId="paystack",
+ * tags={"Paystack"},
+ * @OA\RequestBody(
+ *    required=true,
+ *    description="Pass user Info",
+ *    @OA\JsonContent(
+ *       required={"amount","orderID","email","quantity","currency"},
+ *       @OA\Property(property="email", type="string", format="string", example="user1@mail.com"),
+ *       @OA\Property(property="orderID", type="string",  example="00001"),
+ *       @OA\Property(property="amount", type="string", example="200"),
+ *       @OA\Property(property="quantity", type="string", format="string", example="1"),
+ *       @OA\Property(property="currency", type="string",  example="GHS"),
+ *    ),
+ * ),
+ * @OA\Response(
+ *    response=422,
+ *    description="Wrong credentials response",
+ *    @OA\JsonContent(
+ *       @OA\Property(property="message", type="string", example="Sorry, wrong input. Please try again")
+ *        )
+ *     )
+ * )
+ * 
+ * 
+ *  * 
  *  @OA\Get(
- *      path="/api/paystack-tran-verify/{trx}",
+ *      path="/api/paystack-verify-transaction?trxref=xxxxx",
  *      operationId="paystack-verify",
  *      tags={"Paystack"},
- *      summary="The /api/paystack-tran-verify/{trx} endpoint returns payment obj from Paystack",
- *      description="Transaction reference trx=[string]",
+ *      summary="The /api/paystack-verify-transaction?trxref=xxxx endpoint returns payment obj from Paystack",
+ *      description="Transaction reference trxref=[string]",
 *        @OA\Parameter( 
-*          name="trx",
-*          description="trx",
+*          name="trxref",
+*          description="trxref",
 *          required=true,
 *          in="path",
 *          @OA\Schema(
@@ -2344,12 +2375,21 @@ class apiController extends Controller
     }
 
 
-    public function paystack_verify($trx)
+    public function paystack_verify()
     {
-        $response = Http::accept('application/json')
-                    ->withToken('sk_live_51a104460001630932353d46331c06c946341ad6')
-                    ->get('https://api.paystack.co/transaction/verify/'.$trx);
-        return $response;
+
+       // return request()->query('trxref');
+        return Paystack::getPaymentData();
+
+        // $response = Http::accept('application/json')
+        //             ->withToken('sk_live_51a104460001630932353d46331c06c946341ad6')
+        //             ->get('https://api.paystack.co/transaction/verify/'.$trx);
+        // return $response;
+    }
+
+    public function paystack(Request $request){
+
+            return Paystack::getAuthorizationResponse($request->all());
     }
 
     
