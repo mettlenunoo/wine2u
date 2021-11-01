@@ -1781,7 +1781,7 @@ class apiController extends Controller
                 $shop = shop::WHERE('id', '=', $this->shopId)
                 ->WHERE('status', '=', 'Approved')
                 ->with('payment_gateways')
-                ->with('shipping_address')
+                ->with('shipping_addresses')
                 ->first();
 
                 $calculation = (object)[

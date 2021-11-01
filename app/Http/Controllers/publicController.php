@@ -1931,6 +1931,7 @@ class publicController extends Controller
             return Redirect::back()->withMessage(['msg'=>'The paystack token has expired. Please refresh the page and try again.', 'type'=>'error']);
         }        
     }
+    
 
     public function sendEmail($order_id){
 
