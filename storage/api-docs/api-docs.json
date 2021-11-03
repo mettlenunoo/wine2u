@@ -1293,7 +1293,7 @@
                                     },
                                     "shippingstate": {
                                         "type": "string",
-                                        "example": ""
+                                        "example": "Greater Accra"
                                     },
                                     "shippingdigitaladdress": {
                                         "type": "string",
@@ -1302,7 +1302,7 @@
                                     "shippingcountry": {
                                         "type": "string",
                                         "format": "string",
-                                        "example": "Greater Accra"
+                                        "example": "Ghana"
                                     },
                                     "payment_method": {
                                         "type": "string",

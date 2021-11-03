@@ -731,9 +731,9 @@ class apiController extends Controller
  *       @OA\Property(property="shippingemail", type="string",  example="user1@mail.com"),
  *       @OA\Property(property="shippingapartment", type="string", example=""),
  *       @OA\Property(property="shippingcity", type="string", format="string", example=""),
- *       @OA\Property(property="shippingstate", type="string",  example=""),
+ *       @OA\Property(property="shippingstate", type="string",  example="Greater Accra"),
  *       @OA\Property(property="shippingdigitaladdress", type="string", example=""),
- *       @OA\Property(property="shippingcountry", type="string", format="string", example="Greater Accra"),
+ *       @OA\Property(property="shippingcountry", type="string", format="string", example="Ghana"),
  *       @OA\Property(property="payment_method", type="string", example="paystack"),
  *       @OA\Property(property="shipping_amt", type="string", example="30"),
  * 
