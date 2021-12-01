@@ -175,6 +175,10 @@ Route::get('/cookies', 'publicController@accept_cookie');
  Route::get('/verify', 'publicController@paystack_verify');
 
 
+// PRIVACY POLICY
+ Route::get('/privacy-policy', 'publicController@privacy_policy');
+
+
 // Route::get('{country}', 'publicController@countryInfo');
 // Route::get('/{country}/checkout', 'publicController@checkout');
 // Route::get('/{country}/product', 'publicController@shop');

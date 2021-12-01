@@ -2002,6 +2002,12 @@ class publicController extends Controller
         //     'name' => 'Taylor',
         // ]);
     }
+
+    public function privacy_policy(){
+
+        return view('pages.privacy_and_policy');
+      
+    }
   
 
 }
