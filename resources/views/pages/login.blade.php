@@ -53,7 +53,7 @@
         </div>
 
         <div class="form-group col-12 text-right">
-          <a href="/acccount/password/reset"><small>I forgot my password</small></a>
+          <a href="/account/password/reset"><small>I forgot my password</small></a>
         </div>
 
         </div>
@@ -63,17 +63,26 @@
         </div>
 
        
-      </form>
+     
 
 
       <div class="text-center mt-5">
-         <p>Or Sign Up With</p>
-         <span class="px-2"><a href="/sign-in/google"><img src="/page_assets/img/googlesign.svg" alt=""></a></span>
-         <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span>
+         {{-- <p>Or Sign Up With</p> --}}
+         {{-- <span class="px-2"><a href="/sign-in/google"><img src="/page_assets/img/googlesign.svg" alt=""></a></span>
+         <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span> --}}
+           @if(isset($_GET['redirect']))
 
-         <p class="my-4">I don’t have an account.  <a href="/signup">Register Me</a> </p>
+            <input type="hidden" name="redirect" value="checkout">
+            <p class="my-4">I don’t have an account.  <a href="/signup?redirect=checkout">Register Me</a> </p>
+
+           @else
+
+            <input type="hidden" name="redirect" value="">
+            <p class="my-4">I don’t have an account.  <a href="/signup">Register Me</a> </p>
+
+           @endif
        </div>
-          
+           </form>
        </div>
 
 

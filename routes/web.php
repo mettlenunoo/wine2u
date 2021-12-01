@@ -103,11 +103,11 @@ Route::get('/product/changevarprod/{id}', 'publicController@changevarproduct');
 Route::get('/cart/delete/{id}', 'publicController@deleteCartPage');  
 
 // sign up
-Route::get('/signup', 'publicController@user_signup');
+Route::get('/signup', 'publicController@user_signup')->middleware('guest:customer');
 Route::post('/signup', 'publicController@userRegister')->name("customer-signup");
 
 // login
-Route::get('/sign-in', 'publicController@user_sign_in');
+Route::get('/sign-in', 'publicController@user_sign_in')->middleware('guest:customer');;
 Route::post('/sign-in', 'publicController@login')->name("customer-sign-in");
 
 // Wishlistss
@@ -268,7 +268,7 @@ Route::get('/cookies', 'publicController@accept_cookie');
 
 
 // Route::get('/category', 'publicController@productcategory');
-// Route::get('/thankyou', 'publicController@thankyou');
+Route::get('/thankyou', 'publicController@thankyou');
 
 
 //Route::resource('/account','customerContoller');

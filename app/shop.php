@@ -12,6 +12,12 @@ class shop extends Model
 
     }
 
+    public function payment_methods()
+    {
+        return $this->hasOne('App\Paymentmethod', 'shop_id', 'id');
+
+    }
+
     public function shipping_addresses()
     {
         return $this->hasMany('App\Shippingcountry', 'country_id', 'id');

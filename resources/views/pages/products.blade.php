@@ -369,9 +369,8 @@
 
     $(document).on('click', '.pager-list', function(event){
         event.preventDefault(); 
-        // var page = $(this).attr('href');
-        // console.log(page);
-        // alert(page);
+
+        $(document).scrollTop(100) // any value you need
 
         var page = $(this).attr('href').split('page=')[1];
         filter_data(page);
@@ -403,8 +402,10 @@
                     $('.filter_data').html('<div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"> <h3>No product under this category. Please try again.</h3></div>');
 
                  } else {
-
+                  
+                  
                    $('.filter_data').html(data);
+                  
 
                  }
                 

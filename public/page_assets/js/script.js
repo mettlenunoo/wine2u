@@ -166,7 +166,7 @@ function cart(id) {
 function deleteCartPage(key, page = "") {
 
     swal({
-            title: "Are you sure You want to Delete?",
+            title: "Are you sure you want to remove the item?",
             // text: "Once deleted, you will not be able to recover this imaginary file!",
             icon: "warning",
             buttons: true,

@@ -666,6 +666,13 @@ class publicController extends Controller
 
     }
 
+    public function thankyou()
+    {
+        
+        return view('pages.thankyou');
+
+    }
+
     public function user_signup()
     {
         
@@ -881,7 +888,17 @@ class publicController extends Controller
             return view('pages.login',compact('error'));
         }
 
-        return redirect()->intended('/account');
+        if($request->input("redirect") != ""){
+
+            return redirect()->intended('/checkout');
+        }
+
+        // return redirect()->intended('/account');
+           
+           
+
+
+        
         
     }
 
@@ -1390,6 +1407,8 @@ class publicController extends Controller
 
        $calculation = $this->cart_calculation();
 
+    //    return dd($calculation);
+
       return view('pages.checkout',compact('customer','calculation','countries'));
 
     }
@@ -1548,8 +1567,8 @@ class publicController extends Controller
 
             $shop = shop::WHERE('id', '=', $this->shopId)
             ->WHERE('status', '=', 'Approved')
-            ->with('payment_gateways')
-            ->with('shipping_address')
+            ->with('payment_methods')
+            ->with('shipping_addresses')
             ->first();
 
             $calculation = (object)[
@@ -1575,7 +1594,11 @@ class publicController extends Controller
     }
     
     public function checkout_store(Request $request)
-    {               
+    {            
+                if(session()->get('cart') == null){
+
+                    return back()->with('error','Add a product to your cart. Please try again.');
+                }
                 // cart calculation
                 $calculation = $this->cart_calculation();
 
@@ -1672,7 +1695,7 @@ class publicController extends Controller
                 }
 
                 // Accept Payment Gateways for The Selected Shop.
-                $paymentGateWays = $calculation->shop->payment_gateways;
+                $paymentGateWays = $calculation->shop->payment_methods;
 
                 // Payment Param for Gateway API's
                 $paymentParam = array('email' => $email,'amt' => number_format($calculation->totalAmount,2),'phone' => $phone_number, 'desc' => $calculation->shop->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($calculation->shop->country), 'currency' => $calculation->shop->currency);
@@ -1779,7 +1802,7 @@ class publicController extends Controller
         $country = session()->get('paymentinfo')['country'];
         $currency =  session()->get('paymentinfo')['currency'];
         $api =  session()->get('paymentinfo')['api'];
-        $item_name = "Item(s) bought From hvafrica";
+        $item_name = "Item(s) bought From Wine2u";
 
 
         $invoice = array(
@@ -1794,11 +1817,11 @@ class publicController extends Controller
             ,
             'totalAmount' => number_format($amt,2),
             'description' => 'Product Checkout',
-            'callbackUrl' => 'http://hvafrica.com/callback',
-            'returnUrl' => 'https://hvafrica.com/'.strtolower($country).'/thankyou',
-            'merchantBusinessLogoUrl' => 'https://hvafrica.com/images/black-logo.png',
+            'callbackUrl' => 'http://wine2u.com/callback',
+            'returnUrl' => 'https://wine2u.com/'.strtolower($country).'/thankyou',
+            'merchantBusinessLogoUrl' => 'https://wine2u.com/images/black-logo.png',
             'merchantAccountNumber' => $api, //'',
-            'cancellationUrl' => 'https://hvafrica.com/'.strtolower($country).'/checkout',    
+            'cancellationUrl' => 'https://wine2u.com/'.strtolower($country).'/checkout',    
             //'clientReference' => 'MI6TPQ3XK',
             'clientReference' =>  $trans_id,
             );
@@ -1886,7 +1909,7 @@ class publicController extends Controller
             $country = session()->get('paymentinfo')['country'];
             $currency =  session()->get('paymentinfo')['currency'];
             $api =  session()->get('paymentinfo')['api'];
-            $item_name = "Item(s) bought From hvafrica";
+            $item_name = "Item(s) bought From Wine2u";
 
         // dd($currency,$amt );
 

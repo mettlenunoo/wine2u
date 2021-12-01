@@ -747,7 +747,7 @@
         @php 
 
         // COUPON CALCULATIONS
-        if(session()->get('coupon')['type'] == "percentage"){
+    if(session()->get('coupon')['type'] == "percentage"){
 
         $discountCode = session()->get('coupon')['code'];
         $discountText = "Discount (".session()->get('coupon')['discount']."%)";
@@ -755,14 +755,15 @@
 
     }elseif (session()->get('coupon')['type'] == "fixed") {
 
-    $discountCode = session()->get('coupon')['code'];
-    $discountText = "Discount";
-    $discountAmt = (session()->get('coupon')['discount']);
+        $discountCode = session()->get('coupon')['code'];
+        $discountText = "Discount";
+        $discountAmt = (session()->get('coupon')['discount']);
 
     }else{
-    $discountCode = "";
-    $discountText = "Discount";
-    $discountAmt = (0.00);
+        
+        $discountCode = "";
+        $discountText = "Discount";
+        $discountAmt = (0.00);
 
 }
 

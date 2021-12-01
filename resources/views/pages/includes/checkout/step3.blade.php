@@ -16,7 +16,7 @@
    <div class="main-container w-100">
       <div class="radio-buttons">
 
-         @if($calculation->shop->payment_gateways->rave == "Yes")
+         @if($calculation->shop->payment_methods->rave == "Yes")
             <label class="custom-radio">
                <input type="radio" class="payment_method" name="payment_method"  value="Rave" checked />
                <span class="radio-btn"
@@ -30,7 +30,7 @@
             </label>
          @endif
 
-         @if($calculation->shop->payment_gateways->paystack == "Yes")
+         @if($calculation->shop->payment_methods->paystack == "Yes")
             <label class="custom-radio">
                <input type="radio" class="payment_method" name="payment_method" value="Paystack"  />
                <span class="radio-btn"
@@ -44,7 +44,7 @@
             </label>
          @endif
 
-         @if($calculation->shop->payment_gateways->paypal == "Yes")
+         @if($calculation->shop->payment_methods->paypal == "Yes")
             <label class="custom-radio">
                <input type="radio" class="payment_method" name="payment_method"  value="Paypal"   />
                <span class="radio-btn"
@@ -58,7 +58,7 @@
             </label>
          @endif
 
-         @if($calculation->shop->payment_gateways->express_pay == "Yes")
+         @if($calculation->shop->payment_methods->express_pay == "Yes")
                <label class="custom-radio">
                   <input type="radio" class="payment_method" name="payment_method"  value="express-pay" />
                   <span class="radio-btn"
@@ -72,7 +72,7 @@
                </label>
          @endif
 
-         @if($calculation->shop->payment_gateways->hubtel == "Yes")
+         @if($calculation->shop->payment_methods->hubtel == "Yes")
                <label class="custom-radio">
                   <input type="radio" class="payment_method" name="payment_method" value="hubtel"  />
                   <span class="radio-btn"
@@ -87,7 +87,7 @@
                </label>
          @endif
 
-         @if($calculation->shop->payment_gateways->cash_on_delivery == "Yes")
+         @if($calculation->shop->payment_methods->cash_on_delivery == "Yes")
             <label class="custom-radio">
                <input type="radio" class="payment_method" name="payment_method"  value="pay on delivery"  />
                <span class="radio-btn"

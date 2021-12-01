@@ -5,7 +5,7 @@
       @if(!auth('customer')->user())
       <div class="mb-5">
 		<div class="alert shadow-sm alert-dismissible fade show" role="alert">
-			<strong> Already have an account? </strong> <a href="/user-signin?direct=checkout">Log in</a> | <span >or  Continue as a Guest </span>
+			<strong> Already have an account? </strong> <a href="/sign-in?redirect=checkout">Log in</a> | <span >or  Continue as a Guest </span>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">×</span>
 			</button>
@@ -57,7 +57,7 @@
 
          <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-country">Country *</label> 
-            <select id="bill_country" name="billingcountry" class="form-control form-control-wine2u wizard-required">
+            <select id="bill_country" name="billingcountry" class="form-control form-control-wine2u wizard-required" >
                   <option selected value=""> Choose... </option>
                   <option @if($customer->country == "land Islands") selected @endif  value="land Islands">&#197;land Islands</option>
                   <option @if($customer->country == "Afghanistan") selected @endif value="Afghanistan">Afghanistan</option>
