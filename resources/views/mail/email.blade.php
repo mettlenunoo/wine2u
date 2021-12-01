@@ -122,7 +122,7 @@
 <body>
     <div class="wrapper">
         <div class="text-center">
-        <img src="{{ asset('/page_assets/img/wine2ulogo.svg')}}" width="120px">
+        <img src="https://wine2u.com/page_assets/img/favicon.png" width="120px">
 
             {{-- <h2 style="margin-top: 0px;margin-bottom: 5px;border-bottom: 1px solid #e7e7e7;padding-bottom: 20px; font-size:16px">INVOICE # {{ $order->id}}</h2> --}}
         </div>
