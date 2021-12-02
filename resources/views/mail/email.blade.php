@@ -130,7 +130,7 @@
             <div class="width-1">
                 <h3>{{ucwords($order->name)}}</h3>
                 <p class="small" style="font-weight: 600;">Brief Delivery Address</p>
-                <p class="small">{{ ucwords($order->ship_to) }}'</p>
+                <p class="small">{!! $order->ship_to !!}</p>
                 <p class="small"> Code : {{ $order->tracking_code }}</p>
                 <br>
             </div>

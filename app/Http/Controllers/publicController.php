@@ -1576,7 +1576,7 @@ class publicController extends Controller
                 "totalAmount" => $totalAmount,
                 "weight" =>  $weight,
                 "tax"  => $tax,
-                "qty" => $qty,
+                "qty" => $totalQty,
                 "totalQty" => $totalQty,
                 "subTotal" => $subTotal,
                 "itemSubTotal" => $itemSubTotal,
@@ -1602,7 +1602,7 @@ class publicController extends Controller
                 // cart calculation
                 $calculation = $this->cart_calculation();
 
-                $customer = \App\Customer::updateOrCreate(
+                $customer = Customer::updateOrCreate(
                     ['email' => $request->input('billingemail')],
                     [
                         'fname' => $request->input('billingfname'), 
@@ -1614,7 +1614,7 @@ class publicController extends Controller
                         'city' => $request->input('billingcity'),
                         'state' => $request->input('billingstate'), 
                         'zip' => $request->input('billingzipcode'),
-                        'remembertoken' => str_slug(Hash::make($request->input('billingemail'))).time(), 
+                        'remember_token' => str_slug(Hash::make($request->input('billingemail'))).time(), 
                         'shop_id' => $this->shopId,
                     ]
                 );
@@ -1631,7 +1631,7 @@ class publicController extends Controller
                         'ship_state' => $request->input('shippingstate'),
                         'ship_zip' => $request->input('shippingzip'), 
                         'ship_digital_address' => $request->input('shippingdigitaladdress'),
-                        'country' => $request->input('shippingcountry'), 
+                        'country' => $request->input('country_region'), 
                         'customer_id' => $customer->id,
                     ]
                 );
@@ -1643,7 +1643,7 @@ class publicController extends Controller
                 $email = $customer->email;
                 $country = $customer->country;
                 $shippingFullname  = $request->input('shippingfname')." ".$request->input('shippingsname');
-                $ship_to = $shippingFullname. " ".$request->input('shippingpaddress')." ".$request->input('shippingemail')." ".$request->input('shippingapartment')." ".$request->input('shippingpnumber')." ".$request->input('shippingcity')." ".$request->input('shippingstate')." ".$request->input('shippingdigitaladdress')." ".$request->input('shippingcountry');
+                $ship_to ="<b> Fullname: </b>". $shippingFullname. " <br> <b> Address: </b>".$request->input('shippingpaddress')." <br> <b> Email: </b> ".$request->input('shippingemail')." <br> <b> Apartment: </b> ".$request->input('shippingapartment')." <br> <b> Phone Number: </b> ".$request->input('shippingpnumber')." <br> <b> City: </b> ".$request->input('shippingcity')." <br><b> Street: </b> ".$request->input('shippingstate')." <br><b> Digital Address: </b> ".$request->input('shippingdigitaladdress')." <br> <b> Country / Region: </b> ".$request->input('country_region');
 
                 // ORDERS
                 $order = new Order;

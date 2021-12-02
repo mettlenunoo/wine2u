@@ -27,11 +27,20 @@ class Customer extends Authenticatable
         'fname',
         'lname',
         'email',
-        'password',
+        'phone',
+        'country',
+        'address',
+        'apartment',
+        'city',
+        'state',
+        'zip',
+        'remember_token',
+        'shop_id',
+        'password'
     ];
    
     protected $hidden = [
-        'password', 'remembertoken',
+        'password', 'remember_token',
     ];
 
      /**

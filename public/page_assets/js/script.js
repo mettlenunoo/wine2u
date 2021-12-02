@@ -133,7 +133,9 @@ function shiprate(zone) {
             $(".shipping").val(parseFloat(response).toFixed(2));
             $(".shipping-amount").html(parseFloat(response).toFixed(2));
 
-            console.log(response);
+            // console.log(response);
+           var country =  $( "#shipping_country option:selected" ).text();
+           $("#country_region").val(country);
 
         }
     });

@@ -51,6 +51,7 @@
                @endforeach
                {{-- <option value="Ghana">Ghana</option> --}}
             </select>
+            <input type="" name="country_region" id="country_region">
 
             <div class="wizard-form-error">
                Select a Shipping Country / Region
