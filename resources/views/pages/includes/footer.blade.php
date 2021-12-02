@@ -25,27 +25,29 @@
 					<div class="mb-4">
 						<h1 class="mb-3">Discover</h1>
 						<ul class="list-unstyled">
-							<li class="mb-2"><a href="#">Wines</a></li>
-							<li class="mb-2"><a href="#">Champagnes</a></li>
+							@foreach($menu->wines as $key => $wine)
+								<li class="mb-2"><a href="/products?wine={{ $wine->slug }}">{{ ucwords($wine->title) }}</a></li>
+							@endforeach
+							{{-- <li class="mb-2"><a href="#">Champagnes</a></li>
 							<li class="mb-2"><a href="#">Cognacs</a></li>
-							<li class="mb-2"><a href="#">Paring</a></li>
+							<li class="mb-2"><a href="#">Paring</a></li> --}}
 						</ul>
 					</div>
 
 					<div class="mb-4">
 						<h1 class="mb-3">More</h1>
 						<ul class="list-unstyled">
-							<li class="mb-2"><a href="#">Grapes</a></li>
+							<li class="mb-2"><a href="/pairing">Food Pairings</a></li>
 							<li class="mb-2"><a href="#">Regions</a></li>
-							<li class="mb-2"><a href="#">Kɔkɔ's Blog</a></li>
+							<li class="mb-2"><a href="/blog">Kɔkɔ's Blog</a></li>
 						</ul>
 					</div>
 
 					<div class="mb-4">
 						<h1 class="mb-3">Legal</h1>
 						<ul class="list-unstyled">
-							<li class="mb-2"><a href="#">Privacy Policy</a></li>
-							<li class="mb-2"><a href="#">Terms of  Use</a></li>
+							<li class="mb-2"><a href="/privacy-policy">Privacy Policy</a></li>
+							<li class="mb-2"><a href="/terms-conditions">Terms of Use</a></li>
 						</ul>
 					</div>
 					
@@ -61,7 +63,7 @@
 
 			<div class="col-12 text-md-right mt-5">
 				<p class="wine_wc">
-					<small>Copyright © 2020 wine2u  - All rights reserved.</small>
+					<small>Copyright © {{ date('Y') }} wine2u  - All rights reserved.</small>
 				</p>
 			</div>
 		</div>

@@ -44,14 +44,14 @@
          </div>
          <div class="form-group col-12 col-md-12 col-lg-6">
             <label for="checkout-country">Country / Region *</label> 
-            <select id="shipping_country" name="shippingcountry" class="form-control form-control-wine2u wizard-required" onchange="shiprate(this);">
+            <select id="shipping_country" name="shippingcountry" class="form-control  wizard-required" onchange="shiprate(this);">
                <option selected value="" >Choose...</option>
                @foreach ($countries as $item)
                 <option value="{{ $item->zone }}">{{ $item->country }}</option>
                @endforeach
                {{-- <option value="Ghana">Ghana</option> --}}
             </select>
-            <input type="" name="country_region" id="country_region">
+            <input type="hidden" name="country_region" id="country_region">
 
             <div class="wizard-form-error">
                Select a Shipping Country / Region

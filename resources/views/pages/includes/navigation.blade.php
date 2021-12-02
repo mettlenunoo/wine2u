@@ -6,10 +6,10 @@
 					<a href="https://facebook.com/wine2uinternational/" target="_blank" >
 						<img src="/page_assets/img/facebookicon.svg" width="19" alt="">
 					</a>
-					<a href="" target="new">
+					<a href="https://twitter.com/wine2u_" target="new">
 						<img src="/page_assets/img/twittericon.svg" width="22" alt="">
 					</a>
-					<a href="" target="new">
+					<a href="https://instagram.com/wine2u__" target="new">
 						<img src="/page_assets/img/instagramicon.svg" width="22" alt="">
 					</a>
 				</div>
@@ -101,7 +101,7 @@
 					<a class="px-md-3 py-md-2" href="/products">Prosecco</a>
 					<a class="px-md-3 py-md-2" href="/products">Hard Liquor</a> --}}
 					<a class="px-md-3 py-md-2" href="/pairing">Food Pairings</a>
-					<a class="px-md-3 py-md-2" href="#">Wine Regions</a>
+					{{-- <a class="px-md-3 py-md-2" href="#">Wine Regions</a> --}}
 
 					@foreach($menu->blogCategories as $key => $blogCategory)
 						

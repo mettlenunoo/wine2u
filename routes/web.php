@@ -177,6 +177,8 @@ Route::get('/cookies', 'publicController@accept_cookie');
 
 // PRIVACY POLICY
  Route::get('/privacy-policy', 'publicController@privacy_policy');
+ // TERMS AND CONDITIONS
+ Route::get('/terms-conditions', 'publicController@terms_conditions');
 
 
 // Route::get('{country}', 'publicController@countryInfo');

@@ -40,8 +40,9 @@
 
 
 <!-- footer includes -->
+ @include("pages.includes.footer")
  @include("pages.includes.footer-links")
- <!-- footer includes -->
+<!-- footer includes -->
 
   </body>
 </html>

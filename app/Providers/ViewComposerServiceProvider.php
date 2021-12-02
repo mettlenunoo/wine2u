@@ -32,6 +32,9 @@ class ViewComposerServiceProvider extends ServiceProvider
         // navigation
         view()->composer('pages.includes.searchnav', 'App\Http\Controllers\publicController@menu');
 
+         // footer
+        view()->composer('pages.includes.footer', 'App\Http\Controllers\publicController@menu');
+
         
         
         // view()->composer('pages.includes.filters', function($view)

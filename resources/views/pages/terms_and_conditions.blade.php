@@ -21,7 +21,7 @@
     <div class="row">
        <div class="col-12 col-md-7 mx-auto text-center ">
         
-            <h2>Privacy & Policy</h2>
+            <h2>Terms & Conditions</h2>
             {{-- <img src="{{ asset('images/summary.png')}}" class="img-responsive"> --}}
             <p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. 
               Lorem ipsum may be used as a placeholder before the final copy is available.
@@ -53,7 +53,7 @@
 
 
 <!-- footer includes -->
- @include("pages.includes.footer")
+@include("pages.includes.footer")
  @include("pages.includes.footer-links")
  <!-- footer includes -->
 

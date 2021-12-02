@@ -2008,6 +2008,12 @@ class publicController extends Controller
         return view('pages.privacy_and_policy');
       
     }
+
+    public function terms_conditions(){
+
+        return view('pages.terms_and_conditions');
+      
+    }
   
 
 }
