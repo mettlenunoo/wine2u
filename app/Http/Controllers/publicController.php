@@ -893,12 +893,8 @@ class publicController extends Controller
             return redirect()->intended('/checkout');
         }
 
-        // return redirect()->intended('/account');
+        return redirect()->intended('/account');
            
-           
-
-
-        
         
     }
 
