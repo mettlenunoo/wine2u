@@ -1339,16 +1339,16 @@ class publicController extends Controller
                                 <li class="list-inline-item">
                                     <div class="rating"> 
 
-                                        <input type="radio" name="rating-'.$review->customer_id .'" value="5" id="5-'. $review->customer_id .'"'; if($review->rating == 5){ $output .='checked'; } $output .='>
-                                        <label for="5-'. $review->customer_id .'">☆</label>
-                                        <input type="radio" name="rating-'.$review->customer_id .'" value="4" id="4-'. $review->customer_id .'"'; if($review->rating >= 4 && $review->rating < 5  ){ $output .=' checked'; } $output .='>
-                                        <label for="4-'.$review->customer_id .'">☆</label>
-                                        <input type="radio" name="rating-'. $review->customer_id .'" value="3" id="3-'. $review->customer_id .'"'; if($review->rating >= 3 && $review->rating < 4){ $output .='checked'; } $output .='>
-                                        <label for="3-'. $review->customer_id .'">☆</label>
-                                        <input type="radio" name="rating-'. $review->customer_id .'" value="2" id="2-'.$review->customer_id .'"'; if($review->rating >= 2 && $review->rating < 3){ $output .='checked';  } $output .=' >
-                                        <label for="2-'. $review->customer_id .'">☆</label>
-                                        <input type="radio" name="rating-'. $review->customer_id .'" value="1" id="1-{'.$review->customer_id .'"'; if($review->rating > 0  && $review->rating < 2){ $output .='checked'; } $output .='>
-                                        <label for="1-'.$review->customer_id .'">☆</label>
+                                        <input type="radio" name="rating-'.$review->customer_id .'" value="5" '; if($review->rating == 5){ $output .='checked'; } $output .='>
+                                        <label >☆</label>
+                                        <input type="radio" name="rating-'.$review->customer_id .'" value="4" '; if($review->rating >= 4 && $review->rating < 5  ){ $output .=' checked'; } $output .='>
+                                        <label >☆</label>
+                                        <input type="radio" name="rating-'. $review->customer_id .'" value="3" '; if($review->rating >= 3 && $review->rating < 4){ $output .='checked'; } $output .='>
+                                        <label >☆</label>
+                                        <input type="radio" name="rating-'. $review->customer_id .'" value="2" '; if($review->rating >= 2 && $review->rating < 3){ $output .='checked';  } $output .=' >
+                                        <label >☆</label>
+                                        <input type="radio" name="rating-'. $review->customer_id .'" value="1" '; if($review->rating > 0  && $review->rating < 2){ $output .='checked'; } $output .='>
+                                        <label >☆</label>
 
                                     </div>
                                 </li>

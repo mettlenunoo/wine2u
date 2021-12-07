@@ -84,25 +84,29 @@
                         <li class="list-inline-item">
                             <div class="rating">
 
-                                <input type="radio" value="5" id="5-{{ $product->id }}"
+                                <input type="radio" value="5" 
                                     @if($product->review_summary->average_rating == 5) checked @endif >
-                                <label for="5-{{ $product->id }}">☆</label>
-                                <input type="radio"  value="4" id="4-{{ $product->id }}"
+                                <label >☆</label>
+
+                                <input type="radio"  value="4" 
                                     @if($product->review_summary->average_rating >= 4 &&
                                 $product->review_summary->average_rating < 5 ) checked @endif>
-                                    <label for="4-{{ $product->id }}">☆</label>
-                                    <input type="radio"  value="3"
-                                        id="3-{{ $product->id }}" @if($product->review_summary->average_rating >= 3 &&
+                                <label >☆</label>
+
+                                <input type="radio"  value="3"
+                                        @if($product->review_summary->average_rating >= 3 &&
                                     $product->review_summary->average_rating < 4) checked @endif>
-                                        <label for="3-{{ $product->id }}">☆</label>
-                                        <input type="radio" value="2"
-                                            id="2-{{ $product->id }}" @if($product->review_summary->average_rating >= 2
+                                <label >☆</label>
+
+                                <input type="radio" value="2"
+                                             @if($product->review_summary->average_rating >= 2
                                         && $product->review_summary->average_rating < 3) checked @endif>
-                                            <label for="2-{{ $product->id }}">☆</label>
-                                            <input type="radio"  value="1"
-                                                id="1-{{ $product->id }}" @if($product->review_summary->average_rating >
+                                <label >☆</label>
+
+                                <input type="radio"  value="1"
+                                                 @if($product->review_summary->average_rating >
                                             0 && $product->review_summary->average_rating < 2) checked @endif>
-                                                <label for="1-{{ $product->id }}">☆</label>
+                                <label >☆</label>
 
                             </div>
                         </li>
@@ -249,7 +253,7 @@
                             <div class="progress-reviews d-flex align-items-center mb-2">
                                 <label for="4star" class="mb-0 mr-2 star-label">4 Stars:</label>
                                 <progress id="4star" max="100"
-                                    value=" {{ rateCalculator($product->ReviewSummary->four_stars, $product->ReviewSummary->total_user)  }} ">
+                                    value="{{ rateCalculator($product->ReviewSummary->four_stars, $product->ReviewSummary->total_user)  }}">
                                     {{ rateCalculator($product->ReviewSummary->four_stars, $product->ReviewSummary->total_user) }}%
                                 </progress>
                             </div>
@@ -277,7 +281,7 @@
                         </div>
                     </div>
                     <!--</div>-->
-
+                      
                     <div class="col-12">
                         <div class="row view_review"></div>
                     </div>
@@ -645,27 +649,27 @@
                         </p>
                         <div class="rating">
                             <input type="radio" name="rating-{{ $similarProduct->id }}" value="5"
-                                id="5-{{ $similarProduct->id }}" @if($similarProduct->review_summary->average_rating ==
+                                 @if($similarProduct->review_summary->average_rating ==
                             5) checked @endif >
-                            <label for="5-{{ $similarProduct->id }}">☆</label>
+                            <label >☆</label>
                             <input type="radio" name="rating-{{ $similarProduct->id }}" value="4"
-                                id="4-{{ $similarProduct->id }}" @if($similarProduct->review_summary->average_rating >=
+                                 @if($similarProduct->review_summary->average_rating >=
                             4 && $similarProduct->review_summary->average_rating < 5 ) checked @endif>
-                                <label for="4-{{ $similarProduct->id }}">☆</label>
+                                <label >☆</label>
                                 <input type="radio" name="rating-{{ $similarProduct->id }}" value="3"
-                                    id="3-{{ $similarProduct->id }}" @if($similarProduct->review_summary->average_rating
+                                     @if($similarProduct->review_summary->average_rating
                                 >= 3 && $similarProduct->review_summary->average_rating < 4) checked @endif>
-                                    <label for="3-{{ $similarProduct->id }}">☆</label>
+                                    <label >☆</label>
                                     <input type="radio" name="rating-{{ $similarProduct->id }}" value="2"
-                                        id="2-{{ $similarProduct->id }}"
+                                        
                                         @if($similarProduct->review_summary->average_rating >= 2 &&
                                     $similarProduct->review_summary->average_rating < 3) checked @endif>
-                                        <label for="2-{{ $similarProduct->id }}">☆</label>
+                                        <label >☆</label>
                                         <input type="radio" name="rating-{{ $similarProduct->id }}" value="1"
-                                            id="1-{{ $similarProduct->id }}"
+                                            
                                             @if($similarProduct->review_summary->average_rating > 0 &&
                                         $similarProduct->review_summary->average_rating < 2) checked @endif>
-                                            <label for="1-{{ $similarProduct->id }}">☆</label>
+                                            <label >☆</label>
 
                                             {{-- <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> --}}
                         </div>
@@ -783,18 +787,22 @@
                                         <input type="radio" name="rate" value="5" id="rating51" @if($review->rating ==
                                         5) checked @endif >
                                         <label for="rating51">☆</label>
+
                                         <input type="radio" name="rate" value="4" id="rating41" @if($review->rating >= 4
                                         && $review->rating < 5 ) checked @endif>
-                                            <label for="rating51">☆</label>
-                                            <input type="radio" name="rate" value="3" id="rating31" @if($review->rating
+                                            <label for="rating41">☆</label>
+
+                                        <input type="radio" name="rate" value="3" id="rating31" @if($review->rating
                                             >= 3 && $review->rating < 4) checked @endif>
-                                                <label for="rating51">☆</label>
-                                                <input type="radio" name="rate" value="2" id="rating21"
+                                        <label for="rating31">☆</label>
+
+                                        <input type="radio" name="rate" value="2" id="rating21"
                                                     @if($review->rating >= 2 && $review->rating < 3) checked @endif>
-                                                    <label for="rating51">☆</label>
-                                                    <input type="radio" name="rate" value="1" id="rating11"
+                                        <label for="rating21">☆</label>
+
+                                        <input type="radio" name="rate" value="1" id="rating11"
                                                         @if($review->rating > 0 && $review->rating < 2) checked @endif>
-                                                        <label for="rating51">☆</label>
+                                        <label for="rating11">☆</label>
 
                                     </div>
                                     {{-- <div class="rating"> 

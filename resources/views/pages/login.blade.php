@@ -23,7 +23,7 @@
          
        <div class="text-center mb-5">
          <h1 class="sign_title">Login</h1>
-         <p>Thank you for your interest in Wine 2 U. Please complete the form below <br>
+         <p>Thank you for your interest in wine2u. Please complete the form below <br>
            to join our Preferred Customer List. </p>
           @include('pages.message')
        </div>

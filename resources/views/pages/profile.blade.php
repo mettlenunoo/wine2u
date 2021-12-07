@@ -8,8 +8,6 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-  
-
    
    <!-- include navigation -->
     @include("pages.includes.nav-links")
@@ -50,7 +48,7 @@
                                 <tr>
                                   <th scope="col">Order Details</th>
                                   <th scope="col">Date</th>
-                                  {{-- <th scope="col">Quantity</th> --}}
+                                  <th scope="col">Quantity</th>
                                   <th scope="col">Status</th>
                                   <th scope="col" class="text-right">Amount GHS</th>
                                 </tr>
@@ -59,38 +57,40 @@
 
                               @forelse ($profile->orders as $order)
 
-                                    <tr>
-                                        <td scope="row">
-                                          <!--Add Variable for Product Name?--> 
-                                          <strong style="color: #C39154">Tracking No. {{ $order->tracking_code}} </strong><br>
-                                          <strong>Shipping Address:</strong>
-                                          {{ $order->ship_to }}
-                                        </td>
-                                        <td>
-                                          {{ $order->created_at}}
-                                        </td>
-                                        {{-- <td>
-                                          {{ $order->quantity}} Item(s)
-                                        </td> --}}
-                                        <td>
-                                          {{ $order->complete_status}}
-                                        </td>
-                                        @php  
-                                          $subTotal = $order->totalamount - ($order->taxes + $order->shipping_amt + $order->coupon_amount) 
-                                        @endphp
-                                        <td class="text-right">
-                                          <small>Sub: {{ number_format($subTotal,2)}}</small>
-                                          <br>
-                                          <small>Tax: {{ $order->taxes}}</small>
-                                          <br>
-                                          <small>Shipping:{{ $order->shipping_amt}}</small>
-                                          <br>
-                                          <small>Coupon: {{ $order->coupon_amount }}</small>
-                                          <br>
-                                          <strong style="color: #C39154">Total: {{ $order->totalamount}}</strong>
-                                        </td>
+                                    <tr  onclick="location.href='/account/order/{{ $order->tracking_code }}'" style="cursor:pointer">
+                                          <td scope="row">
+                                            <!--Add Variable for Product Name?--> 
+                                            <strong style="color: #C39154">Tracking No. {{ $order->tracking_code}} </strong><br>
+                                      
+                                            <h5>Shipping Address</h5>
+                                            {!! $order->ship_to !!}
+                                          </td>
+                                          <td>
+                                            {{ $order->created_at}}
+                                          </td>
+                                          <td>
+                                            {{ $order->quantity}} Item(s)
+                                          </td>
+                                          <td>
+                                            {{ $order->complete_status}}
+                                          </td>
+                                          @php  
+                                            $subTotal = $order->totalamount - ($order->taxes + $order->shipping_amt + $order->coupon_amount) 
+                                          @endphp
+                                          <td class="text-right">
+                                            <small>Sub: {{ number_format($subTotal,2)}}</small>
+                                            <br>
+                                            <small>Tax: {{ $order->taxes}}</small>
+                                            <br>
+                                            <small>Shipping:{{ $order->shipping_amt}}</small>
+                                            <br>
+                                            <small>Coupon: {{ $order->coupon_amount }}</small>
+                                            <br>
+                                            <strong style="color: #C39154">Total: {{ $order->totalamount}}</strong>
+                                          </td>
+                                      
                                     </tr>
-
+                               
                                 @empty
 
                                   <tr>
