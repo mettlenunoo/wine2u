@@ -38,7 +38,7 @@
 						<h1 class="mb-3">More</h1>
 						<ul class="list-unstyled">
 							<li class="mb-2"><a href="/pairing">Food Pairings</a></li>
-							<li class="mb-2"><a href="#">Regions</a></li>
+							<!-- <li class="mb-2"><a href="#">Regions</a></li> -->
 							<li class="mb-2"><a href="/blog">Kɔkɔ's Blog</a></li>
 						</ul>
 					</div>
