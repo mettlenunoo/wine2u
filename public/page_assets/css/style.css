@@ -2801,3 +2801,9 @@ progress::-webkit-progress-bar {
     }
 
 }
+
+
+/* New css */
+.mt-20{
+    margin-top: 20%;
+}
