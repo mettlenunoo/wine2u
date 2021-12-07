@@ -231,6 +231,12 @@ class productController extends Controller
             $product->smooth = $request->input('smooth');
             $product->dry = $request->input('dry');
             $product->soft = $request->input('soft');
+            $product->fizzy = $request->input('fizzy');
+            $product->light_switch = $request->input('light_switch');
+            $product->smooth_switch = $request->input('smooth_switch');
+            $product->dry_switch = $request->input('dry_switch');
+            $product->soft_switch = $request->input('soft_switch');
+            $product->fizzy_switch = $request->input('fizzy_switch');
             $product->base_price = $request->input('sales')[0] == "" || $request->input('sales')[0] == "0.0" ? $request->input('regular')[0] : $request->input('sales')[0]; // default price
             $product->country_id = $shopId;
 
@@ -409,6 +415,12 @@ class productController extends Controller
              $product->smooth = $request->input('smooth');
              $product->dry = $request->input('dry');
              $product->soft = $request->input('soft');
+             $product->fizzy = $request->input('fizzy');
+             $product->light_switch = $request->input('light_switch');
+             $product->smooth_switch = $request->input('smooth_switch');
+             $product->dry_switch = $request->input('dry_switch');
+             $product->soft_switch = $request->input('soft_switch');
+             $product->fizzy_switch = $request->input('fizzy_switch');
              $product->base_price = $request->input('sales')[0] == "" || $request->input('sales')[0] == "0.0" ? $request->input('regular')[0] : $request->input('sales')[0]; // default price
              $product->country_id = $shopId;
  

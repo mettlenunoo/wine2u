@@ -1010,7 +1010,7 @@ class publicController extends Controller
                     <div class="col-7">
                     <p class="mb-0 fot-titile">'.ucwords($item["productName"]).'</p>
                     <small class="">Quantity:<span>'.$item["quantity"].' </span></small> <br>
-                    <small class="">Size:<span>'.$item["productAttribute"].'</span></small>
+                    <small class=""><span>'.$item["productAttribute"].'</span></small>
                     </div>
                     <div class="col-2 text-right">
                     <p class="fot-titile"> GHS <span>'.number_format($totalPrice,2).'</span></p>

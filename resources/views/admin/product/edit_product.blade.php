@@ -511,31 +511,67 @@
               <div class="form-horizontal">
                    
                   <div class="form-group">
-                      <label class="col-xs-4" for="example-select">Light</label>
-                      <div class="col-sm-8">
+                      <label class="col-xs-2" for="example-select">Light</label>
+                      <div class="col-sm-7">
                       <input class="form-control" type="number" name="light" value="{{ $product->light }}" min="0" max="10">
                        </div>
+                       <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="light_switch" name="light_switch" @if($product->light_switch == 1) checked @endif value="1"><span></span> show?
+                        </label>
+                   </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Smooth</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Smooth</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="smooth" value="{{ $product->smooth }}" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="smooth_switch" name="smooth_switch" @if($product->smooth_switch == 1) checked @endif value="1"><span></span> show?
+                        </label>
+                    </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Dry</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Dry</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="dry" value="{{ $product->dry }}" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="dry_switch" name="dry_switch" @if($product->dry_switch == 1) checked @endif value="1"><span></span> show?
+                        </label>
+                    </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Soft</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Soft</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="soft" value="{{ $product->soft }}" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="soft_switch" name="soft_switch" @if($product->soft_switch == 1) checked @endif value="1"><span></span> show?
+                        </label>
+                    </div>
+                  </div>
+
+                  
+                  <div class="form-group">
+                    <label class="col-xs-2" for="example-select">fizzy</label>
+
+                    <div class="col-sm-7">
+                       <input class="form-control" type="number" name="fizzy"  min="0" max="10" value="{{ $product->fizzy }}">
+                     </div>
+                     
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="fizzy_switch" name="fizzy_switch" @if($product->fizzy_switch == 1) checked @endif value="1"><span></span> show?
+                        </label>
+                    </div>
+
                   </div>
                 
               </div>

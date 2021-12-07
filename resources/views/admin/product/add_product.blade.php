@@ -376,31 +376,66 @@
               <div class="form-horizontal">
                    
                   <div class="form-group">
-                      <label class="col-xs-4" for="example-select">Light</label>
-                      <div class="col-sm-8">
+                      <label class="col-xs-2" for="example-select">Light</label>
+                      <div class="col-sm-7">
                          <input class="form-control" type="number" name="light" value="0" min="0" max="10">
+                       </div>
+                       <div class="col-sm-3">
+                            <label class="css-input switch switch-sm switch-primary">
+                                <input type="checkbox" id="light_switch" name="light_switch" value="1"><span></span> show?
+                            </label>
                        </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Smooth</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Smooth</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="smooth" value="0" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="smooth_switch" name="smooth_switch" value="1"><span></span> show?
+                        </label>
+                    </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Dry</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Dry</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="dry" value="0" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="dry_switch" name="dry_switch" value="1"><span></span> show?
+                        </label>
+                    </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-xs-4" for="example-select">Soft</label>
-                    <div class="col-sm-8">
+                    <label class="col-xs-2" for="example-select">Soft</label>
+                    <div class="col-sm-7">
                        <input class="form-control" type="number" name="soft" value="0" min="0" max="10">
                      </div>
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="soft_switch" name="soft_switch" value="1"><span></span> show?
+                        </label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-xs-2" for="example-select">fizzy</label>
+
+                    <div class="col-sm-7">
+                       <input class="form-control" type="number" name="fizzy" value="0" min="0" max="10">
+                     </div>
+                     
+                     <div class="col-sm-3">
+                        <label class="css-input switch switch-sm switch-primary">
+                            <input type="checkbox" id="fizzy_switch" name="fizzy_switch" value="1"><span></span> show?
+                        </label>
+                    </div>
+
                   </div>
                 
               </div>

@@ -329,38 +329,69 @@
                 <div class="col-12 col-md-6 pr-md-5">
                     <h5>Characteristics</h5>
                     <div class="row mt-5 ">
-                        <div class="col-12 mb-3">
-                            <div class="d-flex justify-content-between" for="lightBold">
-                                <p>Light </p>
-                                <p>Bold</p>
+                        @if ( $product->light_switch )
+                        
+                            <div class="col-12 mb-3">
+                                <div class="d-flex justify-content-between" for="lightBold">
+                                    <p>Light </p>
+                                    <p>Bold</p>
+                                </div>
+                                <input type="range" class="custom-range" min="0" max="10" value="{{ $product->light }}"
+                                    id="lightBold">
                             </div>
-                            <input type="range" class="custom-range" min="0" max="10" value="{{ $product->light }}"
-                                id="lightBold">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="d-flex justify-content-between" for="SmoothTannic">
-                                <p>Smooth</p>
-                                <p>Tannic</p>
+
+                        @endif
+
+                        @if ( $product->smooth_switch )
+
+                            <div class="col-12 mb-3">
+                                <div class="d-flex justify-content-between" for="SmoothTannic">
+                                    <p>Smooth</p>
+                                    <p>Tannic</p>
+                                </div>
+                                <input type="range" class="custom-range" min="0" max="10" value="{{ $product->smooth }}"
+                                    id="SmoothTannic">
                             </div>
-                            <input type="range" class="custom-range" min="0" max="10" value="{{ $product->smooth }}"
-                                id="SmoothTannic">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="d-flex justify-content-between" for="drySweet">
-                                <p>Dry </p>
-                                <p>Sweet</p>
+
+                        @endif
+
+                        @if ( $product->dry_switch )
+
+                            <div class="col-12 mb-3">
+                                <div class="d-flex justify-content-between" for="drySweet">
+                                    <p>Dry </p>
+                                    <p>Sweet</p>
+                                </div>
+                                <input type="range" class="custom-range" min="0" max="10" value="{{ $product->dry }}"
+                                    id="drySweet">
                             </div>
-                            <input type="range" class="custom-range" min="0" max="10" value="{{ $product->dry }}"
-                                id="drySweet">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <div class="d-flex justify-content-between" for="softAcidic">
-                                <p>Soft </p>
-                                <p>Acidic</p>
+
+                        @endif
+
+                        @if ( $product->soft_switch )
+
+                            <div class="col-12 mb-3">
+                                <div class="d-flex justify-content-between" for="softAcidic">
+                                    <p>Soft </p>
+                                    <p>Acidic</p>
+                                </div>
+                                <input type="range" class="custom-range" min="0" max="10" value="{{ $product->soft }}"
+                                    id="oftAcidic">
                             </div>
-                            <input type="range" class="custom-range" min="0" max="10" value="{{ $product->soft }}"
-                                id="oftAcidic">
-                        </div>
+
+                        @endif
+
+                        @if ( $product->fizzy_switch )
+                            <div class="col-12 mb-3">
+                                <div class="d-flex justify-content-between" for="softGentle">
+                                    <p>Fizzy </p>
+                                    <p>Gentle</p>
+                                </div>
+                                <input type="range" class="custom-range" min="0" max="10" value="{{ $product->fizzy }}"
+                                    id="softGentle">
+                            </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
