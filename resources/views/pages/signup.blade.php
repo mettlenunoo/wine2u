@@ -99,10 +99,10 @@ to join our Preferred Customer List.</p>
           <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span> --}}
          @if(isset($_GET['redirect']))
             <input type="hidden" name="redirect" value="redirect">
-             <p class="my-4">I already have an account. <a href="/sign-in?redirect=checkout">Log me in.</a> </p>
+             <p class="my-4"><u>I already have an account.</u> <a href="/sign-in?redirect=checkout"><u>Log me in.</u></a> </p>
          @else
             <input type="hidden" name="redirect" value="">
-            <p class="my-4">I already have an account. <a href="/sign-in">Log me in.</a> </p>
+            <p class="my-4"><u>I already have an account.</u> <a href="/sign-in"><u>Log me in.</u></a> </p>
 
          @endif
 
