@@ -55,7 +55,7 @@
 						<h1 class="mb-3">Apps</h1>
 						<ul class="list-unstyled">
 							<li class="mb-2"><a href="#">IOS</a></li>
-							<li class="mb-2"><a href="#">Android</a></li>
+							<li class="mb-2"><a href="https://play.google.com/store/apps/details?id=com.wine2u" target="_blank">Android</a></li>
 						</ul>
 					</div>
 				</div>
