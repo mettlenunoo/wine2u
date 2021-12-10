@@ -38,7 +38,7 @@
 						<h1 class="mb-3">More</h1>
 						<ul class="list-unstyled">
 							<li class="mb-2"><a href="/pairing">Food Pairings</a></li>
-							<li class="mb-2"><a href="#">Regions</a></li>
+							<!-- <li class="mb-2"><a href="#">Regions</a></li> -->
 							<li class="mb-2"><a href="/blog">Kɔkɔ's Blog</a></li>
 						</ul>
 					</div>
@@ -54,8 +54,8 @@
 					<div class="mb-4">
 						<h1 class="mb-3">Apps</h1>
 						<ul class="list-unstyled">
-							<li class="mb-2"><a href="#">IOS</a></li>
-							<li class="mb-2"><a href="#">Android</a></li>
+							<li class="mb-2"><a href="https://apps.apple.com/gh/app/wine2u-app/id1597566447" target="_blank">IOS</a></li>
+							<li class="mb-2"><a href="https://play.google.com/store/apps/details?id=com.wine2u" target="_blank">Android</a></li>
 						</ul>
 					</div>
 				</div>
