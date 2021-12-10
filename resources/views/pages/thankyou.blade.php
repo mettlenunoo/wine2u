@@ -29,7 +29,7 @@
             <img src="{{ asset('images/summary.png')}}" class="img-responsive">
             <p>Your order has now been confirmed.</p>
             <p>We will send you some inbox love when your order leaves our warehouse.</p>
-            <a href="\index"><button>CONTINUE SHOPPING <span class="pl-2 text-right"><img src="{{ asset('img/icons/arrorright.svg')}}" width="8" alt=""></span></button></a>
+            <a href="\index"><button class="btn btn-wine2u">CONTINUE SHOPPING <span class="pl-2 text-right"><img src="{{ asset('img/icons/arrorright.svg')}}" width="8" alt=""></span></button></a>
         
        </div>
     </div>

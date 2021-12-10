@@ -53,7 +53,7 @@
         </div>
 
         <div class="form-group col-12 text-right">
-          <a href="/account/password/reset"><small>I forgot my password</small></a>
+          <a href="/account/password/reset"><small><u>I forgot my password</u></small></a>
         </div>
 
         </div>
@@ -78,7 +78,7 @@
            @else
 
             <input type="hidden" name="redirect" value="">
-            <p class="my-4">I don’t have an account.  <a href="/signup">Register Me</a> </p>
+            <p class="my-4"><u>I don’t have an account. </u> <a href="/signup"><u>Register Me</u></a> </p>
 
            @endif
        </div>
