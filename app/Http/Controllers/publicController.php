@@ -148,7 +148,7 @@ class publicController extends Controller
             $this->SearchPagination("pn");
         } else{
 
-            $pn = 5;
+            $pn = 12;
         }
 
 
@@ -169,6 +169,7 @@ class publicController extends Controller
                 
                 $this->SearchPagination("wine");
 
+                // dd($_GET['wine']); 
             }
 
             if(isset($_GET['offers'])){
@@ -1137,10 +1138,10 @@ class publicController extends Controller
 
     public function pairing(){
 
-        $pairings = Pairing::WHERE('parent', 0)
-                  ->WHERE('country_id','=',$this->shopId)
-                  ->with('subPairing')
-                  ->paginate('20');
+        $pairings = Pairing::WHERE('country_id','=',$this->shopId)
+                    ->WHERE('parent',"!=", 0)
+                    //   ->with('subPairing')
+                  ->paginate('12');
 
                   return view('pages.pairing',compact('pairings'));
     }
@@ -1639,7 +1640,7 @@ class publicController extends Controller
                 $email = $customer->email;
                 $country = $customer->country;
                 $shippingFullname  = $request->input('shippingfname')." ".$request->input('shippingsname');
-                $ship_to ="<b> Fullname: </b>". $shippingFullname. " <br> <b> Address: </b>".$request->input('shippingpaddress')." <br> <b> Email: </b> ".$request->input('shippingemail')." <br> <b> Apartment: </b> ".$request->input('shippingapartment')." <br> <b> Phone Number: </b> ".$request->input('shippingpnumber')." <br> <b> City: </b> ".$request->input('shippingcity')." <br><b> Street: </b> ".$request->input('shippingstate')." <br><b> Digital Address: </b> ".$request->input('shippingdigitaladdress')." <br> <b> Country / Region: </b> ".$request->input('country_region');
+                $ship_to ="<b> Fullname: </b>". $shippingFullname. " <br> <b> Address: </b>".$request->input('shippingpaddress')." <br> <b> Email: </b> ".$request->input('shippingemail')." <br> <b> Apartment: </b> ".$request->input('shippingapartment')." <br> <b> Phone Number: </b> ".$request->input('shippingpnumber')." <br> <b> City: </b> ".$request->input('shippingcity')." <br><b> Street: </b> ".$request->input('shippingstate')." <br> <b> Country / Region: </b> ".$request->input('country_region');
 
                 // ORDERS
                 $order = new Order;

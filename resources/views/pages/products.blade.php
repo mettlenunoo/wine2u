@@ -45,227 +45,70 @@
   <div class="col-12 col-md-7 col-lg-9">
     <div class="row filter_data">
 
-      {{-- @forelse ($products as $product)
-        <div class="col-12  col-md-4  px-md-4 mb-5 ">
-          <div class="productmain">
-			<a href="/products/{{ $product->slug }}"> 
-				<img src="/product_images/{{ $product->img1 }}"  class="w-100" alt="{{ ucwords($product->product_name) }}" height="100%">
-			</a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-              <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small "> {{ $product->review_summary->average_rating }} </div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> 
-                    <input type="radio" name="rating-{{ $product->id }}" value="5" id="5-{{ $product->id }}" @if($product->review_summary->average_rating == 5) checked @endif >
-                    <label for="5-{{ $product->id }}">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="4" id="4-{{ $product->id }}" @if($product->review_summary->average_rating >= 4) checked @endif>
-                    <label for="4-{{ $product->id }}">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="3" id="3-{{ $product->id }}" @if($product->review_summary->average_rating >= 3) checked @endif>
-                    <label for="3-{{ $product->id }}">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="2" id="2-{{ $product->id }}" @if($product->review_summary->average_rating >= 2) checked @endif >
-                    <label for="2-{{ $product->id }}">☆</label>
-                    <input type="radio" name="rating-{{ $product->id }}" value="1" id="1-{{ $product->id }}" @if($product->review_summary->average_rating > 0 ) checked @endif>
-                    <label for="1-{{ $product->id }}">☆</label>
-                 </div>
-                </div>
-              </div>
+      @forelse ($products as $product)
 
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="/products/{{ $product->slug }}"> {{ ucwords($product->product_name) }}</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="/products/{{ $product->slug }}" class="product-price">$ {{ number_format($product->base_price,2) }}  </a>
-                </div>
-              </div>
-              </div>
+      <div class="col-6 col-md-6 mb-4 col-lg-4">
+        <div class="productmain">
+    <a href="/products/{{ $product->slug }}" class="product-img"> 
+      <img src="/product_images/{{ $product->img1 }}"  class="as-background" alt="{{ ucwords($product->product_name)}}" height="100%">
+    </a>
+
+            <div class="bd-highlight px-2 pt-2">
+      <p class="mb-0 product-small prd-brand">{{ ucwords($product->product_name) }}</p>
+        <div class="rating"> 
+          <input type="radio" name="rating-{{ $product->id }}" value="5"  @if($product->review_summary->average_rating == 5 )  checked @endif  >
+          <label >☆</label>
+
+          <input type="radio" name="rating-{{ $product->id }}" value="4"  
+          @if($product->review_summary->average_rating >= 4 && $product->review_summary->average_rating < 5)  checked @endif >
+          <label >☆</label>
+
+          <input type="radio" name="rating-{{ $product->id }}" value="3"  
+            @if($product->review_summary->average_rating >= 3 && $product->review_summary->average_rating < 4 )  checked @endif>
+          <label >☆</label>
+
+          <input type="radio" name="rating-{{ $product->id }}" value="2"  
+           @if($product->review_summary->average_rating >= 2 && $product->review_summary->average_rating < 3 )  checked @endif >
+          <label >☆</label>
+
+
+          <input type="radio" name="rating-'. $product->id .'" value="1"
+            @if($product->review_summary->average_rating >= 1 && $product->review_summary->average_rating < 2)  checked @endif>
+          <label >☆</label>
         </div>
+      </div>
+
+            <div class="d-md-flex mb-2 align-items-end">
+                <div class="mr-auto pl-2">
+
+                            @foreach ($product->countryRegion as $region)
+
+                                <p class="product-small mb-0"> <a href="/country/{{ $region->slug }}">{{ ucwords($region->name) }}</a>
+                                <span>|</span>
+
+                                @foreach ($region->countryFrRegion as $country)
+                                    <a href="/country/{{ $country->slug }}">{{ ucwords($country->name) }} </a>
+                                @endforeach
+                                
+                                </p>
+                            @endforeach
+                
+                            <a href="/products/'{{ $product->slug }}" class="font-weight-bold"> {{ ucwords($product->product_name) }}</a> 
+                </div>
+              <div class="px-2 font-weight-bold ">
+                <a href="/products/{{ $product->slug }}" class="product-price">GhS {{ number_format($product->base_price,2) }}</a>
+              </div>
+            </div>
+            </div>
+      </div>
+     
       @empty
-          No product
-      @endforelse --}}
-      
-{{-- 
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
+          <div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"> 
+            <h3>No product under this category. Please try again.</h3>
+          </div>
+      @endforelse
 
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div>
-
-       <div class="col-12  col-md-4  px-md-4 mb-5 ">
-         <div class="productmain">
-            <a href="#"> <img src="/page_assets/img/winepic.svg"  class="w-100" alt=""></a>
-            <a href="#"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a>
-             <div class="d-flex bd-highlight ">
-                <div class="mr-auto p-2 bd-highlight  product-small ">Moët & Chandon <br>Paris</div>
-                <div class="p-2 bd-highlight  ">
-                  <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-            </div>
-                </div>
-              </div>
-
-              <div class="d-flex bd-highlight">
-                <div class="mr-auto pl-2 bd-highlight  font-weight-bold">
-                  <a href="#">Rosé Impérial</a> </div>
-                <div class="pl-2 bd-highlight  font-weight-bold ">
-                  <a href="#" class="product-price">$90.00</a>
-                </div>
-              </div>
-              </div>
-       </div> --}}
-
-       <!-- view  more -->
-         {{-- <div class="col-12 text-center">
-            {{  $products->links('pages.includes.paginate_style') }}
-         </div> --}}
-       <!-- view  more -->
-
+      {{  $products->links('pages.includes.paginate_style') }}
       
     </div>
   </div>
@@ -377,7 +220,7 @@
      });
 
   
-      filter_data();
+      // filter_data();
   
       function filter_data(pn = 1)
       {

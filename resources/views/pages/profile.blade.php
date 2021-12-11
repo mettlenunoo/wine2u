@@ -21,7 +21,7 @@
 					<a class="list-group-item list-group-item-action "   role="tab" aria-controls="Personal-details">
 						<strong>Menu</strong>
 					</a>
-          <a class="list-group-item list-group-item-action" id="list-Order-History-list" data-toggle="list" href="#list-Order-History" role="tab" aria-controls="Order-History">Order History</a>
+          <a class="list-group-item list-group-item-action active" id="list-Order-History-list" data-toggle="list" href="#list-Order-History" role="tab" aria-controls="Order-History">Order History</a>
 					<a class="list-group-item list-group-item-action " id="list-Personal-details-list" data-toggle="list" href="#list-Personal-details" role="tab" aria-controls="Personal-details">
 						Personal details
 					</a>
@@ -41,7 +41,7 @@
           <!-- Order History -->
                 <div class="tab-pane fade show active" id="list-Order-History" role="tabpanel" aria-labelledby="list-Order-History">
                   <h1 class="profilet1"> Order History </h1>
-                  <p>  <small>Your order history</small>  </p>
+                  {{-- <p>  <small>Your order history</small>  </p> --}}
 
                   <table class="table table-hover table-bordered table-striped">
                               <thead class="thead-dark">

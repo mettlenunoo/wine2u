@@ -141,8 +141,8 @@
                 <p class="small">Status: {{ $order->complete_status }}</p>
                 <p class="small">Total Quantity: {{ $order->quantity}} Item(s)</p>
                 <p class="small">Total Amount: {{ Session::get("shopCurrency")." ".number_format($order->totalamount,2) }}</p>
-                <p class="small"><i class="material-icons">phone</i> {{ $order->phone_number }}</p>
-                <p class="small"><i class="material-icons">mail</i> {{ $order->email }} </p>
+                <p class="small"><i class="material-icons">Phone</i> {{ $order->phone_number }}</p>
+                <p class="small"><i class="material-icons">Mail</i> {{ $order->email }} </p>
                 <br>
             </div>
         </div>  

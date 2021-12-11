@@ -337,7 +337,7 @@
                                     <p>Bold</p>
                                 </div>
                                 <input type="range" class="custom-range" min="0" max="10" value="{{ $product->light }}"
-                                    id="lightBold">
+                                    id="lightBold" disabled>
                             </div>
 
                         @endif
@@ -350,7 +350,7 @@
                                     <p>Tannic</p>
                                 </div>
                                 <input type="range" class="custom-range" min="0" max="10" value="{{ $product->smooth }}"
-                                    id="SmoothTannic">
+                                    id="SmoothTannic" disabled>
                             </div>
 
                         @endif
@@ -363,7 +363,7 @@
                                     <p>Sweet</p>
                                 </div>
                                 <input type="range" class="custom-range" min="0" max="10" value="{{ $product->dry }}"
-                                    id="drySweet">
+                                    id="drySweet" disabled>
                             </div>
 
                         @endif
@@ -376,7 +376,7 @@
                                     <p>Acidic</p>
                                 </div>
                                 <input type="range" class="custom-range" min="0" max="10" value="{{ $product->soft }}"
-                                    id="oftAcidic">
+                                    id="oftAcidic" disabled >
                             </div>
 
                         @endif
@@ -388,7 +388,7 @@
                                     <p>Gentle</p>
                                 </div>
                                 <input type="range" class="custom-range" min="0" max="10" value="{{ $product->fizzy }}"
-                                    id="softGentle">
+                                    id="softGentle" disabled>
                             </div>
                         @endif
 

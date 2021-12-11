@@ -38,9 +38,9 @@
        </div>
 
        <div class="row my-5">
-          @forelse ($pairings as $pair)
+          @forelse ($pairings as $pairing)
 
-            @foreach ($pair->subPairing as $pairing)
+            {{-- @foreach ($pair->subPairing as $pairing) --}}
             
                 <div class="col-12 col-md-4 px-md-4 mb-4">
                     <a href="/blog/{{$pairing->blog_id}} ">
@@ -51,12 +51,12 @@
                
                 </div>
 
-            @endforeach
+            {{-- @endforeach --}}
 
           @empty
 
             <div class="col-12 col-md-12 px-md-12 mb-4">
-                <h5> No blog, Please try again </h5>
+                <h5> No Content, Please try again </h5>
             </div>
               
           @endforelse

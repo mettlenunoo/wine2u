@@ -8,7 +8,7 @@
       </h1>
       <div class="custom-control custom-checkbox mt-4">
          <input type="checkbox" class="custom-control-input" name="billingtoo" id="customCheck1" onclick="FillBilling(this.form)">
-         <label class="custom-control-label" for="customCheck1">Shipping address is the same my billing address</label>
+         <label class="custom-control-label" for="customCheck1">Shipping address is the same as your billing address</label>
       </div>
    
       <div class="form-row mt-4">
@@ -43,7 +43,8 @@
             </div>
          </div>
          <div class="form-group col-12 col-md-12 col-lg-6">
-            <label for="checkout-country">Country / Region *</label> 
+            <label for="checkout-country">Provide addresses/locations that the products will be delivered to. 
+               This will automatically determine the delivery rate to be added to the order total.</label> 
             <select id="shipping_country" name="shippingcountry" class="form-control  wizard-required" onchange="shiprate(this);">
                <option selected value="" >Choose...</option>
                @foreach ($countries as $item)
@@ -53,9 +54,9 @@
             </select>
             <input type="hidden" name="country_region" id="country_region">
 
-            <div class="wizard-form-error">
+            {{-- <div class="wizard-form-error">
                Select a Shipping Country / Region
-            </div>
+            </div> --}}
 
          </div>
          <div class="form-group col-12 col-md-12 col-lg-6">
