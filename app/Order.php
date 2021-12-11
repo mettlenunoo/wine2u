@@ -8,7 +8,7 @@ class Order extends Model
 {
     public function order_products()
     {
-        return $this->hasMany('App\orderProduct', 'order_id', 'id')
+        return $this->hasMany('App\OrderProduct', 'order_id', 'id')
                 ->with('product');
     }
 
