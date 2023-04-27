@@ -33,6 +33,7 @@ class CreateOrdersTable extends Migration
             $table->mediumText('tracking_code')->nullable();
             $table->decimal('taxes')->nullable();
             $table->integer('country_id')->nullable();
+            $table->string('payment_status')->nullable();
             $table->timestamps();
 
             

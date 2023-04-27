@@ -1960,7 +1960,14 @@ class publicController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
 
-        dd($paymentDetails);
+        // dd($paymentDetails);
+        $reference = $paymentDetails['data']['reference'];
+        $order = Order::where('tracking_code','=',$reference)->first();
+        $order->payment_status = "paid";
+        $order->save();
+
+        dd($order);
+
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
