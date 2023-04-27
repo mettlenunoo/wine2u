@@ -9,7 +9,7 @@ $trans_id = session()->get('paymentinfo')['trans_id'];
 $country = session()->get('paymentinfo')['country'];
 $currency =  session()->get('paymentinfo')['currency'];
 $api =  session()->get('paymentinfo')['api'];
-$reference = session()->get('paymentinfo')['reference']
+$reference = session()->get('paymentinfo')['reference'];
 $item_name = "Item(s) bought From Wine2u";
 $invoice ="inv-".$trans_id;
 
