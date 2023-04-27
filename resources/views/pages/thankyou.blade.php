@@ -16,7 +16,7 @@
   <!-- include navigation -->
     @php
 
-        session()->forget(['cart', 'coupon']);
+        // session()->forget(['cart', 'coupon']);
 
     @endphp
 

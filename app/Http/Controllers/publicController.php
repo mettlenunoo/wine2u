@@ -670,6 +670,8 @@ class publicController extends Controller
     public function thankyou()
     {
         
+        session()->forget(['cart', 'coupon']);
+        
         return view('pages.thankyou');
 
     }
