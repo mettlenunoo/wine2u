@@ -1966,8 +1966,21 @@ class publicController extends Controller
         $order->payment_status = "paid";
         $order->save();
 
-        dd($order);
+        if($order){
 
+            \Log::info('Paid Successfully');
+
+        } else {
+
+            \Log::info('Payment Failed');
+
+        }
+
+        \Log::info($order);
+
+
+        return Redirect('/thankyou')
+    
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
