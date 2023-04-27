@@ -1970,20 +1970,20 @@ class publicController extends Controller
     public function sendEmail($order_id){
 
         
-            $order = Order::find($order_id);
-            $orderProduct =  OrderProduct::WHERE('order_id', $order_id)->get();
-            $products =  Product::WHERE('country_id','=', $this->shopId)->get();
+            // $order = Order::find($order_id);
+            // $orderProduct =  OrderProduct::WHERE('order_id', $order_id)->get();
+            // $products =  Product::WHERE('country_id','=', $this->shopId)->get();
     
-            if(session()->get('orderID') != null){
-                // ####################   EMAIL ###############################
-                    $toEmail = $order->email;
-                    // $storeOwner = "dabdulmanan@gmail.com";
-                    $storeOwner = "hello@wine2u.com";
-                    \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
-                    $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
-                    });
+            // if(session()->get('orderID') != null){
+            //     // ####################   EMAIL ###############################
+            //         $toEmail = $order->email;
+            //         // $storeOwner = "dabdulmanan@gmail.com";
+            //         $storeOwner = "hello@wine2u.com";
+            //         \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
+            //         $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
+            //         });
     
-            }
+            // }
 
     
     }
