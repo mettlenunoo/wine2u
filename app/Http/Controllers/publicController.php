@@ -1659,7 +1659,7 @@ class publicController extends Controller
 
                 // OTHERS
                 $order->complete_status = "pending";
-                $order->tracking_code = time();
+                $order->tracking_code = Paystack::genTranxRef();
                 $order->country_id = $this->shopId;
     
                 // COUPON SECTION
@@ -1695,7 +1695,7 @@ class publicController extends Controller
                 $paymentGateWays = $calculation->shop->payment_methods;
 
                 // Payment Param for Gateway API's
-                $paymentParam = array('email' => $email,'amt' => number_format($calculation->totalAmount,2),'phone' => $phone_number, 'desc' => $calculation->shop->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($calculation->shop->country), 'currency' => $calculation->shop->currency);
+                $paymentParam = array('email' => $email,'amt' => number_format($calculation->totalAmount,2),'phone' => $phone_number, 'desc' => $calculation->shop->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($calculation->shop->country), 'currency' => $calculation->shop->currency, 'reference' => $order->tracking_code );
                 
                 
                 if($request->input('payment_method') == "Rave" || $request->input('payment_method') == "Ravevisa" ){

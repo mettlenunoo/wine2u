@@ -9,6 +9,7 @@ $trans_id = session()->get('paymentinfo')['trans_id'];
 $country = session()->get('paymentinfo')['country'];
 $currency =  session()->get('paymentinfo')['currency'];
 $api =  session()->get('paymentinfo')['api'];
+$reference = session()->get('paymentinfo')['reference']
 $item_name = "Item(s) bought From Wine2u";
 $invoice ="inv-".$trans_id;
 
@@ -26,7 +27,7 @@ $invoice ="inv-".$trans_id;
   <input type="hidden" name="currency" value="{{ strtoupper($currency) }}">
   {{-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > --}}
    {{-- For other necessary things you want to add to your payload. it is optional though --}}
-  <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+  <input type="hidden" name="reference" value="{{ $reference }}"> {{-- required --}}
   {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
   <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
