@@ -163,7 +163,7 @@ Route::get('/checkout/payment/paystack', 'publicController@paystack');
 Route::get('/expresspay/processor', 'publicController@expresspay_processor');
 Route::post('/paystack', 'publicController@redirectToGateway')->name('pay');
 // Route::post('/paystack', 'publicController@redirectToGateway')->name('pay');
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/payment/callback', 'publicController@handleGatewayCallback');
 
 
 // Coupon 
