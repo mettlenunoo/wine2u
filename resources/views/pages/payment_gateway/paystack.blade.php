@@ -20,7 +20,7 @@ $invoice ="inv-".$trans_id;
  <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="buyCredit">
   
   <input type="hidden" name="email" value="{{ $email }}"> {{-- required --}}
-  <input type="hidden" name="orderID" value="{{ $invoice }} ">
+  <input type="hidden" name="orderID" value="{{ $trans_id }} ">
   <input type="hidden" name="amount" value="{{ $amt }}"> {{-- required in kobo --}}
   <input type="hidden" name="quantity" value="">
   <input type="hidden" name="currency" value="{{ strtoupper($currency) }}">
