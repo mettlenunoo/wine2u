@@ -250,9 +250,9 @@ Route::get('/cookies', 'publicController@accept_cookie');
 // Route::get('/{country}/user/reset/{token}', 'forgotten_password@reset_password');
 // Route::post('/user/reset_changepassword', 'forgotten_password@change_passwod');
 
-// // BACKEND CUSTOMER
-// Route::get('/admin/customers','customersController@index');
-// Route::get('/admin/customer/order/{customer_id}','customersController@orders');
+// BACKEND CUSTOMER
+Route::get('/admin/customers','customersController@index');
+Route::get('/admin/customer/order/{customer_id}','customersController@orders');
 
 
 
