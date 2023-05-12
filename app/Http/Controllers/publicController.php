@@ -152,7 +152,7 @@ class publicController extends Controller
         }
 
 
-        if(isset($_GET['fetch_data']) ||isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category'])){
+        if(isset($_GET['fetch_data']) || isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category'])){
 
             if(isset($_GET['wine'])){
 

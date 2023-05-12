@@ -30,14 +30,14 @@
          </div>
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Email *</label>
-            <input type="email" name="shippingemail" class="form-control form-control-wine2u wizard-required" id="shipping_email" placeholder=""> 
+            <input type="email" name="shippingemail" class="form-control form-control-wine2u wizard-required wizard-email" id="shipping_email" placeholder=""> 
             <div class="wizard-form-error">
                 Enter Your Email
             </div>
          </div>
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Phone Number *</label>
-            <input type="tel" name="shippingpnumber" class="form-control form-control-wine2u wizard-required" id="shipping_pnumber" placeholder=""> 
+            <input type="tel" name="shippingpnumber" class="form-control form-control-wine2u wizard-required wizard-phone" id="shipping_pnumber" placeholder=""> 
             <div class="wizard-form-error">
                 Enter Your Phone Number
             </div>

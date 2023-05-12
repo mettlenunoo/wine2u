@@ -226,9 +226,10 @@
                                 <div class="block">
                                     <div class="block-content">
                     
-                        <table class="table table-bordered table-striped " id="order_report">
+                        <table class="table table-bordered table-striped" id="order_report" data-order='[[ 0, "desc" ]]'>
                                         <thead>
                                             <tr>
+                                                <th class="text-center">ID</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Order</th>
                                                 <th class="text-center">Purchased</th>
@@ -246,6 +247,9 @@
                                                  
                                                    
                                                       <tr id="<?php echo $row['id']; ?>">
+                                                        <td>
+                                                            <?php echo $row['id']; ?>
+                                                        </td>
                                                   
                                                           <td id="<?php echo $row['id'];?>success_message">
                                                           <?php if($row['complete_status'] == "Cancelled"){?>

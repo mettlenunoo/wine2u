@@ -24,6 +24,7 @@ use App\Page;
 class customerContoller extends Controller
 {
 
+  
     
      /**
      * Create a new controller instance.

@@ -5,8 +5,13 @@ jQuery(document).ready(function () {
         var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
         var next = jQuery(this);
         var nextWizardStep = true;
+
+        console.log("manan")
+
         parentFieldset.find('.wizard-required').each(function () {
             var thisValue = jQuery(this).val();
+
+            // console.log(thisValue)
 
             if (thisValue == "") {
                 jQuery(this).siblings(".wizard-form-error").slideDown();
@@ -16,6 +21,29 @@ jQuery(document).ready(function () {
                 jQuery(this).siblings(".wizard-form-error").slideUp();
             }
         });
+
+        parentFieldset.find('.wizard-email').each(function () {
+
+            var thisValue = jQuery(this).val();
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            console.log(thisValue)
+
+            if (regex.test(thisValue)) {
+
+                jQuery(this).siblings(".wizard-form-error").slideUp();
+
+            } else {
+
+                jQuery(this).siblings(".wizard-form-error").slideDown();
+                jQuery(this).focus();
+                nextWizardStep = false;
+               
+            }
+            
+          });
+      
+
         if (nextWizardStep) {
             next.parents('.wizard-fieldset').removeClass("show", "400");
             currentActiveStep.removeClass('active').addClass('activated').next().addClass('active', "400");

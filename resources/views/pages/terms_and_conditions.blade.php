@@ -17,7 +17,7 @@
     <!-- include navigation -->
 
 
-    <section class="mt-20  centerit">
+    <section class="mt-12  centerit">
         <div class="container  ">
             <div class="row">
                 <div class="col-12 col-md-7 mx-auto text-center ">

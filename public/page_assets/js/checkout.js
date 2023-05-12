@@ -7,7 +7,6 @@ jQuery(document).ready(function () {
         var nextWizardStep = true;
         parentFieldset.find('.wizard-required').each(function () {
             var thisValue = jQuery(this).val();
-
             if (thisValue == "") {
                 jQuery(this).siblings(".wizard-form-error").slideDown();
                 jQuery(this).focus();
@@ -16,6 +15,52 @@ jQuery(document).ready(function () {
                 jQuery(this).siblings(".wizard-form-error").slideUp();
             }
         });
+
+        parentFieldset.find('.wizard-email').each(function () {
+
+            var thisValue = jQuery(this).val();
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+            console.log(thisValue)
+
+            if (regex.test(thisValue)) {
+
+                jQuery(this).siblings(".wizard-form-error").slideUp();
+
+            } else {
+
+                jQuery(this).siblings(".wizard-form-error").slideDown();
+                jQuery(this).focus();
+                nextWizardStep = false;
+               
+            }
+            
+          });
+
+
+          parentFieldset.find('.wizard-phone').each(function () {
+
+            var thisValue = jQuery(this).val();
+            var regex = /([0-9]{10})|(\([0-9]{3}\)\s+[0-9]{3}\-[0-9]{4})/;
+
+            console.log(thisValue)
+
+            if (regex.test(thisValue)) {
+
+                jQuery(this).siblings(".wizard-form-error").slideUp();
+
+            } else {
+
+                jQuery(this).siblings(".wizard-form-error").slideDown();
+                jQuery(this).focus();
+                nextWizardStep = false;
+               
+            }
+            
+          });
+
+
+      
         if (nextWizardStep) {
             next.parents('.wizard-fieldset').removeClass("show", "400");
             currentActiveStep.removeClass('active').addClass('activated').next().addClass('active', "400");

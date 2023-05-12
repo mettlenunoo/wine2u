@@ -320,9 +320,10 @@
                                       <h4 class="header-title m-t-0 m-b-30">Today's Sales</h4>
                                       
                                       
-                        <table class="table table-bordered table-striped js-dataTable-full">
+                        <table class="table table-bordered table-striped js-dataTable-full" data-order='[[ 0, "desc" ]]'>
                                         <thead>
                                             <tr>
+                                                <th class="text-center">ID</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Order</th>
                                                 <th class="text-center">Purchased</th>
@@ -340,6 +341,10 @@
                                          
                                            
                                               <tr id="<?php echo $row['id']; ?>">
+
+                                                <td>
+                                                    <?php echo $row['id']; ?>
+                                                </td>
                                           
                                                   <td id="<?php echo $row['id'];?>success_message">
                                                   <?php if($row['complete_status'] == "Cancelled"){?>
@@ -383,7 +388,7 @@
           
                                                    <input type="hidden" name="pid" id="<?php echo $row['id']; ?>order_id" value="<?php echo $row['id']; ?>">
                                                     <input type="hidden" name="pid" id="<?php echo $row['id']; ?>order_name" value="Completed">
-                                                   <button onclick="update_order('<?php echo $row['id']; ?>')" id="<?php echo $row['id'];?>success"  class="btn btn-success push-5-r push-10"><i class="fa  fa-check-circle"></i></button>
+                                                   <button onclick="update_order('<?php echo $row['id']; ?>')" id="<?php echo $row['id'];?>success"  class="btn btn-success push-5-r push-10" data-toggle="tooltip" data-placement="top" title="Complete Order"><i class="fa  fa-check-circle"></i></button>
                                                   
                                                   <?php }?>
                                               

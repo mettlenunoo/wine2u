@@ -141,7 +141,7 @@
                   </div>
                   <div class="form-group col-12 col-md-6">
                     <label for="profile_DOB">Date of Birth *</label>
-                      <input type="date" class="form-control form-control-wine2u" id="profile_DOB" placeholder="" value="{{ $profile->dob }}" required>
+                      <input type="date" class="form-control form-control-wine2u" id="profile_DOB" placeholder="" value="{{ $profile->dob }}"  max="{{ date('Y-m-d') }}"required>
                   </div>
 
             

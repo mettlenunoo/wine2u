@@ -41,7 +41,7 @@
          </div>
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Email *</label>
-            <input type="email" name="billingemail" class="form-control form-control-wine2u wizard-required" id="bill_email" placeholder="" value="{{ $customer->email }}"> 
+            <input type="email" name="billingemail" class="form-control form-control-wine2u wizard-required wizard-email" id="bill_email" placeholder="" value="{{ $customer->email }}"> 
              <div class="wizard-form-error">
                 Enter Your Email
             </div>
@@ -49,7 +49,7 @@
 
          <div class="form-group col-12 col-md-12">
             <label for="checkout-address_line1">Phone Number *</label>
-            <input type="tel" name="billingpnumber" class="form-control form-control-wine2u wizard-required" id="bill_phonenumber" placeholder="" value="{{ $customer->phone }}"> 
+            <input type="tel" name="billingpnumber" class="form-control form-control-wine2u wizard-required wizard-phone" id="bill_phonenumber" placeholder="" value="{{ $customer->phone }}"> 
             <div class="wizard-form-error">
                 Enter Your Phone Number
             </div>

@@ -93,7 +93,7 @@
                                 </p>
                             @endforeach
                 
-                            <a href="/products/{{ $product->slug }}" class="font-weight-bold"> {{ ucwords($product->product_name) }}</a> 
+                            <a href="/products/{{ $product->slug }}" class="font-weight-bold">  {{ ucwords($product->product_name) }}</a> 
                 </div>
               <div class="px-2 font-weight-bold ">
                 <a href="/products/{{ $product->slug }}" class="product-price">GhS {{ number_format($product->base_price,2) }}</a>

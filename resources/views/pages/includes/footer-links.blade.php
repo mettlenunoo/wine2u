@@ -10,6 +10,8 @@
     <script src="/page_assets/js/landing-slider.js"></script>
     <script src="/page_assets/js/script.js"></script>
     <script src="/page_assets/js/checkout.js"></script>
+     <!-- Page JS Code -->
+     {{-- <script src="/assets/js/pages/base_forms_validation.js"></script> --}}
 
 
     <script src="/page_assets/plugins/wow/wow.min.js"></script>
