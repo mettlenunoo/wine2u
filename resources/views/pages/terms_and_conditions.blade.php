@@ -17,10 +17,10 @@
     <!-- include navigation -->
 
 
-    <section class="mt-12  centerit">
+    <section class="">
         <div class="container  ">
             <div class="row">
-                <div class="col-12 col-md-7 mx-auto text-center ">
+                <div class="col-12 col-md-7 mx-auto text-center mt-20">
 
                     <h2>Terms & Conditions</h2>
                     {{-- <img src="{{ asset('images/summary.png')}}" class="img-responsive"> --}}
