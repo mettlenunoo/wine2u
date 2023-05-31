@@ -59,7 +59,7 @@ Route::post('/user/register', 'apiController@userRegister'); // USER REGISTRATIO
 
 // Social Media Login
 // Route::get('/sign-in/facebook/redirect', 'socialiteController@facebook_redirect_api');
-Route::get('/sign-in/socials', 'socialiteController@socials_redirect_api');
+Route::post('/sign-in/socials', 'socialiteController@socials_redirect_api');
 
 Route::get('/sign-in/google/redirect', 'socialiteController@google_redirect');
 Route::get('/sign-in/google', 'socialiteController@google_Callback');

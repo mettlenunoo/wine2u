@@ -22,20 +22,21 @@ class socialiteController extends Controller
     public function facebook_redirect(){
 
       $user = Socialite::driver('facebook')->user();
-        $user = Customer::firstorCreate([
+      return $user;
+        // $user = Customer::firstorCreate([
 
-            'email' => $user->email
+        //     'email' => $user->email
 
-        ],[
-            'fname' => $user->name,
-            'password' => Hash::make(Str::random(24))
+        // ],[
+        //     'fname' => $user->name,
+        //     'password' => Hash::make(Str::random(24))
 
-        ]);
+        // ]);
 
        // Auth::login($user, true);
 
-        Auth::guard('customer')->login($user, true);
-        return redirect()->intended('/account');
+        // Auth::guard('customer')->login($user, true);
+        // return redirect()->intended('/account');
 
     }
 
