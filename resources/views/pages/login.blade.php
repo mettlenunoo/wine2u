@@ -67,9 +67,9 @@
 
 
       <div class="text-center mt-5">
-         {{-- <p>Or Sign Up With</p> --}}
-         {{-- <span class="px-2"><a href="/sign-in/google"><img src="/page_assets/img/googlesign.svg" alt=""></a></span>
-         <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span> --}}
+         <p>Or Sign Up With</p>
+         <span class="px-2"><a href="/sign-in/google"><img src="/page_assets/img/googlesign.svg" alt=""></a></span>
+         <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span>
            @if(isset($_GET['redirect']))
 
             <input type="hidden" name="redirect" value="checkout">
