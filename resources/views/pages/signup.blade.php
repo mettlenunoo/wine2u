@@ -94,9 +94,9 @@ to join our Preferred Customer List.</p>
 
 
       <div class="text-center mt-5">
-         {{-- <p>Or Sign Up With</p>
+         <p>Or Sign Up With</p>
           <span class="px-2"><a href="/sign-in/google"><img src="/page_assets/img/googlesign.svg" alt=""></a></span>
-          <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span> --}}
+          <span class="px-2"><a href="/sign-in/facebook"><img src="/page_assets/img/facebook.svg" alt=""></a></span>
          @if(isset($_GET['redirect']))
             <input type="hidden" name="redirect" value="redirect">
              <p class="my-4"><u>I already have an account.</u> <a href="/sign-in?redirect=checkout"><u>Log me in.</u></a> </p>
