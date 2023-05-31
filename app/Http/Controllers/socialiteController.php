@@ -74,6 +74,7 @@ class socialiteController extends Controller
         $provider = $request->provider;
 
         $user = Socialite::driver($provider)->userFromToken($token);
+
         $user = Customer::firstorCreate([
 
             'email' => $user->email
@@ -84,12 +85,12 @@ class socialiteController extends Controller
 
         ]);
 
-       // Auth::login($user, true);
+    //    // Auth::login($user, true);
 
-       $user =  Auth::guard('customer')->login($user, true);
+        Auth::guard('customer')->login($user, true);
 
-        // Auth::guard('customer')->user();
-        // $user = $request->user();
+        $user =  auth('customer')->user();
+
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         
