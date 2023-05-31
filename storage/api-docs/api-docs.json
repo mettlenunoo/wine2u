@@ -13,6 +13,114 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/v1/user/forgotten-password/email": {
+            "post": {
+                "tags": [
+                    "Forgot Password(Customer)"
+                ],
+                "summary": "Forgot Password",
+                "description": "Forgot Password",
+                "operationId": "authCustomerForgotPassword",
+                "requestBody": {
+                    "description": "Pass Your Email Address",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@mail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong input response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/password/reset": {
+            "post": {
+                "tags": [
+                    "Forgot Password(Customer)"
+                ],
+                "summary": "Customer Password Reset",
+                "description": "Customer Password Reset",
+                "operationId": "authCustomerPasswordReset",
+                "requestBody": {
+                    "description": "Pass Your Email and New passwword Address",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "email",
+                                        "example": "example@mail.com"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "token"
+                                    },
+                                    "password": {
+                                        "type": "password",
+                                        "example": "yoursecret"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "password",
+                                        "example": "yoursecret"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong input response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/products": {
             "get": {
                 "tags": [
@@ -1533,6 +1641,63 @@
                     }
                 }
             }
+        },
+        "/api/sign-in/socials": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Sign in / Sign-up",
+                "description": "Login / Sign-up by facebook/google ",
+                "operationId": "authLoginSocials",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "provider",
+                                    "token"
+                                ],
+                                "properties": {
+                                    "provider": {
+                                        "type": "string",
+                                        "enum": [
+                                            "facebook",
+                                            "google"
+                                        ],
+                                        "example": "facebook"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "tzUJKxXDdOWMlddTswBIGZgEoRC3OgQ1FJHeuscR"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1546,8 +1711,5 @@
                 "scheme": "bearer"
             }
         }
-    },
-    "security": [
-        []
-    ]
+    }
 }

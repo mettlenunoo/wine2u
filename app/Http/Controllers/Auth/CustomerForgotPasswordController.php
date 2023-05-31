@@ -21,11 +21,32 @@ class CustomerForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
+
+
+    /** @OA\Post(
+     * path="/api/v1/user/forgotten-password/email",
+     * summary="Forgot Password",
+     * description="Forgot Password",
+     * operationId="authCustomerForgotPassword",
+     * tags={"Forgot Password(Customer)"},
+     * @OA\RequestBody(
+     *    required=true,
+     *    description="Pass Your Email Address",
+     *    @OA\JsonContent(
+     *       required={"email"},
+     *       @OA\Property(property="email", type="email",  example="example@mail.com"),
+     *    ),
+     * ),
+     * @OA\Response(
+     *    response=422,
+     *    description="Wrong input response",
+     *    @OA\JsonContent(
+     *       @OA\Property(property="message", type="string", example="Sorry, wrong email address. Please try again")
+     *        )
+     *     )
+     * )
      */
+
     public function __construct()
     {
         $this->middleware('guest:customer');

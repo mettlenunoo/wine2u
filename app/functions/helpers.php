@@ -100,6 +100,32 @@ function rateCalculator($stars,$total_user){
    return $result;
 }
 
+function send_sms($receiverNumber,$message)
+{
+    try {
+        
+        // $to = "+233".$receiverNumber;
+        $to = $receiverNumber;
+        $username = getenv("NPONTU_USERNAME");
+        $password = getenv("NPONTU_PASSWORD");
+        $source = getenv("NPONTU_SOURCE");
+
+        $response = Http::post('https://deywuro.com/api/sms', [
+            'username' => $username,
+            'password' => $password,
+            'source' => $source,
+            'destination' => $to,
+            'message' => $message
+        ]);
+
+        \Log::info($response);
+
+    } catch (Exception $e) {
+
+        \Log::info($e->getMessage());
+    }
+}
+
    // pagination filter
 //  function SearchPagination($parms)
 // { 

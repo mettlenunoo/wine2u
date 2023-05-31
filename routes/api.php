@@ -55,6 +55,18 @@ Route::post('/wishlist/add', 'apiController@wishList');
 Route::delete('/wishlist/delete/{id}', 'apiController@removeWishList'); 
 Route::post('/user/login', 'apiController@login'); 
 Route::post('/user/register', 'apiController@userRegister'); // USER REGISTRATION
+
+
+// Social Media Login
+// Route::get('/sign-in/facebook/redirect', 'socialiteController@facebook_redirect_api');
+Route::get('/sign-in/socials', 'socialiteController@socials_redirect_api');
+
+Route::get('/sign-in/google/redirect', 'socialiteController@google_redirect');
+Route::get('/sign-in/google', 'socialiteController@google_Callback');
+
+Route::post('/v1/user/forgotten-password/email', [\App\Http\Controllers\Auth\CustomerForgotPasswordController::class, 'sendResetLinkEmail']);
+Route::post('/v1/user/password/reset', [\App\Http\Controllers\Auth\CustomerResetPasswordController::class, 'reset'])->name("api.customer.password.reset");
+
 Route::post('/coupon', 'apiController@setCoupon'); 
 Route::get('/shipping/price/{zone}/{weight}', 'apiController@shippingPrice'); 
 Route::post('/checkout', 'apiController@checkout_store'); //Checkout
