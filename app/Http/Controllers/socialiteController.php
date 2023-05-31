@@ -22,7 +22,7 @@ class socialiteController extends Controller
     public function facebook_redirect(){
 
       $user = Socialite::driver('facebook')->user();
-      return $user;
+     return response()->json($user);
         // $user = Customer::firstorCreate([
 
         //     'email' => $user->email
