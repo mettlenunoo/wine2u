@@ -1038,7 +1038,7 @@ class apiController extends Controller
          if (isset($_GET['keyword'])) {
 
             $keyword = $_GET['keyword'];
-            $products = $products->WHERE('products.product_name', '<=', $keyword );
+            $products = $products->where('products.product_name', 'like', '%' . $keyword . '%');
             $this->SearchPagination("keyword");
         }
 
