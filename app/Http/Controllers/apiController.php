@@ -46,6 +46,140 @@ class apiController extends Controller
  *      tags={"Product"},
  *      summary="Get list of products",
  *      description="Returns list of products",
+ *      @OA\Parameter( 
+*          name="pn",
+*          description="limit records",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+* 
+*      @OA\Parameter( 
+*          name="keyword",
+*          description="search",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*
+*      @OA\Parameter( 
+*          name="light",
+*          description="light filters range from 0 to 10",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="smooth",
+*          description="smooth filters range from 0 to 10",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="dry",
+*          description="dry filters range from 0 to 10",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="soft",
+*          description="soft filters range from 0 to 10",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="integer"
+*          )
+*       ),
+* 
+* 
+*      @OA\Parameter( 
+*          name="price",
+*          description="price filter",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="decimal"
+*          )
+*       ),
+*
+*      @OA\Parameter( 
+*          name="wine",
+*          description="wine slug.  Example ?wine=wine1,wine2,wine3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="offers",
+*          description="offers slug.  Example ?offers=offers1,offers2,offers3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="pairing",
+*          description="pairing slug.  Example ?pairing=pairing1,pairing2,pairing3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="grapes",
+*          description="grapes slug.  Example ?grapes=grapes1,grapes2,grapes3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="country",
+*          description="country slug.  Example ?country=country1,country2,country3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*      @OA\Parameter( 
+*          name="category",
+*          description="category slug.  Example ?category=category1,category2,category3",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string"
+*          )
+*       ),
+*
+*
+*     @OA\Parameter( 
+*          name="sortby",
+*          description="orderby ",
+*          required=false,
+*          in="query",
+*          @OA\Schema(
+*              type="string",
+*              enum={"asc", "desc","a-z","z-a"}
+*          )
+*      ),
  *      @OA\Response(
  *          response=200,
  *          description="successful operation"
@@ -889,6 +1023,7 @@ class apiController extends Controller
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
         
+        
         // PAGINATION
         if(isset($_GET['pn'])){
 
@@ -899,6 +1034,13 @@ class apiController extends Controller
             $pn = 12;
         }
 
+         //  Search
+         if (isset($_GET['keyword'])) {
+
+            $keyword = $_GET['keyword'];
+            $products = $products->WHERE('products.product_name', '<=', $keyword );
+            $this->SearchPagination("keyword");
+        }
 
         if(isset($_GET['price'])){
 
@@ -1037,8 +1179,27 @@ class apiController extends Controller
 
         }
 
-        $products = $products->latest()
-        ->paginate($pn)
+        if (isset($_GET['sortby'])) {
+
+            if(strtolower($_GET['sortby']) == "a-z" || strtolower($_GET['sortby']) == "z-a"){
+
+                $products = $_GET['sortby']  == 'a-z' ?
+                    $products->orderBy('product_name', 'asc') :
+                    $products->orderBy('product_name', 'desc');
+
+            } else {
+
+                $products = $_GET['sortby']  == 'asc' ?
+                    $products->orderBy('created_at', 'asc') :
+                    $products->orderBy('created_at', 'desc');
+
+            }
+           
+            $this->SearchPagination("sortby");
+        }
+
+
+        $products = $products->paginate($pn)
         ->setPath('/api/products');
         !empty($this->link) ? $products = $products->appends($this->link) : "";
 

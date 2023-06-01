@@ -129,6 +129,140 @@
                 "summary": "Get list of products",
                 "description": "Returns list of products",
                 "operationId": "getProductList",
+                "parameters": [
+                    {
+                        "name": "pn",
+                        "in": "query",
+                        "description": "limit records",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "search",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "light",
+                        "in": "query",
+                        "description": "light filters range from 0 to 10",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "smooth",
+                        "in": "query",
+                        "description": "smooth filters range from 0 to 10",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "dry",
+                        "in": "query",
+                        "description": "dry filters range from 0 to 10",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "soft",
+                        "in": "query",
+                        "description": "soft filters range from 0 to 10",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "query",
+                        "description": "price filter",
+                        "required": false,
+                        "schema": {
+                            "type": "decimal"
+                        }
+                    },
+                    {
+                        "name": "wine",
+                        "in": "query",
+                        "description": "wine slug.  Example ?wine=wine1,wine2,wine3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offers",
+                        "in": "query",
+                        "description": "offers slug.  Example ?offers=offers1,offers2,offers3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pairing",
+                        "in": "query",
+                        "description": "pairing slug.  Example ?pairing=pairing1,pairing2,pairing3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grapes",
+                        "in": "query",
+                        "description": "grapes slug.  Example ?grapes=grapes1,grapes2,grapes3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": "country slug.  Example ?country=country1,country2,country3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "category slug.  Example ?category=category1,category2,category3",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sortby",
+                        "in": "query",
+                        "description": "orderby ",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc",
+                                "a-z",
+                                "z-a"
+                            ]
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "successful operation"
