@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-   
+
 
    <!-- include navigation -->
       @include("pages.includes.nav-links")
@@ -174,7 +174,7 @@
                 @endif
 
                 @php $counter++; @endphp
-         
+
             @endforeach
 
 
@@ -190,7 +190,7 @@
                             <img src="/page_assets/img/addo2.svg" alt="" class="featurewineadd">
                            </a>
                         </div>
-                       
+
                      </div>
                   </div>
                   <div class="col-4  col-md-4 col-lg-4  px-lg-4 mb-5 text-center ">
@@ -203,7 +203,7 @@
                             <img src="/page_assets/img/addo2.svg" alt="" class="featurewineadd">
                            </a>
                         </div>
-                       
+
                      </div>
                   </div>
                   <div class="col-4  col-md-4 col-lg-4  px-lg-4 mb-5 text-center ">
@@ -216,10 +216,10 @@
                             <img src="/page_assets/img/addo2.svg" alt="" class="featurewineadd">
                            </a>
                         </div>
-                       
+
                      </div>
                   </div>
-                 
+
                </div>
             </div> --}}
          </div>
@@ -263,14 +263,14 @@
 							@endif
 								<div class="col-6 col-md-6 col-lg-3 px-lg-3 mb-5 ">
 									<div class="productmain">
-										<a href="/products/{{ $product->slug }}" class="product-img"> 
+										<a href="/products/{{ $product->slug }}" class="product-img">
 											<img src="/product_images/{{ $product->img1 }}" class="productthumb as-background" alt="{{ ucwords($product->product_name) }}">
 										</a>
 										<div class="bd-highlight px-2 pt-2">
 											<p class="mb-0 product-small prd-brand">
 												{{ ucwords($product->product_name) }}
 											</p>
-											<div class="rating"> 
+											<div class="rating">
 												<input type="radio" name="rating-{{ $product->id }}" value="5" id="5m-{{ $product->id }}" @if($product->avgrating == 5) checked @endif >
 												<label for="5m-{{ $product->id }}">☆</label>
 												<input type="radio" name="rating-{{ $product->id }}" value="4" id="4m-{{ $product->id }}" @if($product->avgrating >= 4 && $product->avgrating < 5 ) checked @endif>
@@ -285,9 +285,9 @@
 										</div>
 										<div class="d-md-flex mb-2 align-items-end">
 											<div class="mr-auto pl-2">
-											
+
 												{{-- <p class="product-small mb-0">Paris</p> --}}
-												<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a> 
+												<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a>
 											</div>
 											<div class="px-2 font-weight-bold">
 												<a href="/products/{{ $product->slug }}" class="product-price">GhS {{ $product->base_price}} </a>
@@ -296,7 +296,7 @@
 										{{-- <img src="/page_assets/img/addp.svg" alt=""> --}}
 									</div>
 								</div>
-									
+
 							@if( $counter == 4 || $key == (count($bestSales) - 1))
 							@php $counter = 0; @endphp
 								<div class="col-12 text-center my-4">
@@ -305,9 +305,9 @@
 								</div>
 								</div>
 							@endif
-			
+
 							@php $counter++; @endphp
-				
+
 					@endforeach
 				</div>
 			</div>
@@ -362,7 +362,7 @@
                   @endif
                         <div class="col-6 col-md-6 col-lg-3 px-lg-3 mb-5 ">
                            	<div class="productmain">
-							  	<a href="/products/{{ $product->slug }}" class="product-img"> 
+							  	<a href="/products/{{ $product->slug }}" class="product-img">
 								  <img src="/product_images/{{ $product->img1 }}" class="w-100 as-background" alt="">
 								</a>
                               	{{-- <a href="/products/{{ $product->slug }}"> <img src="/page_assets/img/plus-circle.svg" class="pluscircle" width="35" alt=""></a> --}}
@@ -370,7 +370,7 @@
 									<p class="mb-0 product-small prd-brand">
 										{{ ucwords($product->product_name) }}
 									</p>
-									<div class="rating"> 
+									<div class="rating">
 										<input type="radio" name="rating-{{ $product->id }}" value="5" id="5-{{ $product->id }}" @if($product->rating == 5) checked @endif >
 										<label for="5-{{ $product->id }}">☆</label>
 										<input type="radio" name="rating-{{ $product->id }}" value="4" id="4-{{ $product->id }}" @if($product->total >= 4 && $product->total < 5 ) checked @endif>
@@ -386,7 +386,7 @@
                               	<div class="d-md-flex mb-2 align-items-end">
 									<div class="mr-auto pl-2">
 										{{-- <p class="product-small mb-0">Paris</p> --}}
-										<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a> 
+										<a href="/products/{{ $product->slug }}" class="font-weight-bold">{{ ucwords($product->product_name) }}</a>
 									</div>
 									<div class="px-2 font-weight-bold">
 										<a href="/products/{{ $product->slug }}" class="product-price">GhS {{ $product->base_price}} </a>
@@ -403,7 +403,7 @@
                               </div>
                            </div>
                         @endif
-         
+
                         @php $counter++; @endphp
                     @endforeach
                </div>
@@ -442,7 +442,7 @@
 							</div>
 						</div>
 					@endforeach
-       
+
 					{{-- <div class="item">
 					<div class="row centerit">
 						<div class="col-12 col-md-12 col-lg-4 text-center ">
@@ -453,7 +453,7 @@
 						<h1 class="wineslide">Another Slide <br>   Wine</h1>
 
 						<img src="/page_assets/img/winelinedash.svg" alt="">
-						
+
 						</div>
 
 						<div class="col-12 col-md-6 col-lg-4 ">
@@ -505,14 +505,14 @@
                         	@endif
                               	<div class="col-6 col-md-6 col-lg-3 px-lg-3 mb-5">
                                 	<div class="productmain">
-										<a href="/products/{{ $product->slug }}" class="product-img"> 
+										<a href="/products/{{ $product->slug }}" class="product-img">
 											<img src="/product_images/{{ $product->img1 }}" class="productthumb as-background" alt="{{ ucwords($product->product_name) }}">
 										</a>
 										<div class="bd-highlight px-2 pt-2">
 											<p class="mb-0 product-small prd-brand">
 												{{ ucwords($product->product_name) }}
 											</p>
-											<div class="rating"> 
+											<div class="rating">
 												<input type="radio" name="rating-{{ $product->id }}" value="5" id="5m-{{ $product->id }}" @if($product->avgrating == 5) checked @endif >
 												<label for="5m-{{ $product->id }}">☆</label>
 												<input type="radio" name="rating-{{ $product->id }}" value="4" id="4m-{{ $product->id }}" @if($product->avgrating >= 4 && $product->avgrating < 5 ) checked @endif>
@@ -527,11 +527,11 @@
 										</div>
 										<div class="d-md-flex mb-2 align-items-end">
 											<div class="mr-auto pl-2">
-												{{-- 
+												{{--
 												 --}}
 												<a href="/products/{{ $product->slug }}" class="font-weight-bold">
 													{{ ucwords($product->product_name) }}
-												</a> 
+												</a>
 											</div>
 											<div class="px-2 font-weight-bold">
 												<a href="/products/{{ $product->slug }}" class="product-price">GhS {{ $product->base_price}} </a>
@@ -584,7 +584,7 @@
 
 <section class="productgreenline relativetins">
 	<img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt="">
-    <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
+    <img src="/page_assets/img/new-bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
     <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
     <div class="container-fluid container-w2u">
     	<div class="row">
@@ -612,7 +612,7 @@
       	<div class="row mt-4">
         	<div class="col-12 text-center">
           		<h3 class="wineproh1 ">All Exclusive  wine at your finger tips</h3>
-          
+
           		<div class="col-12 text-center  mt-5">
             		<h4 class="wine_wc">  <strong>Download our Mobile App</strong></h4>
             		<p class="wine_wc">It's the fastest way to search for  the best wine and make a purchase</p>
@@ -628,7 +628,7 @@
             			</li>
             			<li class="list-inline-item">
             				<a href="#" class="btn btn-bb2 width-290 text-center">
-								<img src="/page_assets/img/playstore.svg" alt=""> 
+								<img src="/page_assets/img/playstore.svg" alt="">
 								Download from Playstore
 							</a>
             			</li>
@@ -644,7 +644,7 @@
   @include("pages.includes.footer")
   @include("pages.includes.footer-links")
   <script type="text/javascript">
-	
+
 	//LOADS SUBSCRIBE FORM - Needs to be changed to check if user is already subscribed before loading
 	$(document).ready(function() {
 		new WOW().init();
@@ -652,16 +652,16 @@
 		if (sessionStorage.getItem('#nw-modal') !== 'true') {
 			setTimeout(function() {$('#nw-modal').modal('show');},
 			3000);
-			sessionStorage.setItem('#nw-modal','true');     
+			sessionStorage.setItem('#nw-modal','true');
 		}
 	});
-	
+
 	//Subscribe form
 	$('#subscribe_model').submit(function(event) {
         event.preventDefault();
 
     var email = document.getElementById("m_email").value;
-    
+
     // Disable the Submit button
     $("#model_btn").html("Loading...");
     $("#model_btn").attr("disabled", true);
@@ -688,7 +688,7 @@
           console.log(response);
           $('#subscribe_model').trigger("reset");
 
-         // if(response == "success"){              
+         // if(response == "success"){
             swal( " Thank You! ", "Subscribed Successfully", "success");
          // }else{
           //  swal( "Whoops", "There is an error. Please try again", "error");
