@@ -156,7 +156,7 @@
       <div class="row py-5">
         <div class="col-md-6 d-none d-md-block">
           <div class="2col-img-container-fluid">
-            <img src="{{ asset ('page_assets/img/2col-img4.jpg') }}" alt="" class="2col-img w-100">
+            <img src="{{ asset ('page_assets/img/new-2col-img4.jpg') }}" alt="" class="2col-img w-100">
           </div>
         </div>
         <div class="col-md-6 centerit mb-4 mb-md-0 ">
