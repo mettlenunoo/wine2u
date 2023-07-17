@@ -142,7 +142,7 @@
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
             <h2 class="2col-text-title">The Experience</h2>
-            <p class="2col-text-desc">On wine2u, our focus is on <span class="fw-bold">“THE EXPERIENCE”: “When i go to a restaurant, I can have this experience” “when i have an event, i can have this experience” “when i purchase wine, this is what i can have in my home…</span></p>
+            <p class="2col-text-desc">On wine2u, our focus is on <span class="fw-bold">“THE EXPERIENCE”: “When I go to a restaurant, I can have this experience” “when I have an event, I can have this experience” “when I purchase wine, this is what I can have in my home…</span></p>
             <p class="2col-text-desc">The <span class="font-italic">experience</span> is that you will become “a wine connoisseur” of your own palate, so that when you leave this site and go to a restaurant, you will confidently order wines from their menu to pair well with your meal;when you go to a party, you won’t stare at the bottle on the table intimidatingly; and when you are throwing a party at home or having dinner with friends, you will be able to select wines to suit you and your guests.</p>
           </div>
         </div>
