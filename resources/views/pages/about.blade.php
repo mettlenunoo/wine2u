@@ -134,7 +134,7 @@
 
       <div class="row py-5">
         <div class="col-12">
-          <img src="{{ asset ('page_assets/img/about-details2.jpg') }}" alt="" class="about-details-img-mid w-100 min-height-w">
+          <img src="{{ asset ('page_assets/img/new-about-details2.jpg') }}" alt="" class="about-details-img-mid w-100 min-height-w">
         </div>
       </div>
 
