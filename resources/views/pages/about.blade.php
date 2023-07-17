@@ -103,7 +103,7 @@
         </div>
         <div class="col-md-6">
           <div class="2col-img-container-fluid">
-            <img src="{{ asset ('page_assets/img/2col-img1.jpg') }}" alt="" class="2col-img w-100">
+            <img src="{{ asset ('page_assets/img/new-2col-img1.jpg') }}" alt="" class="2col-img w-100">
           </div>
         </div>
       </div>
@@ -168,7 +168,7 @@
         </div>
         <div class="col-md-6 d-block d-md-none">
           <div class="2col-img-container-fluid">
-            <img src="{{ asset ('page_assets/img/2col-img4.jpg') }}" alt="" class="2col-img w-100">
+            <img src="{{ asset ('page_assets/img/new-2col-img4.jpg') }}" alt="" class="2col-img w-100">
           </div>
         </div>
       </div>
