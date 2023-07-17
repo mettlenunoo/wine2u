@@ -480,7 +480,7 @@ label {
 
 /*About page*/
 .about-hero {
-    background: linear-gradient(to bottom, #00000073 19.04%, rgb(0 0 0 / 35%) 215.59%), url(../img/about-hero.jpg);
+    background: linear-gradient(to bottom, #00000073 19.04%, rgb(0 0 0 / 35%) 215.59%), url(../img/new-about-hero.jpg);
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
