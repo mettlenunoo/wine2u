@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-   
+
 
    <!-- include navigation -->
       @include("pages.includes.nav-links")
@@ -22,7 +22,7 @@
           <p class="about-hero-tag wine_wc">About Us</p>
           <h1 id="about-hero-title">A one stop shop for all your wine and alcoholic beverage purchase.</h1>
           <p class="about-hero-desc wine_wc">The inspirational impression and deep connection we make with our customers and suppliers is crucial.
-            At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform. 
+            At Wine2U.com, we seek to inspire a passion for fine wine and alcoholic beverages. By offering a dynamic portfolio and a robust platform.
           </p>
           <p class="about-hero-desc wine_wc">Our team of dedicated specialists strives to be the best partner to our suppliers and customers. In doing so, we give the finest wines in the world—and the people who bring them to life—the room to grow and thrive, and the consumers a “Winetastic” Experience.
           </p>
@@ -72,7 +72,7 @@
       <div class="row mt-5 mb-0">
         <div class="col-12 pt-5">
           <p class="different-text text-center px-md-5">Our online store has been inspired by you, designed by us and created for you, to simplify your purchase of wines and alcoholic beverages.
-            Consider wine2u as your personal online sommelier, wine educator, and wine-store where you get to interact with us to assist you with your selection and purchase of wines to suit every occasion.</p>            
+            Consider wine2u as your personal online sommelier, wine educator, and wine-store where you get to interact with us to assist you with your selection and purchase of wines to suit every occasion.</p>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
     <div class="container-fluid">
       <div class="row py-5">
         <div class="col-12">
-          <img src="{{ asset ('page_assets/img/about-details1.jpg') }}" alt="" class="about-details-img-top w-100 min-height-w">
+          <img src="{{ asset ('page_assets/img/newabout-details1.jpg') }}" alt="" class="about-details-img-top w-100 min-height-w">
         </div>
       </div>
 
@@ -191,7 +191,7 @@
 
     </div>
   </section>
-      
+
 <!-- footer includes -->
   @include("pages.includes.footer")
   @include("pages.includes.footer-links")
