@@ -142,8 +142,8 @@
         <div class="col-md-6 centerit mb-4 mb-md-0">
           <div class="2col-text">
             <h2 class="2col-text-title">The Experience</h2>
-            <p class="2col-text-desc">On wine2u, our focus is on <span class="fw-bold">“THE EXPERIENCE”: “When I go to a restaurant, I can have this experience” “when I have an event, I can have this experience” “when I purchase wine, this is what I can have in my home…</span></p>
-            <p class="2col-text-desc">The <span class="font-italic">experience</span> is that you will become “a wine connoisseur” of your own palate, so that when you leave this site and go to a restaurant, you will confidently order wines from their menu to pair well with your meal;when you go to a party, you won’t stare at the bottle on the table intimidatingly; and when you are throwing a party at home or having dinner with friends, you will be able to select wines to suit you and your guests.</p>
+            <p class="2col-text-desc">At wine2u, our focus is on <span class="fw-bold">“THE EXPERIENCE”: “When I go to a restaurant, I can have this experience” “when I have an event, I can have this experience” “when I purchase wine, this is what I can have in my home…</span></p>
+            <p class="2col-text-desc">The <span class="font-italic">experience</span> is that you will become “a wine connoisseur” of your own palate, so that when you leave this site and go to a restaurant, you will confidently order wines from their menu to pair well with your meal when you go to a party, you won’t stare at the bottle on the table intimidatingly; and when you are throwing a party at home or having dinner with friends, you will be able to select wines to suit you and your guests.</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -162,7 +162,7 @@
         <div class="col-md-6 centerit mb-4 mb-md-0 ">
           <div class="2col-text">
             <h2 class="2col-text-title">Premium quality drink from premium producers</h2>
-            <p class="2col-text-desc">Whether you are purchasing wines for the first, or whether you already know your palate, whether you are a wine enthusiast or connoisseur, there is something for you on WINE2U.COM.</p>
+            <p class="2col-text-desc">Whether you are purchasing wines for the first time, or whether you already know your palate, whether you are a wine enthusiast or connoisseur, there is something for you on WINE2U.COM.</p>
             <p class="2col-text-desc">We introduce you to every winery, so not only are you purchasing their drinks, you also get to know them.</p>
           </div>
         </div>
