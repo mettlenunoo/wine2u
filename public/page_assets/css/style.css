@@ -113,6 +113,7 @@ a.navbar-wholsome.active {
     color: white;
 }
 
+
 .landing-slider {
     position: absolute;
     width: 100%;
@@ -682,6 +683,15 @@ label {
     left: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.60);
+}
+
+.overlay-light-black-two {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.50);
 }
 
 .vasimg {

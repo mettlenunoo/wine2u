@@ -27,31 +27,34 @@
     </nav>
 
 
-	<div class="landing-wrapper">
-		<div class="landing-slider">
-			<img src="page_assets/img/landing-1.jpg" alt="First slide">
-			<img src="page_assets/img/landing-2.jpg" alt="Second slide">
-			<img src="page_assets/img/landing-4.jpg" alt="Third slide">
-			<img src="page_assets/img/landing-4.jpg" alt="Fourth slide">
-		</div>
-		<div class="container p-relative">
-			<div class="mw-450 text-center">
-				<h1 class="mb-3 libre">
-					Your Palate, <br>
-					Our Passion.
-				</h1>
-				<p class="mb-4">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
-				<a  class="libre" href="/site">ENTER SITE</a>
-			</div>
-		</div>
-	</div>
+	<div class="">
+        <div class="landing-wrapper">
+            <div class="landing-slider">
+                {{-- <img src="page_assets/img/landing-1.jpg" alt="First slide"> --}}
+                <img src="page_assets/img/landing-2.jpg" alt="Second slide">
+                <img src="page_assets/img/landing-5.jpg" alt="Third slide">
+                <img src="page_assets/img/landing-7.jpg" alt="Fourth slide">
+            </div>
+            <div class="overlay-light-black-two"></div>
+            <div class="container p-relative">
+                <div class="mw-450 text-center">
+                    <h1 class="mb-3 libre">
+                        Your Palate, <br>
+                        Our Passion.
+                    </h1>
+                    <p class="mb-4">Shop the latest releases of wine along with exclusive offers, rare and limited edition wines, as well as the latest merchandise from our tasting rooms.</p>
+                    <a  class="libre" href="/site">ENTER SITE</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <section class="main-landing d-none">
+    {{-- <section class="main-landing d-none">
         <div id="carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item  active">
-                    <img class="d-block w-100 landingimg" src="page_assets/img/landing-1.jpg" alt="First slide">
+                    <img class="d-block w-100 landingimg " src="page_assets/img/landing-1.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item ">
                     <img class="d-block w-100 landingimg" src="page_assets/img/landing-2.jpg" alt="Second slide">
@@ -90,7 +93,7 @@
                     </div>
                 </div>
             </div> -->
-    </section>
+    </section> --}}
 
 
     <!-- modal age verification -->
