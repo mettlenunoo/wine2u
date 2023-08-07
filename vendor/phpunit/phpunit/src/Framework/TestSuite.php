@@ -10,9 +10,10 @@
 namespace PHPUnit\Framework;
 
 use const PHP_EOL;
-use function array_diff;
 use function array_keys;
+use function array_map;
 use function array_merge;
+use function array_slice;
 use function array_unique;
 use function basename;
 use function call_user_func;
@@ -38,6 +39,7 @@ use PHPUnit\Runner\BaseTestRunner;
 use PHPUnit\Runner\Filter\Factory;
 use PHPUnit\Runner\PhptTestCase;
 use PHPUnit\Util\FileLoader;
+use PHPUnit\Util\Reflection;
 use PHPUnit\Util\Test as TestUtil;
 use ReflectionClass;
 use ReflectionException;
@@ -45,6 +47,8 @@ use ReflectionMethod;
 use Throwable;
 
 /**
+ * @template-implements IteratorAggregate<int, Test>
+ *
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
@@ -78,7 +82,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
     /**
      * The test groups of the test suite.
      *
-     * @var array
+     * @psalm-var array<string,list<Test>>
      */
     protected $groups = [];
 
@@ -127,9 +131,9 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
     private $iteratorFilter;
 
     /**
-     * @var string[]
+     * @var int
      */
-    private $declaredClasses;
+    private $declaredClassesPointer;
 
     /**
      * @psalm-var array<int,string>
@@ -162,11 +166,11 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
         if (!is_string($theClass) && !$theClass instanceof ReflectionClass) {
             throw InvalidArgumentException::create(
                 1,
-                'ReflectionClass object or string'
+                'ReflectionClass object or string',
             );
         }
 
-        $this->declaredClasses = get_declared_classes();
+        $this->declaredClassesPointer = count(get_declared_classes());
 
         if (!$theClass instanceof ReflectionClass) {
             if (class_exists($theClass, true)) {
@@ -179,8 +183,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 } catch (ReflectionException $e) {
                     throw new Exception(
                         $e->getMessage(),
-                        (int) $e->getCode(),
-                        $e
+                        $e->getCode(),
+                        $e,
                     );
                 }
                 // @codeCoverageIgnoreEnd
@@ -211,23 +215,15 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 new WarningTestCase(
                     sprintf(
                         'Class "%s" has no public constructor.',
-                        $theClass->getName()
-                    )
-                )
+                        $theClass->getName(),
+                    ),
+                ),
             );
 
             return;
         }
 
-        foreach ($theClass->getMethods() as $method) {
-            if ($method->getDeclaringClass()->getName() === Assert::class) {
-                continue;
-            }
-
-            if ($method->getDeclaringClass()->getName() === TestCase::class) {
-                continue;
-            }
-
+        foreach ((new Reflection)->publicMethodsInTestClass($theClass) as $method) {
             if (!TestUtil::isTestMethod($method)) {
                 continue;
             }
@@ -240,9 +236,9 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 new WarningTestCase(
                     sprintf(
                         'No tests found in class "%s".',
-                        $theClass->getName()
-                    )
-                )
+                        $theClass->getName(),
+                    ),
+                ),
             );
         }
 
@@ -270,8 +266,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
         } catch (ReflectionException $e) {
             throw new Exception(
                 $e->getMessage(),
-                (int) $e->getCode(),
-                $e
+                $e->getCode(),
+                $e,
             );
         }
         // @codeCoverageIgnoreEnd
@@ -314,7 +310,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
         if (!(is_object($testClass) || (is_string($testClass) && class_exists($testClass)))) {
             throw InvalidArgumentException::create(
                 1,
-                'class name or object'
+                'class name or object',
             );
         }
 
@@ -325,8 +321,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
-                    (int) $e->getCode(),
-                    $e
+                    $e->getCode(),
+                    $e,
                 );
             }
             // @codeCoverageIgnoreEnd
@@ -340,21 +336,21 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             if (!$testClass->isAbstract() && $testClass->hasMethod(BaseTestRunner::SUITE_METHODNAME)) {
                 try {
                     $method = $testClass->getMethod(
-                        BaseTestRunner::SUITE_METHODNAME
+                        BaseTestRunner::SUITE_METHODNAME,
                     );
                     // @codeCoverageIgnoreStart
                 } catch (ReflectionException $e) {
                     throw new Exception(
                         $e->getMessage(),
-                        (int) $e->getCode(),
-                        $e
+                        $e->getCode(),
+                        $e,
                     );
                 }
                 // @codeCoverageIgnoreEnd
 
                 if ($method->isStatic()) {
                     $this->addTest(
-                        $method->invoke(null, $testClass->getName())
+                        $method->invoke(null, $testClass->getName()),
                     );
 
                     $suiteMethod = true;
@@ -389,7 +385,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
         if (is_file($filename) && substr($filename, -5) === '.phpt') {
             $this->addTest(new PhptTestCase($filename));
 
-            $this->declaredClasses = get_declared_classes();
+            $this->declaredClassesPointer = count(get_declared_classes());
 
             return;
         }
@@ -399,7 +395,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
         // The given file may contain further stub classes in addition to the
         // test class itself. Figure out the actual test class.
         $filename   = FileLoader::checkAndLoad($filename);
-        $newClasses = array_diff(get_declared_classes(), $this->declaredClasses);
+        $newClasses = array_slice(get_declared_classes(), $this->declaredClassesPointer);
 
         // The diff is empty in case a parent class (with test methods) is added
         // AFTER a child class that inherited from it. To account for that case,
@@ -409,8 +405,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             // On the assumption that test classes are defined first in files,
             // process discovered classes in approximate LIFO order, so as to
             // avoid unnecessary reflection.
-            $this->foundClasses    = array_merge($newClasses, $this->foundClasses);
-            $this->declaredClasses = get_declared_classes();
+            $this->foundClasses           = array_merge($newClasses, $this->foundClasses);
+            $this->declaredClassesPointer = count(get_declared_classes());
         }
 
         // The test class's name must match the filename, either in full, or as
@@ -428,8 +424,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 } catch (ReflectionException $e) {
                     throw new Exception(
                         $e->getMessage(),
-                        (int) $e->getCode(),
-                        $e
+                        $e->getCode(),
+                        $e,
                     );
                 }
                 // @codeCoverageIgnoreEnd
@@ -450,8 +446,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             } catch (ReflectionException $e) {
                 throw new Exception(
                     $e->getMessage(),
-                    (int) $e->getCode(),
-                    $e
+                    $e->getCode(),
+                    $e,
                 );
             }
             // @codeCoverageIgnoreEnd
@@ -460,18 +456,27 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 continue;
             }
 
+            if ($class->isAbstract() && $class->isSubclassOf(TestCase::class)) {
+                $this->addWarning(
+                    sprintf(
+                        'Abstract test case classes with "Test" suffix are deprecated (%s)',
+                        $class->getName(),
+                    ),
+                );
+            }
+
             if (!$class->isAbstract()) {
                 if ($class->hasMethod(BaseTestRunner::SUITE_METHODNAME)) {
                     try {
                         $method = $class->getMethod(
-                            BaseTestRunner::SUITE_METHODNAME
+                            BaseTestRunner::SUITE_METHODNAME,
                         );
                         // @codeCoverageIgnoreStart
                     } catch (ReflectionException $e) {
                         throw new Exception(
                             $e->getMessage(),
-                            (int) $e->getCode(),
-                            $e
+                            $e->getCode(),
+                            $e,
                         );
                     }
                     // @codeCoverageIgnoreEnd
@@ -480,13 +485,15 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                         $this->addTest($method->invoke(null, $className));
                     }
                 } elseif ($class->implementsInterface(Test::class)) {
-                    $expectedClassName = $shortName;
+                    // Do we have modern namespacing ('Foo\Bar\WhizBangTest') or old-school namespacing ('Foo_Bar_WhizBangTest')?
+                    $isPsr0            = (!$class->inNamespace()) && (strpos($class->getName(), '_') !== false);
+                    $expectedClassName = $isPsr0 ? $className : $shortName;
 
                     if (($pos = strpos($expectedClassName, '.')) !== false) {
                         $expectedClassName = substr(
                             $expectedClassName,
                             0,
-                            $pos
+                            $pos,
                         );
                     }
 
@@ -496,8 +503,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                                 "Test case class not matching filename is deprecated\n               in %s\n               Class name was '%s', expected '%s'",
                                 $filename,
                                 $class->getShortName(),
-                                $expectedClassName
-                            )
+                                $expectedClassName,
+                            ),
                         );
                     }
 
@@ -510,8 +517,8 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             $this->addWarning(
                 sprintf(
                     "Multiple test case classes per file is deprecated\n               in %s",
-                    $filename
-                )
+                    $filename,
+                ),
             );
         }
 
@@ -556,10 +563,18 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
     /**
      * Returns the test groups of the suite.
+     *
+     * @psalm-return list<string>
      */
     public function getGroups(): array
     {
-        return array_keys($this->groups);
+        return array_map(
+            static function ($key): string
+            {
+                return (string) $key;
+            },
+            array_keys($this->groups),
+        );
     }
 
     public function getGroupDetails(): array
@@ -602,56 +617,56 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
         $test = null;
 
-        try {
-            foreach ($hookMethods['beforeClass'] as $beforeClassMethod) {
-                if ($this->testCase &&
-                    class_exists($this->name, false) &&
-                    method_exists($this->name, $beforeClassMethod)) {
-                    if ($missingRequirements = TestUtil::getMissingRequirements($this->name, $beforeClassMethod)) {
-                        $this->markTestSuiteSkipped(implode(PHP_EOL, $missingRequirements));
+        if ($this->testCase && class_exists($this->name, false)) {
+            try {
+                foreach ($hookMethods['beforeClass'] as $beforeClassMethod) {
+                    if (method_exists($this->name, $beforeClassMethod)) {
+                        if ($missingRequirements = TestUtil::getMissingRequirements($this->name, $beforeClassMethod)) {
+                            $this->markTestSuiteSkipped(implode(PHP_EOL, $missingRequirements));
+                        }
+
+                        call_user_func([$this->name, $beforeClassMethod]);
+                    }
+                }
+            } catch (SkippedTestError|SkippedTestSuiteError $error) {
+                foreach ($this->tests() as $test) {
+                    $result->startTest($test);
+                    $result->addFailure($test, $error, 0);
+                    $result->endTest($test, 0);
+                }
+
+                $result->endTestSuite($this);
+
+                return $result;
+            } catch (Throwable $t) {
+                $errorAdded = false;
+
+                foreach ($this->tests() as $test) {
+                    if ($result->shouldStop()) {
+                        break;
                     }
 
-                    call_user_func([$this->name, $beforeClassMethod]);
-                }
-            }
-        } catch (SkippedTestSuiteError $error) {
-            foreach ($this->tests() as $test) {
-                $result->startTest($test);
-                $result->addFailure($test, $error, 0);
-                $result->endTest($test, 0);
-            }
+                    $result->startTest($test);
 
-            $result->endTestSuite($this);
+                    if (!$errorAdded) {
+                        $result->addError($test, $t, 0);
 
-            return $result;
-        } catch (Throwable $t) {
-            $errorAdded = false;
+                        $errorAdded = true;
+                    } else {
+                        $result->addFailure(
+                            $test,
+                            new SkippedTestError('Test skipped because of an error in hook method'),
+                            0,
+                        );
+                    }
 
-            foreach ($this->tests() as $test) {
-                if ($result->shouldStop()) {
-                    break;
+                    $result->endTest($test, 0);
                 }
 
-                $result->startTest($test);
+                $result->endTestSuite($this);
 
-                if (!$errorAdded) {
-                    $result->addError($test, $t, 0);
-
-                    $errorAdded = true;
-                } else {
-                    $result->addFailure(
-                        $test,
-                        new SkippedTestError('Test skipped because of an error in hook method'),
-                        0
-                    );
-                }
-
-                $result->endTest($test, 0);
+                return $result;
             }
-
-            $result->endTestSuite($this);
-
-            return $result;
         }
 
         foreach ($this as $test) {
@@ -669,22 +684,22 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             $test->run($result);
         }
 
-        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
-            if ($this->testCase &&
-                class_exists($this->name, false) &&
-                method_exists($this->name, $afterClassMethod)) {
-                try {
-                    call_user_func([$this->name, $afterClassMethod]);
-                } catch (Throwable $t) {
-                    $message = "Exception in {$this->name}::{$afterClassMethod}" . PHP_EOL . $t->getMessage();
-                    $error   = new SyntheticError($message, 0, $t->getFile(), $t->getLine(), $t->getTrace());
+        if ($this->testCase && class_exists($this->name, false)) {
+            foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+                if (method_exists($this->name, $afterClassMethod)) {
+                    try {
+                        call_user_func([$this->name, $afterClassMethod]);
+                    } catch (Throwable $t) {
+                        $message = "Exception in {$this->name}::{$afterClassMethod}" . PHP_EOL . $t->getMessage();
+                        $error   = new SyntheticError($message, 0, $t->getFile(), $t->getLine(), $t->getTrace());
 
-                    $placeholderTest = clone $test;
-                    $placeholderTest->setName($afterClassMethod);
+                        $placeholderTest = clone $test;
+                        $placeholderTest->setName($afterClassMethod);
 
-                    $result->startTest($placeholderTest);
-                    $result->addFailure($placeholderTest, $error, 0);
-                    $result->endTest($placeholderTest, 0);
+                        $result->startTest($placeholderTest);
+                        $result->addFailure($placeholderTest, $error, 0);
+                        $result->endTest($placeholderTest, 0);
+                    }
                 }
             }
         }
@@ -842,7 +857,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
                 }
                 $this->requiredTests = ExecutionOrderDependency::mergeUnique(
                     ExecutionOrderDependency::filterInvalid($this->requiredTests),
-                    $test->requires()
+                    $test->requires(),
                 );
             }
 
@@ -876,13 +891,13 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
         if ($test instanceof TestCase || $test instanceof DataProviderTestSuite) {
             $test->setDependencies(
-                TestUtil::getDependencies($class->getName(), $methodName)
+                TestUtil::getDependencies($class->getName(), $methodName),
             );
         }
 
         $this->addTest(
             $test,
-            TestUtil::getGroups($class->getName(), $methodName)
+            TestUtil::getGroups($class->getName(), $methodName),
         );
     }
 

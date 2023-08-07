@@ -148,7 +148,7 @@
         </div>
         <div class="col-md-6">
           <div class="2col-img-container-fluid">
-            <img src="{{ asset ('page_assets/img/experience.jpg') }}" alt="" class="2col-img w-100">
+            <img src="{{ asset ('page_assets/img/experience-2.jpg') }}" alt="" class="2col-img w-100">
           </div>
         </div>
       </div>

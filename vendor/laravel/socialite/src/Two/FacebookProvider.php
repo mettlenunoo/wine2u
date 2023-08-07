@@ -2,6 +2,7 @@
 
 namespace Laravel\Socialite\Two;
 
+use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Arr;
 
 class FacebookProvider extends AbstractProvider implements ProviderInterface
@@ -77,7 +78,7 @@ class FacebookProvider extends AbstractProvider implements ProviderInterface
     public function getAccessTokenResponse($code)
     {
         $response = $this->getHttpClient()->post($this->getTokenUrl(), [
-            'form_params' => $this->getTokenFields($code),
+            RequestOptions::FORM_PARAMS => $this->getTokenFields($code),
         ]);
 
         $data = json_decode($response->getBody(), true);
@@ -92,18 +93,20 @@ class FacebookProvider extends AbstractProvider implements ProviderInterface
     {
         $this->lastToken = $token;
 
-        $meUrl = $this->graphUrl.'/'.$this->version.'/me?access_token='.$token.'&fields='.implode(',', $this->fields);
+        $params = [
+            'access_token' => $token,
+            'fields' => implode(',', $this->fields),
+        ];
 
         if (! empty($this->clientSecret)) {
-            $appSecretProof = hash_hmac('sha256', $token, $this->clientSecret);
-
-            $meUrl .= '&appsecret_proof='.$appSecretProof;
+            $params['appsecret_proof'] = hash_hmac('sha256', $token, $this->clientSecret);
         }
 
-        $response = $this->getHttpClient()->get($meUrl, [
-            'headers' => [
+        $response = $this->getHttpClient()->get($this->graphUrl.'/'.$this->version.'/me', [
+            RequestOptions::HEADERS => [
                 'Accept' => 'application/json',
             ],
+            RequestOptions::QUERY => $params,
         ]);
 
         return json_decode($response->getBody(), true);
@@ -114,15 +117,15 @@ class FacebookProvider extends AbstractProvider implements ProviderInterface
      */
     protected function mapUserToObject(array $user)
     {
-        $avatarUrl = $this->graphUrl.'/'.$this->version.'/'.$user['id'].'/picture?access_token='.$this->lastToken;
+        $avatarUrl = $this->graphUrl.'/'.$this->version.'/'.$user['id'].'/picture';
 
         return (new User)->setRaw($user)->map([
             'id' => $user['id'],
             'nickname' => null,
             'name' => $user['name'] ?? null,
             'email' => $user['email'] ?? null,
-            'avatar' => $avatarUrl.'&type=normal',
-            'avatar_original' => $avatarUrl.'&width=1920',
+            'avatar' => $avatarUrl.'?type=normal',
+            'avatar_original' => $avatarUrl.'?width=1920',
             'profileUrl' => $user['link'] ?? null,
         ]);
     }
@@ -180,6 +183,16 @@ class FacebookProvider extends AbstractProvider implements ProviderInterface
         $this->reRequest = true;
 
         return $this;
+    }
+
+    /**
+     * Get the last access token used.
+     *
+     * @return string|null
+     */
+    public function lastToken()
+    {
+        return $this->lastToken;
     }
 
     /**

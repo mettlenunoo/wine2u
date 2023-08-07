@@ -1,7 +1,7 @@
 <section class="footergreen">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 col-lg-4 mb-4"> 
+			<div class="col-12 col-lg-4 mb-4">
 				<img src="/page_assets/img/wine2ulogo.svg" alt="" width="70">
 				<p class="wine_wc ">©2020 wine2u</p>
 				<ul class="list-inline">
@@ -37,6 +37,7 @@
 					<div class="mb-4">
 						<h1 class="mb-3">More</h1>
 						<ul class="list-unstyled">
+							<li class="mb-2"><a href="/about">About Us</a></li>
 							<li class="mb-2"><a href="/pairing">Food Pairings</a></li>
 							<!-- <li class="mb-2"><a href="#">Regions</a></li> -->
 							<li class="mb-2"><a href="/blog">Kɔkɔ's Blog</a></li>
@@ -50,7 +51,7 @@
 							<li class="mb-2"><a href="/terms-conditions">Terms of Use</a></li>
 						</ul>
 					</div>
-					
+
 					<div class="mb-4">
 						<h1 class="mb-3">Apps</h1>
 						<ul class="list-unstyled">
@@ -77,7 +78,7 @@
 			<button id="close-cookies">
 				<i class="fa fa-close"></i>
 			</button>
-		</div> 
+		</div>
 		<p class="mb-3 small">We use cookies to improve user experience and analyse our website traffic. For these reasons, we may share your information from our site to our analytics partners. By clicking "Accept Cookies", you have given consent for the above to be done whenever you visit our site. <br> You can change your cookie settings at any time by clicking "Cookie Preferences".</p>
 		<button class="cookies-btn"  onclick="acceptCookies()">Accept Cookies</button>
 	</div>
