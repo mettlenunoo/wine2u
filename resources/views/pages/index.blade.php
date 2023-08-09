@@ -583,8 +583,8 @@
 
 
 <section class="productgreenline relativetins">
-	{{-- <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt=""> --}}
-    <img src="/page_assets/img/new-bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
+	{{-- <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt="">
+    <img src="/page_assets/img/new-bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">--}}
     <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
     <div class="container-fluid container-w2u">
     	<div class="row">
