@@ -31,7 +31,7 @@
         <div class="landing-wrapper">
             <div class="landing-slider">
                 {{-- <img src="page_assets/img/landing-1.jpg" alt="First slide"> --}}
-                <img src="page_assets/img/landing-2.jpg" alt="Second slide">
+                <img src="page_assets/img/landing-8.jpg" alt="Second slide">
                 <img src="page_assets/img/landing-5.jpg" alt="Third slide">
                 <img src="page_assets/img/landing-7.jpg" alt="Fourth slide">
             </div>
