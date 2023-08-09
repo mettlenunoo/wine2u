@@ -11,13 +11,13 @@
     <style>
   #loading
   {
-   text-align:center; 
-   background: url('/page_assets/img/loader.gif') no-repeat center; 
+   text-align:center;
+   background: url('/page_assets/img/loader.gif') no-repeat center;
    height: 150px;
   }
   </style>
 
-  
+
    <!-- include navigation -->
    @include("pages.includes.nav-links")
    @include("pages.includes.navigation")
@@ -37,7 +37,7 @@
 </section>
 
 
-<section class="my-5  py-5"> 
+<section class="my-5  py-5">
  <div class="container">
   <div class="row">
 	@include('pages.includes.filters')
@@ -49,25 +49,25 @@
 
       <div class="col-6 col-md-6 mb-4 col-lg-4">
         <div class="productmain">
-    <a href="/products/{{ $product->slug }}" class="product-img"> 
+    <a href="/products/{{ $product->slug }}" class="product-img">
       <img src="/product_images/{{ $product->img1 }}"  class="as-background" alt="{{ ucwords($product->product_name)}}" height="100%">
     </a>
 
             <div class="bd-highlight px-2 pt-2">
       <p class="mb-0 product-small prd-brand">{{ ucwords($product->product_name) }}</p>
-        <div class="rating"> 
+        <div class="rating">
           <input type="radio" name="rating-{{ $product->id }}" value="5"  @if($product->review_summary->average_rating == 5 )  checked @endif  >
           <label >☆</label>
 
-          <input type="radio" name="rating-{{ $product->id }}" value="4"  
+          <input type="radio" name="rating-{{ $product->id }}" value="4"
           @if($product->review_summary->average_rating >= 4 && $product->review_summary->average_rating < 5)  checked @endif >
           <label >☆</label>
 
-          <input type="radio" name="rating-{{ $product->id }}" value="3"  
+          <input type="radio" name="rating-{{ $product->id }}" value="3"
             @if($product->review_summary->average_rating >= 3 && $product->review_summary->average_rating < 4 )  checked @endif>
           <label >☆</label>
 
-          <input type="radio" name="rating-{{ $product->id }}" value="2"  
+          <input type="radio" name="rating-{{ $product->id }}" value="2"
            @if($product->review_summary->average_rating >= 2 && $product->review_summary->average_rating < 3 )  checked @endif >
           <label >☆</label>
 
@@ -89,11 +89,11 @@
                                 @foreach ($region->countryFrRegion as $country)
                                     <a href="/country/{{ $country->slug }}">{{ ucwords($country->name) }} </a>
                                 @endforeach
-                                
+
                                 </p>
                             @endforeach
-                
-                            <a href="/products/{{ $product->slug }}" class="font-weight-bold">  {{ ucwords($product->product_name) }}</a> 
+
+                            <a href="/products/{{ $product->slug }}" class="font-weight-bold">  {{ ucwords($product->product_name) }}</a>
                 </div>
               <div class="px-2 font-weight-bold ">
                 <a href="/products/{{ $product->slug }}" class="product-price">GhS {{ number_format($product->base_price,2) }}</a>
@@ -101,20 +101,20 @@
             </div>
             </div>
       </div>
-     
+
       @empty
-          <div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"> 
+          <div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;">
             <h3>No product under this category. Please try again.</h3>
           </div>
       @endforelse
 
       {{  $products->links('pages.includes.paginate_style') }}
-      
+
     </div>
   </div>
 
-  
-    
+
+
   </div>
  </div>
 </section>
@@ -154,7 +154,7 @@
       <div class="row mt-4">
         <div class="col-12 text-center">
           <h3 class="wineproh1 ">All Exclusive  wine at your finger tips</h3>
-          
+
           <div class="col-12 text-center  mt-5">
             <h4 class="wine_wc">  <strong>Download our Mobile App</strong></h4>
             <p class="wine_wc">It's the fastest way to search for  the best wine and make a purchase</p>
@@ -173,9 +173,9 @@
         </div>
       </div>
 
-      <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt="">
+      {{-- <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block " alt="">
 
-      <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt="">
+      <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block" alt=""> --}}
 
       <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
 
@@ -189,7 +189,7 @@
  @include("pages.includes.footer-links")
  <!-- footer includes -->
 
- 
+
 
  <script>
   $(document).ready(function(){
@@ -211,7 +211,7 @@
     }
 
     $(document).on('click', '.pager-list', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
 
         $(document).scrollTop(100) // any value you need
 
@@ -219,16 +219,16 @@
         filter_data(page);
      });
 
-  
+
       // filter_data();
-  
+
       function filter_data(pn = 1)
       {
           $('.filter_data').html('<div id="loading" class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"></div>');
           //var page = pn;
           // var minimum_price = $('#hidden_minimum_price').val();
           // var maximum_price = $('#hidden_maximum_price').val();
-         
+
           var wines = get_filter('wines');
           var grapes = get_filter('grapes');
           var pairing = get_filter('pairs');
@@ -241,21 +241,21 @@
                // alert(data);
                 console.log(data);
                 if(data == ""){
-                
+
                     $('.filter_data').html('<div  class="col-12"  style="text-align: center;display: flex; align-items: center; justify-content: center;"> <h3>No product under this category. Please try again.</h3></div>');
 
                  } else {
-                  
-                  
+
+
                    $('.filter_data').html(data);
-                  
+
 
                  }
-                
+
               }
           });
       }
-  
+
       function get_filter(class_name)
       {
           var filter = [];
@@ -264,14 +264,14 @@
           });
           return filter;
       }
-  
+
       $('.common_selector').click(function(){
           filter_data();
       });
 
 
       // $('#price_range').change(function(){
-          
+
       //    filter_price = $(this).val();
       //    filter_data();
 
@@ -279,20 +279,20 @@
 
 
      //    $('#light_range').change(function(){
-          
+
       //    filter_light = $(this).val();
       //    filter_data();
 
       //  });
 
       //   $('#smooth_range').change(function(){
-          
+
       //    smooth_light = $(this).val();
        //   filter_data();
 
        // });
 
-    
+
 
       // $('.wishlist').click(function(){
       //     //filter_data();
@@ -300,7 +300,7 @@
       // });
 
       $(document).on('click', '.wishlist', function(event){
-        event.preventDefault(); 
+        event.preventDefault();
       //  alert("manan");
         // var page = $(this).attr('href');
         // console.log(page);
@@ -310,12 +310,12 @@
         // filter_data(page);
      });
 
-    
+
       // $('#price_range').slider(
-         
+
       //    alert("manan");
       // );
-  
+
       // $('#price_range').slider({
       //     range:true,
       //     min:1000,
@@ -330,7 +330,7 @@
       //         filter_data();
       //     }
       // });
-  
+
   });
   </script>
 

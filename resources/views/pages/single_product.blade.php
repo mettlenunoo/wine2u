@@ -22,7 +22,7 @@
             <div class="row ">
                 <div class="col-12 text-center">
                 <h1 class="sign_title wine2upc"> OUR PRODUCTS </h1>
-                
+
                     <!-- <p class="wine2upc ">
                         <span class="font-weight-light">|</span>
                         @if(!empty($tags))
@@ -76,7 +76,7 @@
                     </p>
                     @endforeach
 
-                    
+
 
                     <h3 class="font-weight-light mt-2">{{ ucwords($product->product_name) }}</h3>
                     <ul class="list-inline single-prd mt-2">
@@ -84,11 +84,11 @@
                         <li class="list-inline-item">
                             <div class="rating">
 
-                                <input type="radio" value="5" 
+                                <input type="radio" value="5"
                                     @if($product->review_summary->average_rating == 5) checked @endif >
                                 <label >☆</label>
 
-                                <input type="radio"  value="4" 
+                                <input type="radio"  value="4"
                                     @if($product->review_summary->average_rating >= 4 &&
                                 $product->review_summary->average_rating < 5 ) checked @endif>
                                 <label >☆</label>
@@ -171,11 +171,11 @@
                     </div>
 
                     {{--<div class="row">
-             
+
                <div class="col-12 col-md-12 col-lg-9">
                   <button type="submit" class="btn btn-prod btn-block" onclick="addToCart()" id="addbtn">Add to Cart</button>
                </div>
-               
+
             </div>--}}
 
                     <!-- award -->
@@ -281,7 +281,7 @@
                         </div>
                     </div>
                     <!--</div>-->
-                      
+
                     <div class="col-12">
                         <div class="row view_review"></div>
                     </div>
@@ -303,11 +303,11 @@
                         <ul class="list-inline">
                            <li class="list-inline-item">3.4</li>
                            <li class="list-inline-item">
-                              <div class="rating"> 
-                                 <input type="radio" name="ratingl5" value="5" id="ratingl5"><label for="ratingl5">☆</label> 
-                                 <input type="radio" name="ratingl4" value="4" id="ratingl4"><label for="ratingl4">☆</label> 
-                                 <input type="radio" name="ratingl3" value="3" id="ratingl3"><label for="ratingl3">☆</label> 
-                                 <input type="radio" name="ratingl2" value="2" id="ratingl2"><label for="ratingl2">☆</label> 
+                              <div class="rating">
+                                 <input type="radio" name="ratingl5" value="5" id="ratingl5"><label for="ratingl5">☆</label>
+                                 <input type="radio" name="ratingl4" value="4" id="ratingl4"><label for="ratingl4">☆</label>
+                                 <input type="radio" name="ratingl3" value="3" id="ratingl3"><label for="ratingl3">☆</label>
+                                 <input type="radio" name="ratingl2" value="2" id="ratingl2"><label for="ratingl2">☆</label>
                                  <input type="radio" name="ratingl1" value="1" id="ratingl1"><label for="ratingl1">☆</label>
                               </div>
                            </li>
@@ -330,7 +330,7 @@
                     <h5>Characteristics</h5>
                     <div class="row mt-5 ">
                         @if ( $product->light_switch )
-                        
+
                             <div class="col-12 mb-3">
                                 <div class="d-flex justify-content-between" for="lightBold">
                                     <p>Light </p>
@@ -398,13 +398,13 @@
         </div>
     </section>
 	<!-- Characteristics and Taste Notes -->
-	
+
 	<!-- Food Pairings -->
     @if(count($product->pairing) > 0)
 		<div class="py-md-5">
 			<div class="container">
 				<h5 class="sign_title mb-5">Food Parings </h5>
-				
+
 				@if(count($product->pairing) > 4)
 					<div class="fp-slider">
 						<button class="mr-2" id="fp-prev">
@@ -412,12 +412,12 @@
 						</button>
 						<div class="fp-slides mb-0">
 							@foreach ($product->pairing as $key => $pair)
-								<a 
-									href="/pairing/{{ $pair->blog_id }}" 
+								<a
+									href="/pairing/{{ $pair->blog_id }}"
 									class="fp-slide"
 								>
-									<img 
-										src="/images/{{ $pair->image }}" 
+									<img
+										src="/images/{{ $pair->image }}"
 										alt="{{ ucwords($pair->title) }}"
 									>
 									<p class="mb-1">{{ ucwords($pair->title) }}</p>
@@ -432,12 +432,12 @@
 					<div class="row">
 						@foreach ($product->pairing as $key => $pair)
 							<div class="col-lg-3 col-md-6 col-12 mb-4">
-								<a 
-									href="/pairing/{{ $pair->blog_id }}" 
+								<a
+									href="/pairing/{{ $pair->blog_id }}"
 									class="fp-slide mx-0"
 								>
-									<img 
-										src="/images/{{ $pair->image }}" 
+									<img
+										src="/images/{{ $pair->image }}"
 										alt="{{ ucwords($pair->title) }}"
 									>
 									<p class="mb-1">{{ ucwords($pair->title) }}</p>
@@ -453,10 +453,10 @@
     <!-- Learn More -->
     <div class="py-5">
         <div class="container">
-            <div class="row align-items-center">  
+            <div class="row align-items-center">
                 <div class="col-md-6 col-12 mb-4-mb-md-0 order-md-2">
                     <div class="lm-slider">
-                
+
                         @foreach($product->gallery as $key => $image)
 
                             <img src="/product_images/{{ $image->img }}" alt="">
@@ -612,15 +612,15 @@
                 </div>
                 <div class="col-md-6">
                     <div class="2col-img-container-fluid">
-                        
+
                         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
 
                             <div class="carousel-inner">
 
-                              
+
                                @foreach($product->gallery as $key => $image)
-                                   
+
                                     <div class="carousel-item  @if($key == 0)  active  @endif">
                                         <img src="/product_images/{{ $image->img }}" class="d-block w-100" alt="...">
                                     </div>
@@ -648,7 +648,7 @@
         </div>
     </section>
 	<!-- Reviews -->
-	
+
     <!-- Similar Products -->
     <section class="my-5 py-5">
         <div class="container-fluid container-w2u">
@@ -692,12 +692,12 @@
                                 >= 3 && $similarProduct->review_summary->average_rating < 4) checked @endif>
                                     <label >☆</label>
                                     <input type="radio" name="rating-{{ $similarProduct->id }}" value="2"
-                                        
+
                                         @if($similarProduct->review_summary->average_rating >= 2 &&
                                     $similarProduct->review_summary->average_rating < 3) checked @endif>
                                         <label >☆</label>
                                         <input type="radio" name="rating-{{ $similarProduct->id }}" value="1"
-                                            
+
                                             @if($similarProduct->review_summary->average_rating > 0 &&
                                         $similarProduct->review_summary->average_rating < 2) checked @endif>
                                             <label >☆</label>
@@ -775,10 +775,10 @@
                     </div>
                 </div>
             </div>
-            <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block "
+            {{-- <img src="/page_assets/img/grape.png" class="img-fluid grape  d-none d-md-none d-lg-block d-xl-block "
                 alt="">
             <img src="/page_assets/img/bottle.png" class="img-fluid bottle d-none d-md-none d-lg-block d-xl-block"
-                alt="">
+                alt=""> --}}
             <img src="/page_assets/img/Wine2U.svg" class="lefteffect " alt="">
         </div>
     </section>
@@ -836,11 +836,11 @@
                                         <label for="rating11">☆</label>
 
                                     </div>
-                                    {{-- <div class="rating"> 
-                           <input type="radio" name="rate" value="5" id="rating51" ><label for="rating51">☆</label> 
-                           <input type="radio" name="rate" value="4" id="rating41" ><label for="rating41">☆</label> 
-                           <input type="radio" name="rate" value="3" id="rating31" ><label for="rating31">☆</label> 
-                           <input type="radio" name="rate" value="2" id="rating21" ><label for="rating21">☆</label> 
+                                    {{-- <div class="rating">
+                           <input type="radio" name="rate" value="5" id="rating51" ><label for="rating51">☆</label>
+                           <input type="radio" name="rate" value="4" id="rating41" ><label for="rating41">☆</label>
+                           <input type="radio" name="rate" value="3" id="rating31" ><label for="rating31">☆</label>
+                           <input type="radio" name="rate" value="2" id="rating21" ><label for="rating21">☆</label>
                            <input type="radio" name="rate" value="1" id="rating11" ><label for="rating11">☆</label>
                         </div> --}}
                                 </li>
@@ -978,7 +978,7 @@
 
                 var rating = $("input[name=rate]:checked").val();
                 var comment = document.getElementById("rate_comment").value
-                // var comment = $("input[name=rate_comment]").val(); 
+                // var comment = $("input[name=rate_comment]").val();
                 var product_id = $('.product_id').val();
 
                 $.ajaxSetup({
