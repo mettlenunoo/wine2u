@@ -35,7 +35,7 @@
                 <img src="page_assets/img/landing-5.jpg" alt="Third slide">
                 <img src="page_assets/img/landing-7.jpg" alt="Fourth slide">
             </div>
-            <div class="overlay-light-black-two"></div>
+            <div class="overlay-light-black"></div>
             <div class="container p-relative">
                 <div class="mw-450 text-center">
                     <h1 class="mb-3 libre">
