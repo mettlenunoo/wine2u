@@ -20,7 +20,7 @@
     <div class="row ">
      <div class="col-12 text-center">
      <h1 class="sign_title wine2upc">Food Pairing</h1>
-     <p class="wine2upc ">Wine And Food Pairings Sugguestions</p>
+     <p class="wine2upc ">Wine And Food Pairing Sugguestions</p>
      </div>
     </div>
     <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
