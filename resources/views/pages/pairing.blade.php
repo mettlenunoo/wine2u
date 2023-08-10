@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
 
-  
+
    <!-- include navigation -->
    @include("pages.includes.nav-links")
    @include("pages.includes.navigation")
@@ -20,7 +20,7 @@
     <div class="row ">
      <div class="col-12 text-center">
      <h1 class="sign_title wine2upc">Food Pairing</h1>
-     <p class="wine2upc ">Combine the right food with the right wine to enhance both flavours</p>
+     <p class="wine2upc ">Wine And Food Pairings Sugguestions</p>
      </div>
     </div>
     <img src="/page_assets/img/Wine2Utopb.svg" class="lefteffecttop" alt="">
@@ -41,14 +41,14 @@
           @forelse ($pairings as $pairing)
 
             {{-- @foreach ($pair->subPairing as $pairing) --}}
-            
+
                 <div class="col-12 col-md-4 px-md-4 mb-4">
                     <a href="/blog/{{$pairing->blog_id}} ">
                         <img src="/images/{{ $pairing->image }}" class="bolg_img mb-2" alt="{{ ucwords($pairing->title)}}">
                         <p class="f_titile_p2 mb-0 py-3"> {{ ucwords($pairing->title)}} </p>
                         {{-- <p class="f_titile_p3"> {{ strwords($blog->content, 150) }} </p> --}}
                     </a>
-               
+
                 </div>
 
             {{-- @endforeach --}}
@@ -58,7 +58,7 @@
             <div class="col-12 col-md-12 px-md-12 mb-4">
                 <h5> No Content, Please try again </h5>
             </div>
-              
+
           @endforelse
 
 
@@ -67,7 +67,7 @@
          </div>
 
 
-        
+
        </div>
      </div>
    </section>
