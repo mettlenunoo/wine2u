@@ -1147,13 +1147,6 @@ class publicController extends Controller
                   return view('pages.pairing',compact('pairings'));
     }
 
-    public function food_pairing(){
-
-        $pairings = FoodPairings::WHERE('country_id','=',$this->shopId)
-                    ->paginate('12');
-
-                  return view('pages.food-pairing',compact('pairings'));
-    }
 
     public function single_food_pairing($id)
     {
