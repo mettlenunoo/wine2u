@@ -1,0 +1,324 @@
+/* --------------------------------------
+  Checkout Styles
+  -------------------------------------- */
+  .modal-button {
+  	padding: 15px 20px;
+  	height: 50px;
+  	color: #333;
+  	font-size: 14px;
+  	border: 1px solid #e3e3e3;
+  	background: transparent;
+  	width: 100%;
+  }
+
+  #myModal .modal-dialog {
+  	margin-top: 20vh;
+  }
+
+  #myModal .modal-content {
+  	border-radius: 0px;
+  	border: none;
+  }
+
+  #myModal .modal-body {
+  	padding: 20px 40px;
+  }
+
+  #myModal .modal-body i {
+  	position: absolute;
+  	cursor: pointer;
+  	right: 20px;
+  	top: 10px;
+  }
+
+  #myModal .modal-body h2 {
+  	font-weight: 800;
+  	margin-bottom: 25px;
+  }
+
+  #myModal .modal-body .form-control {
+  	border-radius: 0px;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  	height: 40px;
+  	margin-bottom:5px;
+  }
+
+  #myModal .modal-body .text-danger {
+  	color: red;
+  	margin-bottom: 30px;
+  	font-weight: 600;
+  }
+
+  #myModal .modal-body .btn {
+  	padding: 10px 40px;
+  	border: none;
+  	border-radius: 0px;
+  }
+
+  .checkout {
+  	padding-top: 40px;
+  	padding-bottom: 80px;
+  }
+
+  .checkout .panel {
+  	border-radius: 0px;
+  	box-shadow: none;
+  }
+
+  .checkout .panel .panel-body {
+  	background: #f8f8f8;
+  	padding-top: 5px;
+  	padding-bottom: 5px;
+  	border: 1px solid #f0f0f0;
+  	border-bottom: 1px solid #f0f0f0;
+  }
+
+  .checkout .panel .panel-body a {
+  	color: #333 !important;
+  	text-decoration: none !important;
+  }
+
+  .edit {
+  	padding: 10px 20px;
+  	border: 1px solid #f0f0f0;
+  	background: #fff;
+  	font-size: 14px;
+  }
+
+  .smally {
+  	font-size: 13px;
+  	margin-top: 10px;
+  }
+
+  .checkout .panel .panel-footer {
+  	border: 1px solid #f0f0f0;
+  	border-top: none;
+  	border-radius: 0px;
+  	background: transparent;
+  	padding: 0px;
+  	max-height: 380px;
+  	overflow-y: auto;
+  }
+
+  .checkout .panel .panel-footer .items {
+  	padding-left: 0px;
+  	list-style: none;
+  	margin: none;
+  }
+
+  .checkout .panel .panel-footer .items li {
+  	padding: 15px;
+  	border-bottom: 1px solid #f0f0f0;
+  }
+
+  .checkout .panel .panel-footer .items li:last-child {
+  	border: none;
+  }
+
+  .checkout .panel .panel-footer .items li img{
+  	height: 90px;
+  	width: 70px;
+  	object-fit: cover;
+  	float: left;
+  	margin-right: 10px;
+  }
+
+  .checkout .panel .panel-footer .items li .item-descr {
+  	display: table;
+  	min-height: 100px;
+  }
+
+  .checkout .panel .panel-footer .items li .item-descr h4 {
+  	margin-top: 0px;
+  	margin-bottom: 5px;
+  	font-size: 16px;
+  }
+
+  .checkout .panel .panel-footer .items li .item-descr p {
+  	margin-bottom: 5px;
+  }
+
+  .checkout .panel .panel-heading {
+  	background: #545454;
+  	color: #fff;
+  	padding-top: 15px;
+  	padding-bottom: 15px;
+  	border: 1px solid #545454;
+  	border-radius: 0px;
+  }
+
+  .checkout .panel .panel-heading h3 {
+  	margin: 0px;
+  	font-size: 18px;
+  	font-weight: 400;
+  }
+
+  .checkout .panel-1 .panel-body {
+  	padding: 15px;
+  }
+
+  .checkout .panel-1 .panel-body h3 {
+  	margin-top: 5px;
+  	margin-bottom: 5px;
+  	font-size: 22px;
+  	font-weight: 300;
+  }
+
+  .checkout .panel-1 .panel-body .tt {
+  	font-size: 20px;
+  	margin-top: 5px;
+  }
+
+  .checkout .panel-1 .panel-footer {
+  	padding: 15px;
+  }
+
+  .checkout .panel-1 .panel-footer p{
+  	margin-bottom: 0px;
+  }
+
+  .panel-with-form .panel-body h4 {
+  	margin: 0px;
+  	font-size: 14px;
+  	font-weight: 600;
+  	margin-bottom: 20px;
+  }
+
+  .panel-with-form .panel-body label {
+  	font-size: 12px;
+  }
+
+  .panel-with-form .panel-body .form-control {
+  	background: #fff;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  	height: 40px;
+  	border-radius: 0px;
+  	color: #333;
+  	font-weight: 400;
+  	border: 1px solid #f0f0f0;
+  	box-shadow: none;
+  }
+
+
+  .form-control2 {
+  	background: #fff;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  	height: 40px;
+  	border-radius: 0px;
+  	color: #333;
+  	font-weight: 400;
+  	border: 1px solid #f0f0f0;
+  	box-shadow: none;
+  }
+
+  .form-control2:focus {
+  	border-color: #f8f8f8;
+  	outline: 0;
+  	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+  	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0);
+  }
+
+
+  .fifteenp {
+  	padding-left:  15px;
+  	padding-right:  15px;
+  }
+
+  .pay-opt {
+  	background: #fff;
+  	padding: 20px 20px;
+  	border: 1px solid #f0f0f0;
+  	width: 48.75%;
+  	text-align: left;
+  	box-sizing: border-box;
+  	margin-bottom: 10px;
+  	height:70px;
+  	overflow: hidden;
+  	display: inline-block;
+  }
+
+  .pay-opt input {
+  	margin-right: 20px;
+  	margin-top: 0px;
+  }
+
+  .pay-opt label {
+  	font-size: 16px;
+  	font-weight: 400;
+  	cursor: pointer;
+  }
+/*
+.custom-select {
+    border-radius: 0.01rem;
+    background-color: #f6f6f6;
+    padding: 0.675rem 0.75rem;
+    border: 1px solid #f6f6f6;
+    height: auto;
+    font-size: 14px;
+    border-radius: 1px !important: 
+    }*/
+
+    .conf {
+    	background: #545454;
+    	padding: 15px 30px;
+    	border: 1px solid #545454;
+    	color: #fff;
+    	width: 100%;
+    
+    }
+
+    @media(max-width: 767px) {
+    	.pay-opt {
+    		width: 100%;
+    		margin-bottom: 20px;
+    	}
+
+    	.pay-opt:nth-child(2) {
+    		margin-bottom: 0px;
+    	}
+    }
+
+
+
+    
+    @media (min-width: 575.98px) {
+    	.showonphoneonly {
+    		display: none;
+    	}
+
+    }
+
+
+
+    @media (max-width: 575.98px) {
+    	.showonphoneonly {
+    		display: block;
+    	}
+
+    }
+
+
+ 
+    @media (min-width: 575.98px) {
+    	.showoPC{
+    		display: block;
+    	}
+
+    }
+
+
+
+    @media (max-width: 575.98px) {
+    	.showoPC {
+    		display: none;
+    	}
+
+    }
+
+
+
+
+

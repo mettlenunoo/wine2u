@@ -1,66 +1,67 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use DB;
 // use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Request;
-use Newsletter;
-use Carbon\Carbon;
-use App\Category;
-use App\Product;
-use App\Customer;
-use Session;
-use App\Attribute;
-use App\ProductGallery;
-use App\VariableProduct;
-use App\shop;
-use App\WishList;
-use App\Wine;
-use App\Offer;
-use App\Pairing;
-use App\Grape;
-use App\Country;
-use App\Slider;
-use App\Order;
-use App\Coupon;
-use App\Shippingrate;
-use App\Shipping;
-use App\OrderProduct;
-use App\Shippingcountry;
-use App\Paymentmethod;
-use App\Blog;
-use App\Blogcategory;
-use Validator;
 use Auth;
 use Cookie;
-use DB;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
-use App\Mail\TestEmail;
-use App\Review;
+use Session;
+use App\Blog;
+use App\shop;
+use App\Wine;
 use Paystack;
+use App\Grape;
+use App\Offer;
+use App\Order;
+use Validator;
+use App\Coupon;
+use App\Review;
+use App\Slider;
+use Newsletter;
+use App\Country;
+use App\Pairing;
+use App\Product;
+use App\Category;
+use App\Customer;
+use App\Shipping;
+use App\WishList;
+use App\Attribute;
+use Carbon\Carbon;
+use App\Blogcategory;
+use App\OrderProduct;
+use App\Shippingrate;
+use App\Paymentmethod;
+use GuzzleHttp\Client;
+use App\Mail\TestEmail;
+use App\ProductGallery;
+use App\Shippingcountry;
+use App\VariableProduct;
+use App\Models\FoodPairings;
+use Illuminate\Http\Request;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class publicController extends Controller
 {
-     
+
      public $shopId = 1;
      public $shop_currency ;
-    
+
 
      public function __construct()
      {
-       
+
         // if(Cookie::get('age') == false){
 
         // 	redirect()->route('age-verification')->send();
         // 	return redirect('/age-verification');
         // }
-        
+
      }
-     
+
     public function index()
     {
 
@@ -114,25 +115,23 @@ class publicController extends Controller
                             ->WHERE('featured',  "Home")
                             ->WHERE('publish', '<=', $curDateTime)
                             ->WHERE('country_id', '=', $this->shopId)
-                            ->whereHas('categories', function ($query) use ($cat_id) {
-                                $query->where('category_id', $cat_id);
-                            })
+                            // ->where('category_id', $cat_id)
                             ->orderBy('publish', 'ASC')
                             ->take(8)
                             ->get();
-      // dd($bestSales);
+    //   dd($cat_id);
       return view('pages.index',compact('newArrivals','bestSales','topRatedProducts','featuredProducts','featuredCategory'));
 
     }
 
-    
+
     public function products()
     {
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
-        ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
+        ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery', 'foodpairing']);
 
-        
+
         if(isset($_GET['price'])){
 
             $price = $_GET['price'];
@@ -140,7 +139,7 @@ class publicController extends Controller
             $this->SearchPagination("price");
 
         }
-        
+
         // PAGINATION
         if(isset($_GET['pn'])){
 
@@ -152,7 +151,7 @@ class publicController extends Controller
         }
 
 
-        if(isset($_GET['fetch_data']) || isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category'])){
+        if(isset($_GET['fetch_data']) || isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category']) || isset($_GET['food_pairing'])){
 
             if(isset($_GET['wine'])){
 
@@ -166,10 +165,10 @@ class publicController extends Controller
                 $products = $products->whereHas('wines', function ($query) use ($wineIDs) {
                     $query->whereIN('wine_id', $wineIDs);
                  });
-                
+
                 $this->SearchPagination("wine");
 
-                // dd($_GET['wine']); 
+                // dd($_GET['wine']);
             }
 
             if(isset($_GET['offers'])){
@@ -247,6 +246,20 @@ class publicController extends Controller
 
             }
 
+            if(isset($_GET['foodpairing'])){
+
+                $getPairingID[] = $_GET['foodpairing'];
+                $pairings = FoodPairings::whereIN('slug',$getPairingID)->get();
+                $pairIDs = $pairings->id;
+
+                $products = $products->whereHas('pairing', function ($query) use ($pairIDs) {
+                    $query->whereIN('pairing_id', $pairIDs);
+                 });
+
+                $this->SearchPagination("food_pairings");
+
+            }
+
 
         }
 
@@ -261,7 +274,7 @@ class publicController extends Controller
 
        // dd($products);
 
-        
+
     }
 
     public function search()
@@ -285,13 +298,13 @@ class publicController extends Controller
             ->paginate(12)
             ->setPath('/search');
             !empty($this->link) ? $products = $products->appends($this->link) : "";
-          
+
             //  dd($products);
             return view('pages.search',compact('products','keyword'));
 
         // }
-      
-      
+
+
     }
 
 
@@ -319,7 +332,7 @@ class publicController extends Controller
                                 // foreach ($product->categories as $category){
                                 //     $items .= '<p class="small mb-1">'.$category->title.'</p>';
                                 // }
-                                
+
                                 // foreach ($product->countryRegion as $region){
                                 //     $items .= '<p class="small mb-1">'.ucwords($region->name) .' <span> | </span>';
                                 //         foreach ($region->countryFrRegion as $country){
@@ -328,7 +341,7 @@ class publicController extends Controller
                                 //     $items .='</p>';
                                 // }
 
-                             $items .= 
+                             $items .=
                              '</div>
                           </a>';
             }
@@ -343,7 +356,7 @@ class publicController extends Controller
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery']);
-        
+
         // if(isset($_GET['price'])){
 
         //     $price = $_GET['price'];
@@ -396,7 +409,7 @@ class publicController extends Controller
                 $products = $products->whereHas('wines', function ($query) use ($wineIDs) {
                     $query->whereIN('wine_id', $wineIDs);
                  });
-                
+
                 $this->SearchPagination("wine");
 
             }
@@ -488,13 +501,13 @@ class publicController extends Controller
 
         $items .= '<div class="col-6 col-md-6 mb-4 col-lg-4">
           <div class="productmain">
-			<a href="/products/'.$product->slug.'" class="product-img"> 
+			<a href="/products/'.$product->slug.'" class="product-img">
 				<img src="/product_images/'.$product->img1.'"  class="as-background" alt="'.ucwords($product->product_name).'" height="100%">
 			</a>
 
               <div class="bd-highlight px-2 pt-2">
 				<p class="mb-0 product-small prd-brand">'. ucwords($product->product_name) .'</p>
-				<div class="rating"> 
+				<div class="rating">
 					<input type="radio" name="rating-'.$product->id.'" value="5" id="5-'.$product->id.'"'; if($product->review_summary->average_rating == 5 ){ $items .= 'checked'; } $items .= '>'.
 					'<label for="5-'. $product->id .'">☆</label>
 					<input type="radio" name="rating-{{ $product->id }}" value="4" id="4-'.$product->id .'"'; if($product->review_summary->average_rating >= 4 && $product->review_summary->average_rating < 5){ $items .= 'checked'; } $items .= '>'.
@@ -518,11 +531,11 @@ class publicController extends Controller
                         foreach ($region->countryFrRegion as $country){
                             $items .=  '<a href="/country/'. $country->slug .'">'.ucwords($country->name) .'</a>';
                         }
-                        
+
                         $items .= '</p>';
                     }
-				
-                    $items .=' <a href="/products/'.$product->slug.'" class="font-weight-bold"> '. ucwords($product->product_name) .'</a> 
+
+                    $items .=' <a href="/products/'.$product->slug.'" class="font-weight-bold"> '. ucwords($product->product_name) .'</a>
 				</div>
                 <div class="px-2 font-weight-bold ">
                   <a href="/products/'. $product->slug .'" class="product-price">GhS '. number_format($product->base_price,2) .'</a>
@@ -530,7 +543,7 @@ class publicController extends Controller
               </div>
               </div>
         </div>';
-    
+
       }
 
     //   $items .= '<div class="col-12 text-center"><ul class="pagination pagination-md text-center">'.
@@ -548,10 +561,10 @@ class publicController extends Controller
 
        // dd($products);
 
-        
+
     }
 
-    public function single_products($slug) 
+    public function single_products($slug)
     {
 
         $product = Product::WHERE('products.country_id', '=', $this->shopId)
@@ -581,7 +594,7 @@ class publicController extends Controller
             }
 
         }
-       
+
 
         $winesIds = $product->wines->pluck('id')->toArray();
 
@@ -592,7 +605,7 @@ class publicController extends Controller
             ->get();
 
        // dd($product->ReviewSummary);
-                    
+
         return view('pages.single_product',compact('product','review','wishList','similarProducts'));
 
 
@@ -607,16 +620,16 @@ class publicController extends Controller
 
             if($request->input('toggle') == 0){
 
-                $customer->wishListProduct()->syncWithoutDetaching([ 
+                $customer->wishListProduct()->syncWithoutDetaching([
                     $request->input('productId')
                 ]);
-    
+
             }else{
 
                 $wishList = WishList::WHERE('product_id','=', $request->input('productId'))->WHERE('customer_id','=',auth('customer')->user()->id)->delete();
 
             }
-           
+
             return 'success';
 
         }else{
@@ -625,8 +638,8 @@ class publicController extends Controller
         }
     }
 
-    public function menu($view) 
-    {   
+    public function menu($view)
+    {
         $shop = shop::WHERE('id','=',$this->shopId)->first();
         $categories = Category::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->get();
         $blogCategories = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->get();
@@ -636,7 +649,7 @@ class publicController extends Controller
         $pairs = Pairing::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('subPairing')->get();
         $countries = Country::WHERE('country_id','=',$this->shopId)->WHERE('parent', 0)->with('regions')->get();
 
-        
+
         $menu = (object) [
             "shop" => $shop,
             "categories" => $categories,
@@ -655,44 +668,44 @@ class publicController extends Controller
 
     public function landing()
     {
-        
+
         return view('pages.landing');
 
     }
 
     public function about()
     {
-        
+
         return view('pages.about');
 
     }
 
     public function thankyou()
     {
-        
+
         session()->forget(['cart', 'coupon']);
-        
+
         return view('pages.thankyou');
 
     }
 
     public function user_signup()
     {
-        
+
         return view('pages.signup');
 
     }
 
     public function user_sign_in()
     {
-        
+
         return view('pages.login');
 
     }
 
     public function userRegister(Request $request)
     {
-      
+
         $this->validate($request, [
 
                 'fname' => ['required', 'string', 'max:255'],
@@ -707,14 +720,14 @@ class publicController extends Controller
                     'regex:/[A-Z]/',      // must contain at least one uppercase letter
                     'regex:/[0-9]/',      // must contain at least one digit
                     'regex:/[@$!%*#?&]/', // must contain a special character
-                    
+
                 ],
             ],
 
-            [   
+            [
                 'password.regex' => 'Your password must contain at least one uppercase,one number and one special character -for example: $, #, @, !,%,^,&,*,(,) ',
             ]
-    
+
         );
 
         if($request->input('referral') == ""){
@@ -787,10 +800,10 @@ class publicController extends Controller
         $customer->zip = $request->input('zip');
         $customer->gender = $request->input('gender');
         $customer->dob = $request->input('dob');
-    
+
         // SAVE
         $customer->save();
-        
+
         if( $customer ){
 
             return ['message' => 'Success'];
@@ -806,36 +819,36 @@ class publicController extends Controller
 
     public function image_upload(Request $request)
     {
- 
-        $validator = Validator::make($request->all(), [ 
+
+        $validator = Validator::make($request->all(), [
               //'user_id' => 'required',
               'file'  => 'required|mimes:png,jpg|max:2048',
-        ]);   
- 
-        if ($validator->fails()) {          
-            return response()->json(['error'=>$validator->errors()], 401);                        
-         }  
- 
-  
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+         }
+
+
         if ($files = $request->file('file')) {
-             
+
             //store file into document folder
             $file = $request->file->store('public/user_pic');
- 
+
             //store your file into database
             $document = Customer::find(auth()->user()->id);
             $document->user_profile_image = $file;
             $document->save();
-              
+
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
                 "file" => $file
             ]);
-  
+
         }
- 
-  
+
+
     }
 
     public function changepassword(Request $request)
@@ -851,7 +864,7 @@ class publicController extends Controller
                 'regex:/[0-9]/',      // must contain at least one digit
                 'regex:/[@$!%*#?&]/', // must contain a special character
             ],
-            [   
+            [
                 'password.regex' => 'Your password must contain at least one uppercase,one number and one special character -for example: $, #, @, !,%,^,&,*,(,) ',
             ],
         ]);
@@ -859,7 +872,7 @@ class publicController extends Controller
        $email = auth("customer")->user()->email;
 
         if (Auth::guard('customer')->attempt(['email' => $email, 'password' => $request->currentpassword], $request->get('remember'))) {
-            
+
             $id = auth("customer")->user()->id;
             $customer = Customer::find($id);
             $customer->password = Hash::make($request->input('password'));
@@ -868,7 +881,7 @@ class publicController extends Controller
             return 'success';
 
         }else{
-            
+
             return 'Incorrect Current Password';
         }
 
@@ -897,8 +910,8 @@ class publicController extends Controller
         }
 
         return redirect()->intended('/account');
-           
-        
+
+
     }
 
     // cart
@@ -919,13 +932,13 @@ class publicController extends Controller
             $price =  "GHS ".number_format($salesPrice,2). '<br>'.
             '<strike> GHS '.number_format($regularPrice,2).'</strike>';
         }
-     
+
        for ($i = 1; $i <= $VariableProd['quantity']; $i++){
         $quantities = $quantities.'<option value="'.$i.'" >'.$i.'</option>';
        }
-      
+
        return array($price,$quantities,$sku);
-      
+
     }
 
 
@@ -933,7 +946,7 @@ class publicController extends Controller
     {
 
         $VariableProduct = VariableProduct::find($id);
-        $productId = $VariableProduct->product_id; 
+        $productId = $VariableProduct->product_id;
         $attributeId = $VariableProduct->attribute_id;
         if($VariableProduct->sale_price > 0){
             $price = $VariableProduct->sale_price;
@@ -942,66 +955,66 @@ class publicController extends Controller
         }
         $product = Product::find($productId);
         $attributeName = Attribute::find($attributeId);
-       
+
         // for cart page
         $productPrice = 0;
-        
+
         $i = 0;
         //$oldCart = Session::has('cart') ? Session::get('cart') : null;
-        
+
         if(session()->get('cart')){
-        
-    
+
+
             $wasFound = false;
             $cartProducts =  session()->get('cart');
-    
+
               // RUN IF THE CART AT LEAST ONE ITEM IN IT
             foreach($cartProducts as $each_item){
                 $i++;
-                
+
                 if($each_item['productAttrId'] == $attributeId && $each_item['productId'] == $product->id && $each_item['variableProductId'] == $id  ){
-    
-                   
+
+
                array_splice($cartProducts, $i-1,1,array(array("productId" => $product->id, "productImage" => $product->img1, "productName" => $product->product_name, "productAttribute" => $attributeName->title, "productAttrId" => $attributeId,"productPrice" => $price, "productWeight" => $VariableProduct->weight,"variableProductId" => $VariableProduct->id, "quantity" => $qty, 'totalQty' => $VariableProduct->quantity)));
-    
+
                Session::put('cart', $cartProducts);
-    
-               // FOR CART PAGE 
-                
+
+               // FOR CART PAGE
+
                $productPrice = $qty  *  $price;
-    
+
                $wasFound = true;
                  }
              }
-    
+
              if($wasFound == false){
-    
+
                  session()->push('cart', array("productId" => $product->id, "productImage" => $product->img1, "productName" => $product->product_name, "productAttribute" => $attributeName->title, "productAttrId" => $attributeId,"productPrice" => $price, "productWeight" => $VariableProduct->weight,"variableProductId" => $VariableProduct->id,"quantity" => $qty, 'totalQty' => $VariableProduct->quantity));
-          
+
              }
-             
+
       // return var_dump(session()->get('cart'));
-    
+
        }else{
-          
+
         session()->put('cart', array(0 => array("productId" => $product->id, "productImage" => $product->img1, "productName" => $product->product_name, "productAttribute" => $attributeName->title, "productAttrId" => $attributeId,"productPrice" => $price, "productWeight" => $VariableProduct->weight,"variableProductId" => $VariableProduct->id, "quantity" => $qty, 'totalQty' => $VariableProduct->quantity)));
-         
+
        }
-    
+
             $items = "";
           //  $totalQty = count(session()->get('cart'));
             $totalQty = 0.0;
             $totalAmount = 0.0;
-    
+
             foreach (session()->get('cart') as $key => $item){
-    
+
                 $url = url("product_images/".$item['productImage']);
                 $totalPrice = $item['productPrice'] * $item['quantity'];
                 $totalQty = $totalQty + $item['quantity'];
                 $totalAmount = $totalAmount + $totalPrice;
 
 
-                $items = $items.' 
+                $items = $items.'
                 <div class="row" id="'.$key.'_cartPage">
                     <div class="col-3">
                     <img src="'.$url.'" class="img-fluid cartimage" alt="">
@@ -1013,15 +1026,15 @@ class publicController extends Controller
                     </div>
                     <div class="col-2 text-right">
                     <p class="fot-titile"> GHS <span>'.number_format($totalPrice,2).'</span></p>
-                    
+
                     <small style="cursor: pointer;" onclick="deleteCartPage('.$key.')">Remove</small>
-                    
+
                     </div>
                     <div class="col-12">
                     <hr>
                     </div>
                 </div>';
-                
+
             }
 
             $subTotal = $totalAmount;
@@ -1030,7 +1043,7 @@ class publicController extends Controller
 
             if(session()->has('coupon')){
 
-            
+
                 if(session()->get('coupon')['type'] == "percentage"){
 
                     $discount = (session()->get('coupon')['discount'] / 100);
@@ -1039,19 +1052,19 @@ class publicController extends Controller
                 }elseif (session()->get('coupon')['type'] == "fixed") {
 
                     $discount = session()->get('coupon')['discount'];
-        
+
                 }
 
                 $totalAmount = $totalAmount - $discountAmt;
 
             }
-    
+
         return array($totalQty, number_format($subTotal,2), number_format($totalAmount,2), number_format($productPrice,2), number_format($discountAmt,2),$items);
-       
+
     }
 
     public function blog()
-    {       
+    {
             $today = now();
 
             // Featured Blog
@@ -1070,7 +1083,7 @@ class publicController extends Controller
 
             // SEARCH
             isset($_GET['search']) ? $blogs = $blogs->search($_GET['search']) : "";
-            
+
             // PAGINATION
             if(isset($_GET['pn'])){
 
@@ -1102,7 +1115,7 @@ class publicController extends Controller
             ->setPath('/blog');
             !empty($this->link) ? $blogs = $blogs->appends($this->link) : "";
 
-         
+
             //dd($blogs);
             return view('pages.blog',compact('blogs','featured'));
 
@@ -1115,7 +1128,7 @@ class publicController extends Controller
     {
 
         $categories = Blogcategory::WHERE('parent', 0)->WHERE('country_id','=',$this->shopId)->with('subCategories')->paginate("15");
-    
+
         return response()->json($categories, 200);
 
     }
@@ -1129,7 +1142,7 @@ class publicController extends Controller
         if($blog->type == "Video" || $blog->video != "" ){
 
             return view('pages.single-blog2',compact('blog','relatatedBlog'));
-            
+
         }else{
 
             return view('pages.single-blog',compact('blog','relatatedBlog'));
@@ -1141,11 +1154,29 @@ class publicController extends Controller
     public function pairing(){
 
         $pairings = Pairing::WHERE('country_id','=',$this->shopId)
-                    ->WHERE('parent',"!=", 0)
+                    ->WHERE('parent',"!=", 0)->WHERE('show_on_page','=','Yes')
                     //   ->with('subPairing')
                   ->paginate('12');
 
                   return view('pages.pairing',compact('pairings'));
+    }
+
+    public function food_pairing(){
+
+        $pairings = FoodPairings::WHERE('country_id','=',$this->shopId)
+                    ->paginate('12');
+
+                  return view('pages.food-pairing',compact('pairings'));
+    }
+
+    public function single_food_pairing($id)
+    {
+
+        $blog = Blog::WHERE('id', $id)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->with('categories')->firstOrFail();
+        $relatatedBlog = Blog::WHERE('id','!=', $id)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->orderBy('created_at', 'DESC')->with('categories')->take(3)->get();
+
+        return view('pages.single-blog',compact('blog','relatatedBlog'));
+
     }
 
     public function single_pairing($id)
@@ -1155,7 +1186,7 @@ class publicController extends Controller
         $relatatedBlog = Blog::WHERE('id','!=', $id)->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $this->shopId)->orderBy('created_at', 'DESC')->with('categories')->take(3)->get();
 
         return view('pages.single-blog',compact('blog','relatatedBlog'));
-     
+
     }
 
 
@@ -1203,7 +1234,7 @@ class publicController extends Controller
         //     , 200);
 
 	}
-	
+
 	// Videos
 	public function allVideos() {
 		return view('pages.videos');
@@ -1215,12 +1246,12 @@ class publicController extends Controller
 
     // pagination filter
     private function SearchPagination($parms)
-    { 
+    {
         if($_GET[$parms]){
 
             empty($this->link) ? $this->link = array($parms => $_GET[$parms]) : array_push($this->link, [$parms => $_GET[$parms]]);
             return $_GET[$parms];
-            
+
         } else {
 
             return "";
@@ -1250,12 +1281,12 @@ class publicController extends Controller
               $totalQty = 0;
               $totalAmount = 0;
             foreach (session()->get('cart') as $key => $item){
-                
+
                 $url = url("product_images/".$item['productImage']);
                 $totalPrice = $item['productPrice'] * $item['quantity'];
                 $totalQty = $totalQty + $item['quantity'];
                 $totalAmount = $totalAmount + $totalPrice;
-    
+
                 $items = $items.'
                 <div class="row" id="'.$key.'_cartPage">
                     <div class="col-3">
@@ -1268,9 +1299,9 @@ class publicController extends Controller
                     </div>
                     <div class="col-2 text-right">
                     <p class="fot-titile"> GHS <span>'.number_format($totalPrice,2).'</span></p>
-                    
+
                     <small style="cursor: pointer;" onclick="deleteCartPage('.$key.')">Remove</small>
-                    
+
                     </div>
                     <div class="col-12">
                     <hr>
@@ -1292,10 +1323,10 @@ class publicController extends Controller
 
         if($customer){
 
-            $customer->product()->syncWithoutDetaching([ 
+            $customer->product()->syncWithoutDetaching([
                 $request->input('product_id') => ['rating' => $request->input('rating'), 'comment' => $request->input('comment')],
             ]);
-            
+
             $message = "Success";
             return  $message;
 
@@ -1304,7 +1335,7 @@ class publicController extends Controller
             $message = "Error";
             return  $message;
         }
-    
+
     }
 
     public function reviews(){
@@ -1321,7 +1352,7 @@ class publicController extends Controller
                 $output = "";
                 foreach ($reviews as $review){
 
-                $output .=' 
+                $output .='
                 <div class="col-12 col-md-12 pr-md-1 mb-4">
                 <div class="row centerit mb-3">
                     <div class="col-9">
@@ -1336,7 +1367,7 @@ class publicController extends Controller
                             <ul class="list-inline">
                                 <li class="list-inline-item">'.number_format($review->rating,1).' </li>
                                 <li class="list-inline-item">
-                                    <div class="rating"> 
+                                    <div class="rating">
 
                                         <input type="radio" name="rating-'.$review->customer_id .'" value="5" '; if($review->rating == 5){ $output .='checked'; } $output .='>
                                         <label >☆</label>
@@ -1357,13 +1388,13 @@ class publicController extends Controller
                     </div>
                     <div class="col-3 text-right">
                         '. date('d M, Y', strtotime($review->created_at)) .'
-                        
+
                     </div>
                 </div>
                 <p> '.$review->comment .' </p>
                 </div>';
-            
-                
+
+
                 }
                 $btn = "";
                 $btn .= $reviews->links('pages.includes.loadmore');
@@ -1420,14 +1451,14 @@ class publicController extends Controller
               $coupon = Coupon::WHERE('code',$code)->WHERE('valid_date','<=',$today)->WHERE('end_date','>=',$today)->WHERE('status','=','Yes')->WHERE('usage','>',0)->first();
 
               if(!$coupon){
-      
+
                 return [
                     'type' => 'error',
                     'message' => 'Invalid Coupon Code. Please try again.'.$code
                 ];
-      
+
               }else{
-                   
+
                   if($coupon->usage > $coupon->total_used){
                         // check coupon Type
                         if($coupon->type == "fixed"){
@@ -1440,16 +1471,16 @@ class publicController extends Controller
                           $type = "shipping";
                           $discountAmt = 0.0;
                         }
-      
+
                           // check coupon Type
                           if($coupon->t_type == "fixed"){
                               $tips_value = $coupon->t_amt;
-                             
+
                           }elseif($coupon->t_type == "percentage"){
                               $tips_value = $coupon->t_percent_off;
-                             
+
                           }
-                          
+
                           $couponObj = (object) [
                             'id' => $coupon->id,
                             'code' => $coupon->code,
@@ -1461,22 +1492,22 @@ class publicController extends Controller
                             // 'f_email' =>  $coupon->f_email
                           ];
                           session()->put($type, $couponObj);
-                
+
                         return [
 
                             'type' => 'success',
                             'message' => 'Coupon has been applied.',
                             'discount' => $discountAmt
                         ];
-          
-      
+
+
                   }else{
-                        
+
                         return [
                             'type' => 'error',
                             'message' => 'Coupon Code has Exhausted. Please try again.'
                         ];
-      
+
                   }
               }
     }
@@ -1491,7 +1522,7 @@ class publicController extends Controller
 
             $weight = session()->get('weight');
             $rates = Shippingrate::WHERE('country_id','=', $this->shopId)->WHERE('kg','>=',$weight)->first();
-            
+
             if(!empty($rates)){
 
                 if($zone == 1){
@@ -1522,7 +1553,7 @@ class publicController extends Controller
 
     private function cart_calculation()
     {
-            
+
             $totalAmount = 00;
             $weight = 0.00;
             $tax  = 0.0;
@@ -1591,9 +1622,9 @@ class publicController extends Controller
 
             return $calculation;
     }
-    
+
     public function checkout_store(Request $request)
-    {            
+    {
                 if(session()->get('cart') == null){
 
                     return back()->with('error','Add a product to your cart. Please try again.');
@@ -1604,16 +1635,16 @@ class publicController extends Controller
                 $customer = Customer::updateOrCreate(
                     ['email' => $request->input('billingemail')],
                     [
-                        'fname' => $request->input('billingfname'), 
+                        'fname' => $request->input('billingfname'),
                         'lname' => $request->input('billingsname'),
-                        'phone' => $request->input('billingpnumber'), 
+                        'phone' => $request->input('billingpnumber'),
                         'country' => $request->input('billingcountry'),
-                        'address' => $request->input('billingaddress'), 
-                        'apartment' => $request->input('billingapartment'), 
+                        'address' => $request->input('billingaddress'),
+                        'apartment' => $request->input('billingapartment'),
                         'city' => $request->input('billingcity'),
-                        'state' => $request->input('billingstate'), 
+                        'state' => $request->input('billingstate'),
                         'zip' => $request->input('billingzipcode'),
-                        'remember_token' => str_slug(Hash::make($request->input('billingemail'))).time(), 
+                        'remember_token' => str_slug(Hash::make($request->input('billingemail'))).time(),
                         'shop_id' => $this->shopId,
                     ]
                 );
@@ -1621,16 +1652,16 @@ class publicController extends Controller
                 $shipping = \App\Shipping::updateOrCreate(
                     ['ship_email' => $request->input('shippingemail')],
                     [
-                        'fname' => $request->input('shippingfname'), 
+                        'fname' => $request->input('shippingfname'),
                         'sname' => $request->input('shippingsname'),
-                        'ship_address' => $request->input('shippingpaddress'), 
+                        'ship_address' => $request->input('shippingpaddress'),
                         'ship_apartment' => $request->input('shippingapartment'),
-                        'ship_phone' => $request->input('shippingpnumber'), 
-                        'ship_city' => $request->input('shippingcity'), 
+                        'ship_phone' => $request->input('shippingpnumber'),
+                        'ship_city' => $request->input('shippingcity'),
                         'ship_state' => $request->input('shippingstate'),
-                        'ship_zip' => $request->input('shippingzip'), 
+                        'ship_zip' => $request->input('shippingzip'),
                         'ship_digital_address' => $request->input('shippingdigitaladdress'),
-                        'country' => $request->input('country_region'), 
+                        'country' => $request->input('country_region'),
                         'customer_id' => $customer->id,
                     ]
                 );
@@ -1663,7 +1694,7 @@ class publicController extends Controller
                 $order->complete_status = "pending";
                 $order->tracking_code = Paystack::genTranxRef();
                 $order->country_id = $this->shopId;
-    
+
                 // COUPON SECTION
                 $order->coupon_code = $calculation->couponCode;
                 $order->coupon_amount = $calculation->discount;
@@ -1681,7 +1712,7 @@ class publicController extends Controller
                 Session::put('orderID', $orderID);
 
                 foreach (session()->get('cart') as $item){
-                
+
                     $orderpro = new OrderProduct;
                     $orderpro->quantity = $item['quantity'];
                     $orderpro->product_id = $item['productId'];
@@ -1698,11 +1729,11 @@ class publicController extends Controller
 
                 // Payment Param for Gateway API's
                 $paymentParam = array('email' => $email,'amt' => number_format($calculation->totalAmount,2),'phone' => $phone_number, 'desc' => $calculation->shop->shop_name, 'fullname' => $customer_name, 'trans_id' => $orderID, 'country' => strtolower($calculation->shop->country), 'currency' => $calculation->shop->currency, 'reference' => $order->tracking_code );
-                
-                
+
+
                 if($request->input('payment_method') == "Rave" || $request->input('payment_method') == "Ravevisa" ){
-                    
-                
+
+
                     $paymentParam['api'] = $paymentGateWays->rave_api;
                     // session
                     Session::put('paymentinfo', $paymentParam);
@@ -1712,7 +1743,7 @@ class publicController extends Controller
 
                     // return rave
                     return redirect("/checkout/payment/ravepay");
-                   
+
                 }elseif($request->input('payment_method') == "Paypal"){
 
                     $paymentParam['api'] = $paymentGateWays->paypal_api;
@@ -1725,7 +1756,7 @@ class publicController extends Controller
                     // return paypal
                     return redirect("/checkout/payment/paypal");
 
-       
+
                 }elseif($request->input('payment_method') == "Paystack"){
 
                     $paymentParam['api'] = $paymentGateWays->paystack_api;
@@ -1737,9 +1768,9 @@ class publicController extends Controller
 
                     // return paypal
                     return redirect("/checkout/payment/paystack");
-       
+
                 }elseif($request->input('payment_method') == "express-pay"){
-                    
+
                     $paymentParam['api'] = $paymentGateWays->expresspay_api;
                     // session
                     Session::put('paymentinfo', $paymentParam);
@@ -1749,10 +1780,10 @@ class publicController extends Controller
 
                     // return Express-Pay
                     return redirect("/checkout/payment/expresspay");
-       
-       
+
+
                 }elseif($request->input('payment_method') == "hubtel"){
-                    
+
                     $paymentParam['api'] = $paymentGateWays->hubtel_api;
                     // session
                     Session::put('paymentinfo', $paymentParam);
@@ -1762,10 +1793,10 @@ class publicController extends Controller
 
                     // return Hutel
                     return redirect("/checkout/payment/mpower");
-       
-       
+
+
                 }elseif($request->input('payment_method') == "pay_on_delivery"){
-                    
+
                     // session
                     Session::put('paymentinfo', $paymentParam);
 
@@ -1774,20 +1805,20 @@ class publicController extends Controller
 
                     // return Thank you page
                     return redirect("/thankyou");
-               
+
                 }else{
-                    
+
                     // session
                     Session::put('paymentinfo', $paymentParam);
 
                      // Send Email
                      $this->sendEmail($order->id);
-                     
+
                   // return Thank you page
                    return redirect("/thankyou");
-       
+
                 }
-       
+
     }
 
     public function mpower(){
@@ -1820,7 +1851,7 @@ class publicController extends Controller
             'returnUrl' => 'https://wine2u.com/'.strtolower($country).'/thankyou',
             'merchantBusinessLogoUrl' => 'https://wine2u.com/images/black-logo.png',
             'merchantAccountNumber' => $api, //'',
-            'cancellationUrl' => 'https://wine2u.com/'.strtolower($country).'/checkout',    
+            'cancellationUrl' => 'https://wine2u.com/'.strtolower($country).'/checkout',
             //'clientReference' => 'MI6TPQ3XK',
             'clientReference' =>  $trans_id,
             );
@@ -1832,24 +1863,24 @@ class publicController extends Controller
         // $request_url = 'https://api.hubtel.com/v1/merchantaccount/onlinecheckout/invoice/create';
         $create_invoice = json_encode($invoice);
 
-        $ch =  curl_init($request_url);  
-                curl_setopt( $ch, CURLOPT_POST, true );  
-                curl_setopt( $ch, CURLOPT_POSTFIELDS, $create_invoice);  
-                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );  
+        $ch =  curl_init($request_url);
+                curl_setopt( $ch, CURLOPT_POST, true );
+                curl_setopt( $ch, CURLOPT_POSTFIELDS, $create_invoice);
+                curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
                 curl_setopt( $ch, CURLOPT_HTTPHEADER, array(
                     'Authorization: '.$basic_auth_key,
                     'Cache-Control: no-cache',
                     'Content-Type: application/json',
                 ));
 
-        $result = curl_exec($ch); 
+        $result = curl_exec($ch);
         $error = curl_error($ch);
         curl_close($ch);
 
         if($error){
             echo $error;
         }else{
-       
+
         $response = json_decode($result, true);
         $redirect_url = $response["data"]["checkoutUrl"];
         return redirect($redirect_url);
@@ -1862,7 +1893,7 @@ class publicController extends Controller
         if(session()->get('paymentinfo')){
             return view('pages.payment_gateway.rave');
         }
-    
+
     }
 
     public function paypal(){
@@ -1870,7 +1901,7 @@ class publicController extends Controller
         if(session()->get('paymentinfo')){
             return view('pages.payment_gateway.paypal');
         }
-    
+
     }
 
     public function paystack(){
@@ -1878,7 +1909,7 @@ class publicController extends Controller
         if(session()->get('paymentinfo')){
             return view('pages.payment_gateway.paystack');
         }
-    
+
     }
 
     public function expresspay(){
@@ -1886,7 +1917,7 @@ class publicController extends Controller
         if(session()->get('paymentinfo')){
             return view('pages.payment_gateway.expresspay');
         }
-    
+
     }
 
     public function expresspay_processor(){
@@ -1938,7 +1969,7 @@ class publicController extends Controller
         // $res = json_decode($res);
             return  $res;
     }
-    
+
     }
 
      /**
@@ -1951,7 +1982,7 @@ class publicController extends Controller
             return Paystack::getAuthorizationUrl()->redirectNow();
         }catch(\Exception $e) {
             return Redirect::back()->withMessage(['msg'=>'The paystack token has expired. Please refresh the page and try again.', 'type'=>'error']);
-        }        
+        }
     }
 
      /**
@@ -1982,20 +2013,20 @@ class publicController extends Controller
 
 
         return Redirect('/thankyou');
-    
+
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
     }
-    
+
 
     public function sendEmail($order_id){
 
-        
+
             // $order = Order::find($order_id);
             // $orderProduct =  OrderProduct::WHERE('order_id', $order_id)->get();
             // $products =  Product::WHERE('country_id','=', $this->shopId)->get();
-    
+
             // if(session()->get('orderID') != null){
             //     // ####################   EMAIL ###############################
             //         $toEmail = $order->email;
@@ -2004,10 +2035,10 @@ class publicController extends Controller
             //         \Mail::send('mail.email',array('order' => $order, 'orderProduct' => $orderProduct, 'products' => $products), function($message) use ($toEmail,$storeOwner){
             //         $message->to([$toEmail,$storeOwner],'Order From wine2u.com')->subject('Order From wine2u.com')->from('hello@wine2u.com','wine2u.com - Order');
             //         });
-    
+
             // }
 
-    
+
     }
 
 
@@ -2039,14 +2070,14 @@ class publicController extends Controller
     public function privacy_policy(){
 
         return view('pages.privacy_and_policy');
-      
+
     }
 
     public function terms_conditions(){
 
         return view('pages.terms_and_conditions');
-      
+
     }
-  
+
 
 }

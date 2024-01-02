@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\FoodPairings;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -19,7 +20,7 @@ use phpseclib\Crypt\Hash;
 
 class Product extends Model
 {
-    
+
     public $shopId = 1;
 
     protected $appends = [
@@ -38,6 +39,13 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+
+     public function foodpairing()
+     {
+         return $this->belongsToMany(FoodPairings::class, 'food_pairing_product','food_pairing_id', 'product_id');
+     }
+
+
     public function variableProduct()
     {
         return $this->hasMany('App\VariableProduct', 'product_id', 'id');
@@ -149,7 +157,7 @@ class Product extends Model
         return $myObj;
     }
 
-    
+
     // function getCurrencyAttribute(){
 
     //     $shop = \App\shop::WHERE('id', '=', $this->shopId)->WHERE('status', '=', 'Approved')->orderby('country','ASC')->first();
@@ -195,7 +203,7 @@ class Product extends Model
 
     }
 
-    
+
 
 
     // public function reviews(): BelongsToMany
@@ -233,7 +241,7 @@ class Product extends Model
         return $this->hasOne('App\Note', 'product_id', 'id');
     }
 
-   
+
     // public function attributes($query){
 
     //     return $query->join('attributes','variable_products.attribute_id','attributes.id')
@@ -246,7 +254,7 @@ class Product extends Model
     //         // 'products.img1',
     //         // 'products.img2',
     //         // 'products.created_at',
-            
+
     //         // 'variable_products.id',
     //         // 'variable_products.regular_price',
     //         // 'variable_products.sale_price',
@@ -254,7 +262,7 @@ class Product extends Model
     //         // 'variable_products.stock',
     //         // 'variable_products.weight'
     //     );
-        
+
     //     // ->join('signatures','signatures.establishment_id','=','establishments.id')
     //     //     ->selectRaw('establishments.*, count(signatures.id) as count')->where('establishments.verified','=','true')->groupBy('establishments.id');
     // }
@@ -299,7 +307,7 @@ class Product extends Model
             // attribute
             'attributes.title'
         );
-        
+
         // ->join('signatures','signatures.establishment_id','=','establishments.id')
         //     ->selectRaw('establishments.*, count(signatures.id) as count')->where('establishments.verified','=','true')->groupBy('establishments.id');
     }
@@ -327,7 +335,7 @@ class Product extends Model
         return $query;
     }
 
-   
+
 
     public function customer()
     {

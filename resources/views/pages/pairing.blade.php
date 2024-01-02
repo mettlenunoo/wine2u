@@ -43,7 +43,7 @@
             {{-- @foreach ($pair->subPairing as $pairing) --}}
 
                 <div class="col-12 col-md-4 px-md-4 mb-4">
-                    <a href="/blog/{{$pairing->blog_id}} ">
+                    <a href="/products?pairing={{$pairing->slug}} ">
                         <img src="/images/{{ $pairing->image }}" class="bolg_img mb-2" alt="{{ ucwords($pairing->title)}}">
                         <p class="f_titile_p2 mb-0 py-3"> {{ ucwords($pairing->title)}} </p>
                         {{-- <p class="f_titile_p3"> {{ strwords($blog->content, 150) }} </p> --}}

@@ -50,6 +50,8 @@ Route::resource('/admin/wine','wineController');
 Route::resource('/admin/offer','offerController');
 Route::resource('/admin/grape','grapeController');
 Route::resource('/admin/pair','pairingController');
+Route::resource('/admin/food/pairing','FoodPairingController');
+Route::resource('/admin/product/food/pairing','FoodPairingProductController');
 Route::get('/admin/country/region/{id}/edit','countryController@editRegion');
 Route::get('/admin/country/region/create','countryController@createRegion');
 Route::resource('/admin/country','countryController');
@@ -71,23 +73,24 @@ Route::get('/about', 'publicController@about');
 
 
 // Search
-Route::get('/products/search/{keywords}', 'publicController@search_product'); 
-Route::get('/search', 'publicController@search'); 
+Route::get('/products/search/{keywords}', 'publicController@search_product');
+Route::get('/search', 'publicController@search');
 
 Route::get('/products', 'publicController@products')->name("products");
 Route::get('/filter_products', 'publicController@filter_products');
 Route::get('/products/{slug}', 'publicController@single_products');
 
-// subscribe 
+// subscribe
 Route::post('/subscribe', 'comingSoonController@subscribe')->name("subscribe");
 
 // Blog
 Route::get('/blog', 'publicController@blog');
 Route::get('/blog/{slug}', 'publicController@single_blog');
 Route::get('/pairing', 'publicController@pairing');
+Route::get('/food/pairing', 'publicController@food_pairing');
 Route::get('/pairing/{id}', 'publicController@single_pairing');
 
-// Videos 
+// Videos
 Route::get('/videos', 'publicController@allVideos');
 Route::get('/video', 'publicController@singleVideo');
 
@@ -100,7 +103,7 @@ Route::get('/age-verification/below-18', 'ageVerificationController@sorry');
 // Cart
 Route::get('/product/addtocard/{id}/{qty}', 'publicController@AddToCart');
 Route::get('/product/changevarprod/{id}', 'publicController@changevarproduct');
-Route::get('/cart/delete/{id}', 'publicController@deleteCartPage');  
+Route::get('/cart/delete/{id}', 'publicController@deleteCartPage');
 
 // sign up
 Route::get('/signup', 'publicController@user_signup')->middleware('guest:customer');
@@ -129,7 +132,7 @@ Route::prefix('/account')->name('account.')->group(function(){
     Route::get('/logout', 'customerContoller@logout');
     Route::post('/update_profile', 'customerContoller@userUpdate');
     Route::post('/profile/changepassword', 'customerContoller@changepassword');
-    
+
 
      // Password reset routes
     Route::post('/password/email', 'Auth\CustomerForgotPasswordController@sendResetLinkEmail')->name('customer.password.email');
@@ -148,7 +151,7 @@ Route::get('/country/{slug}', 'publicController@single_country');
 
 // Review
 Route::post('/review/add', 'publicController@rating');
-Route::get('/product/review', 'publicController@reviews'); 
+Route::get('/product/review', 'publicController@reviews');
 
 // checkout
 Route::get('/checkout', 'publicController@checkout');
@@ -166,10 +169,10 @@ Route::post('/paystack', 'publicController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'publicController@handleGatewayCallback');
 
 
-// Coupon 
+// Coupon
 Route::post('/coupon', 'publicController@addcoupon')->name("coupon");
 
-// Shipping 
+// Shipping
 Route::get('/checkout/rate/{zone}', 'publicController@checkoutrate');
 
 
@@ -208,7 +211,7 @@ Route::get('/cookies', 'publicController@accept_cookie');
 // Route::get('/{country}/about/deliveryinfo', 'publicController@deliveryinfo');
 // Route::get('/{country}/about/return_exchanges', 'publicController@return_exchanges');
 
-// //     
+// //
 // Route::post('/checkout/create', 'publicController@checkout_store');
 // Route::post('/checkout/user', 'publicController@checkout_user');
 // Route::get('/{country}/blog/{slug}', 'publicController@blog_single');
@@ -321,7 +324,7 @@ Route::resource('/admin/payment-gateway','PaymentGatewayController');
 //Route::resource('categories','categoryController');s
 
 /*
-|   
+|
 |  END OF BACKEDND ROUTER
 |
 

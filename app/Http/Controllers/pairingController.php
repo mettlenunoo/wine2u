@@ -49,7 +49,7 @@ class pairingController extends Controller
         //
     }
 
-   
+
     public function store(Request $request)
     {
               // SHOP ID
@@ -64,46 +64,47 @@ class pairingController extends Controller
 
                // IMAGE PROCESSOR
                 if ($request->hasFile('image')) {
-                        
+
                     $image = $request->file('image');
                     $image_name = $slug.time().'.'.$image->getClientOriginalExtension();
                     $destinationPath = public_path('/images');
                     $image->move($destinationPath, $image_name);
-    
+
                 }else{
 
                     $image_name = "";
                 }
 
-              
+
               //BING PARAM
-     
+
                   $pair = new Pairing;
                   $pair->title = $request->input('title');
                   $pair->slug =  $slug;
                   $pair->parent = $request->input('parent');
-                  $pair->position = $request->input('position'); 
+                  $pair->position = $request->input('position');
                   $pair->publish = $request->input('publish');
                   $pair->content = $request->input('content');
                   $pair->image = $image_name;
                   $pair->blog_id = $request->input('blog_id');
+                  $pair->show_on_page = $request->input('show_on_page');
                   $pair->country_id =  $shopId;
-     
+
               //END BING PARAM
-     
+
               // SAVE
                  $pair->save();
                  $success = 'You Have Added a New Pair Successfully .';
                  return back()->with(['success' => $success]);
     }
 
-  
+
     public function show($id)
     {
         //
     }
 
-    
+
     public function edit($id)
     {
          // SHOP ID
@@ -119,7 +120,7 @@ class pairingController extends Controller
          return view('admin.pair.edit_pair',compact('pairs','pair','blogs','parent','page','allShops'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
           // SHOP ID
@@ -133,7 +134,7 @@ class pairingController extends Controller
 
               // IMAGE PROCESSOR
               if ($request->hasFile('image')) {
-                        
+
                 $image = $request->file('image');
                 $image_name = $slug.time().'.'.$image->getClientOriginalExtension();
                 $destinationPath = public_path('/images');
@@ -141,16 +142,17 @@ class pairingController extends Controller
 
                 $pair->image = $image_name;
               }
-              
+
               $pair->title = $request->input('title');
               $pair->slug =  $slug;
               $pair->parent = $request->input('parent');
-              $pair->position = $request->input('position'); 
+              $pair->position = $request->input('position');
               $pair->publish = $request->input('publish');
               $pair->content = $request->input('content');
               $pair->blog_id = $request->input('blog_id');
+              $pair->show_on_page = $request->input('show_on_page');
               $pair->country_id =  $shopId;
- 
+
           // SAVE
              $pair->save();
              $success = 'You Have Added a New Pair Successfully .';
@@ -171,11 +173,11 @@ class pairingController extends Controller
     }
 
     public function checker_slug($name, $results ,$old_slug = null){
-        // To check whether  
+        // To check whether
       $q_count = count($results);
       $count=1;
       if($q_count > 0){
-        
+
             foreach ($results as $key => $result) {
           //  if($q_count > 1 && $key == 0){
             if($q_count > 0  && $key == 0 &&  $old_slug != null ){
