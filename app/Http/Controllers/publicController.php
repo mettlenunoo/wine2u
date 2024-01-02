@@ -246,20 +246,6 @@ class publicController extends Controller
 
             }
 
-            if(isset($_GET['foodpairing'])){
-
-                $getPairingID[] = $_GET['foodpairing'];
-                $pairings = FoodPairings::whereIN('slug',$getPairingID)->get();
-                $pairIDs = $pairings->id;
-
-                $products = $products->whereHas('pairing', function ($query) use ($pairIDs) {
-                    $query->whereIN('pairing_id', $pairIDs);
-                 });
-
-                $this->SearchPagination("food_pairings");
-
-            }
-
 
         }
 
