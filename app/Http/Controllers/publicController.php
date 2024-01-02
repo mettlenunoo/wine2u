@@ -129,7 +129,7 @@ class publicController extends Controller
     {
 
         $products = Product::WHERE('products.country_id', '=', $this->shopId)
-        ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery', 'foodpairing']);
+        ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery',]);
 
 
         if(isset($_GET['price'])){
@@ -151,7 +151,7 @@ class publicController extends Controller
         }
 
 
-        if(isset($_GET['fetch_data']) || isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category']) || isset($_GET['food_pairing'])){
+        if(isset($_GET['fetch_data']) || isset($_GET['wine']) || isset($_GET['offers']) || isset($_GET['country']) || isset($_GET['pairing']) || isset($_GET['grapes']) || isset($_GET['category'])  ){
 
             if(isset($_GET['wine'])){
 
