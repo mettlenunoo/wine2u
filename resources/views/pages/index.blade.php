@@ -577,6 +577,53 @@
 				</div>
 			</div>
 		</div>
+        <div class="row">
+            <div class="col-12 col-md-12 p-0">
+                <div class="grid-masonry">
+                    <div class="mason-img-box masonry-item-1">
+                        <img src="{{asset('images/categories/img-1.jpeg')}}" alt="">
+                        <div class="overlay-light-black d-flex flex-column justify-content-center align-items-center">
+                            <h1 class="text-center justify-center wine2upc">Rosé</h1>
+                            <p class="text-white text-center w-50">The inspirational impression and deep connection we make with our customers and suppliers is crucial. </p>
+                            <a href="{{asset('products?wine=rose-1')}}" class="btn btn-wine2u px-4">SHOP</a>
+                        </div>
+
+                    </div>
+                    <div class="mason-img-box masonry-item-2">
+                        <img src="{{asset('images/categories/img-4.jpeg')}}" alt="">
+                        <div class="overlay-light-black  d-flex flex-column justify-content-center align-items-center">
+                            <h1 class="text-center justify-center wine2upc">Champagne</h1>
+                            <p class="text-white text-center w-50">The inspirational impression and deep connection we make with our customers and suppliers is crucial. </p>
+                            <a href="{{asset('products?wine=champagne-2')}}" class="btn btn-wine2u px-4">SHOP</a>
+                        </div>
+                    </div>
+                    <div class="mason-img-box masonry-item-3">
+                        <img src="{{asset('images/categories/img-3.jpeg')}}" alt="">
+                        <div class="overlay-light-black d-flex flex-column justify-content-center align-items-center">
+                            <h1 class="text-center justify-center wine2upc">Prosecco</h1>
+                            <p class="text-white text-center w-50">The inspirational impression and deep connection we make with our customers and suppliers is crucial. </p>
+                            <a href="{{asset('products?wine=prosecco-1')}}" class="btn btn-wine2u px-4">SHOP</a>
+                        </div>
+                    </div>
+                    <div class="mason-img-box masonry-item-4">
+                        <img src="{{asset('images/categories/img-2.jpeg')}}" alt="">
+                        <div class="overlay-light-black d-flex flex-column justify-content-center align-items-center">
+                            <h1 class="text-center justify-center wine2upc">Red Wine</h1>
+                            <p class="text-white text-center w-50">The inspirational impression and deep connection we make with our customers and suppliers is crucial. </p>
+                            <a href="{{asset('products?wine=red-wine-1')}}" class="btn btn-wine2u px-4">SHOP</a>
+                        </div>
+                    </div>
+                    <div class="mason-img-box masonry-item-5">
+                        <img src="{{asset('images/categories/img-5.jpeg')}}" alt="">
+                        <div class="overlay-light-black d-flex flex-column justify-content-center align-items-center">
+                            <h1 class="text-center justify-center wine2upc">White Wine</h1>
+                            <p class="text-white text-center w-50">The inspirational impression and deep connection we make with our customers and suppliers is crucial. </p>
+                            <a href="{{asset('products?wine=white-wine-2')}}" class="btn btn-wine2u px-4">SHOP</a>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
 	</div>
 </section>
 <!--Who we are  -->

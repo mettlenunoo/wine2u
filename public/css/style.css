@@ -1218,9 +1218,42 @@ label {
     color: #ffffff;
 }
 
-/* @media (max-width: 575.98px) { 
+/* @media (max-width: 575.98px) {
     .expand {
     width: 100% !important;
 }
 
 } */
+
+/* homepage category images */
+.flex-masonry {
+    display: flex;
+  }
+
+  .masonry-item-1 {
+    background-color: #eee;
+
+    width: 100%;
+  }
+  .masonry-item-2 {
+    background-color: #eee;
+    width: 50%;
+  }
+  .masonry-item-3 {
+    background-color: #eee;
+    width: 50%;
+  }
+  .masonry-item-4 {
+    background-color: #eee;
+    width: 100%;
+  }
+  .masonry-item-5 {
+    background-color: #eee;
+    width: 100%;
+  }
+
+  .mason-img-box img{
+    object-fit: cover;
+  }
+
+/* homepage category images */
