@@ -107,8 +107,8 @@
                         <select class="js-select2 form-control" id="material-select2" name="show_on_page"
                             size="1" required>
                             <option></option><!-- Empty value for demostrating material select box -->
-                            <option @if($pair->publish == "Yes")  selected @endif value="Yes">Yes</option>
-                            <option @if($pair->publish == "No")  selected @endif value="No">No</option>
+                            <option @if($pair->show_on_page == "Yes")  selected @endif value="Yes">Yes</option>
+                            <option @if($pair->show_on_page == "No")  selected @endif value="No">No</option>
                         </select>
                         <label for="material-select2">Show On Pairing Page</label>
                     </div>
@@ -121,8 +121,8 @@
                         <select class="js-select2 form-control" id="material-select2" name="local"
                             size="1" required>
                             <option></option><!-- Empty value for demostrating material select box -->
-                            <option @if($pair->publish == "Yes")  selected @endif value="Yes">Yes</option>
-                            <option @if($pair->publish == "No")  selected @endif value="No">No</option>
+                            <option @if($pair->local == "Yes")  selected @endif value="Yes">Yes</option>
+                            <option @if($pair->local == "No")  selected @endif value="No">No</option>
                         </select>
                         <label for="material-select2">Is Local Food</label>
                     </div>
