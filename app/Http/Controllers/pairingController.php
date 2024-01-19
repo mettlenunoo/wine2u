@@ -88,6 +88,7 @@ class pairingController extends Controller
                   $pair->image = $image_name;
                   $pair->blog_id = $request->input('blog_id');
                   $pair->show_on_page = $request->input('show_on_page');
+                  $pair->local = $request->input('local');
                   $pair->country_id =  $shopId;
 
               //END BING PARAM
@@ -151,6 +152,7 @@ class pairingController extends Controller
               $pair->content = $request->input('content');
               $pair->blog_id = $request->input('blog_id');
               $pair->show_on_page = $request->input('show_on_page');
+              $pair->local = $request->input('local');
               $pair->country_id =  $shopId;
 
           // SAVE

@@ -63,7 +63,7 @@
                             <select class="js-select2 form-control" id="material-select2" name="position" size="1" required>
                                     @php $totalpairs = count($pairs) + 1; @endphp
                                     @for ($i = 1; $i <= $totalpairs; $i++)
-                                        <option @if($pair->position == $i)  selected @endif value="{{$i}}" selected>{{$i}}</option>
+                                        <option @if($pair->position == $i)  selected @endif value="{{$i}}" >{{$i}}</option>
                                     @endfor
                             </select>
                             <input class="form-control" type="hidden"  name="i" value="{{$i}}">
@@ -111,6 +111,20 @@
                             <option @if($pair->publish == "No")  selected @endif value="No">No</option>
                         </select>
                         <label for="material-select2">Show On Pairing Page</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="form-material floating">
+                        <select class="js-select2 form-control" id="material-select2" name="local"
+                            size="1" required>
+                            <option></option><!-- Empty value for demostrating material select box -->
+                            <option @if($pair->publish == "Yes")  selected @endif value="Yes">Yes</option>
+                            <option @if($pair->publish == "No")  selected @endif value="No">No</option>
+                        </select>
+                        <label for="material-select2">Is Local Food</label>
                     </div>
                 </div>
             </div>
@@ -166,6 +180,7 @@
                                         <th>Name</th>
                                         <th class="hidden-xs">Slug</th>
                                         <th class="">Show On Page</th>
+                                        <th class="">Local</th>
                                         <th class="hidden-xs">Position</th>
                                         <th class="text-center" style="width: 10%;">Actions</th>
                                     </tr>
@@ -179,6 +194,7 @@
 
                                         <td class="text-center">{{ $item->slug }}</td>
                                         <td class="text-center">{{ $item->show_on_page }}</td>
+                                        <td class="text-center">{{ $item->Local }}</td>
 
                                         <td class="text-center">{{ $item->position }}</td>
                                         <td class="text-center">
@@ -199,6 +215,7 @@
 
                                                 <td class="text-center">{{ $row->slug }}</td>
                                                 <td class="text-center">{{ $item->show_on_page }}</td>
+                                                <td class="text-center">{{ $item->local }}</td>
 
                                                 <td class="text-center">{{ $row->parent }}</td>
                                                 <td class="text-center">

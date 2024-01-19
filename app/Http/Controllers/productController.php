@@ -1,24 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use Auth;
 use Session;
-use App\Attribute;
-use App\Category;
+use App\Blog;
+use App\Note;
+use App\shop;
+use App\Wine;
+use App\Grape;
+use App\Offer;
+use App\Country;
+use App\Pairing;
 use App\Product;
+use App\Category;
+use App\Attribute;
+use App\Blogcategory;
+use App\Models\Brand;
 use App\Gallery_product;
 use App\VariableProduct;
-use App\shop;
-use App\Note;
-use App\Blog;
-use App\Blogcategory;
-use App\Wine;
-use App\Offer;
-use App\Grape;
-use App\Pairing;
-use App\Country;
-use App\Models\Brand;
-use Auth;
+use Illuminate\Http\Request;
 
 class productController extends Controller
 {
@@ -33,7 +33,7 @@ class productController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
       // SHOP ID
     // public  $shopId ;
     /**
@@ -46,7 +46,7 @@ class productController extends Controller
         $subCategoryIds = [];
         // FILTER
         $search = isset($_GET['search']) ?  $this->SearchPagination("search")  : "";
-        
+
         // PARENT CATEGORY
         if(isset($_GET['parent_category'])){
 
@@ -92,15 +92,15 @@ class productController extends Controller
 
         // empty($subCategoryIds) ? $products =  $products->with('variableProductAttributes', 'categories') : $products = $products->with(['variableProductAttributes','categories' => function($q) use ($subCategoryIds){ $q->whereIn('category_id', $subCategoryIds);}]);
 
-         
-         
+
+
 
         //  !empty($this->link) ? $products = $products->appends($this->link) : "";
 
-        
-         
+
+
         //  ->with(['categories' => function($q) use ($subCategoryIds){ $q->whereIn('category_id', $subCategoryIds);}])
-         
+
         $products = $products
          ->latest()
          ->paginate(12)
@@ -113,24 +113,24 @@ class productController extends Controller
         // ->appends('search', $search);
 
         // $products->withPath('custom/url');
-        
+
          // $products = $products->variableProd()->latest()->paginate(12);
-  
+
          $page = "all_products";
           //###################  ALL SHOPS #########################
          $allShops = shop::all();
          //dd($products);
          return view('admin.product.all_products',compact('products','page','allShops'));
     }
-     
+
      // pagination filter
      private function SearchPagination($parms)
-     { 
+     {
          if($_GET[$parms]){
 
             empty($this->link) ? $this->link = array($parms => $_GET[$parms]) : array_push($this->link, [$parms => $_GET[$parms]]);
             return $_GET[$parms];
-           
+
          }else{
 
             return "";
@@ -159,7 +159,7 @@ class productController extends Controller
 
         $page = "add_product";
         $allShops = shop::all();
-    
+
       //  $blogs = Blog::WHERE('publish', '<=', now())->WHERE('visibility', '=', 'Public')->WHERE('country_id', '=',  $shopId)->orderBy('created_at', 'DESC')->get();
 
          //###################  PAGE NAME #########################
@@ -177,7 +177,7 @@ class productController extends Controller
      */
     public function store(Request $request)
     {
-      
+
              // SHOP ID
             $shopId = Session::get('shopId');
 
@@ -189,11 +189,11 @@ class productController extends Controller
 
             $img1 = "";
             $img2 = "";
- 
+
             // IMAGE PROCESSOR
                 if ($request->hasFile('picx')) {
                     $images = $request->file('picx');
-                   
+
                     foreach($images as $key => $pic){
                     $image_name = $slug.$key.time().'.'.$pic->getClientOriginalExtension();
                     $destinationPath = public_path('/product_images');
@@ -204,15 +204,15 @@ class productController extends Controller
                             $img2 = $image_name;
                         }
                     }
-        
+
                 }else{
 
                     $image_name = "";
                 }
-        
+
             // END  IMAGE PROCESSOR
 
-            
+
             //BING PARAM
             $product = new Product;
             $product->product_name = $request->input('product_name');
@@ -268,8 +268,8 @@ class productController extends Controller
 
             //total
             $total = count($attrs);
-            for ($i=0; $i < $total; $i++) { 
-              
+            for ($i=0; $i < $total; $i++) {
+
                 $v_product = new VariableProduct;
                 $v_product->attribute_id = $attrs[$i];
                 $v_product->regular_price =  $regular[$i];
@@ -298,23 +298,23 @@ class productController extends Controller
                     $image_name = $slug.rand().'.'.$pic->getClientOriginalExtension();
                     $destinationPath = public_path('/product_images');
                     $pic->move($destinationPath, $image_name);
-                    // STORE 
+                    // STORE
                      $gallery = new Gallery_product;
                      $gallery->product_id = $product->id;
                      $gallery->img = $image_name;
                      $gallery->save();
 
                  }
-        
+
             }
 
             // dd($product);
-          
+
             // $success =  'success';
             // return $success;
             $success = 'You Have Added a New Product Successfully .';
             return back()->with(['success' => $success]);
-        
+
     }
 
     /**
@@ -362,11 +362,11 @@ class productController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
+
          // SHOP ID
          $shopId = Session::get('shopId');
          $product = Product::find($id);
-        
+
          $img1 = "";
          $img2 = "";
 
@@ -376,7 +376,7 @@ class productController extends Controller
              $slug = $this->checker_slug($request->input('product_name'),$results, $product->slug);
          // END OF SLUG
 
-     
+
          // IMAGE PROCESSOR
              if ($request->hasFile('img1')) {
 
@@ -385,7 +385,7 @@ class productController extends Controller
                      $destinationPath = public_path('/product_images');
                      $images->move($destinationPath, $image1_name);
 
-                 // 
+                 //
                  $product->img1 = $image1_name;
              }
 
@@ -394,13 +394,13 @@ class productController extends Controller
                  $image2_name = $slug.time().'.'.$images->getClientOriginalExtension();
                  $destinationPath = public_path('/product_images');
                  $images->move($destinationPath, $image2_name);
-                 // 
+                 //
                  $product->img2 = $image2_name;
              }
-     
+
         // END  IMAGE PROCESSOR
-        
-          
+
+
              $product->product_name = $request->input('product_name');
              $product->slug =  $slug;
              $product->description = $request->input('description');
@@ -423,12 +423,12 @@ class productController extends Controller
              $product->fizzy_switch = $request->input('fizzy_switch');
              $product->base_price = $request->input('sales')[0] == "" || $request->input('sales')[0] == "0.0" ? $request->input('regular')[0] : $request->input('sales')[0]; // default price
              $product->country_id = $shopId;
- 
+
              //END BING PARAM
- 
+
              // SAVE
              $product->save();
- 
+
              $product->categories()->sync($request->input('category'));
              $product->brands()->sync($request->input('brand'));
              $product->wines()->sync($request->input('wines'));
@@ -436,8 +436,8 @@ class productController extends Controller
              $product->grapes()->sync($request->input('grapes'));
              $product->pairing()->sync($request->input('pairs'));
              $product->country()->sync($request->input('country'));
- 
- 
+
+
              //VARIABLE PRODUCT
              $ids = $request->input('ids');
              $attrs = $request->input('attrs');
@@ -450,13 +450,13 @@ class productController extends Controller
              $lengh = $request->input('lengh');
              $wth = $request->input('wth');
              $hty = $request->input('hty');
- 
+
              //total
-             
+
              foreach ( $attrs as $key => $attr ) {
 
                 if(count($ids) > $key && $ids[$key] != "" ){
-                    
+
                         $v_product = VariableProduct::find($ids[$key]);
                         $v_product->attribute_id = $attr;
                         $v_product->regular_price =  $regular[$key];
@@ -469,10 +469,10 @@ class productController extends Controller
                         $wth[$key] == '' ? '' : $v_product->product_width =  $wty[$key];
                         $hty[$key] == '' ? '' : $v_product->product_height =  $wty[$key];
                         $v_product->product_id = $product->id;
-        
+
                         // SAVE
                         $v_product->save();
-        
+
                 }else{
 
                         $v_product = New VariableProduct;
@@ -487,34 +487,34 @@ class productController extends Controller
                         $wth[$key] == '' ? '' : $v_product->product_width =  $wty[$key];
                         $hty[$key] == '' ? '' : $v_product->product_height =  $wty[$key];
                         $v_product->product_id = $product->id;
-        
+
                         // SAVE
                         $v_product->save();
 
                 }
              }
- 
+
              // GALLERY
              if($request->hasFile('gallery')){
- 
+
                  $pics = $request->file('gallery');
- 
+
                  foreach($pics as $pic){
- 
+
                      $image_name = $slug.rand().'.'.$pic->getClientOriginalExtension();
                      $destinationPath = public_path('/product_images');
                      $pic->move($destinationPath, $image_name);
-                     // STORE 
+                     // STORE
                       $gallery = new Gallery_product;
                       $gallery->product_id = $product->id;
                       $gallery->img = $image_name;
                       $gallery->save();
- 
+
                   }
-         
+
              }
- 
-          
+
+
 
             $success = 'You Have Updated a Product Successfully .';
             return back()->with(['success' => $success]);
@@ -537,7 +537,7 @@ class productController extends Controller
             //Selected
             $product_id = $request->input('id');
             $product = Product::find($product_id);
-           
+
             $img1 = "";
             $img2 = "";
 
@@ -547,7 +547,7 @@ class productController extends Controller
                 $slug = $this->checker_slug($request->input('product_name'),$results, $product->slug);
             // END OF SLUG
 
-        
+
             // IMAGE PROCESSOR
                 if ($request->hasFile('image1')) {
 
@@ -556,7 +556,7 @@ class productController extends Controller
                         $destinationPath = public_path('/product_images');
                         $images->move($destinationPath, $image1_name);
 
-                    // 
+                    //
                     $product->img1 = $image1_name;
                 }
 
@@ -565,14 +565,14 @@ class productController extends Controller
                     $image2_name = $slug.time().'.'.$images->getClientOriginalExtension();
                     $destinationPath = public_path('/product_images');
                     $images->move($destinationPath, $image2_name);
-                    // 
+                    //
                     $product->img2 = $image2_name;
                 }
-        
+
            // END  IMAGE PROCESSOR
 
-              
-            
+
+
             //BING PARAM
                 $product->product_name = $request->input('product_name');
                 $product->slug =  $slug;
@@ -597,7 +597,7 @@ class productController extends Controller
             //      // current product id
             //      $product_id = $value['id'];
             // }
-           
+
 
             // GALLERY
             if($request->hasFile('gallerypicx')){
@@ -607,19 +607,19 @@ class productController extends Controller
                     $image_name = $slug.$key.time().'.'.$pic->getClientOriginalExtension();
                     $destinationPath = public_path('/product_images');
                     $pic->move($destinationPath, $image_name);
-                    // STORE 
+                    // STORE
                      $gallery = new ProductGallery;
                      $gallery->product_id = $product_id;
                      $gallery->img = $image_name;
                      $gallery->save();
 
                  }
-        
+
             }
 
             //VARIABLE PRODUCT
         if($request->input('attrs') != null){
-            
+
             $attrs = explode(",",$request->input('attrs'));
             $regular = explode(",",$request->input('regular'));
             $sales = explode(",",$request->input('sales'));
@@ -633,9 +633,9 @@ class productController extends Controller
 
             //Total
             $total = count($regular);
-         
-            for ($i=0; $i < $total; $i++) { 
-              
+
+            for ($i=0; $i < $total; $i++) {
+
                 $v_product = new VariableProduct;
                 $v_product->attribute_id = $attrs[$i];
                 $v_product->regular_price =  $regular[$i];
@@ -667,12 +667,12 @@ class productController extends Controller
               $lengh1 = explode(",",$request->input('lengh1'));
               $wth1 = explode(",",$request->input('wth1'));
               $hty1 = explode(",",$request->input('hty1'));
-  
+
               //Total
               $totals = count($ids);
-  
-              for ($i=0; $i < $totals; $i++) { 
-                
+
+              for ($i=0; $i < $totals; $i++) {
+
                   $v_product = VariableProduct::find($ids[$i]);
                   $v_product->attribute_id = $attrs1[$i];
                   $v_product->regular_price =  $regular1[$i];
@@ -687,10 +687,10 @@ class productController extends Controller
 
                   // SAVE
                   $v_product->save();
-  
+
               }
 
-             //NOTE 
+             //NOTE
              $note = Note::WHERE('product_id', $product_id)->first();
 
              if($note){
@@ -705,19 +705,19 @@ class productController extends Controller
                         $note->img = $note_img;
                     }
                     // END  IMAGE PROCESSOR
-                
+
                     $note->details = $request->input('short_note');;
                     $note->save();
             }
-          
+
             $success =  'success';
             return $success;
             //return view('admin.blog.add_blog',compact('categories','parent','success'));
-        
+
         } catch (\Exception $e) {
 
          return $e->getMessage();
-         
+
        // return view('admin.offers.add_offer')->with(['error' => 'Offer Already Exist','vendors' =>  $vendors,'categories' => $categories]);
         // return view('admin.category.categories')->with(['categories' => $categories, 'success' => $e->getMessage()]); ;
         }
@@ -735,7 +735,7 @@ class productController extends Controller
             $product = Product::find($id)->delete();
             $gallary = Gallery_product::WHERE('product_id', $id)->delete();
             $v_product = VariableProduct::WHERE('product_id', $id)->delete();
-            
+
             $success = 'Deleted Successfully .';
             return redirect('/admin/product')->with(['success' => $success]);
 
@@ -778,7 +778,7 @@ class productController extends Controller
              $p_gallery = Gallery_product::WHERE('id', $request->input('id'))->delete();
              // AFTER DELETE
              return "success";
-             
+
         }catch(\Exception $e) {
             return $e->getMessage();
         }
@@ -802,10 +802,10 @@ class productController extends Controller
      $attributes = Attribute::WHERE('country_id','=',$shopId)->get();
      $id = $request->input('id');
      $product = ' <div class="block"  id="'.$id.'">
-                         
+
         <div class="block-content">
            <div class="form-horizontal">
-                                           
+
                 <div class="form-group">
                         <label class="col-xs-2" for="example-select">Select Attribute(s)</label>
                         <div class="col-sm-8">
@@ -823,34 +823,34 @@ class productController extends Controller
                             $product .=  '</select>
                         </div>
                 </div>
-                    
+
                  <div class="form-group">
                         <label class="col-xs-2" for="example-text-input">Regular Price </label>
                        <div class="col-sm-8">
                          <input class="form-control" type="text" value="0" id="example-text-input" name="regular[]" >
                         </div>
                  </div>
-       
+
                <div class="form-group">
                  <label class="col-xs-2" for="example-text-input">Sale Price</label>
                        <div class="col-sm-8">
                        <input class="form-control" value="0" type="text" id="example-text-input" name="sales[]" >
                       </div>
                 </div>
-    
+
             <div class="form-group">
             <label class="col-xs-2" for="example-text-input">SKU</label>
                         <div class="col-sm-8">
                         <input class="form-control" type="text" id="example-text-input" name="sku[]" >
-        
+
                 </div>
             </div>
-        
+
             <div class="form-group">
             <label class="col-xs-2" for="example-text-input">Stock quantity</label>
                         <div class="col-sm-8">
                     <input class="form-control" type="number" id="example-text-input" name="qty[]" value="0" >
-        
+
                 </div>
             </div>
             <div class="form-group">
@@ -862,39 +862,39 @@ class productController extends Controller
                     </select>
                 </div>
             </div>
-    
+
             <div class="form-group">
                     <label class="col-xs-2" for="example-text-input">Weight (kg) </label>
                           <div class="col-sm-8">
                   <input class="form-control" type="number" id="example-text-input" name="wty[]" step="0.01" value="0" >
-          
+
                     </div>
              </div>
-          
+
              <div class="form-group">
                  <label class="col-xs-2" for="example-text-input">Dimensions </label>
                           <div class="col-sm-3">
                   <input class="form-control" type="number" id="example-text-input" step="0.01" name="lengh[]" placeholder="Lengh"  value="0" >
-          
+
                     </div>
-          
+
                     <div class="col-sm-3">
                   <input class="form-control" type="number" id="example-text-input" step="0.01" name="wth[]" placeholder="Width" value="0" >
-          
+
                     </div>
-          
+
                     <div class="col-sm-2">
                   <input class="form-control" type="number" id="example-text-input" step="0.01"  name="hty[]" placeholder="Height" value="0" >
-          
+
                     </div>
              </div>
 
-         <div class="form-group">   
+         <div class="form-group">
              <div class="col-sm-10 text-right">
                 <a href="javascript:void(0);" onclick="deleteProduct('.$id.')"> Remove </a>
              </div>
          </div>
-                     
+
         </div>
        </div>
     </div>';
@@ -904,11 +904,11 @@ class productController extends Controller
 
 
     public function checker_slug($name, $results, $old_slug = null){
-        // To check whether  
+        // To check whether
       $q_count = count($results);
       $count=1;
       if($q_count > 0){
-        
+
             foreach ($results as $key => $result) {
             if($q_count > 0  && $key == 0 &&  $old_slug != null ){
             $slug_name = $result['product_name'];
@@ -934,5 +934,5 @@ class productController extends Controller
     }
 
 
-  
+
 }

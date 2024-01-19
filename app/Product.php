@@ -2,18 +2,19 @@
 
 namespace App;
 
-use App\Models\FoodPairings;
+use DB;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
+use App\Model\localFood;
+use phpseclib\Crypt\Hash;
+use App\Models\FoodPairings;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use DB;
-use phpseclib\Crypt\Hash;
 
 //use Krossroad\UnionPaginator\UnionPaginatorTrait;
 
@@ -39,12 +40,6 @@ class Product extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-
-     public function foodpairing()
-     {
-         return $this->belongsToMany(FoodPairings::class, 'food_pairing_product','food_pairing_id', 'product_id');
-     }
-
 
     public function variableProduct()
     {

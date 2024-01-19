@@ -50,8 +50,6 @@ Route::resource('/admin/wine','wineController');
 Route::resource('/admin/offer','offerController');
 Route::resource('/admin/grape','grapeController');
 Route::resource('/admin/pair','pairingController');
-Route::resource('/admin/food/pairing','FoodPairingController');
-Route::resource('/admin/product/food/pairing','FoodPairingProductController');
 Route::get('/admin/country/region/{id}/edit','countryController@editRegion');
 Route::get('/admin/country/region/create','countryController@createRegion');
 Route::resource('/admin/country','countryController');

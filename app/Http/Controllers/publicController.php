@@ -557,6 +557,8 @@ class publicController extends Controller
         ->searchSlug($slug)
         ->with(['variableProductAttributes','categories','pairing','country','reviews', 'gallery'])
         ->firstorfail();
+        $localfood = $product->pairing->where('local', '=' ,'Yes');
+        $foreignfood = $product->pairing->where('local', '=' ,'No');
 
 
         $wishList = [];
@@ -590,9 +592,8 @@ class publicController extends Controller
             ->limit(4)
             ->get();
 
-       // dd($product->ReviewSummary);
 
-        return view('pages.single_product',compact('product','review','wishList','similarProducts'));
+        return view('pages.single_product',compact('product','review','wishList','similarProducts','localfood','foreignfood'));
 
 
     }

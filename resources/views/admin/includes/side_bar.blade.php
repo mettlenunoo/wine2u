@@ -5,21 +5,21 @@
                     <!-- Sidebar Content -->
                     <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
                     <div class="sidebar-content">
-                       
+
 
                         <!-- Side Content -->
                         <div class="side-content">
-                              
+
 
                         <div class="row toppada">
                             <div class="col-sm-5 col-xs-6">
                             <img src="{{ asset('user_pic/'.auth()->user()->pic) }}" class="img-responsive img-circle" width:100%; height="100px;">
                             </div>
                             <div class="col-sm-7 col-xs-6 kd">
-                                <p style="font-size: 14px; color:#fff;"> 
+                                <p style="font-size: 14px; color:#fff;">
                                 <small>Welcome </small><br/>
                                 <strong>{{auth()->user()->name}}</strong>
-                                    
+
                                </p>
 
                             </div>
@@ -49,7 +49,7 @@
                                 <li>
                                 <a href="/admin/category"  <?php if($page == "productCategories"){?> class="active"<?php }?> > Categories</a>
                                 </li>
-            
+
                                 <li>
                                 <a href="/admin/attribute" <?php if($page == "attribute"){?> class="active"<?php }?>>Attributes</a>
                                 </li>
@@ -57,7 +57,7 @@
                                 <li>
                                 <a href="/admin/brand" <?php if($page == "brand"){?> class="active"<?php }?>>Brand</a>
                                 </li>
-    
+
 
                                 <li>
                                     <a href="/admin/wine" <?php if($page == "wine"){?> class="active"<?php }?>>Wine</a>
@@ -88,22 +88,22 @@
                          <li <?php if($page == "all_blogs" || $page == "add_blog" || $page == "edit_blog"  || $page == "edit_category" || $page == "categories"){?> class="open" <?php }?> >
                             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-newspaper-o"></i><span class="sidebar-mini-hide">Blog</span></a>
                             <ul>
-                               
+
                                         <li>
                                             <a href="/admin/blog" <?php if($page == "all_blogs"){?> class="active"<?php }?> > All  </a>
                                         </li>
-                                    
+
                                         <li>
                                             <a href="/admin/blog/create" <?php if($page == "add_blog" || $page == "edit_blog"){?> class="active"<?php }?> >Add new</a>
                                         </li>
-                                
-                                
-                               
+
+
+
                                     <li>
                                         <a href="/admin/blog/categories" <?php if($page == "edit_category" || $page == "categories"){?> class="active"<?php }?> >Categories</a>
                                     </li>
-                               
-                                
+
+
                             </ul>
                         </li>
 
@@ -111,7 +111,7 @@
      <a <?php if($page == "order" || $page == "invoice"){?> class="active" <?php }?> href="/admin/order" ><i class="glyphicon glyphicon-th-list"></i><span class="sidebar-mini-hide">Order</span></a>
     </li>
 
-  
+
 
     <li <?php if($page == "slider_tb" || $page == "add_slider"){?> class="open" <?php }?> >
         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="glyphicon glyphicon-flash"></i><span class="sidebar-mini-hide">Slider</span></a>
@@ -146,7 +146,7 @@
                 <li>
                 <a href="/admin/shipping/country" <?php if($page == "shipping_country" || $page == "edit_shipping_country"){ ?> class="active"<?php } ?> >Country</a>
                 </li>
-               
+
          </ul>
      </li>
 
@@ -177,9 +177,9 @@
          <a <?php if($page == "subscribe"){?> class="active" <?php }?> href="/admin/subscribers" ><i class="si si-envelope"></i><span class="sidebar-mini-hide">Subscribers</span></a>
          </li>
 
-        
-    
-    
+
+
+
             <li <?php if($page == "all_pages" || $page == "add_page" || $page == "edit_page"){?> class="open" <?php }?> >
                 <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-newspaper-o"></i><span class="sidebar-mini-hide">Pages</span></a>
                 <ul>
@@ -189,7 +189,7 @@
                         <li>
                         <a href="/admin/page/create" <?php if($page == "add_page" || $page == "edit_page"){?> class="active"<?php }?> >Add new</a>
                         </li>
-                    
+
                 </ul>
             </li>
             <li>
@@ -210,9 +210,9 @@
                 </ul>
             </li>
          @endif
-       
+
          @if(auth()->user()->type == "Super Administrator" || auth()->user()->type == "Administrator" )
-       
+
             <li <?php if($page == "all_users" || $page == "register" || $page == "edit_user"){?> class="open" <?php }?> >
                <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-user"></i><span class="sidebar-mini-hide">Users</span></a>
                  <ul>
@@ -222,10 +222,10 @@
                        <li>
                        <a href="/admin/user/create" <?php if($page == "register" || $page == "edit_user"){?> class="active"<?php }?> >Add new</a>
                        </li>
-                    
+
                 </ul>
             </li>
-       
+
         @endif
 
 
@@ -252,10 +252,10 @@
                             </li>
                         </ul>
                     </li>
-                 
+
              </ul>
          </li>
-        
+
      @endif
 
      <li class="nav-main-heading"><span class="sidebar-mini-hide">FrontEnd</span></li>
@@ -333,8 +333,8 @@
                         </button>
                     </li>
                 @endif
-                  
-                    
+
+
                 </ul>
                 <!-- END Header Navigation Left -->
             </header>

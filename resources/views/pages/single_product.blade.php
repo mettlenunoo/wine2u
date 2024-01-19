@@ -400,7 +400,7 @@
 	<!-- Characteristics and Taste Notes -->
 
 	<!-- Food Pairings -->
-    @if(count($product->pairing) > 0)
+    {{-- @if(count($product->pairing) > 0)
 		<div class="py-md-5">
 			<div class="container">
 				<h5 class="sign_title mb-5">Food Parings </h5>
@@ -462,9 +462,88 @@
                             <img src="/product_images/{{ $image->img }}" alt="">
 
                         @endforeach
-                        {{-- <img src="/page_assets/img/singleblog1.jpg" alt="">
-                        <img src="/page_assets/img/singleblog2.jpg" alt="">
-                        <img src="/page_assets/img/house.jpg" alt=""> --}}
+                    </div>
+                </div>
+                <div class="col-md-6 col-12 mb-4 mb-md-0 order-md-1">
+                    <div class="">
+                        <h2 class="">Learn More</h2>
+                        <p class="learn-more-txt">
+                            {!! ucfirst($product->more_description) !!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+        @if(count($foreignfood) > 0)
+		<div class="py-md-5">
+			<div class="container">
+				<h5 class="sign_title mb-5">Food Parings </h5>
+
+				@if(count($foreignfood) > 4)
+					<div class="fp-slider">
+						<button class="mr-2" id="fp-prev">
+							<img src="/page_assets/img/leftarrow.svg" alt="">
+						</button>
+						<div class="fp-slides mb-0">
+							@foreach ($foreignfood as $key => $pair)
+								<a
+                                    href="/products?pairing={{$pair->slug}}"
+									class="fp-slide"
+								>
+									<img
+										src="/images/{{ $pair->image }}"
+										alt="{{ ucwords($pair->title) }}"
+									>
+									<p class="mb-1">{{ ucwords($pair->title) }}</p>
+								</a>
+							@endforeach
+						</div>
+						<button class="ml-2" id="fp-next">
+							<img src="/page_assets/img/rightarrow.svg" alt="">
+						</button>
+					</div>
+				@else
+					<div class="row">
+						@foreach ($foreignfood as $key => $pair)
+							<div class="col-lg-3 col-md-6 col-12 mb-4">
+								<a
+									href="/products?pairing={{$pair->slug}}"
+									class="fp-slide mx-0"
+								>
+									<img
+										src="/images/{{ $pair->image }}"
+										alt="{{ ucwords($pair->title) }}"
+									>
+									<p class="mb-1">{{ ucwords($pair->title) }}</p>
+								</a>
+							</div>
+						@endforeach
+					</div>
+				@endif
+			</div>
+		</div>
+	@endif
+
+    <!-- Learn More -->
+    <div class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 col-12 mb-4-mb-md-0 order-md-2">
+                    <div class="lm-slider">
+
+                        @foreach($localfood as $key => $image)
+                        <a
+
+                            href="/products?pairing={{$image->slug}}">
+                            <img src="/images/{{ $image->image }}" alt="">
+
+                        </a>
+
+
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-md-6 col-12 mb-4 mb-md-0 order-md-1">
@@ -478,6 +557,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- Reviews -->
     <section class="py-md-5 pb-5 d-none">
