@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\productController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -340,3 +342,5 @@ Auth::routes();
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/update-column-data/{current}/{new}', [productController::class, 'updateColumnData']);

@@ -934,5 +934,19 @@ class productController extends Controller
     }
 
 
+    public function updateColumnData($current, $new)
+    {
+        // Get all rows where the column value is 54
+        $rowsToUpdate = Pairing::where('parent', $current)->get();
+
+        // Update each row to set the column value to 63
+        foreach ($rowsToUpdate as $row) {
+            $row->update(['parent' => $new]);
+        }
+
+        // Optionally, you can return a message or do some additional operations
+        return 'Data updated successfully!';
+    }
+
 
 }
