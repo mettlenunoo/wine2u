@@ -39,25 +39,25 @@
                             <label for="material-text2">Enter  Title</label>
                         </div>
                     </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                     <div class="col-sm-12">
                         <div class="form-material floating">
                             <select class="js-select2 form-control" id="material-select2" name="parent" size="1" required>
 
                                     <option value="0">None</option><!-- Empty value for demostrating material select box -->
                                     @foreach ($parent as $item)
-                                       <option  @if($pair->parent == $item->id)  selected @endif value="{{$item->id}}">{{$item->title}}</option>
+                                    <option  @if($pair->parent == $item->id)  selected @endif value="{{$item->id}}">{{$item->title}}</option>
                                     @endforeach
 
                             </select>
                             <label for="material-select2">Parent</label>
                         </div>
                     </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                     <div class="col-sm-12">
                         <div class="form-material floating">
                             <select class="js-select2 form-control" id="material-select2" name="position" size="1" required>
@@ -70,9 +70,9 @@
                             <label for="material-select2">Position</label>
                         </div>
                     </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                     <div class="col-sm-12">
                         <div class="form-material floating">
                             <select class="js-select2 form-control" id="material-select2" name="publish" size="1" required>
@@ -83,25 +83,25 @@
                             <label for="material-select2">Publish</label>
                         </div>
                     </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <div class="col-sm-12">
                     <div class="form-material floating">
                         <select class="js-select2 form-control" id="material-select2" name="blog_id" size="1" required>
-                              <option></option><!-- Empty value for demostrating material select box -->
+                            <option></option><!-- Empty value for demostrating material select box -->
 
                             @foreach ($blogs as $blog)
-                               <option @if($pair->blog_id == $blog->id) selected @endif value="{{ $blog->id }}"> {{ $blog->title }} </option>
+                            <option @if($pair->blog_id == $blog->id) selected @endif value="{{ $blog->id }}"> {{ $blog->title }} </option>
                             @endforeach
 
                         </select>
                         <label for="material-select2">Select a Blog</label>
                     </div>
                 </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <div class="col-sm-12">
                     <div class="form-material floating">
                         <select class="js-select2 form-control" id="material-select2" name="show_on_page"
@@ -130,16 +130,16 @@
             </div>
 
 
-             <div class="form-group">
+            <div class="form-group">
                     <div class="col-sm-12">
                             <label for="material-text2">Category Description. If any</label>
                         <div class="form-material floating">
                             <textarea class="form-control" id="example-textarea-input" name="content" rows="6" placeholder="Content.."> {!! $pair->content !!}</textarea>
                         </div>
                     </div>
-             </div>
+            </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <div class="col-sm-12">
                         <label for="material-text2"> Image</label>
                     <div class="form-material floating">
@@ -187,9 +187,9 @@
                                 </thead>
                                 <tbody>
 
-                                 @foreach ($parent as $item)
+                                @foreach ($parent as $item)
 
-                                 <tr>
+                                <tr>
                                         <td class="text-center">{{ $item->title }}</td>
 
                                         <td class="text-center">{{ $item->slug }}</td>
@@ -203,7 +203,7 @@
                                             {!! Form::open(['action' => ['pairingController@destroy', $item->id ], 'method' => 'POST']) !!}
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" onClick ="return confirm('Are you sure You want to Delete')" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                                             {!! Form::close() !!}
+                                            {!! Form::close() !!}
                                             </div>
                                         </td>
                                 </tr>
@@ -217,7 +217,7 @@
                                                 <td class="text-center">{{ $item->show_on_page }}</td>
                                                 <td class="text-center">{{ $item->local }}</td>
 
-                                                <td class="text-center">{{ $row->parent }}</td>
+                                                <td class="text-center">{{ $row->position }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group">
                                                     <a href="/admin/pair/{{ $row->id }}/edit" class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil"></i></a>
@@ -234,7 +234,7 @@
 
                                 @endforeach
 
-                             @endforeach
+                            @endforeach
 
                                 </tbody>
                             </table>

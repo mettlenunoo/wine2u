@@ -227,7 +227,7 @@
                                 <td class="text-center">{{ $item->show_on_page }}</td>
                                 <td class="text-center">{{ $item->local }}</td>
 
-                                <td class="text-center">{{ $row->parent }}</td>
+                                <td class="text-center">{{ $row->position }}</td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <a href="/admin/pair/{{ $row->id }}/edit" class="btn btn-xs btn-default"
